@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		494EC40924EE9067007B642B /* ProductSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EC40824EE9067007B642B /* ProductSearchView.swift */; };
 		49AABDDC24EE7E9C00DE0088 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDDB24EE7E9C00DE0088 /* TabBarViewController.swift */; };
 		49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE024EE7F6B00DE0088 /* MYPageViewController.swift */; };
 		49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		494EC40824EE9067007B642B /* ProductSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchView.swift; sourceTree = "<group>"; };
 		49AABDDB24EE7E9C00DE0088 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		49AABDE024EE7F6B00DE0088 /* MYPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYPageViewController.swift; sourceTree = "<group>"; };
 		49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,29 @@
 			);
 			name = Home;
 			path = Brandingdong/Controller/Home;
+			sourceTree = "<group>";
+		};
+		494EC40224EE8EAC007B642B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				494EC40C24EE9DD2007B642B /* SearchAndCategory */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		494EC40324EE8FB4007B642B /* jwleeImage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = jwleeImage;
+			sourceTree = "<group>";
+		};
+		494EC40C24EE9DD2007B642B /* SearchAndCategory */ = {
+			isa = PBXGroup;
+			children = (
+				494EC40824EE9067007B642B /* ProductSearchView.swift */,
+			);
+			path = SearchAndCategory;
 			sourceTree = "<group>";
 		};
 		49AABDDA24EE7E7A00DE0088 /* TabBar */ = {
@@ -155,6 +180,7 @@
 		49CEB3A524EE54210026201B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				494EC40224EE8EAC007B642B /* Home */,
 				49CEB3A824EE54520026201B /* Login */,
 			);
 			path = View;
@@ -163,6 +189,7 @@
 		49CEB3A624EE542A0026201B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				494EC40324EE8FB4007B642B /* jwleeImage */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,6 +334,7 @@
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
 				49AABDE524EE7F9000DE0088 /* CategoryViewController.swift in Sources */,
 				49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */,
+				494EC40924EE9067007B642B /* ProductSearchView.swift in Sources */,
 				49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */,
 				49AABDEA24EE81F400DE0088 /* HomeViewController.swift in Sources */,
 				49CEB39024EE4FB60026201B /* AppDelegate.swift in Sources */,
