@@ -44,6 +44,7 @@ class MainLoginViewController : UIViewController {
   
   private let emailLoginButton : LocalLoginButton = {
     let bt = LocalLoginButton(title: "이메일로 가입하기", color: .systemPink)
+    bt.addTarget(self, action: #selector(signInWithEmail), for: .touchUpInside)
     return bt
   }()
   
@@ -51,19 +52,22 @@ class MainLoginViewController : UIViewController {
     let viewModel = SocialCustomLoginViewModel(title: "Apple로 계속하기", image: "appleLogo")
     let bt = SocialLoginButton(with: viewModel, color: UIColor.black)
     bt.backgroundColor = UIColor.white
+    bt.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
     return bt
   }()
   
   private let facebookLoginButton : SocialLoginButton = {
-    let viewModel = SocialCustomLoginViewModel(title: "Facebook으로 계속하기", image: "google")
+    let viewModel = SocialCustomLoginViewModel(title: "Facebook으로 계속하기", image: "facebook")
     let bt = SocialLoginButton(with: viewModel, color: .white)
     bt.backgroundColor = UIColor.systemBlue
+    bt.addTarget(self, action: #selector(signInWithFacebook), for: .touchUpInside)
     return bt
   }()
   
   private let googleLoginButton : SocialLoginButton = {
     let viewModel = SocialCustomLoginViewModel(title: "Google 계정으로 계속하기", image: "google")
     let bt = SocialLoginButton(with: viewModel, color: .lightGray)
+    bt.addTarget(self, action: #selector(signInWithGoogle), for: .touchUpInside)
     bt.backgroundColor = UIColor.white
     return bt
   }()
@@ -72,6 +76,16 @@ class MainLoginViewController : UIViewController {
   
   private let loginButton : LocalLoginButton = {
     let bt = LocalLoginButton(title: "로그인", color: .black)
+    bt.addTarget(self, action: #selector(login), for: .touchUpInside)
+    return bt
+  }()
+  
+  private let backButton : UIButton = {
+    let bt = UIButton()
+    bt.setImage(UIImage(systemName: "xmark"), for: .normal)
+    bt.tintColor = .white
+    bt.clipsToBounds = true
+    bt.contentMode = .scaleAspectFit
     return bt
   }()
   
@@ -83,9 +97,33 @@ class MainLoginViewController : UIViewController {
     setConstraints()
   }
   
+  //MARK: - @objc func
+  @objc func signInWithEmail() {
+    
+  }
+  
+  @objc func signInWithApple() {
+    
+  }
+  
+  @objc func signInWithFacebook() {
+    
+  }
+  
+  @objc func signInWithGoogle() {
+    
+  }
+  
+  @objc func login() {
+    let controller = LoginViewController()
+    let navi = UINavigationController(rootViewController: controller)
+    navi.modalPresentationStyle = .fullScreen
+    present(navi, animated: true)
+  }
+  
   //MARK: - setUI()
   private func setUI() {
-    [backgroundImage, titleLabel, descriptionLabel, couponLabel].forEach {
+    [backgroundImage, titleLabel, descriptionLabel, couponLabel, backButton].forEach {
       view.addSubview($0)
     }
     
@@ -105,7 +143,7 @@ class MainLoginViewController : UIViewController {
     }
     
     titleLabel.snp.makeConstraints {
-      $0.top.equalToSuperview().offset(70)
+      $0.top.equalTo(view.safeAreaLayoutGuide).offset(40)
       $0.leading.equalToSuperview().offset(30)
     }
     
@@ -119,6 +157,13 @@ class MainLoginViewController : UIViewController {
       $0.leading.equalToSuperview().offset(30)
     }
     
+    backButton.snp.makeConstraints {
+      $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+      $0.trailing.equalToSuperview().offset(-20)
+      $0.width.height.equalTo(20)
+    }
+    
+    
     stackView.snp.makeConstraints {
       $0.top.equalTo(couponLabel.snp.bottom).offset(100)
       $0.leading.equalToSuperview().offset(20)
@@ -126,9 +171,9 @@ class MainLoginViewController : UIViewController {
     }
     
     informationView.snp.makeConstraints {
-      $0.top.equalTo(stackView.snp.bottom).offset(150)
-      $0.leading.equalToSuperview()
-      $0.trailing.equalToSuperview()
+      $0.top.equalTo(stackView.snp.bottom).offset(100)
+      $0.leading.equalToSuperview().offset(70)
+      $0.trailing.equalToSuperview().offset(-70)
       $0.bottom.equalToSuperview().offset(-40)
     }
   }

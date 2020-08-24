@@ -13,6 +13,7 @@ class InformationView : UIView {
   let useInfoButton : UIButton = {
     let bt = UIButton()
     bt.setTitle("이용약관", for: .normal)
+    bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 10)
     bt.setTitleColor(.white, for: .normal)
     return bt
   }()
@@ -26,6 +27,7 @@ class InformationView : UIView {
   let ruleInfoButton : UIButton = {
     let bt = UIButton()
     bt.setTitle("개인정보취급방침", for: .normal)
+    bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 10)
     bt.setTitleColor(.white, for: .normal)
     return bt
   }()
@@ -39,6 +41,7 @@ class InformationView : UIView {
   let inquiryButton : UIButton = {
     let bt = UIButton()
     bt.setTitle("문의/신고하기", for: .normal)
+    bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 10)
     bt.setTitleColor(.white, for: .normal)
     return bt
   }()
@@ -71,10 +74,10 @@ class InformationView : UIView {
     }
     
     divider1.snp.makeConstraints {
-      $0.top.bottom.equalToSuperview()
+      $0.top.equalToSuperview().offset(5)
       $0.leading.equalTo(useInfoButton.snp.trailing).offset(5)
       $0.width.equalTo(1)
-      
+      $0.bottom.equalToSuperview().offset(-5)
     }
     
     ruleInfoButton.snp.makeConstraints {
@@ -83,9 +86,10 @@ class InformationView : UIView {
     }
     
     divider2.snp.makeConstraints {
-      $0.top.bottom.equalToSuperview()
+      $0.top.equalToSuperview().offset(5)
       $0.leading.equalTo(ruleInfoButton.snp.trailing).offset(5)
       $0.width.equalTo(1)
+      $0.bottom.equalToSuperview().offset(-5)
     }
     
     inquiryButton.snp.makeConstraints {
