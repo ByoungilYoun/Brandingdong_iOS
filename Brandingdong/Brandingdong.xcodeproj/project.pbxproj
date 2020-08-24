@@ -16,6 +16,9 @@
 		0F661B7E24EE90AD0060FDF7 /* brandi login image in Resources */ = {isa = PBXBuildFile; fileRef = 0F661B7D24EE90AD0060FDF7 /* brandi login image */; };
 		0FED02B424EE7EB0003D03B4 /* MainLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */; };
 		0FED02B624EE820A003D03B4 /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */; };
+		0FFF716724F3891700D469D7 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFF716624F3891700D469D7 /* facebook.png */; };
+		0FFF716D24F3C8CF00D469D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */; };
+		0FFF716F24F40F7F00D469D7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */; };
 		49CEB39024EE4FB60026201B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEB38F24EE4FB60026201B /* AppDelegate.swift */; };
 		49CEB39424EE4FB60026201B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEB39324EE4FB60026201B /* ViewController.swift */; };
 		49CEB39924EE4FB70026201B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CEB39824EE4FB70026201B /* Assets.xcassets */; };
@@ -33,6 +36,9 @@
 		0F661B7D24EE90AD0060FDF7 /* brandi login image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "brandi login image"; sourceTree = "<group>"; };
 		0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainLoginViewController.swift; path = Brandingdong/MainLoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialLoginButton.swift; path = Brandingdong/SocialLoginButton.swift; sourceTree = SOURCE_ROOT; };
+		0FFF716624F3891700D469D7 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Brandingdong/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextField.swift; path = Brandingdong/CustomTextField.swift; sourceTree = SOURCE_ROOT; };
 		49CEB38C24EE4FB60026201B /* Brandingdong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandingdong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CEB38F24EE4FB60026201B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49CEB39324EE4FB60026201B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +73,7 @@
 		0F661B7424EE901A0060FDF7 /* ByoungilImage */ = {
 			isa = PBXGroup;
 			children = (
+				0FFF716624F3891700D469D7 /* facebook.png */,
 				0F0A400224EED2240037B7A1 /* google.png */,
 				0F0A400924EEEA100037B7A1 /* appleLogo.imageset */,
 				0F661B7D24EE90AD0060FDF7 /* brandi login image */,
@@ -153,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */,
+				0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -164,6 +172,7 @@
 				0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */,
 				0F0A400D24EEEF970037B7A1 /* DividerView.swift */,
 				0F0A400F24EF089D0037B7A1 /* InformationView.swift */,
+				0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -237,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49CEB39C24EE4FB70026201B /* LaunchScreen.storyboard in Resources */,
+				0FFF716724F3891700D469D7 /* facebook.png in Resources */,
 				0F0A400A24EEEA100037B7A1 /* appleLogo.imageset in Resources */,
 				49CEB39924EE4FB70026201B /* Assets.xcassets in Resources */,
 				0F0A400324EED2240037B7A1 /* google.png in Resources */,
@@ -293,9 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FFF716D24F3C8CF00D469D7 /* LoginViewController.swift in Sources */,
 				0FED02B624EE820A003D03B4 /* SocialLoginButton.swift in Sources */,
 				0F0A401024EF089D0037B7A1 /* InformationView.swift in Sources */,
 				0F0A400824EEDFA90037B7A1 /* LocalLoginButton.swift in Sources */,
+				0FFF716F24F40F7F00D469D7 /* CustomTextField.swift in Sources */,
 				0F0A400E24EEEF970037B7A1 /* DividerView.swift in Sources */,
 				0F0A400624EED9430037B7A1 /* SocialCustomButtonViewModel.swift in Sources */,
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
