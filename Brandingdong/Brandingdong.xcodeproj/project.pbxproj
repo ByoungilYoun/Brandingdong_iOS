@@ -10,8 +10,9 @@
 		492747BA24F27BFB00D259BE /* SearchTextfieldImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492747B924F27BFB00D259BE /* SearchTextfieldImageView.swift */; };
 		492747BD24F2836300D259BE /* MainCatogoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492747BC24F2836300D259BE /* MainCatogoryView.swift */; };
 		492747BF24F2861900D259BE /* MainCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492747BE24F2861900D259BE /* MainCategoryCollectionViewCell.swift */; };
-		494EC40924EE9067007B642B /* ProductSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EC40824EE9067007B642B /* ProductSearchView.swift */; };
 		4959A5B724F28F540022B7AC /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5B624F28F540022B7AC /* Data.swift */; };
+		4959A5B924F2C4500022B7AC /* SearchBasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5B824F2C4500022B7AC /* SearchBasketView.swift */; };
+		4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */; };
 		49AABDDC24EE7E9C00DE0088 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDDB24EE7E9C00DE0088 /* TabBarViewController.swift */; };
 		49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE024EE7F6B00DE0088 /* MYPageViewController.swift */; };
 		49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */; };
@@ -28,8 +29,9 @@
 		492747B924F27BFB00D259BE /* SearchTextfieldImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextfieldImageView.swift; sourceTree = "<group>"; };
 		492747BC24F2836300D259BE /* MainCatogoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCatogoryView.swift; sourceTree = "<group>"; };
 		492747BE24F2861900D259BE /* MainCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
-		494EC40824EE9067007B642B /* ProductSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSearchView.swift; sourceTree = "<group>"; };
 		4959A5B624F28F540022B7AC /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		4959A5B824F2C4500022B7AC /* SearchBasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBasketView.swift; sourceTree = "<group>"; };
+		4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		49AABDDB24EE7E9C00DE0088 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		49AABDE024EE7F6B00DE0088 /* MYPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYPageViewController.swift; sourceTree = "<group>"; };
 		49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		4900C18224EE7D26009D2F17 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4959A5BC24F2C79B0022B7AC /* Search */,
 				49AABDE924EE81F400DE0088 /* HomeViewController.swift */,
 			);
 			name = Home;
@@ -97,18 +100,18 @@
 			isa = PBXGroup;
 			children = (
 				492747BB24F2833700D259BE /* MainCategory */,
-				494EC40C24EE9DD2007B642B /* SearchView */,
+				494EC40C24EE9DD2007B642B /* SearchBasketView */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		494EC40C24EE9DD2007B642B /* SearchView */ = {
+		494EC40C24EE9DD2007B642B /* SearchBasketView */ = {
 			isa = PBXGroup;
 			children = (
-				494EC40824EE9067007B642B /* ProductSearchView.swift */,
+				4959A5B824F2C4500022B7AC /* SearchBasketView.swift */,
 				49AD2E2224F27A5400090C5E /* Custom */,
 			);
-			path = SearchView;
+			path = SearchBasketView;
 			sourceTree = "<group>";
 		};
 		4959A5B524F28F460022B7AC /* jinwook */ = {
@@ -117,6 +120,14 @@
 				4959A5B624F28F540022B7AC /* Data.swift */,
 			);
 			path = jinwook;
+			sourceTree = "<group>";
+		};
+		4959A5BC24F2C79B0022B7AC /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		49AABDDA24EE7E7A00DE0088 /* TabBar */ = {
@@ -372,11 +383,12 @@
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
 				49AABDE524EE7F9000DE0088 /* CategoryViewController.swift in Sources */,
 				49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */,
-				494EC40924EE9067007B642B /* ProductSearchView.swift in Sources */,
 				4959A5B724F28F540022B7AC /* Data.swift in Sources */,
 				49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */,
+				4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */,
 				49AABDEA24EE81F400DE0088 /* HomeViewController.swift in Sources */,
 				492747BA24F27BFB00D259BE /* SearchTextfieldImageView.swift in Sources */,
+				4959A5B924F2C4500022B7AC /* SearchBasketView.swift in Sources */,
 				49CEB39024EE4FB60026201B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

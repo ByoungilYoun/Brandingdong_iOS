@@ -1,5 +1,5 @@
 //
-//  MainCatogoryView.swift
+//  MainCategoryView.swift
 //  Brandingdong
 //
 //  Created by 이진욱 on 2020/08/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainCatogoryView: UIView {
+class MainCategoryView: UIView {
   // MARK: - Property
   
   private let categorySubLine: UIView = {
@@ -16,6 +16,7 @@ class MainCatogoryView: UIView {
     view.backgroundColor = .lightGray
     return view
   }()
+  
   private let collectionLayout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
   
@@ -46,29 +47,35 @@ class MainCatogoryView: UIView {
     }
     
     categorySubLine.snp.makeConstraints {
-      $0.leading.trailing.bottom.equalToSuperview()
+      $0.leading.trailing.equalToSuperview()
+      $0.bottom.equalTo(collectionView.snp.bottom)
       $0.height.equalTo(0.4)
     }
-    
   }
+  
   private func setCollectionView() {
-    collectionLayout.scrollDirection = .horizontal
-    collectionView.backgroundColor = .systemBackground
     
     let itemWidth: CGFloat = 60
-    let itemHeight: CGFloat = 45
-    let itemSpasing: CGFloat = 30
-    let inset: CGFloat = 10
+    let itemHeight: CGFloat = 50
+    let itemCellSpasing: CGFloat = 10
+    let itemLineSpasing: CGFloat = 5
+    let inset: CGFloat = 0
     let sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     
     collectionLayout.sectionInset = sectionInset
-    collectionLayout.minimumInteritemSpacing = itemSpasing
-    collectionLayout.minimumLineSpacing = itemSpasing
+    collectionLayout.minimumInteritemSpacing = itemCellSpasing
+    collectionLayout.minimumLineSpacing = itemLineSpasing
     collectionLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
     
+    collectionLayout.scrollDirection = .horizontal
+    collectionView.showsHorizontalScrollIndicator = false
+    collectionView.backgroundColor = .white
     collectionView.dataSource = self
+    collectionView.delegate = self
+    
     collectionView.register(MainCategoryCollectionViewCell.self, forCellWithReuseIdentifier: MainCategoryCollectionViewCell.identifier)
   }
+  
   // MARK: - MainCategory Cell Configure
   
   private func categoryNameGet(indexPath: Int) -> String {
@@ -76,8 +83,8 @@ class MainCatogoryView: UIView {
   }
 }
 
-// MARK: -
-extension MainCatogoryView: UICollectionViewDataSource {
+// MARK: - UICollectionViewDataSource
+extension MainCategoryView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return CategoryData.categoryMenuName.count
   }
@@ -86,5 +93,29 @@ extension MainCatogoryView: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCategoryCollectionViewCell.identifier, for: indexPath) as! MainCategoryCollectionViewCell
     cell.menuName.text = categoryNameGet(indexPath: indexPath.item)
     return cell
+  }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension MainCategoryView: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if let didSelectCheckIndex = collectionView.cellForItem(at: indexPath) as? MainCategoryCollectionViewCell {
+      UIView.animate(withDuration: 0.5) {
+        didSelectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
+        didSelectCheckIndex.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        didSelectCheckIndex.nameSubLine.isHidden = false
+      }
+    }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    if let didDeslectCheckIndex = collectionView.cellForItem(at: indexPath) as? MainCategoryCollectionViewCell {
+      UIView.animate(withDuration: 0.5) {
+        didDeslectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 16)
+        didDeslectCheckIndex.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        didDeslectCheckIndex.nameSubLine.isHidden = true
+      }
+    }
   }
 }

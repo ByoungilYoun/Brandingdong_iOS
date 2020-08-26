@@ -12,7 +12,7 @@ struct CategoryData {
     static let categoryMenuName = [
     "투데이",
     "랭킹",
-    "쇼핑몰*마켓",
+    "쇼핑몰",
     "브랜드",
     "뷰티",
     "특가",

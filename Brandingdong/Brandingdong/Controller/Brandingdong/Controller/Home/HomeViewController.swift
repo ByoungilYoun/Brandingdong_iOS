@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeViewController: UIViewController {
   // MARK: - Property
     
-  private let productSearchView = ProductSearchView()
-  private let mainCatogoryView = MainCatogoryView()
+  private let searchBasketView = SearchBasketView()
+  private let mainCategoryView = MainCategoryView()
   
   // MARK: - LifeCycle
   
@@ -28,7 +29,7 @@ class HomeViewController: UIViewController {
   
   private func setUI() {
     
-    [productSearchView, mainCatogoryView].forEach {
+    [searchBasketView, mainCategoryView].forEach {
       view.addSubview($0)
     }
   }
@@ -38,20 +39,20 @@ class HomeViewController: UIViewController {
     let margin: CGFloat = 10
     let viewHeight: CGFloat = 50
     
-    [productSearchView, mainCatogoryView].forEach {
+    [searchBasketView, mainCategoryView].forEach {
       $0.snp.makeConstraints {
         $0.leading.equalToSuperview().offset(margin)
         $0.height.equalTo(viewHeight)
       }
     }
     
-    productSearchView.snp.makeConstraints {
+    searchBasketView.snp.makeConstraints {
       $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(margin)
       $0.trailing.equalToSuperview().offset(-margin)
     }
     
-    mainCatogoryView.snp.makeConstraints {
-      $0.top.equalTo(productSearchView.snp.bottom).offset(margin)
+    mainCategoryView.snp.makeConstraints {
+      $0.top.equalTo(searchBasketView.snp.bottom).offset(margin)
       $0.trailing.equalToSuperview()
     }
   }

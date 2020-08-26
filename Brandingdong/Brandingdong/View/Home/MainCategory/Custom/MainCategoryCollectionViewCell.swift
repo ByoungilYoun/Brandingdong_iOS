@@ -54,7 +54,6 @@ class MainCategoryCollectionViewCell: UICollectionViewCell {
   private func setConstraints() {
     
     let subViewHeight: CGFloat = 5
-    let subViewPadding: CGFloat = 1
     
     menuName.snp.makeConstraints {
       $0.centerX.centerY.equalToSuperview()
@@ -63,7 +62,7 @@ class MainCategoryCollectionViewCell: UICollectionViewCell {
     nameSubLine.snp.makeConstraints {
       $0.leading.trailing.equalTo(menuName)
       $0.height.equalTo(subViewHeight)
-      $0.bottom.equalTo(contentView.snp.bottom).offset(-subViewPadding)
+      $0.bottom.equalTo(contentView.snp.bottom)
     }
   }
 }
