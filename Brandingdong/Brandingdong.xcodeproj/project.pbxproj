@@ -67,8 +67,7 @@
 		0F0A400424EED91F0037B7A1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				0F0A400524EED9430037B7A1 /* SocialCustomButtonViewModel.swift */,
-				0F8935BB24F51E89006E1944 /* LoginViewModel.swift */,
+				0FBD36A624F632CF00BCC076 /* Login */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -82,6 +81,15 @@
 				0F661B7D24EE90AD0060FDF7 /* brandi login image */,
 			);
 			path = ByoungilImage;
+			sourceTree = "<group>";
+		};
+		0FBD36A624F632CF00BCC076 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0F0A400524EED9430037B7A1 /* SocialCustomButtonViewModel.swift */,
+				0F8935BB24F51E89006E1944 /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		13596CAFC138D7A2968A6E4D /* Pods */ = {
