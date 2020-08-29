@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class UserInfoEntryView: UIView {
   // MARK: - Property
   
@@ -192,7 +193,6 @@ class UserInfoEntryView: UIView {
       $0.trailing.equalToSuperview()
       $0.height.equalTo(10)
     }
-    
   }
   
   private func okTextfield(textfield: UITextField) {
@@ -231,7 +231,7 @@ class UserInfoEntryView: UIView {
       guard textfield.text!.count > 4,
         textfield.text!.count < 20
         else { return errTextfield(textfield: textfield,
-                                   message: "4~20자의 영문, 소문자 숫자만 가능합니다.")}
+                                   message: "4~20자의 영문 소문자 숫자 조합으로 가능합니다.")}
       okTextfield(textfield: textfield)
       
     case emailTextfield:
@@ -245,7 +245,7 @@ class UserInfoEntryView: UIView {
       guard textfield.text!.count > 8,
         textfield.text!.count < 20
         else { return errTextfield(textfield: textfield,
-                                   message: "8~20자의 영문 대소문자, 숫자 조합으로 설정해주세요.")}
+                                   message: "8~20자의 영문 대소문자, 숫자 특수문자 조합으로 설정해주세요.")}
       okTextfield(textfield: textfield)
       
     case pwCheckTextfield:

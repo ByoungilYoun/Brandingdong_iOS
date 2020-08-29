@@ -35,6 +35,9 @@
 		4959A5B924F2C4500022B7AC /* SearchBasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5B824F2C4500022B7AC /* SearchBasketView.swift */; };
 		4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */; };
 		498CA4EC24F8DD800056AB72 /* UserInfoErrLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CA4EB24F8DD800056AB72 /* UserInfoErrLabel.swift */; };
+		498CA4F224F9140C0056AB72 /* SNSUserInfoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CA4F124F9140C0056AB72 /* SNSUserInfoEntryViewController.swift */; };
+		498CA4F424F91B1A0056AB72 /* SNSUserInfoEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CA4F324F91B1A0056AB72 /* SNSUserInfoEntryView.swift */; };
+		498CA4F624F931850056AB72 /* SNSUserinfoEntryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CA4F524F931850056AB72 /* SNSUserinfoEntryTableView.swift */; };
 		49AABDDC24EE7E9C00DE0088 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDDB24EE7E9C00DE0088 /* TabBarViewController.swift */; };
 		49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE024EE7F6B00DE0088 /* MYPageViewController.swift */; };
 		49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */; };
@@ -76,6 +79,9 @@
 		4959A5B824F2C4500022B7AC /* SearchBasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBasketView.swift; sourceTree = "<group>"; };
 		4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		498CA4EB24F8DD800056AB72 /* UserInfoErrLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoErrLabel.swift; sourceTree = "<group>"; };
+		498CA4F124F9140C0056AB72 /* SNSUserInfoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSUserInfoEntryViewController.swift; sourceTree = "<group>"; };
+		498CA4F324F91B1A0056AB72 /* SNSUserInfoEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSUserInfoEntryView.swift; sourceTree = "<group>"; };
+		498CA4F524F931850056AB72 /* SNSUserinfoEntryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSUserinfoEntryTableView.swift; sourceTree = "<group>"; };
 		49AABDDB24EE7E9C00DE0088 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		49AABDE024EE7F6B00DE0088 /* MYPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYPageViewController.swift; sourceTree = "<group>"; };
 		49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +160,8 @@
 		4908EA1424F698E3008C05D9 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				4908EA1524F6998C008C05D9 /* UserInfoEntryViewController.swift */,
+				498CA4F024F913E80056AB72 /* SNS */,
+				498CA4EF24F913DD0056AB72 /* Local */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -162,8 +169,8 @@
 		4908EA1724F69F68008C05D9 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				4908EA1924F69F95008C05D9 /* UserInfoEntryView.swift */,
-				4908EA2624F79389008C05D9 /* UserinfoEntryTableView.swift */,
+				498CA4EE24F90F030056AB72 /* SNS */,
+				498CA4ED24F90EF10056AB72 /* Local */,
 				4908EA1D24F6A63A008C05D9 /* Custom */,
 			);
 			path = SignUp;
@@ -231,6 +238,40 @@
 				4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		498CA4ED24F90EF10056AB72 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				4908EA1924F69F95008C05D9 /* UserInfoEntryView.swift */,
+				4908EA2624F79389008C05D9 /* UserinfoEntryTableView.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		498CA4EE24F90F030056AB72 /* SNS */ = {
+			isa = PBXGroup;
+			children = (
+				498CA4F324F91B1A0056AB72 /* SNSUserInfoEntryView.swift */,
+				498CA4F524F931850056AB72 /* SNSUserinfoEntryTableView.swift */,
+			);
+			path = SNS;
+			sourceTree = "<group>";
+		};
+		498CA4EF24F913DD0056AB72 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				4908EA1524F6998C008C05D9 /* UserInfoEntryViewController.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		498CA4F024F913E80056AB72 /* SNS */ = {
+			isa = PBXGroup;
+			children = (
+				498CA4F124F9140C0056AB72 /* SNSUserInfoEntryViewController.swift */,
+			);
+			path = SNS;
 			sourceTree = "<group>";
 		};
 		49AABDDA24EE7E7A00DE0088 /* TabBar */ = {
@@ -500,6 +541,7 @@
 				0FED02B624EE820A003D03B4 /* SocialLoginButton.swift in Sources */,
 				0F8935BC24F51E89006E1944 /* LoginViewModel.swift in Sources */,
 				0F0A401024EF089D0037B7A1 /* InformationView.swift in Sources */,
+				498CA4F624F931850056AB72 /* SNSUserinfoEntryTableView.swift in Sources */,
 				498CA4EC24F8DD800056AB72 /* UserInfoErrLabel.swift in Sources */,
 				4908EA2124F6A770008C05D9 /* UserInfoTextfieldImageView.swift in Sources */,
 				0F0A400824EEDFA90037B7A1 /* LocalLoginButton.swift in Sources */,
@@ -514,8 +556,10 @@
 				4908EA2324F6CF1D008C05D9 /* UserInfoLabel.swift in Sources */,
 				4908EA1F24F6A659008C05D9 /* UserInfoTextfield.swift in Sources */,
 				49AABDDC24EE7E9C00DE0088 /* TabBarViewController.swift in Sources */,
+				498CA4F424F91B1A0056AB72 /* SNSUserInfoEntryView.swift in Sources */,
 				492747BD24F2836300D259BE /* MainCatogoryView.swift in Sources */,
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
+				498CA4F224F9140C0056AB72 /* SNSUserInfoEntryViewController.swift in Sources */,
 				4908EA1A24F69F95008C05D9 /* UserInfoEntryView.swift in Sources */,
 				49AABDE524EE7F9000DE0088 /* CategoryViewController.swift in Sources */,
 				49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */,
