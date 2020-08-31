@@ -48,6 +48,10 @@
 		49CEB39924EE4FB70026201B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CEB39824EE4FB70026201B /* Assets.xcassets */; };
 		49CEB39C24EE4FB70026201B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CEB39A24EE4FB70026201B /* LaunchScreen.storyboard */; };
 		8DE428A571219C12BA611090 /* Pods_Brandingdong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A300E69C8DC3501D16CE4F /* Pods_Brandingdong.framework */; };
+		CE596BB924F77B9D00DDE2EB /* UserAgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE596BB824F77B9D00DDE2EB /* UserAgreeViewController.swift */; };
+		CE79A97C24F7B8E6008D4237 /* UserAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79A97B24F7B8E6008D4237 /* UserAgreeView.swift */; };
+		CE79A97E24F91185008D4237 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79A97D24F91185008D4237 /* WelcomeViewController.swift */; };
+		CE79A98024F911A8008D4237 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79A97F24F911A8008D4237 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +98,10 @@
 		49CEB39B24EE4FB70026201B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49CEB39D24EE4FB70026201B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98A300E69C8DC3501D16CE4F /* Pods_Brandingdong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brandingdong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE596BB824F77B9D00DDE2EB /* UserAgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreeViewController.swift; sourceTree = "<group>"; };
+		CE79A97B24F7B8E6008D4237 /* UserAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreeView.swift; sourceTree = "<group>"; };
+		CE79A97D24F91185008D4237 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		CE79A97F24F911A8008D4237 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		E8B120D7289F410417BC19C6 /* Pods-Brandingdong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brandingdong.debug.xcconfig"; path = "Target Support Files/Pods-Brandingdong/Pods-Brandingdong.debug.xcconfig"; sourceTree = "<group>"; };
 		EB4C48B206CCDF601945D76E /* Pods-Brandingdong.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brandingdong.release.xcconfig"; path = "Target Support Files/Pods-Brandingdong/Pods-Brandingdong.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -353,6 +361,10 @@
 				49CEB3A524EE54210026201B /* View */,
 				49CEB3A424EE540B0026201B /* Controller */,
 				49CEB3A324EE53D50026201B /* SupportFile */,
+				CE596BB824F77B9D00DDE2EB /* UserAgreeViewController.swift */,
+				CE79A97D24F91185008D4237 /* WelcomeViewController.swift */,
+				CE79A97F24F911A8008D4237 /* WelcomeView.swift */,
+				CE79A97B24F7B8E6008D4237 /* UserAgreeView.swift */,
 			);
 			path = Brandingdong;
 			sourceTree = "<group>";
@@ -549,6 +561,7 @@
 				0FED02B624EE820A003D03B4 /* SocialLoginButton.swift in Sources */,
 				0F8935BC24F51E89006E1944 /* LoginViewModel.swift in Sources */,
 				0F0A401024EF089D0037B7A1 /* InformationView.swift in Sources */,
+				CE79A98024F911A8008D4237 /* WelcomeView.swift in Sources */,
 				498CA4F624F931850056AB72 /* SNSUserinfoEntryTableView.swift in Sources */,
 				498CA4EC24F8DD800056AB72 /* UserInfoErrLabel.swift in Sources */,
 				4908EA2124F6A770008C05D9 /* UserInfoTextfieldImageView.swift in Sources */,
@@ -567,11 +580,14 @@
 				498CA4F424F91B1A0056AB72 /* SNSUserInfoEntryView.swift in Sources */,
 				492747BD24F2836300D259BE /* MainCatogoryView.swift in Sources */,
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
+				CE79A97C24F7B8E6008D4237 /* UserAgreeView.swift in Sources */,
 				498CA4F224F9140C0056AB72 /* SNSUserInfoEntryViewController.swift in Sources */,
 				4908EA1A24F69F95008C05D9 /* UserInfoEntryView.swift in Sources */,
 				49AABDE524EE7F9000DE0088 /* CategoryViewController.swift in Sources */,
 				49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */,
+				CE596BB924F77B9D00DDE2EB /* UserAgreeViewController.swift in Sources */,
 				4959A5B724F28F540022B7AC /* Data.swift in Sources */,
+				CE79A97E24F91185008D4237 /* WelcomeViewController.swift in Sources */,
 				4908EA2524F6D660008C05D9 /* UserInfoButton.swift in Sources */,
 				49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */,
 				4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */,
