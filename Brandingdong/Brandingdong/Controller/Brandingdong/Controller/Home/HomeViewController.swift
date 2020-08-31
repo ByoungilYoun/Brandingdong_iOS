@@ -21,8 +21,10 @@ class HomeViewController: UIViewController {
     super.viewDidLoad()
     setUI()
     setConstraints()
+  }
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     hiddenNavi()
-    
   }
   
   // MARK: - Setup Layout

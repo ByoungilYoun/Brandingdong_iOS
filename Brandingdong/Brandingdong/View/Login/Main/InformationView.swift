@@ -95,7 +95,7 @@ class InformationView : UIView {
     inquiryButton.snp.makeConstraints {
       $0.top.trailing.bottom.equalToSuperview()
       $0.leading.equalTo(divider2.snp.trailing).offset(10)
-      $0.trailing.equalToSuperview().offset(-20)
+//      $0.trailing.equalToSuperview().offset(-20)
     }
   }
 }

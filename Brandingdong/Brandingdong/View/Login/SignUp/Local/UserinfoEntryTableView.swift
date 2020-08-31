@@ -12,7 +12,7 @@ class UserinfoEntryTableView: UIView {
   // MARK: - Property
   
   private let userInfoTableView = UITableView()
-  private let userInfoEntryView = UserInfoEntryView()
+  let userInfoEntryView = UserInfoEntryView()
   private let viewHeight = UIScreen.main.bounds.height
   
   lazy var userInfoViewArr = [userInfoEntryView]

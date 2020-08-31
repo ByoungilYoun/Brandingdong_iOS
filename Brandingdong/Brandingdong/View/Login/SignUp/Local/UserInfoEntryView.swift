@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol UserInfoEntryViewDelegate {
+  func pushNextView()
+}
 
 class UserInfoEntryView: UIView {
   // MARK: - Property
@@ -68,6 +71,8 @@ class UserInfoEntryView: UIView {
                            pwTextfield,
                            pwCheckTextfield,
                            recPersonTextfield]
+  
+  var delegate: UserInfoEntryViewDelegate?
   
   // MARK: - Init View
   
@@ -274,8 +279,9 @@ class UserInfoEntryView: UIView {
     nextButton.isEnabled = true
   }
   
-  @objc private func didTabButton(sender: UIButton) {
-    print ("다음 뷰")
+  @objc private func didTabButton() {
+    guard nextButton.isEnabled else { return }
+    delegate?.pushNextView()
   }
 }
 
