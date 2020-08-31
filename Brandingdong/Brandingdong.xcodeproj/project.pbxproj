@@ -53,17 +53,17 @@
 /* Begin PBXFileReference section */
 		0F0A400224EED2240037B7A1 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
 		0F0A400524EED9430037B7A1 /* SocialCustomButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCustomButtonViewModel.swift; sourceTree = "<group>"; };
-		0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalLoginButton.swift; path = Brandingdong/ViewModel/LocalLoginButton.swift; sourceTree = SOURCE_ROOT; };
+		0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalLoginButton.swift; path = Brandingdong/View/Login/LocalLoginButton.swift; sourceTree = SOURCE_ROOT; };
 		0F0A400924EEEA100037B7A1 /* appleLogo.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = appleLogo.imageset; sourceTree = "<group>"; };
-		0F0A400D24EEEF970037B7A1 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DividerView.swift; path = Brandingdong/ViewModel/DividerView.swift; sourceTree = SOURCE_ROOT; };
-		0F0A400F24EF089D0037B7A1 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InformationView.swift; path = Brandingdong/ViewModel/InformationView.swift; sourceTree = SOURCE_ROOT; };
+		0F0A400D24EEEF970037B7A1 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DividerView.swift; path = Brandingdong/View/Login/DividerView.swift; sourceTree = SOURCE_ROOT; };
+		0F0A400F24EF089D0037B7A1 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InformationView.swift; path = Brandingdong/View/Login/InformationView.swift; sourceTree = SOURCE_ROOT; };
 		0F661B7D24EE90AD0060FDF7 /* brandi login image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "brandi login image"; sourceTree = "<group>"; };
 		0F8935BB24F51E89006E1944 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainLoginViewController.swift; path = Brandingdong/MainLoginViewController.swift; sourceTree = SOURCE_ROOT; };
-		0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialLoginButton.swift; path = Brandingdong/SocialLoginButton.swift; sourceTree = SOURCE_ROOT; };
+		0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainLoginViewController.swift; path = Brandingdong/Controller/Login/MainLoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialLoginButton.swift; path = Brandingdong/View/Login/SocialLoginButton.swift; sourceTree = SOURCE_ROOT; };
 		0FFF716624F3891700D469D7 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
-		0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Brandingdong/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
-		0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextField.swift; path = Brandingdong/CustomTextField.swift; sourceTree = SOURCE_ROOT; };
+		0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Brandingdong/Controller/Login/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextField.swift; path = Brandingdong/View/Login/CustomTextField.swift; sourceTree = SOURCE_ROOT; };
 		4908EA1524F6998C008C05D9 /* UserInfoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEntryViewController.swift; sourceTree = "<group>"; };
 		4908EA1924F69F95008C05D9 /* UserInfoEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEntryView.swift; sourceTree = "<group>"; };
 		4908EA1E24F6A659008C05D9 /* UserInfoTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextfield.swift; sourceTree = "<group>"; };

@@ -207,7 +207,7 @@ class UserInfoEntryView: UIView {
     }
   }
   
-  func errTextfield(textfield: UITextField, message: String) {
+  private func errTextfield(textfield: UITextField, message: String) {
     
     let padding: CGFloat = 5
     textfield.layer.borderWidth = 1
