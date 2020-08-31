@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UserAgreeViewDelegate {
+  func pushNextView()
+}
+
 class UserAgreeView: UIView {
   // MARK: - Properties
   private let subTitleLabel = UILabel()
@@ -30,6 +34,7 @@ class UserAgreeView: UIView {
   private let viewContentLabel4 = UILabel()
   private let nextViewBtn = UIButton()
   private let noticeLabel = UILabel()
+  var delegate: UserAgreeViewDelegate?
   
   // MARK: - View LifeCycle
   override init(frame: CGRect) {
@@ -342,8 +347,7 @@ class UserAgreeView: UIView {
   
   @objc private func nextViewDidTapBtn(_ sender: UIButton) {
     if self.agreeBtn1.isSelected == true && self.agreeBtn2.isSelected == true {
-      // 다음 뷰로 넘어갈 코드 작성
-      print("다음 뷰")
+      delegate?.pushNextView()
     } else {
       self.nextViewBtn.backgroundColor = UIColor(red: 0.267, green: 0.248, blue: 0.248, alpha: 1)
       
