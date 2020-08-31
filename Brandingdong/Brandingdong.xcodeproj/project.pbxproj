@@ -20,12 +20,24 @@
 		0FFF716724F3891700D469D7 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFF716624F3891700D469D7 /* facebook.png */; };
 		0FFF716D24F3C8CF00D469D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */; };
 		0FFF716F24F40F7F00D469D7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */; };
+		4908EA1624F6998C008C05D9 /* UserInfoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA1524F6998C008C05D9 /* UserInfoEntryViewController.swift */; };
+		4908EA1A24F69F95008C05D9 /* UserInfoEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA1924F69F95008C05D9 /* UserInfoEntryView.swift */; };
+		4908EA1F24F6A659008C05D9 /* UserInfoTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA1E24F6A659008C05D9 /* UserInfoTextfield.swift */; };
+		4908EA2124F6A770008C05D9 /* UserInfoTextfieldImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA2024F6A770008C05D9 /* UserInfoTextfieldImageView.swift */; };
+		4908EA2324F6CF1D008C05D9 /* UserInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA2224F6CF1D008C05D9 /* UserInfoLabel.swift */; };
+		4908EA2524F6D660008C05D9 /* UserInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA2424F6D660008C05D9 /* UserInfoButton.swift */; };
+		4908EA2724F79389008C05D9 /* UserinfoEntryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA2624F79389008C05D9 /* UserinfoEntryTableView.swift */; };
+		4908EA2924F793D3008C05D9 /* UserInfoEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA2824F793D3008C05D9 /* UserInfoEntryTableViewCell.swift */; };
 		492747BA24F27BFB00D259BE /* SearchTextfieldImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492747B924F27BFB00D259BE /* SearchTextfieldImageView.swift */; };
 		492747BD24F2836300D259BE /* MainCatogoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492747BC24F2836300D259BE /* MainCatogoryView.swift */; };
 		492747BF24F2861900D259BE /* MainCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492747BE24F2861900D259BE /* MainCategoryCollectionViewCell.swift */; };
 		4959A5B724F28F540022B7AC /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5B624F28F540022B7AC /* Data.swift */; };
 		4959A5B924F2C4500022B7AC /* SearchBasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5B824F2C4500022B7AC /* SearchBasketView.swift */; };
 		4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */; };
+		498CA4EC24F8DD800056AB72 /* UserInfoErrLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CA4EB24F8DD800056AB72 /* UserInfoErrLabel.swift */; };
+		498CA4F224F9140C0056AB72 /* SNSUserInfoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CA4F124F9140C0056AB72 /* SNSUserInfoEntryViewController.swift */; };
+		498CA4F424F91B1A0056AB72 /* SNSUserInfoEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CA4F324F91B1A0056AB72 /* SNSUserInfoEntryView.swift */; };
+		498CA4F624F931850056AB72 /* SNSUserinfoEntryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CA4F524F931850056AB72 /* SNSUserinfoEntryTableView.swift */; };
 		49AABDDC24EE7E9C00DE0088 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDDB24EE7E9C00DE0088 /* TabBarViewController.swift */; };
 		49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE024EE7F6B00DE0088 /* MYPageViewController.swift */; };
 		49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */; };
@@ -45,23 +57,35 @@
 /* Begin PBXFileReference section */
 		0F0A400224EED2240037B7A1 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
 		0F0A400524EED9430037B7A1 /* SocialCustomButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCustomButtonViewModel.swift; sourceTree = "<group>"; };
-		0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalLoginButton.swift; path = Brandingdong/ViewModel/LocalLoginButton.swift; sourceTree = SOURCE_ROOT; };
+		0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalLoginButton.swift; path = Brandingdong/View/Login/Main/LocalLoginButton.swift; sourceTree = SOURCE_ROOT; };
 		0F0A400924EEEA100037B7A1 /* appleLogo.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = appleLogo.imageset; sourceTree = "<group>"; };
-		0F0A400D24EEEF970037B7A1 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DividerView.swift; path = Brandingdong/ViewModel/DividerView.swift; sourceTree = SOURCE_ROOT; };
-		0F0A400F24EF089D0037B7A1 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InformationView.swift; path = Brandingdong/ViewModel/InformationView.swift; sourceTree = SOURCE_ROOT; };
+		0F0A400D24EEEF970037B7A1 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DividerView.swift; path = Brandingdong/View/Login/Main/DividerView.swift; sourceTree = SOURCE_ROOT; };
+		0F0A400F24EF089D0037B7A1 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InformationView.swift; path = Brandingdong/View/Login/Main/InformationView.swift; sourceTree = SOURCE_ROOT; };
 		0F661B7D24EE90AD0060FDF7 /* brandi login image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "brandi login image"; sourceTree = "<group>"; };
 		0F8935BB24F51E89006E1944 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainLoginViewController.swift; path = Brandingdong/MainLoginViewController.swift; sourceTree = SOURCE_ROOT; };
-		0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialLoginButton.swift; path = Brandingdong/SocialLoginButton.swift; sourceTree = SOURCE_ROOT; };
+		0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainLoginViewController.swift; path = Brandingdong/Controller/Login/MainLoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialLoginButton.swift; path = Brandingdong/View/Login/Main/SocialLoginButton.swift; sourceTree = SOURCE_ROOT; };
 		0FFF716624F3891700D469D7 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
-		0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Brandingdong/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
-		0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextField.swift; path = Brandingdong/CustomTextField.swift; sourceTree = SOURCE_ROOT; };
+		0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Brandingdong/Controller/Login/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextField.swift; path = Brandingdong/View/Login/Main/CustomTextField.swift; sourceTree = SOURCE_ROOT; };
+		4908EA1524F6998C008C05D9 /* UserInfoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEntryViewController.swift; sourceTree = "<group>"; };
+		4908EA1924F69F95008C05D9 /* UserInfoEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEntryView.swift; sourceTree = "<group>"; };
+		4908EA1E24F6A659008C05D9 /* UserInfoTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextfield.swift; sourceTree = "<group>"; };
+		4908EA2024F6A770008C05D9 /* UserInfoTextfieldImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextfieldImageView.swift; sourceTree = "<group>"; };
+		4908EA2224F6CF1D008C05D9 /* UserInfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoLabel.swift; sourceTree = "<group>"; };
+		4908EA2424F6D660008C05D9 /* UserInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoButton.swift; sourceTree = "<group>"; };
+		4908EA2624F79389008C05D9 /* UserinfoEntryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserinfoEntryTableView.swift; sourceTree = "<group>"; };
+		4908EA2824F793D3008C05D9 /* UserInfoEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEntryTableViewCell.swift; sourceTree = "<group>"; };
 		492747B924F27BFB00D259BE /* SearchTextfieldImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextfieldImageView.swift; sourceTree = "<group>"; };
 		492747BC24F2836300D259BE /* MainCatogoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCatogoryView.swift; sourceTree = "<group>"; };
 		492747BE24F2861900D259BE /* MainCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		4959A5B624F28F540022B7AC /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		4959A5B824F2C4500022B7AC /* SearchBasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBasketView.swift; sourceTree = "<group>"; };
 		4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		498CA4EB24F8DD800056AB72 /* UserInfoErrLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoErrLabel.swift; sourceTree = "<group>"; };
+		498CA4F124F9140C0056AB72 /* SNSUserInfoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSUserInfoEntryViewController.swift; sourceTree = "<group>"; };
+		498CA4F324F91B1A0056AB72 /* SNSUserInfoEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSUserInfoEntryView.swift; sourceTree = "<group>"; };
+		498CA4F524F931850056AB72 /* SNSUserinfoEntryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSUserinfoEntryTableView.swift; sourceTree = "<group>"; };
 		49AABDDB24EE7E9C00DE0088 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		49AABDE024EE7F6B00DE0088 /* MYPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYPageViewController.swift; sourceTree = "<group>"; };
 		49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +126,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		0F5AD43324FCE2B400491BB3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */,
+				0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */,
+				0F0A400D24EEEF970037B7A1 /* DividerView.swift */,
+				0F0A400F24EF089D0037B7A1 /* InformationView.swift */,
+				0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		0F661B7424EE901A0060FDF7 /* ByoungilImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +175,38 @@
 			);
 			name = Home;
 			path = Brandingdong/Controller/Home;
+			sourceTree = "<group>";
+		};
+		4908EA1424F698E3008C05D9 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				498CA4F024F913E80056AB72 /* SNS */,
+				498CA4EF24F913DD0056AB72 /* Local */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		4908EA1724F69F68008C05D9 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				498CA4EE24F90F030056AB72 /* SNS */,
+				498CA4ED24F90EF10056AB72 /* Local */,
+				4908EA1D24F6A63A008C05D9 /* Custom */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		4908EA1D24F6A63A008C05D9 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				4908EA2024F6A770008C05D9 /* UserInfoTextfieldImageView.swift */,
+				4908EA1E24F6A659008C05D9 /* UserInfoTextfield.swift */,
+				4908EA2224F6CF1D008C05D9 /* UserInfoLabel.swift */,
+				498CA4EB24F8DD800056AB72 /* UserInfoErrLabel.swift */,
+				4908EA2424F6D660008C05D9 /* UserInfoButton.swift */,
+				4908EA2824F793D3008C05D9 /* UserInfoEntryTableViewCell.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		492747BB24F2833700D259BE /* MainCategory */ = {
@@ -190,6 +258,40 @@
 				4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		498CA4ED24F90EF10056AB72 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				4908EA1924F69F95008C05D9 /* UserInfoEntryView.swift */,
+				4908EA2624F79389008C05D9 /* UserinfoEntryTableView.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		498CA4EE24F90F030056AB72 /* SNS */ = {
+			isa = PBXGroup;
+			children = (
+				498CA4F324F91B1A0056AB72 /* SNSUserInfoEntryView.swift */,
+				498CA4F524F931850056AB72 /* SNSUserinfoEntryTableView.swift */,
+			);
+			path = SNS;
+			sourceTree = "<group>";
+		};
+		498CA4EF24F913DD0056AB72 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				4908EA1524F6998C008C05D9 /* UserInfoEntryViewController.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		498CA4F024F913E80056AB72 /* SNS */ = {
+			isa = PBXGroup;
+			children = (
+				498CA4F124F9140C0056AB72 /* SNSUserInfoEntryViewController.swift */,
+			);
+			path = SNS;
 			sourceTree = "<group>";
 		};
 		49AABDDA24EE7E7A00DE0088 /* TabBar */ = {
@@ -314,6 +416,7 @@
 			children = (
 				0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */,
 				0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */,
+				4908EA1424F698E3008C05D9 /* SignUp */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -321,11 +424,8 @@
 		49CEB3A824EE54520026201B /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */,
-				0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */,
-				0F0A400D24EEEF970037B7A1 /* DividerView.swift */,
-				0F0A400F24EF089D0037B7A1 /* InformationView.swift */,
-				0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */,
+				0F5AD43324FCE2B400491BB3 /* Main */,
+				4908EA1724F69F68008C05D9 /* SignUp */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -456,27 +556,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4908EA1624F6998C008C05D9 /* UserInfoEntryViewController.swift in Sources */,
 				0FFF716D24F3C8CF00D469D7 /* LoginViewController.swift in Sources */,
 				0FED02B624EE820A003D03B4 /* SocialLoginButton.swift in Sources */,
 				0F8935BC24F51E89006E1944 /* LoginViewModel.swift in Sources */,
 				0F0A401024EF089D0037B7A1 /* InformationView.swift in Sources */,
 				CE79A98024F911A8008D4237 /* WelcomeView.swift in Sources */,
+				498CA4F624F931850056AB72 /* SNSUserinfoEntryTableView.swift in Sources */,
+				498CA4EC24F8DD800056AB72 /* UserInfoErrLabel.swift in Sources */,
+				4908EA2124F6A770008C05D9 /* UserInfoTextfieldImageView.swift in Sources */,
 				0F0A400824EEDFA90037B7A1 /* LocalLoginButton.swift in Sources */,
 				0FFF716F24F40F7F00D469D7 /* CustomTextField.swift in Sources */,
+				4908EA2924F793D3008C05D9 /* UserInfoEntryTableViewCell.swift in Sources */,
 				0F0A400E24EEEF970037B7A1 /* DividerView.swift in Sources */,
 				0F0A400624EED9430037B7A1 /* SocialCustomButtonViewModel.swift in Sources */,
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
 				0FED02B424EE7EB0003D03B4 /* MainLoginViewController.swift in Sources */,
 				492747BF24F2861900D259BE /* MainCategoryCollectionViewCell.swift in Sources */,
+				4908EA2724F79389008C05D9 /* UserinfoEntryTableView.swift in Sources */,
+				4908EA2324F6CF1D008C05D9 /* UserInfoLabel.swift in Sources */,
+				4908EA1F24F6A659008C05D9 /* UserInfoTextfield.swift in Sources */,
 				49AABDDC24EE7E9C00DE0088 /* TabBarViewController.swift in Sources */,
+				498CA4F424F91B1A0056AB72 /* SNSUserInfoEntryView.swift in Sources */,
 				492747BD24F2836300D259BE /* MainCatogoryView.swift in Sources */,
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
 				CE79A97C24F7B8E6008D4237 /* UserAgreeView.swift in Sources */,
+				498CA4F224F9140C0056AB72 /* SNSUserInfoEntryViewController.swift in Sources */,
+				4908EA1A24F69F95008C05D9 /* UserInfoEntryView.swift in Sources */,
 				49AABDE524EE7F9000DE0088 /* CategoryViewController.swift in Sources */,
 				49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */,
 				CE596BB924F77B9D00DDE2EB /* UserAgreeViewController.swift in Sources */,
 				4959A5B724F28F540022B7AC /* Data.swift in Sources */,
 				CE79A97E24F91185008D4237 /* WelcomeViewController.swift in Sources */,
+				4908EA2524F6D660008C05D9 /* UserInfoButton.swift in Sources */,
 				49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */,
 				4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */,
 				49AABDEA24EE81F400DE0088 /* HomeViewController.swift in Sources */,
@@ -620,7 +732,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FH4GN29FPK;
+				DEVELOPMENT_TEAM = 25WA95NQNW;
 				INFOPLIST_FILE = Brandingdong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -639,7 +751,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FH4GN29FPK;
+				DEVELOPMENT_TEAM = 25WA95NQNW;
 				INFOPLIST_FILE = Brandingdong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

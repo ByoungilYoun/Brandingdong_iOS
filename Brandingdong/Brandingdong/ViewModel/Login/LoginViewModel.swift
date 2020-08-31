@@ -11,6 +11,8 @@ import Foundation
 protocol AuthenticationProtocol {
   var IdIsValid : Bool {get}
   var PasswordIsValid : Bool {get}
+  var xmarkOnId : Bool {get}
+  var xmarkOnPassword : Bool {get}
 }
 
 struct LoginViewModel : AuthenticationProtocol {
