@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol WelcomeViewDelegate {
+  func pushNextView()
+}
+
 class WelcomeView: UIView {
   // MARK: - Properties
   private let imageView = UIImageView()
   private let couponBtn = UIButton()
   private let nowShoppingBtn = UIButton()
+  var delegate: WelcomeViewDelegate?
+  
   
   // MARK: - View LifeCycle
   override init(frame: CGRect) {
@@ -83,7 +89,7 @@ class WelcomeView: UIView {
   }
   
   @objc private func nowShowppingDidTapBtn(_ sender: UIButton) {
-    print("nowShowppingDidTapBtn")
+    delegate?.pushNextView()
   }
 }
 
