@@ -189,8 +189,8 @@
 		4905886324FCF2590091840D /* Common  */ = {
 			isa = PBXGroup;
 			children = (
-				CE79A97F24F911A8008D4237 /* WelcomeView.swift */,
 				CE79A97B24F7B8E6008D4237 /* UserAgreeView.swift */,
+				CE79A97F24F911A8008D4237 /* WelcomeView.swift */,
 			);
 			path = "Common ";
 			sourceTree = "<group>";

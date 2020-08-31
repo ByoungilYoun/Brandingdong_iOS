@@ -97,9 +97,22 @@ class MainLoginViewController : UIViewController {
     setConstraints()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setNavi()
+  }
+  
+  // MARK: - NavigationBar
+  
+  private func setNavi() {
+    navigationController?.navigationBar.isHidden = true
+  }
+  
   //MARK: - @objc func
   @objc func signInWithEmail() {
-    
+    let userAgreeVC = UserAgreeViewController()
+    userAgreeVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(userAgreeVC, animated: true)
   }
   
   @objc func signInWithApple() {
@@ -127,11 +140,11 @@ class MainLoginViewController : UIViewController {
       view.addSubview($0)
     }
     
-      stackView = UIStackView(arrangedSubviews: [emailLoginButton, appleLoginButton, facebookLoginButton, googleLoginButton, dividerView ,loginButton])
-      stackView.axis = .vertical
-      stackView.spacing = 20
-      view.addSubview(stackView)
-  
+    stackView = UIStackView(arrangedSubviews: [emailLoginButton, appleLoginButton, facebookLoginButton, googleLoginButton, dividerView ,loginButton])
+    stackView.axis = .vertical
+    stackView.spacing = 20
+    view.addSubview(stackView)
+    
     view.addSubview(informationView)
   }
   
