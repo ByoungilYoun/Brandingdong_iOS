@@ -177,9 +177,28 @@
 			path = Brandingdong/Controller/Home;
 			sourceTree = "<group>";
 		};
+		4905886224FCF2420091840D /* Common  */ = {
+			isa = PBXGroup;
+			children = (
+				CE596BB824F77B9D00DDE2EB /* UserAgreeViewController.swift */,
+				CE79A97D24F91185008D4237 /* WelcomeViewController.swift */,
+			);
+			path = "Common ";
+			sourceTree = "<group>";
+		};
+		4905886324FCF2590091840D /* Common  */ = {
+			isa = PBXGroup;
+			children = (
+				CE79A97F24F911A8008D4237 /* WelcomeView.swift */,
+				CE79A97B24F7B8E6008D4237 /* UserAgreeView.swift */,
+			);
+			path = "Common ";
+			sourceTree = "<group>";
+		};
 		4908EA1424F698E3008C05D9 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				4905886224FCF2420091840D /* Common  */,
 				498CA4F024F913E80056AB72 /* SNS */,
 				498CA4EF24F913DD0056AB72 /* Local */,
 			);
@@ -189,6 +208,7 @@
 		4908EA1724F69F68008C05D9 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				4905886324FCF2590091840D /* Common  */,
 				498CA4EE24F90F030056AB72 /* SNS */,
 				498CA4ED24F90EF10056AB72 /* Local */,
 				4908EA1D24F6A63A008C05D9 /* Custom */,
@@ -361,10 +381,6 @@
 				49CEB3A524EE54210026201B /* View */,
 				49CEB3A424EE540B0026201B /* Controller */,
 				49CEB3A324EE53D50026201B /* SupportFile */,
-				CE596BB824F77B9D00DDE2EB /* UserAgreeViewController.swift */,
-				CE79A97D24F91185008D4237 /* WelcomeViewController.swift */,
-				CE79A97F24F911A8008D4237 /* WelcomeView.swift */,
-				CE79A97B24F7B8E6008D4237 /* UserAgreeView.swift */,
 			);
 			path = Brandingdong;
 			sourceTree = "<group>";
