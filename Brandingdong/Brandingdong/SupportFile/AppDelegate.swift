@@ -17,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.backgroundColor = .systemBackground
+<<<<<<< HEAD
     window?.rootViewController = HomeViewController()
+=======
+    window?.rootViewController = UserAgreeViewController()
+>>>>>>> develop
     window?.makeKeyAndVisible()
     return true
   }
