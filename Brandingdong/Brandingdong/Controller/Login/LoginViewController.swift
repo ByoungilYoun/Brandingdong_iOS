@@ -12,6 +12,7 @@ protocol AuthenticationControllerProtocol {
   func checkIdFormStatus()
   func checkPasswordFormStatus()
   func checkXmarkOnId()
+  func checkXmarkOnPassword()
 }
 
 class LoginViewController : UIViewController {
@@ -82,6 +83,24 @@ class LoginViewController : UIViewController {
     return bt
   }()
   
+  private let inputIdLabel : UILabel = {
+    let lb = UILabel()
+    lb.text = "아이디를 입력하세요"
+    lb.textColor = .red
+    lb.font = UIFont.systemFont(ofSize: 14)
+    lb.alpha = 0
+    return lb
+  }()
+  
+  private let inputPasswordLabel : UILabel = {
+    let lb = UILabel()
+    lb.text = "비밀번호를 입력하세요"
+    lb.textColor = .red
+    lb.font = UIFont.systemFont(ofSize: 14)
+    lb.alpha = 0
+    return lb
+  }()
+  
   private var viewModel = LoginViewModel()
   //MARK: - LifeCycle
   override func viewDidLoad() {
@@ -101,13 +120,9 @@ class LoginViewController : UIViewController {
   
   //MARK: - setUI()
   private func setUI() {
-    [idTextField, passwordTextField, loginButton, findIdButton, findPasswordButton, textLabel].forEach {
+    [idTextField, passwordTextField, loginButton, findIdButton, findPasswordButton, textLabel, inputIdLabel, inputPasswordLabel, xmarkButton1, xmarkButton2].forEach {
       view.addSubview($0)
     }
-    
-    idTextField.addSubview(xmarkButton1)
-    passwordTextField.addSubview(xmarkButton2)
-    
   }
   
   //MARK: - setConstraint()
@@ -123,12 +138,22 @@ class LoginViewController : UIViewController {
       $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
     }
     
+    inputIdLabel.snp.makeConstraints {
+      $0.top.equalTo(idTextField.snp.bottom).offset(8)
+      $0.leading.equalTo(view.safeAreaLayoutGuide).offset(15)
+    }
+    
     passwordTextField.snp.makeConstraints {
-      $0.top.equalTo(idTextField.snp.bottom).offset(15)
+      $0.top.equalTo(idTextField.snp.bottom).offset(30)
+    }
+    
+    inputPasswordLabel.snp.makeConstraints {
+      $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
+      $0.leading.equalTo(view.safeAreaLayoutGuide).offset(15)
     }
     
     loginButton.snp.makeConstraints {
-      $0.top.equalTo(passwordTextField.snp.bottom).offset(15)
+      $0.top.equalTo(passwordTextField.snp.bottom).offset(30)
       $0.height.equalTo(40)
     }
     
@@ -154,13 +179,13 @@ class LoginViewController : UIViewController {
       $0.leading.equalTo(view.safeAreaLayoutGuide).offset(15)
       $0.height.equalTo(20)
     }
-    
+  
     xmarkButton1.snp.makeConstraints {
       $0.top.equalTo(idTextField).offset(5)
       $0.trailing.equalTo(idTextField).offset(-10)
       $0.bottom.equalTo(idTextField).offset(-5)
     }
-    
+
     xmarkButton2.snp.makeConstraints {
       $0.top.equalTo(passwordTextField).offset(5)
       $0.trailing.equalTo(passwordTextField).offset(-10)
@@ -197,16 +222,17 @@ class LoginViewController : UIViewController {
     }
   }
 }
-
 //MARK: - extension 
 extension LoginViewController : AuthenticationControllerProtocol {
   func checkIdFormStatus() {
     if viewModel.IdIsValid {
       idTextField.layer.borderColor = UIColor.lightGray.cgColor
       idTextField.layer.borderWidth = 1.0
+      inputIdLabel.alpha = 0
     } else {
       idTextField.layer.borderColor = UIColor.red.cgColor
       idTextField.layer.borderWidth = 1.0
+      inputIdLabel.alpha = 1
     }
   }
   
@@ -214,9 +240,11 @@ extension LoginViewController : AuthenticationControllerProtocol {
     if viewModel.PasswordIsValid {
       passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
       passwordTextField.layer.borderWidth = 1.0
+      inputPasswordLabel.alpha = 0
     } else {
       passwordTextField.layer.borderColor = UIColor.red.cgColor
       passwordTextField.layer.borderWidth = 1.0
+      inputPasswordLabel.alpha = 1
     }
   }
   
