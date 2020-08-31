@@ -9,22 +9,47 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+  // MARK: - Properties
+  lazy var dismissBtn = UIBarButtonItem(
+    image: UIImage(systemName: "chevron.left"),
+    style: .plain,
+    target: self,
+    action: #selector(dismissDidTapBtn)
+  )
+  
+  private let welcomeView = WelcomeView()
+  
+  // MARK: - View LifeCycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    setUI()
+    setLayout()
+  }
+  // MARK: - SetUI
+  private func setUI() {
+    self.view.addSubview(welcomeView)
+    
+    self.navigationItem.title = "회원가입 (3/3)"
+    self.navigationItem.leftBarButtonItem = dismissBtn
+    
+    self.dismissBtn.tintColor = .black
+  }
+  
+  // MARK: - SetLayout
+  private func setLayout() {
+    self.welcomeView.snp.makeConstraints {
+      $0.top.equalTo(self.view.safeAreaLayoutGuide)
+      $0.leading.trailing.equalToSuperview()
+      $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
     }
-    */
-
+  }
+  
+  // MARK: - Action Button
+  
+  @objc private func dismissDidTapBtn(_ sender: UITabBarItem) {
+    print("뒤로가기")
+  }
 }
+
+// MARK: - Extension
