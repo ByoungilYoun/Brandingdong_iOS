@@ -91,6 +91,7 @@
 		49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		49AABDE424EE7F9000DE0088 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		49AABDE924EE81F400DE0088 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		49B2A2252500E49D00F4081E /* Brandingdong.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Brandingdong.entitlements; sourceTree = "<group>"; };
 		49CEB38C24EE4FB60026201B /* Brandingdong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandingdong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CEB38F24EE4FB60026201B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49CEB39324EE4FB60026201B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -375,6 +376,7 @@
 		49CEB38E24EE4FB60026201B /* Brandingdong */ = {
 			isa = PBXGroup;
 			children = (
+				49B2A2252500E49D00F4081E /* Brandingdong.entitlements */,
 				49CEB39D24EE4FB70026201B /* Info.plist */,
 				49CEB3A624EE542A0026201B /* Model */,
 				0F0A400424EED91F0037B7A1 /* ViewModel */,
@@ -483,7 +485,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = jwlee;
 				TargetAttributes = {
 					49CEB38B24EE4FB60026201B = {
@@ -595,7 +597,6 @@
 				49AABDDC24EE7E9C00DE0088 /* TabBarViewController.swift in Sources */,
 				498CA4F424F91B1A0056AB72 /* SNSUserInfoEntryView.swift in Sources */,
 				492747BD24F2836300D259BE /* MainCatogoryView.swift in Sources */,
-				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
 				CE79A97C24F7B8E6008D4237 /* UserAgreeView.swift in Sources */,
 				498CA4F224F9140C0056AB72 /* SNSUserInfoEntryViewController.swift in Sources */,
 				4908EA1A24F69F95008C05D9 /* UserInfoEntryView.swift in Sources */,
@@ -747,6 +748,7 @@
 			baseConfigurationReference = E8B120D7289F410417BC19C6 /* Pods-Brandingdong.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Brandingdong/Brandingdong.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25WA95NQNW;
 				INFOPLIST_FILE = Brandingdong/Info.plist;
@@ -754,7 +756,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Brandingdong;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Brandingdongjin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -766,6 +768,7 @@
 			baseConfigurationReference = EB4C48B206CCDF601945D76E /* Pods-Brandingdong.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Brandingdong/Brandingdong.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25WA95NQNW;
 				INFOPLIST_FILE = Brandingdong/Info.plist;
@@ -773,7 +776,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Brandingdong;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Brandingdongjin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
