@@ -22,8 +22,34 @@ class ProductInfoViewController: UIViewController {
     return btn
   }()
   
+  let largeConfig = UIImage.SymbolConfiguration(pointSize: 24)
+  
+  lazy var favoriteButton: UIButton = {
+    let btn = UIButton()
+    btn.setImage(UIImage(systemName: "heart", withConfiguration: largeConfig), for: .normal)
+    btn.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    btn.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
+    return btn
+  }()
+  
+  private let moveTopButton: UIButton = {
+    let btn = UIButton()
+    btn.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+    btn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    btn.layer.borderWidth = 2
+    btn.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+    return btn
+  }()
+  
+  var toggle = false
+  
   private let productImagesView = ProductImagesView()
-  lazy var productInfoViewArr = [productImagesView]
+  private let productInfoTitleView = ProductInfoTitleView()
+  private let productInfoPointView = ProductInfoPointView()
+  
+  lazy var productInfoViewArr = [productImagesView,
+                                 productInfoTitleView,
+                                 productInfoPointView]
   
   // MARK: - LifeCycle
   
@@ -42,16 +68,25 @@ class ProductInfoViewController: UIViewController {
   // MARK: - Setup Layout
   
   private func setUI() {
-    [productInfoTableView, buyButton].forEach {
+    
+    view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    
+    [productInfoTableView,
+     buyButton,
+     moveTopButton,
+     favoriteButton].forEach {
       view.addSubview($0)
     }
   }
   
   private func setConstraints() {
     
-    let buttonHeight: CGFloat = 75
+    let buttonHeight: CGFloat = 72
+    let margin: CGFloat = 8
+    let buttonSize: CGFloat = 48
     
-    [productInfoTableView, buyButton].forEach {
+    [productInfoTableView,
+     buyButton].forEach {
       $0.snp.makeConstraints {
         $0.leading.trailing.equalToSuperview()
       }
@@ -62,11 +97,24 @@ class ProductInfoViewController: UIViewController {
       $0.height.equalTo(buttonHeight)
     }
     
+    favoriteButton.snp.makeConstraints {
+      $0.centerY.equalTo(buyButton.snp.centerY)
+      $0.trailing.equalTo(buyButton.snp.trailing).offset(-margin)
+      $0.width.height.equalTo(buttonSize)
+    }
+    
     productInfoTableView.snp.makeConstraints {
-      $0.top.equalToSuperview()
+      $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
       $0.bottom.equalTo(buyButton.snp.top)
     }
     
+    moveTopButton.snp.makeConstraints {
+      $0.trailing.equalToSuperview().offset(-margin)
+      $0.bottom.equalTo(buyButton.snp.top).offset(-margin)
+      $0.width.height.equalTo(buttonSize)
+    }
+    moveTopButton.clipsToBounds = true
+    moveTopButton.layer.cornerRadius = buttonSize / 2
   }
   
   // MARK: - Set TableView
@@ -74,7 +122,6 @@ class ProductInfoViewController: UIViewController {
   private func setTableView() {
     productInfoTableView.allowsSelection = false
     productInfoTableView.dataSource = self
-    productInfoTableView.delegate = self
     productInfoTableView.register(ProductInfoTableViewCell.self, forCellReuseIdentifier: ProductInfoTableViewCell.identifier)
   }
   
@@ -113,6 +160,17 @@ class ProductInfoViewController: UIViewController {
   @objc private func didTapBasketButton(_ sender: UIBarButtonItem) {
     navigationController?.popViewController(animated: true)
   }
+  @objc private func didTapFavoriteButton(_ sender: UIButton) {
+    if toggle {
+      favoriteButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: largeConfig), for: .normal)
+      favoriteButton.tintColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+      toggle = !toggle
+    } else {
+      favoriteButton.setImage(UIImage(systemName: "heart", withConfiguration: largeConfig), for: .normal)
+      favoriteButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+      toggle = !toggle
+    }
+  }
 }
 
 // MARK: - UITableViewDataSource
@@ -125,18 +183,22 @@ extension ProductInfoViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let productInfoCell = productInfoTableView.dequeueReusableCell(withIdentifier: ProductInfoTableViewCell.identifier, for: indexPath) as! ProductInfoTableViewCell
     productInfoCell.productInfoCellView = productInfoViewArr[indexPath.row]
+    
+    let imageCellHight: CGFloat = deviceHeight / 1.5
+    let titleCellHight: CGFloat = 172
+    let pointCellHight: CGFloat = 86
+    
+    
     switch indexPath.row {
     case 0:
-      tableView.rowHeight = deviceHeight / 1.5
+      tableView.rowHeight = imageCellHight
+    case 1:
+      tableView.rowHeight = titleCellHight
+    case 2:
+      tableView.rowHeight = pointCellHight
     default:
       break
     }
     return productInfoCell
   }
-}
-
-// MARK: - ProductInfoViewController
-
-extension ProductInfoViewController: UITableViewDelegate {
-  
 }

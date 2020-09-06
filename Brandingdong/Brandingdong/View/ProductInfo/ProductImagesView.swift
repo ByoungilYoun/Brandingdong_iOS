@@ -12,19 +12,22 @@ class ProductImagesView: UIView {
   // MARK: - Property
   
   private let deviceWidth = UIScreen.main.bounds.width
-  private let scrollView = UIScrollView()
+  private let deviceHeight = UIScreen.main.bounds.height
   private let pageControl = UIPageControl()
   
-  var productImageArr = ["heart", "person", "checkmark"].compactMap {
-    UIImage.init(systemName: $0)
+  private let layout = UICollectionViewFlowLayout()
+  lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+  
+  var productImageArr = ["테스트1", "테스트2", "테스트3"].compactMap {
+    UIImage.init(named: $0)
   }
-  var productImageViewArr = [UIImageView]()
   
   // MARK: - init View
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setScrollView()
+    setLayout()
+    setCollectionView()
     setPageControl()
     setUI()
     setConstraints()
@@ -36,33 +39,48 @@ class ProductImagesView: UIView {
   
   // MARK: - Set Property
   
-  private func setScrollView() {
-    scrollView.backgroundColor = .systemBackground
-    scrollView.isPagingEnabled = true
-    scrollView.delegate = self
+  private func setLayout() {
+    let itemSpasing: CGFloat = 0
+    let lineSpasing: CGFloat = 0
+    let sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    
+    layout.scrollDirection = .horizontal
+    layout.sectionInset = sectionInset
+    layout.minimumLineSpacing = lineSpasing
+    layout.minimumInteritemSpacing = itemSpasing
+    layout.itemSize = CGSize(width: deviceWidth, height: deviceHeight/1.5)
+  }
+  
+  private func setCollectionView() {
+    collectionView.backgroundColor = .systemBackground
+    collectionView.isPagingEnabled = true
+    collectionView.showsHorizontalScrollIndicator = false
+    
+    collectionView.dataSource = self
+    collectionView.delegate = self
+    collectionView.register(ProductInfoImageCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoImageCollectionViewCell.identifier)
   }
   
   private func setPageControl() {
     pageControl.numberOfPages = productImageArr.count
-    pageControl.currentPage = 0
     pageControl.pageIndicatorTintColor = .lightGray
     pageControl.currentPageIndicatorTintColor = .white
-    pageControl.addTarget(self, action: #selector(handlePageControl), for: .valueChanged)
+    pageControl.hidesForSinglePage = true
   }
   
   // MARK: - Setup Layout
   
   private func setUI() {
-    [scrollView, pageControl].forEach {
+    [collectionView, pageControl].forEach {
       self.addSubview($0)
     }
   }
   
   private func setConstraints() {
     
-    let margin: CGFloat = 10
+    let margin: CGFloat = 8
     
-    scrollView.snp.makeConstraints {
+    collectionView.snp.makeConstraints {
       $0.top.leading.bottom.trailing.equalToSuperview()
     }
     
@@ -70,45 +88,28 @@ class ProductImagesView: UIView {
       $0.leading.trailing.equalToSuperview()
       $0.bottom.equalToSuperview().offset(-margin)
     }
-    
-    for product in productImageArr {
-      
-      let productImageView = UIImageView()
-      productImageView.backgroundColor = .systemBlue
-      productImageView.image = product
-      
-      productImageViewArr.append(productImageView)
-      scrollView.addSubview(productImageView)
-      
-      productImageView.snp.makeConstraints {
-        $0.top.leading.bottom.trailing.equalTo(scrollView)
-      }
-      
-      for (index, value) in productImageViewArr.enumerated() {
-        switch index {
-        case 0:
-          value.snp.makeConstraints { $0.leading.equalTo(scrollView.snp.leading) }
-        case productImageViewArr.count - 1:
-          value.snp.makeConstraints { $0.trailing.equalTo(scrollView.snp.trailing) }
-          fallthrough
-        default:
-          value.snp.makeConstraints { $0.leading.equalTo(productImageViewArr[index - 1].snp.trailing)}
-        }
-      }
-    }
-  }
-  
-  @objc private func handlePageControl(_ sender: UIPageControl) {
-    let moveX = CGFloat(pageControl.currentPage) * deviceWidth
-    scrollView.setContentOffset(CGPoint(x: moveX, y: 0), animated: true)
   }
 }
 
-// MARK: - UIScrollViewDelegate
+// MARK: - UICollectionViewDataSource
+extension ProductImagesView: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return productImageArr.count
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoImageCollectionViewCell.identifier, for: indexPath) as! ProductInfoImageCollectionViewCell
+    cell.imageView.image = productImageArr[indexPath.item]
+    return cell
+  }
+}
 
-extension ProductImagesView: UIScrollViewDelegate {
-  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.width)
-    pageControl.currentPage = Int(pageNumber)
+// MARK: - UICollectionViewDelegate
+
+extension ProductImagesView: UICollectionViewDelegate {
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    
+    let page = Int(targetContentOffset.pointee.x / self.frame.width)
+    pageControl.currentPage = page
   }
 }
