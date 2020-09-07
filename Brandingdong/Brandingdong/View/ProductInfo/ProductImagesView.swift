@@ -40,6 +40,7 @@ class ProductImagesView: UIView {
   // MARK: - Set Property
   
   private func setLayout() {
+    let itemHeight: CGFloat = 532
     let itemSpasing: CGFloat = 0
     let lineSpasing: CGFloat = 0
     let sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -48,7 +49,7 @@ class ProductImagesView: UIView {
     layout.sectionInset = sectionInset
     layout.minimumLineSpacing = lineSpasing
     layout.minimumInteritemSpacing = itemSpasing
-    layout.itemSize = CGSize(width: deviceWidth, height: deviceHeight/1.5)
+    layout.itemSize = CGSize(width: deviceWidth, height: itemHeight)
   }
   
   private func setCollectionView() {

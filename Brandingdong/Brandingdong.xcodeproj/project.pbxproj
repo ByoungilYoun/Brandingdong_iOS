@@ -20,6 +20,9 @@
 		0FFF716724F3891700D469D7 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFF716624F3891700D469D7 /* facebook.png */; };
 		0FFF716D24F3C8CF00D469D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */; };
 		0FFF716F24F40F7F00D469D7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */; };
+		4901C447250601D500390B6F /* ProductInfoCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901C446250601D500390B6F /* ProductInfoCategoryView.swift */; };
+		4901C44D25061DAE00390B6F /* ProductInfoCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901C44C25061DAE00390B6F /* ProductInfoCategoryCollectionViewCell.swift */; };
+		4901C44F25061E4F00390B6F /* ProductInfoDiscountCouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901C44E25061E4F00390B6F /* ProductInfoDiscountCouponView.swift */; };
 		4908EA1624F6998C008C05D9 /* UserInfoEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA1524F6998C008C05D9 /* UserInfoEntryViewController.swift */; };
 		4908EA1A24F69F95008C05D9 /* UserInfoEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA1924F69F95008C05D9 /* UserInfoEntryView.swift */; };
 		4908EA1F24F6A659008C05D9 /* UserInfoTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA1E24F6A659008C05D9 /* UserInfoTextfield.swift */; };
@@ -78,6 +81,9 @@
 		0FFF716624F3891700D469D7 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Brandingdong/Controller/Login/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextField.swift; path = Brandingdong/View/Login/Main/CustomTextField.swift; sourceTree = SOURCE_ROOT; };
+		4901C446250601D500390B6F /* ProductInfoCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCategoryView.swift; sourceTree = "<group>"; };
+		4901C44C25061DAE00390B6F /* ProductInfoCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		4901C44E25061E4F00390B6F /* ProductInfoDiscountCouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoDiscountCouponView.swift; sourceTree = "<group>"; };
 		4908EA1524F6998C008C05D9 /* UserInfoEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEntryViewController.swift; sourceTree = "<group>"; };
 		4908EA1924F69F95008C05D9 /* UserInfoEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEntryView.swift; sourceTree = "<group>"; };
 		4908EA1E24F6A659008C05D9 /* UserInfoTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTextfield.swift; sourceTree = "<group>"; };
@@ -271,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				493AACF525037D8A00AF3156 /* ProductInfoImageCollectionViewCell.swift */,
+				4901C44C25061DAE00390B6F /* ProductInfoCategoryCollectionViewCell.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -328,6 +335,8 @@
 				498A905A25023FA5003C18C6 /* ProductImagesView.swift */,
 				493AACFD250391FA00AF3156 /* ProductInfoTitleView.swift */,
 				493AAD072503A0C100AF3156 /* ProductInfoPointView.swift */,
+				4901C44E25061E4F00390B6F /* ProductInfoDiscountCouponView.swift */,
+				4901C446250601D500390B6F /* ProductInfoCategoryView.swift */,
 				493AACF425037D6200AF3156 /* Custom */,
 			);
 			path = ProductInfo;
@@ -658,6 +667,7 @@
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
 				0FED02B424EE7EB0003D03B4 /* MainLoginViewController.swift in Sources */,
 				493AACFE250391FA00AF3156 /* ProductInfoTitleView.swift in Sources */,
+				4901C447250601D500390B6F /* ProductInfoCategoryView.swift in Sources */,
 				492747BF24F2861900D259BE /* MainCategoryCollectionViewCell.swift in Sources */,
 				4908EA2724F79389008C05D9 /* UserinfoEntryTableView.swift in Sources */,
 				4908EA2324F6CF1D008C05D9 /* UserInfoLabel.swift in Sources */,
@@ -673,8 +683,10 @@
 				4908EA1A24F69F95008C05D9 /* UserInfoEntryView.swift in Sources */,
 				49AABDE524EE7F9000DE0088 /* CategoryViewController.swift in Sources */,
 				49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */,
+				4901C44F25061E4F00390B6F /* ProductInfoDiscountCouponView.swift in Sources */,
 				CE596BB924F77B9D00DDE2EB /* UserAgreeViewController.swift in Sources */,
 				4959A5B724F28F540022B7AC /* Data.swift in Sources */,
+				4901C44D25061DAE00390B6F /* ProductInfoCategoryCollectionViewCell.swift in Sources */,
 				CE79A97E24F91185008D4237 /* WelcomeViewController.swift in Sources */,
 				4908EA2524F6D660008C05D9 /* UserInfoButton.swift in Sources */,
 				49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */,
