@@ -10,6 +10,12 @@ import UIKit
 
 protocol UserInfoEntryViewDelegate {
   func pushNextView()
+  
+  func postUserData(username: String,
+                    email: String,
+                    password1: String,
+                    password2: String,
+                    phonenumber: String)
 }
 
 class UserInfoEntryView: UIView {
@@ -282,6 +288,11 @@ class UserInfoEntryView: UIView {
   @objc private func didTabButton() {
     guard nextButton.isEnabled else { return }
     delegate?.pushNextView()
+    delegate?.postUserData(username: idTextfield.text!,
+                           email: emailTextfield.text!,
+                           password1: pwTextfield.text!,
+                           password2: pwCheckTextfield.text!,
+                           phonenumber: recPersonTextfield.text!)
   }
 }
 
