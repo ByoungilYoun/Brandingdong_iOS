@@ -46,10 +46,14 @@ class ProductInfoViewController: UIViewController {
   private let productImagesView = ProductImagesView()
   private let productInfoTitleView = ProductInfoTitleView()
   private let productInfoPointView = ProductInfoPointView()
+  private let productInfoDiscountCouponView = ProductInfoDiscountCouponView()
+  private let productInfoCategoryView = ProductInfoCategoryView()
   
   lazy var productInfoViewArr = [productImagesView,
                                  productInfoTitleView,
-                                 productInfoPointView]
+                                 productInfoPointView,
+                                 productInfoDiscountCouponView,
+                                 productInfoCategoryView]
   
   // MARK: - LifeCycle
   
@@ -184,18 +188,23 @@ extension ProductInfoViewController: UITableViewDataSource {
     let productInfoCell = productInfoTableView.dequeueReusableCell(withIdentifier: ProductInfoTableViewCell.identifier, for: indexPath) as! ProductInfoTableViewCell
     productInfoCell.productInfoCellView = productInfoViewArr[indexPath.row]
     
-    let imageCellHight: CGFloat = deviceHeight / 1.5
-    let titleCellHight: CGFloat = 172
-    let pointCellHight: CGFloat = 86
-    
+    let imageCellHeight: CGFloat = 532
+    let titleCellHeight: CGFloat = 172
+    let pointCellHeight: CGFloat = 86
+    let discountCouponHeight: CGFloat = 86
+    let categoryHeight: CGFloat = 700
     
     switch indexPath.row {
     case 0:
-      tableView.rowHeight = imageCellHight
+      tableView.rowHeight = imageCellHeight
     case 1:
-      tableView.rowHeight = titleCellHight
+      tableView.rowHeight = titleCellHeight
     case 2:
-      tableView.rowHeight = pointCellHight
+      tableView.rowHeight = pointCellHeight
+    case 3:
+      tableView.rowHeight = discountCouponHeight
+    case 4:
+      tableView.rowHeight = categoryHeight
     default:
       break
     }
