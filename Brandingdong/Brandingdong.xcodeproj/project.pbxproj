@@ -15,6 +15,10 @@
 		0F0A401024EF089D0037B7A1 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0A400F24EF089D0037B7A1 /* InformationView.swift */; };
 		0F661B7E24EE90AD0060FDF7 /* brandi login image in Resources */ = {isa = PBXBuildFile; fileRef = 0F661B7D24EE90AD0060FDF7 /* brandi login image */; };
 		0F843B052504DAC500C3F2B7 /* FooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B042504DAC500C3F2B7 /* FooterCollectionReusableView.swift */; };
+		0F843B4D2505FE0B00C3F2B7 /* OuterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B4C2505FE0B00C3F2B7 /* OuterViewController.swift */; };
+		0F843B5125061D3200C3F2B7 /* FirstCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B5025061D3200C3F2B7 /* FirstCategoryView.swift */; };
+		0F843B532506212D00C3F2B7 /* FirstCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B522506212D00C3F2B7 /* FirstCategoryCell.swift */; };
+		0F843B552506A9A900C3F2B7 /* ByoungilData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B542506A9A900C3F2B7 /* ByoungilData.swift */; };
 		0F8935BC24F51E89006E1944 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8935BB24F51E89006E1944 /* LoginViewModel.swift */; };
 		0F9BB78C2502CB4A006E0232 /* CategoryViewCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9BB78B2502CB4A006E0232 /* CategoryViewCustomCell.swift */; };
 		0F9BB78E2503AE52006E0232 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9BB78D2503AE52006E0232 /* HeaderCollectionReusableView.swift */; };
@@ -70,6 +74,10 @@
 		0F0A400F24EF089D0037B7A1 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InformationView.swift; path = Brandingdong/View/Login/Main/InformationView.swift; sourceTree = SOURCE_ROOT; };
 		0F661B7D24EE90AD0060FDF7 /* brandi login image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "brandi login image"; sourceTree = "<group>"; };
 		0F843B042504DAC500C3F2B7 /* FooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCollectionReusableView.swift; sourceTree = "<group>"; };
+		0F843B4C2505FE0B00C3F2B7 /* OuterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterViewController.swift; sourceTree = "<group>"; };
+		0F843B5025061D3200C3F2B7 /* FirstCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCategoryView.swift; sourceTree = "<group>"; };
+		0F843B522506212D00C3F2B7 /* FirstCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCategoryCell.swift; sourceTree = "<group>"; };
+		0F843B542506A9A900C3F2B7 /* ByoungilData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByoungilData.swift; sourceTree = "<group>"; };
 		0F8935BB24F51E89006E1944 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0F9BB78B2502CB4A006E0232 /* CategoryViewCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCustomCell.swift; sourceTree = "<group>"; };
 		0F9BB78D2503AE52006E0232 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -162,17 +170,36 @@
 				0F0A400224EED2240037B7A1 /* google.png */,
 				0F0A400924EEEA100037B7A1 /* appleLogo.imageset */,
 				0F661B7D24EE90AD0060FDF7 /* brandi login image */,
+				0F843B542506A9A900C3F2B7 /* ByoungilData.swift */,
 			);
 			path = ByoungilImage;
 			sourceTree = "<group>";
 		};
-		0F9BB78A2502CB25006E0232 /* Category */ = {
+		0F843B4E25061C4B00C3F2B7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				0F9BB78B2502CB4A006E0232 /* CategoryViewCustomCell.swift */,
 				0F9BB78D2503AE52006E0232 /* HeaderCollectionReusableView.swift */,
 				0F843B042504DAC500C3F2B7 /* FooterCollectionReusableView.swift */,
 				0F9BB7952503D6E2006E0232 /* SelectAllCustomButton.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0F843B4F25061C5C00C3F2B7 /* FirstCategory */ = {
+			isa = PBXGroup;
+			children = (
+				0F843B5025061D3200C3F2B7 /* FirstCategoryView.swift */,
+				0F843B522506212D00C3F2B7 /* FirstCategoryCell.swift */,
+			);
+			path = FirstCategory;
+			sourceTree = "<group>";
+		};
+		0F9BB78A2502CB25006E0232 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0F843B4E25061C4B00C3F2B7 /* Main */,
+				0F843B4F25061C5C00C3F2B7 /* FirstCategory */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -354,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				49AABDE424EE7F9000DE0088 /* CategoryViewController.swift */,
+				0F843B4C2505FE0B00C3F2B7 /* OuterViewController.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -611,6 +639,7 @@
 				0F0A401024EF089D0037B7A1 /* InformationView.swift in Sources */,
 				CE79A98024F911A8008D4237 /* WelcomeView.swift in Sources */,
 				498CA4F624F931850056AB72 /* SNSUserinfoEntryTableView.swift in Sources */,
+				0F843B552506A9A900C3F2B7 /* ByoungilData.swift in Sources */,
 				498CA4EC24F8DD800056AB72 /* UserInfoErrLabel.swift in Sources */,
 				4908EA2124F6A770008C05D9 /* UserInfoTextfieldImageView.swift in Sources */,
 				0F0A400824EEDFA90037B7A1 /* LocalLoginButton.swift in Sources */,
@@ -626,15 +655,18 @@
 				0F9BB78E2503AE52006E0232 /* HeaderCollectionReusableView.swift in Sources */,
 				4908EA2324F6CF1D008C05D9 /* UserInfoLabel.swift in Sources */,
 				4908EA1F24F6A659008C05D9 /* UserInfoTextfield.swift in Sources */,
+				0F843B4D2505FE0B00C3F2B7 /* OuterViewController.swift in Sources */,
 				49AABDDC24EE7E9C00DE0088 /* TabBarViewController.swift in Sources */,
 				498CA4F424F91B1A0056AB72 /* SNSUserInfoEntryView.swift in Sources */,
 				492747BD24F2836300D259BE /* MainCatogoryView.swift in Sources */,
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
 				CE79A97C24F7B8E6008D4237 /* UserAgreeView.swift in Sources */,
+				0F843B532506212D00C3F2B7 /* FirstCategoryCell.swift in Sources */,
 				498CA4F224F9140C0056AB72 /* SNSUserInfoEntryViewController.swift in Sources */,
 				0F843B052504DAC500C3F2B7 /* FooterCollectionReusableView.swift in Sources */,
 				4908EA1A24F69F95008C05D9 /* UserInfoEntryView.swift in Sources */,
 				49AABDE524EE7F9000DE0088 /* CategoryViewController.swift in Sources */,
+				0F843B5125061D3200C3F2B7 /* FirstCategoryView.swift in Sources */,
 				49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */,
 				CE596BB924F77B9D00DDE2EB /* UserAgreeViewController.swift in Sources */,
 				4959A5B724F28F540022B7AC /* Data.swift in Sources */,
