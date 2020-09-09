@@ -25,6 +25,7 @@ class WelcomeViewController: UIViewController {
     
     setUI()
     setLayout()
+    setDelegate()
   }
   // MARK: - SetUI
   private func setUI() {
@@ -45,11 +46,24 @@ class WelcomeViewController: UIViewController {
     }
   }
   
+  // MARK: - Set Delegate
+  private func setDelegate() {
+    welcomeView.delegate = self
+  }
+  
   // MARK: - Action Button
   
   @objc private func dismissDidTapBtn(_ sender: UITabBarItem) {
-    print("뒤로가기")
+    navigationController?.popViewController(animated: true)
   }
 }
 
 // MARK: - Extension
+
+extension WelcomeViewController: WelcomeViewDelegate {
+  func pushNextView() {
+    let homeVC = HomeViewController()
+    homeVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(homeVC, animated: true)
+  }
+}

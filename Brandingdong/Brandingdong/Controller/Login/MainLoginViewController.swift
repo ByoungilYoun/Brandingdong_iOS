@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import AuthenticationServices
 
 class MainLoginViewController : UIViewController {
   
@@ -53,6 +54,7 @@ class MainLoginViewController : UIViewController {
     let bt = SocialLoginButton(with: viewModel, color: UIColor.black)
     bt.backgroundColor = UIColor.white
     bt.addTarget(self, action: #selector(signInWithApple), for: .touchUpInside)
+    
     return bt
   }()
   
@@ -97,13 +99,34 @@ class MainLoginViewController : UIViewController {
     setConstraints()
   }
   
-  //MARK: - @objc func
-  @objc func signInWithEmail() {
-    
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setNavi()
   }
   
-  @objc func signInWithApple() {
+  // MARK: - NavigationBar
+  
+  private func setNavi() {
+    navigationController?.navigationBar.isHidden = true
+  }
+  
+  //MARK: - @objc func
+  @objc func signInWithEmail() {
+    let userAgreeVC = UserAgreeViewController()
+    userAgreeVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(userAgreeVC, animated: true)
+  }
+  
+  @objc func signInWithApple(_ sender: ASAuthorizationAppleIDButton) {
     
+    let provider = ASAuthorizationAppleIDProvider()
+    let request = provider.createRequest()
+    request.requestedScopes = [.fullName, .email]
+    
+    let controller = ASAuthorizationController(authorizationRequests: [request])
+    controller.delegate = self
+    controller.presentationContextProvider = self
+    controller.performRequests()
   }
   
   @objc func signInWithFacebook() {
@@ -127,11 +150,11 @@ class MainLoginViewController : UIViewController {
       view.addSubview($0)
     }
     
-      stackView = UIStackView(arrangedSubviews: [emailLoginButton, appleLoginButton, facebookLoginButton, googleLoginButton, dividerView ,loginButton])
-      stackView.axis = .vertical
-      stackView.spacing = 20
-      view.addSubview(stackView)
-  
+    stackView = UIStackView(arrangedSubviews: [emailLoginButton, appleLoginButton, facebookLoginButton, googleLoginButton, dividerView ,loginButton])
+    stackView.axis = .vertical
+    stackView.spacing = 20
+    view.addSubview(stackView)
+    
     view.addSubview(informationView)
   }
   
@@ -179,3 +202,50 @@ class MainLoginViewController : UIViewController {
   }
   
 }
+
+
+// MARK: - ASAuthorizationControllerDelegate
+
+extension MainLoginViewController: ASAuthorizationControllerDelegate {
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+      let userIdentifier = appleIDCredential.user
+      let userFirstName = appleIDCredential.fullName?.givenName
+      let userLastName = appleIDCredential.fullName?.familyName
+      let userEmail = appleIDCredential.email
+      let appleIDProvider = ASAuthorizationAppleIDProvider()
+      appleIDProvider.getCredentialState(
+      forUserID: userIdentifier) { ( credentialState, error) in
+        switch credentialState {
+        case .authorized:
+          print ("type(of: userEmail) : ", type(of: userEmail))
+          print ("userEmail : ", userEmail!)
+          print ("type(of: userLastName) : ", type(of: userLastName))
+          print ("userLastName : ", userLastName!)
+          print ("type(of: userFirstName) : ", type(of: userFirstName))
+          print ("userFirstName : ", userFirstName!)
+          break
+        case .revoked:
+          break
+        case .notFound:
+          break
+        default:
+          break
+        }
+      }
+    }
+  }
+  
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    print ("error.localizedDescription : ", error.localizedDescription)
+  }
+}
+
+// MARK: - ASAuthorizationControllerPresentationContextProviding
+
+extension MainLoginViewController: ASAuthorizationControllerPresentationContextProviding {
+  func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+    return view.window!
+  }
+}
+

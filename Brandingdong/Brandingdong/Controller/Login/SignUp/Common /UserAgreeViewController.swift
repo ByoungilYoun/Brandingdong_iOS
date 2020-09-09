@@ -25,6 +25,12 @@ class UserAgreeViewController: UIViewController {
     
     setUI()
     setLayout()
+    setDelegate()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setNavi()
   }
   // MARK: - SetUI
   private func setUI() {
@@ -44,13 +50,30 @@ class UserAgreeViewController: UIViewController {
     }
   }
   
+  // MARK: - Set Delegate
+  
+  private func setDelegate() {
+    userAgreeView.delegate = self
+  }
+  
+  // MARK: - NavigationBar
+  private func setNavi() {
+    navigationController?.navigationBar.isHidden = false
+  }
+  
   // MARK: - Action Button
   
   @objc private func dismissDidTapBtn(_ sender: UIBarButtonItem) {
-    
+    navigationController?.popViewController(animated: true)
   }
 }
 
 // MARK: - Extension
 
+extension UserAgreeViewController: UserAgreeViewDelegate {
+  func pushNextView() {
+    let userInfoEntryVC = UserInfoEntryViewController()
+    navigationController?.pushViewController(userInfoEntryVC, animated: true)
+  }
+}
 

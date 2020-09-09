@@ -20,6 +20,7 @@ class UserInfoEntryViewController: UIViewController {
     setNavi()
     setUI()
     setConstraints()
+    setDelegate()
   }
   
   // MARK: - Setup Layout
@@ -33,6 +34,12 @@ class UserInfoEntryViewController: UIViewController {
     userinfoEntryTableView.snp.makeConstraints {
       $0.top.leading.bottom.trailing.equalTo(view.safeAreaLayoutGuide)
     }
+  }
+  
+  // MARK: - Set Delegate
+  
+  private func setDelegate() {
+    userinfoEntryTableView.userInfoEntryView.delegate = self
   }
   
   // MARK: - NavigationBar
@@ -57,5 +64,15 @@ class UserInfoEntryViewController: UIViewController {
   
   @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
     navigationController?.popViewController(animated: true)
+  }
+}
+
+// MARK: - UserInfoEntryViewDelegate
+
+extension UserInfoEntryViewController: UserInfoEntryViewDelegate {
+  func pushNextView() {
+    let welcomeVC = WelcomeViewController()
+    welcomeVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(welcomeVC, animated: true)
   }
 }
