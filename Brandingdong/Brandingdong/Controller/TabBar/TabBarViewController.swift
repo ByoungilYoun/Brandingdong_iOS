@@ -11,11 +11,10 @@ import UIKit
 class TabBarViewController: UITabBarController {
   // MARK: - Property
   
-  private let naviHomeVC = UINavigationController(rootViewController: WelcomeViewController())
+  private let naviHomeVC = UINavigationController(rootViewController: HomeViewController())
   private let naviCategoryVC = UINavigationController(rootViewController: CategoryViewController())
   private let naviFavoriteVC = UINavigationController(rootViewController: FavoriteViewController())
   private let naviMyPageVC = UINavigationController(rootViewController: MYPageViewController())
-  
   
   // MARK: - LifeCycle
   
