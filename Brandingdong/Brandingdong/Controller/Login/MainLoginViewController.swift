@@ -13,7 +13,6 @@ class MainLoginViewController : UIViewController {
   
   //MARK: - Properties
   private let backgroundImage = UIImageView(image: UIImage(named: "brandi"))
-  
   private let titleLabel : UILabel = {
     let lb = UILabel()
     lb.text = "B R A N D I"
