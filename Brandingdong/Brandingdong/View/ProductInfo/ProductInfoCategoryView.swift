@@ -87,11 +87,11 @@ class ProductInfoCategoryView: UIView {
     }
     categoryMenuSubView.snp.makeConstraints {
       $0.top.equalTo(collectionView.snp.bottom).offset(-subviewPadding)
-      $0.height.equalTo(1)
+      $0.height.equalTo(0.5)
     }
   }
 }
-// MARK: -
+// MARK: - UICollectionViewDataSource
 
 extension ProductInfoCategoryView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
