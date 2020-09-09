@@ -16,7 +16,6 @@ class TabBarViewController: UITabBarController {
   private let naviFavoriteVC = UINavigationController(rootViewController: FavoriteViewController())
   private let naviMyPageVC = UINavigationController(rootViewController: MYPageViewController())
   
-  
   // MARK: - LifeCycle
   
   override func viewDidLoad() {
