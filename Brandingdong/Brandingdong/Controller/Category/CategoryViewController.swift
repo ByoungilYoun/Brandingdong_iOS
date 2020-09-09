@@ -15,12 +15,7 @@ class CategoryViewController: UIViewController {
     layout.scrollDirection = .vertical
     return UICollectionView(frame: .zero, collectionViewLayout: layout)
   }()
-  
-  private let marketData = ["SALE", "아우터", "상의", "바지", "원피스", "스커트", "신발", "가방", "주얼리", "잡화", "라이프웨어", "빅사이즈"]
-  private let brandData = ["SALE", "아우터", "상의", "바지", "원피스", "스커트", "신발", "가방", "주얼리", "잡화", "라이프웨어", "스포츠웨어"]
-  private let beautyData = ["SALE", "스킨케어", "메이크업", "바디케어", "헤어케어", "향수", "미용소품", " ", " "]
-  private let imageData = ["market", "brand", "beauty"]
-  private let titleData = ["쇼핑몰.마켓", "브랜드", "뷰티"]
+
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -77,11 +72,11 @@ extension CategoryViewController : UICollectionViewDataSource {
     cell.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
     
     if indexPath.section == 0 {
-      cell.configure(data: marketData[indexPath.row])
+      cell.configure(data: byoungilData.marketData[indexPath.row])
     } else if indexPath.section == 1 {
-      cell.configure(data: brandData[indexPath.row])
+      cell.configure(data: byoungilData.brandData[indexPath.row])
     } else {
-      cell.configure(data: beautyData[indexPath.row])
+      cell.configure(data: byoungilData.beautyData[indexPath.row])
     }
     return cell
   }
@@ -123,7 +118,13 @@ extension CategoryViewController : UICollectionViewDataSource {
 }
 //MARK: - UICollectionViewDelegate
 extension CategoryViewController : UICollectionViewDelegate {
-  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if indexPath.row == 1 {
+      let controller = OuterViewController()
+      controller.modalPresentationStyle = .fullScreen
+      navigationController?.pushViewController(controller, animated: true)
+    }
+  }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
