@@ -67,7 +67,7 @@
 		49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */; };
 		49AABDE524EE7F9000DE0088 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE424EE7F9000DE0088 /* CategoryViewController.swift */; };
 		49AABDEA24EE81F400DE0088 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AABDE924EE81F400DE0088 /* HomeViewController.swift */; };
-		49AC2CF92508D5AA00B465A6 /* SignUpData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC2CF82508D5AA00B465A6 /* SignUpData.swift */; };
+		49AC2CF92508D5AA00B465A6 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC2CF82508D5AA00B465A6 /* UserData.swift */; };
 		49AC2CFF2508D68F00B465A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC2CFE2508D68F00B465A6 /* Service.swift */; };
 		49CEB39024EE4FB60026201B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEB38F24EE4FB60026201B /* AppDelegate.swift */; };
 		49CEB39424EE4FB60026201B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEB39324EE4FB60026201B /* ViewController.swift */; };
@@ -141,7 +141,7 @@
 		49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		49AABDE424EE7F9000DE0088 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		49AABDE924EE81F400DE0088 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		49AC2CF82508D5AA00B465A6 /* SignUpData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpData.swift; sourceTree = "<group>"; };
+		49AC2CF82508D5AA00B465A6 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		49AC2CFE2508D68F00B465A6 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		49B2A2252500E49D00F4081E /* Brandingdong.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Brandingdong.entitlements; sourceTree = "<group>"; };
 		49CEB38C24EE4FB60026201B /* Brandingdong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandingdong.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -479,7 +479,7 @@
 		49AC2CF72508D55400B465A6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				49AC2CF82508D5AA00B465A6 /* SignUpData.swift */,
+				49AC2CF82508D5AA00B465A6 /* UserData.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -783,7 +783,7 @@
 				4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */,
 				49AABDEA24EE81F400DE0088 /* HomeViewController.swift in Sources */,
 				0F9BB7962503D6E2006E0232 /* SelectAllCustomButton.swift in Sources */,
-				49AC2CF92508D5AA00B465A6 /* SignUpData.swift in Sources */,
+				49AC2CF92508D5AA00B465A6 /* UserData.swift in Sources */,
 				492747BA24F27BFB00D259BE /* SearchTextfieldImageView.swift in Sources */,
 				4959A5B924F2C4500022B7AC /* SearchBasketView.swift in Sources */,
 				498A905E25024347003C18C6 /* ProductInfoTableViewCell.swift in Sources */,

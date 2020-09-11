@@ -24,3 +24,8 @@ struct SignUpData: Codable {
     self.phonenumber = dic["phonenumber"] as? String ?? ""
   }
 }
+
+struct SignInData: Codable {
+  let username: String
+  let password: String
+}
