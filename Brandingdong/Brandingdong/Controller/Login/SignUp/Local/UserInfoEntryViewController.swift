@@ -70,6 +70,14 @@ class UserInfoEntryViewController: UIViewController {
 // MARK: - UserInfoEntryViewDelegate
 
 extension UserInfoEntryViewController: UserInfoEntryViewDelegate {
+  func postUserData(username: String, email: String, password1: String, password2: String, phonenumber: String) {
+    Service.signUpUser(username: username,
+                       email: email,
+                       password1: password1,
+                       password2: password2,
+                       phonenumber: phonenumber)
+  }
+  
   func pushNextView() {
     let welcomeVC = WelcomeViewController()
     welcomeVC.view.backgroundColor = .systemBackground

@@ -199,7 +199,15 @@ class LoginViewController : UIViewController {
   }
   
   @objc func loginBtnTap() {
+    guard !(idTextField.text!.isEmpty) else { return }
+    guard !(passwordTextField.text!.isEmpty) else { return }
     
+    let id = idTextField.text!
+    let pw = passwordTextField.text!
+    
+    Service.signInUser(username: id, password: pw)
+    
+    print ("클릭")
   }
   
   @objc func idTextRemove() {
