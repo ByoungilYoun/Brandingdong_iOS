@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ProductInfoCategoryView: UIView {
+class ProductInfoCategoryTableViewCell: UITableViewCell {
   // MARK: - Property
+  
+  static let identifier = "ProductInfoCategoryTableViewCell"
   
   private let categoryMenuArr = ["상품정보", "리뷰", "Q&A", "주문정보"]
   private let layout = UICollectionViewFlowLayout()
@@ -21,19 +23,19 @@ class ProductInfoCategoryView: UIView {
   }()
   
   private let tableView = UITableView()
+    
+  // MARK: - Cell init
   
-  // MARK: - Init View
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     setLayout()
     setCollectionView()
     setUI()
     setConstraints()
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
   }
   
   // MARK: - Set Property
@@ -65,7 +67,7 @@ class ProductInfoCategoryView: UIView {
     [collectionView,
      categoryMenuSubView,
      tableView].forEach {
-      self.addSubview($0)
+      contentView.addSubview($0)
     }
   }
   
@@ -93,7 +95,7 @@ class ProductInfoCategoryView: UIView {
 }
 // MARK: - UICollectionViewDataSource
 
-extension ProductInfoCategoryView: UICollectionViewDataSource {
+extension ProductInfoCategoryTableViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return categoryMenuArr.count
   }
@@ -107,7 +109,7 @@ extension ProductInfoCategoryView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension ProductInfoCategoryView: UICollectionViewDelegate {
+extension ProductInfoCategoryTableViewCell: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if let didSelectCheckIndex = collectionView.cellForItem(at: indexPath) as? ProductInfoCategoryCollectionViewCell {
       UIView.animate(withDuration: 0.5) {
