@@ -43,18 +43,6 @@ class ProductInfoViewController: UIViewController {
   
   var toggle = false
   
-  private let productImagesView = ProductImagesView()
-  private let productInfoTitleView = ProductInfoTitleView()
-  private let productInfoPointView = ProductInfoPointView()
-  private let productInfoDiscountCouponView = ProductInfoDiscountCouponView()
-  private let productInfoCategoryView = ProductInfoCategoryView()
-  
-  lazy var productInfoViewArr = [productImagesView,
-                                 productInfoTitleView,
-                                 productInfoPointView,
-                                 productInfoDiscountCouponView,
-                                 productInfoCategoryView]
-  
   // MARK: - LifeCycle
   
   override func viewDidLoad() {
@@ -126,7 +114,31 @@ class ProductInfoViewController: UIViewController {
   private func setTableView() {
     productInfoTableView.allowsSelection = false
     productInfoTableView.dataSource = self
-    productInfoTableView.register(ProductInfoTableViewCell.self, forCellReuseIdentifier: ProductInfoTableViewCell.identifier)
+    productInfoTableView.delegate = self
+    
+    productInfoTableView.register(
+      ProductImagesTableViewCell.self,
+      forCellReuseIdentifier: ProductImagesTableViewCell.identifier)
+    
+    productInfoTableView.register(
+      ProductInfoTitleTableViewCell.self,
+      forCellReuseIdentifier: ProductInfoTitleTableViewCell.identifier)
+    
+    productInfoTableView.register(
+      ProductInfoPointTableViewCell.self,
+      forCellReuseIdentifier: ProductInfoPointTableViewCell.identifier)
+    
+    productInfoTableView.register(
+      ProductInfoDiscountCouponTableViewCell.self,
+      forCellReuseIdentifier: ProductInfoDiscountCouponTableViewCell.identifier)
+    
+    productInfoTableView.register(
+      ProductInfoCategoryTableViewCell.self,
+      forCellReuseIdentifier: ProductInfoCategoryTableViewCell.identifier)
+    
+    productInfoTableView.register(
+      ProductInfoSellerAnotherProductTableViewCell.self,
+      forCellReuseIdentifier: ProductInfoSellerAnotherProductTableViewCell.identifier)
   }
   
   // MARK: - NavigationBar
@@ -164,6 +176,7 @@ class ProductInfoViewController: UIViewController {
   @objc private func didTapBasketButton(_ sender: UIBarButtonItem) {
     navigationController?.popViewController(animated: true)
   }
+  
   @objc private func didTapFavoriteButton(_ sender: UIButton) {
     if toggle {
       favoriteButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: largeConfig), for: .normal)
@@ -180,34 +193,103 @@ class ProductInfoViewController: UIViewController {
 // MARK: - UITableViewDataSource
 
 extension ProductInfoViewController: UITableViewDataSource {
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 3
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return productInfoViewArr.count
+    switch section {
+    case 0:
+      return 4
+    case 1:
+      return 1
+    case 2:
+      return 1
+    default:
+      break
+    }
+    return Int()
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let productInfoCell = productInfoTableView.dequeueReusableCell(withIdentifier: ProductInfoTableViewCell.identifier, for: indexPath) as! ProductInfoTableViewCell
-    productInfoCell.productInfoCellView = productInfoViewArr[indexPath.row]
     
     let imageCellHeight: CGFloat = 532
     let titleCellHeight: CGFloat = 172
     let pointCellHeight: CGFloat = 86
     let discountCouponHeight: CGFloat = 86
-    let categoryHeight: CGFloat = 700
+    let categoryHeight: CGFloat = 312
+    let sellerAnotherProductHeight: CGFloat = 242
     
-    switch indexPath.row {
+    switch indexPath.section {
     case 0:
-      tableView.rowHeight = imageCellHeight
+      switch indexPath.row {
+      case 0:
+        tableView.rowHeight = imageCellHeight
+        let cell = tableView.dequeueReusableCell(
+          withIdentifier: ProductImagesTableViewCell.identifier,
+          for: indexPath) as! ProductImagesTableViewCell
+        return cell
+      case 1:
+        tableView.rowHeight = titleCellHeight
+        let cell = tableView.dequeueReusableCell(
+          withIdentifier: ProductInfoTitleTableViewCell.identifier,
+          for: indexPath) as! ProductInfoTitleTableViewCell
+        return cell
+      case 2:
+        tableView.rowHeight = pointCellHeight
+        let cell = tableView.dequeueReusableCell(
+          withIdentifier: ProductInfoPointTableViewCell.identifier,
+          for: indexPath) as! ProductInfoPointTableViewCell
+        return cell
+      case 3:
+        tableView.rowHeight = discountCouponHeight
+        let cell = tableView.dequeueReusableCell(
+          withIdentifier: ProductInfoDiscountCouponTableViewCell.identifier,
+          for: indexPath) as! ProductInfoDiscountCouponTableViewCell
+        return cell
+      default:
+        break
+      }
     case 1:
-      tableView.rowHeight = titleCellHeight
+      switch indexPath.row {
+      case 0:
+        tableView.rowHeight = categoryHeight
+        let cell = tableView.dequeueReusableCell(
+          withIdentifier: ProductInfoCategoryTableViewCell.identifier,
+          for: indexPath) as! ProductInfoCategoryTableViewCell
+        return cell
+      default:
+        break
+      }
     case 2:
-      tableView.rowHeight = pointCellHeight
-    case 3:
-      tableView.rowHeight = discountCouponHeight
-    case 4:
-      tableView.rowHeight = categoryHeight
+      switch indexPath.row {
+      case 0:
+        tableView.rowHeight = sellerAnotherProductHeight
+        let cell = tableView.dequeueReusableCell(
+          withIdentifier: ProductInfoSellerAnotherProductTableViewCell.identifier,
+          for: indexPath) as! ProductInfoSellerAnotherProductTableViewCell
+        return cell
+      default:
+        break
+      }
     default:
       break
     }
-    return productInfoCell
+    return UITableViewCell()
   }
 }
+
+// MARK: - UITableViewDelegate
+
+extension ProductInfoViewController: UITableViewDelegate {
+  
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return tableView.tableFooterView
+  }
+  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 10
+  }
+}
+

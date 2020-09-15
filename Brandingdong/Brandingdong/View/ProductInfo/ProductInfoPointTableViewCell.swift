@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ProductInfoPointView: UIView {
+class ProductInfoPointTableViewCell: UITableViewCell {
   // MARK: - Property
+  
+  static let identifier = "ProductInfoPointTableViewCell"
   
   private let saveMoneyTitle: UILabel = {
     let lb = UILabel()
@@ -49,16 +51,16 @@ class ProductInfoPointView: UIView {
     return lb
   }()
   
-  // MARK: - Init View
+  // MARK: - Cell init
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setUI()
-    setConstraints()
+  override func awakeFromNib() {
+    super.awakeFromNib()
   }
   
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+    setUI()
+    setConstraints()
   }
   // MARK: - Setup Layout
   
@@ -68,7 +70,7 @@ class ProductInfoPointView: UIView {
      saveMoneySubView,
      saveMoneyMaxPriceTitle,
      saveMoneySubTitle].forEach {
-      self.addSubview($0)
+      contentView.addSubview($0)
     }
   }
   

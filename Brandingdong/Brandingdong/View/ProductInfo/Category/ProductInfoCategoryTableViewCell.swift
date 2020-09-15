@@ -8,8 +8,14 @@
 
 import UIKit
 
-class ProductInfoCategoryView: UIView {
+protocol ProductInfoCategoryTableViewCellDelegate{
+  func changeCategory(indexPath: Int) -> Int
+}
+
+class ProductInfoCategoryTableViewCell: UITableViewCell {
   // MARK: - Property
+  
+  static let identifier = "ProductInfoCategoryTableViewCell"
   
   private let categoryMenuArr = ["상품정보", "리뷰", "Q&A", "주문정보"]
   private let layout = UICollectionViewFlowLayout()
@@ -21,19 +27,20 @@ class ProductInfoCategoryView: UIView {
   }()
   
   private let tableView = UITableView()
+    
+  // MARK: - Cell init
   
-  // MARK: - Init View
-  
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setLayout()
-    setCollectionView()
-    setUI()
-    setConstraints()
+  override func awakeFromNib() {
+    super.awakeFromNib()
   }
   
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+    setUI()
+    setConstraints()
+    setLayout()
+    setCollectionView()
+    setTableView()
   }
   
   // MARK: - Set Property
@@ -56,7 +63,20 @@ class ProductInfoCategoryView: UIView {
     collectionView.dataSource = self
     collectionView.delegate = self
     
-    collectionView.register(ProductInfoCategoryCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCategoryCollectionViewCell.identifier)
+    collectionView.register(
+      ProductInfoCategoryCollectionViewCell.self,
+      forCellWithReuseIdentifier: ProductInfoCategoryCollectionViewCell.identifier)
+  }
+  
+  private func setTableView() {
+    tableView.allowsSelection = false
+    tableView.dataSource = self
+    tableView.rowHeight = 272
+    tableView.isScrollEnabled = false
+    
+    tableView.register(
+      ReViewTableViewCell.self,
+      forCellReuseIdentifier: ReViewTableViewCell.identifier)
   }
   
   // MARK: - Setup Layout
@@ -65,7 +85,7 @@ class ProductInfoCategoryView: UIView {
     [collectionView,
      categoryMenuSubView,
      tableView].forEach {
-      self.addSubview($0)
+      contentView.addSubview($0)
     }
   }
   
@@ -89,11 +109,15 @@ class ProductInfoCategoryView: UIView {
       $0.top.equalTo(collectionView.snp.bottom).offset(-subviewPadding)
       $0.height.equalTo(0.5)
     }
+    tableView.snp.makeConstraints {
+      $0.top.equalTo(categoryMenuSubView.snp.bottom)
+      $0.bottom.equalToSuperview()
+    }
   }
 }
 // MARK: - UICollectionViewDataSource
 
-extension ProductInfoCategoryView: UICollectionViewDataSource {
+extension ProductInfoCategoryTableViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return categoryMenuArr.count
   }
@@ -107,7 +131,7 @@ extension ProductInfoCategoryView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension ProductInfoCategoryView: UICollectionViewDelegate {
+extension ProductInfoCategoryTableViewCell: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if let didSelectCheckIndex = collectionView.cellForItem(at: indexPath) as? ProductInfoCategoryCollectionViewCell {
       UIView.animate(withDuration: 0.5) {
@@ -126,5 +150,21 @@ extension ProductInfoCategoryView: UICollectionViewDelegate {
         didDeslectCheckIndex.nameSubLine.isHidden = true
       }
     }
+  }
+}
+
+// MARK: - UITableViewDataSource
+
+extension ProductInfoCategoryTableViewCell: UITableViewDataSource {
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: ReViewTableViewCell.identifier,
+      for: indexPath)
+    return cell
   }
 }
