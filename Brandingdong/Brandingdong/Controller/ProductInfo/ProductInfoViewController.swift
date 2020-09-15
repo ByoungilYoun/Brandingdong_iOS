@@ -218,8 +218,8 @@ extension ProductInfoViewController: UITableViewDataSource {
     let titleCellHeight: CGFloat = 172
     let pointCellHeight: CGFloat = 86
     let discountCouponHeight: CGFloat = 86
-    let categoryHeight: CGFloat = 700
-    let sellerAnotherProductHeight: CGFloat = 212
+    let categoryHeight: CGFloat = 312
+    let sellerAnotherProductHeight: CGFloat = 242
     
     switch indexPath.section {
     case 0:

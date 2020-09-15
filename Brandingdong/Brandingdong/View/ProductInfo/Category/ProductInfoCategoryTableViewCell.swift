@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ProductInfoCategoryTableViewCellDelegate{
+  func changeCategory(indexPath: Int) -> Int
+}
+
 class ProductInfoCategoryTableViewCell: UITableViewCell {
   // MARK: - Property
   
@@ -32,10 +36,11 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-    setLayout()
-    setCollectionView()
     setUI()
     setConstraints()
+    setLayout()
+    setCollectionView()
+    setTableView()
   }
   
   // MARK: - Set Property
@@ -58,7 +63,20 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
     collectionView.dataSource = self
     collectionView.delegate = self
     
-    collectionView.register(ProductInfoCategoryCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoCategoryCollectionViewCell.identifier)
+    collectionView.register(
+      ProductInfoCategoryCollectionViewCell.self,
+      forCellWithReuseIdentifier: ProductInfoCategoryCollectionViewCell.identifier)
+  }
+  
+  private func setTableView() {
+    tableView.allowsSelection = false
+    tableView.dataSource = self
+    tableView.rowHeight = 272
+    tableView.isScrollEnabled = false
+    
+    tableView.register(
+      ReViewTableViewCell.self,
+      forCellReuseIdentifier: ReViewTableViewCell.identifier)
   }
   
   // MARK: - Setup Layout
@@ -90,6 +108,10 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
     categoryMenuSubView.snp.makeConstraints {
       $0.top.equalTo(collectionView.snp.bottom).offset(-subviewPadding)
       $0.height.equalTo(0.5)
+    }
+    tableView.snp.makeConstraints {
+      $0.top.equalTo(categoryMenuSubView.snp.bottom)
+      $0.bottom.equalToSuperview()
     }
   }
 }
@@ -128,5 +150,21 @@ extension ProductInfoCategoryTableViewCell: UICollectionViewDelegate {
         didDeslectCheckIndex.nameSubLine.isHidden = true
       }
     }
+  }
+}
+
+// MARK: - UITableViewDataSource
+
+extension ProductInfoCategoryTableViewCell: UITableViewDataSource {
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: ReViewTableViewCell.identifier,
+      for: indexPath)
+    return cell
   }
 }

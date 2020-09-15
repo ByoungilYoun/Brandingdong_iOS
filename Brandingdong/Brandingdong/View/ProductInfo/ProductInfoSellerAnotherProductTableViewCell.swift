@@ -14,7 +14,6 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
   static let identifier = "ProductInfoSellerAnotherProductTableViewCell"
   
   private let sellerInfoView = UIView()
-  
   private let sellerImageView: UIImageView = {
     let igv = UIImageView()
     return igv
@@ -35,7 +34,11 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
     lb.text = "판매자 서브 닉네임"
     return lb
   }()
-
+  
+  private let deviceWidth = UIScreen.main.bounds.width
+  private let layout = UICollectionViewFlowLayout()
+  lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+  
   
   
   // MARK: - Cell init
@@ -48,22 +51,48 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
     setUI()
     setConstraints()
+    setLayout()
+    setCollectionView()
   }
   
-    // MARK: - Setup Layout
+  // MARK: - Setup Layout
   
   private func setUI() {
-    [sellerInfoView].forEach {
+    [sellerInfoView,
+     collectionView].forEach {
       contentView.addSubview($0)
     }
     
     [sellerImageView,
-    sellerNickName,
-    sellerSubNickName].forEach {
+     sellerNickName,
+     sellerSubNickName].forEach {
       sellerInfoView.addSubview($0)
     }
     sellerImageView.image = UIImage(named: "테스트4")
   }
+  
+  // MARK: - Set Property
+  
+  private func setLayout() {
+    
+    let itemSpacing: CGFloat = 8
+    let sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+    let itemWidth: CGFloat = (deviceWidth / 2) - (itemSpacing + sectionInset.left + sectionInset.right)
+    let itemHeight: CGFloat = 234
+    
+    
+    layout.scrollDirection = .vertical
+    layout.sectionInset = sectionInset
+    layout.minimumInteritemSpacing = itemSpacing
+    layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+  }
+  
+  private func setCollectionView() {
+    collectionView.backgroundColor = .systemBackground
+    collectionView.showsHorizontalScrollIndicator = false
+//    collectionView.dataSource = self
+  }
+  
   
   private func setConstraints() {
     
@@ -71,7 +100,8 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
     let sellerInfoViewHeight: CGFloat = 212
     
     
-    [sellerInfoView].forEach {
+    [sellerInfoView,
+     collectionView].forEach {
       $0.snp.makeConstraints {
         $0.leading.equalToSuperview().offset(padding)
         $0.trailing.equalToSuperview().offset(-padding)
@@ -85,8 +115,8 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
     let sellerImageViewSize: CGFloat = 64
     
     [sellerImageView,
-    sellerNickName,
-    sellerSubNickName].forEach {
+     sellerNickName,
+     sellerSubNickName].forEach {
       $0.snp.makeConstraints {
         $0.centerX.equalTo(sellerInfoView.snp.centerX)
       }
@@ -104,7 +134,23 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
       $0.top.equalTo(sellerNickName.snp.bottom).offset(padding)
     }
     
+    collectionView.snp.makeConstraints {
+      $0.top.equalTo(sellerInfoView.snp.bottom).offset(padding)
+      $0.bottom.equalTo(contentView.snp.bottom)
+    }
+    
     sellerImageView.clipsToBounds = true
     sellerImageView.layer.cornerRadius = sellerImageViewSize/2
   }
 }
+
+// MARK: - UICollectionViewDataSource
+//extension ProductInfoSellerAnotherProductTableViewCell: UICollectionViewDataSource {
+//  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//    return 4
+//  }
+//
+//  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//    <#code#>
+//  }
+//}
