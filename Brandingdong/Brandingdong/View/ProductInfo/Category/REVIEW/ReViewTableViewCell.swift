@@ -15,7 +15,6 @@ class ReViewTableViewCell: UITableViewCell {
   
   private let deviceWidth = UIScreen.main.bounds.width
   
-  
   let reviewCountLabel: UILabel = {
     let lb = UILabel()
     lb.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
@@ -129,7 +128,7 @@ class ReViewTableViewCell: UITableViewCell {
   
   private func setConstraints() {
     
-    let padding: CGFloat = 32
+    let padding: CGFloat = 16
     let starRatingViewPadding: CGFloat = 16
     let starRatingViewWidth: CGFloat = 150
     let starRatingViewHeight: CGFloat = 50
