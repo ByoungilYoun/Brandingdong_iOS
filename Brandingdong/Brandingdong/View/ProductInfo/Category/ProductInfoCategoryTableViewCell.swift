@@ -31,7 +31,6 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   var categoryClick = "" {
     didSet {
       tableView.reloadData()
-      collectionView.reloadData()
     }
   }
   
