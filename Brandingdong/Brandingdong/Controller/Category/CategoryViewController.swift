@@ -21,8 +21,11 @@ class CategoryViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .lightGray
-    setNavi()
     setUI()
+  }
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setNavi()
   }
   
   override func viewDidLayoutSubviews() {
@@ -37,6 +40,7 @@ class CategoryViewController: UIViewController {
   
   // MARK: - Setup Layout
   private func setNavi() {
+    navigationController?.navigationBar.isHidden = false
     navigationItem.title = "카테고리"
   }
   
