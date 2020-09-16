@@ -10,12 +10,7 @@ import Foundation
 
 struct CategoryData {
     static let categoryMenuName = [
-    "투데이",
-    "랭킹",
-    "쇼핑몰",
+    "쇼핑몰*마켓",
     "브랜드",
-    "뷰티",
-    "특가",
-    "이벤트",
-    "스토어"]
+    "뷰티"]
 }
