@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ProductImagesView: UIView {
+class ProductImagesTableViewCell: UITableViewCell {
   // MARK: - Property
+  
+  static let identifier = "ProductImagesTableViewCell"
   
   private let deviceWidth = UIScreen.main.bounds.width
   private let deviceHeight = UIScreen.main.bounds.height
@@ -22,20 +24,21 @@ class ProductImagesView: UIView {
     UIImage.init(named: $0)
   }
   
-  // MARK: - init View
+  // MARK: - Cell Init
+    
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     setLayout()
     setCollectionView()
     setPageControl()
     setUI()
     setConstraints()
   }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
+
   
   // MARK: - Set Property
   
@@ -59,6 +62,7 @@ class ProductImagesView: UIView {
     
     collectionView.dataSource = self
     collectionView.delegate = self
+    
     collectionView.register(ProductInfoImageCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoImageCollectionViewCell.identifier)
   }
   
@@ -73,7 +77,7 @@ class ProductImagesView: UIView {
   
   private func setUI() {
     [collectionView, pageControl].forEach {
-      self.addSubview($0)
+      contentView.addSubview($0)
     }
   }
   
@@ -93,7 +97,7 @@ class ProductImagesView: UIView {
 }
 
 // MARK: - UICollectionViewDataSource
-extension ProductImagesView: UICollectionViewDataSource {
+extension ProductImagesTableViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return productImageArr.count
   }
@@ -107,7 +111,7 @@ extension ProductImagesView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension ProductImagesView: UICollectionViewDelegate {
+extension ProductImagesTableViewCell: UICollectionViewDelegate {
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
     
     let page = Int(targetContentOffset.pointee.x / self.frame.width)

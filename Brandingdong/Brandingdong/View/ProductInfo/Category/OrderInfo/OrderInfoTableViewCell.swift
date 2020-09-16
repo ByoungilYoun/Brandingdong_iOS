@@ -1,24 +1,24 @@
 //
-//  ProductInfoTableViewCell.swift
+//  OrderInfoTableViewCell.swift
 //  Brandingdong
 //
-//  Created by 이진욱 on 2020/09/04.
+//  Created by 이진욱 on 2020/09/16.
 //  Copyright © 2020 jwlee. All rights reserved.
 //
 
 import UIKit
 
-class ProductInfoTableViewCell: UITableViewCell {
-  
+class OrderInfoTableViewCell: UITableViewCell {
   // MARK: - Property
   
-  static let identifier = "ProductInfoTableViewCell"
-  var productInfoCellView = UIView()
+  static let identifier = "OrderInfoTableViewCell"
+  let orderInfoImageView = UIImageView()
   
-  // MARK: - Cell init
+  // MARK: - Cell Init
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,14 +27,15 @@ class ProductInfoTableViewCell: UITableViewCell {
     setConstraints()
   }
   
-  // MARK: - Set Layout
+  // MARK: - Set LayOut
   
   private func setUI() {
-    contentView.addSubview(productInfoCellView)
+    orderInfoImageView.image = UIImage(named: "주문정보")
+    contentView.addSubview(orderInfoImageView)
   }
   
   private func setConstraints() {
-    productInfoCellView.snp.makeConstraints {
+    orderInfoImageView.snp.makeConstraints {
       $0.top.leading.bottom.trailing.equalToSuperview()
     }
   }

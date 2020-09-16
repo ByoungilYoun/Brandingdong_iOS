@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ProductInfoDiscountCouponView: UIView {
+class ProductInfoDiscountCouponTableViewCell: UITableViewCell {
   // MARK: - Property
+  
+  static let identifier = "ProductInfoDiscountCouponTableViewCell"
   
   let discountCouponButton: UIButton = {
     let btn = UIButton()
@@ -23,21 +25,21 @@ class ProductInfoDiscountCouponView: UIView {
   }()
   
   
-  // MARK: - Init View
+  // MARK: - Cell init
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setUI()
-    setConstraints()
+  override func awakeFromNib() {
+    super.awakeFromNib()
   }
   
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+    setUI()
+    setConstraints()
   }
   // MARK: - Setup Layout
   
   private func setUI() {
-    self.addSubview(discountCouponButton)
+    contentView.addSubview(discountCouponButton)
   }
   
   private func setConstraints() {
