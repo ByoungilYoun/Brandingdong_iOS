@@ -22,10 +22,14 @@ class TabBarViewController: UITabBarController {
     super.viewDidLoad()
     setTabBar()
   }
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    setNavi()
+  }
   
   // MARK: - SetTabBar
   
-  func setTabBar() {
+  private func setTabBar() {
     view.backgroundColor = .systemBackground
     naviHomeVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), tag: 0)
     naviCategoryVC.tabBarItem = UITabBarItem(title: "카테고리", image: UIImage(systemName: "square.grid.2x2"), tag: 1)
@@ -33,5 +37,8 @@ class TabBarViewController: UITabBarController {
     naviMyPageVC.tabBarItem = UITabBarItem(title: "MY", image: UIImage(systemName: "person"), tag: 3)
 
     viewControllers = [naviHomeVC, naviCategoryVC, naviFavoriteVC, naviMyPageVC]
+  }
+  private func setNavi() {
+    navigationController?.navigationBar.isHidden = true
   }
 }
