@@ -41,6 +41,8 @@ class ProductInfoViewController: UIViewController {
     return btn
   }()
   
+  let qATableViewCell = QATableViewCell()
+  
   var toggle = false
   
   // MARK: - LifeCycle
@@ -169,6 +171,31 @@ class ProductInfoViewController: UIViewController {
     navigationController?.navigationBar.layoutIfNeeded()
   }
   
+  // MARK: - keyboard Hidden
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+    self.view.endEditing(true)
+  }
+
+  // MARK: - Create Alert
+  
+  private func createAlert(title: String?, message: String?, actions: [UIAlertAction]) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    for action in actions {
+      alert.addAction(action)
+    }
+    present(alert, animated: true)
+  }
+  
+  // MARK: - Set Protocol
+//  
+//  private func setProtocolDelegate() {
+//    qATableViewCell.delegate = self
+//  }
+
+  
+  // MARK: - objc
+  
   @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
     navigationController?.popViewController(animated: true)
   }
@@ -218,7 +245,7 @@ extension ProductInfoViewController: UITableViewDataSource {
     let titleCellHeight: CGFloat = 172
     let pointCellHeight: CGFloat = 86
     let discountCouponHeight: CGFloat = 86
-    let categoryHeight: CGFloat = 312
+    let categoryHeight: CGFloat = 324
     let sellerAnotherProductHeight: CGFloat = 242
     
     switch indexPath.section {
@@ -292,4 +319,3 @@ extension ProductInfoViewController: UITableViewDelegate {
     return 10
   }
 }
-

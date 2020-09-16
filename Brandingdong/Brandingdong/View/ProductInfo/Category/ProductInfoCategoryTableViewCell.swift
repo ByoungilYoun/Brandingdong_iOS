@@ -27,7 +27,15 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   }()
   
   private let tableView = UITableView()
-    
+  
+  var categoryClick = "" {
+    didSet {
+      tableView.reloadData()
+      collectionView.reloadData()
+    }
+  }
+  
+  
   // MARK: - Cell init
   
   override func awakeFromNib() {
@@ -75,8 +83,21 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
     tableView.isScrollEnabled = false
     
     tableView.register(
+      ProductDetailInfoTableViewCell.self,
+      forCellReuseIdentifier: ProductDetailInfoTableViewCell.identifier)
+    
+    tableView.register(
       ReViewTableViewCell.self,
       forCellReuseIdentifier: ReViewTableViewCell.identifier)
+    
+    tableView.register(
+      QATableViewCell.self,
+      forCellReuseIdentifier: QATableViewCell.identifier)
+    
+    tableView.register(
+      OrderInfoTableViewCell.self,
+      forCellReuseIdentifier: OrderInfoTableViewCell.identifier)
+    
   }
   
   // MARK: - Setup Layout
@@ -114,6 +135,12 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
       $0.bottom.equalToSuperview()
     }
   }
+  
+  // MARK: - Category Tap Check
+  
+  private func CategoryCheck(indexPathText: String) -> String {
+    return indexPathText
+  }
 }
 // MARK: - UICollectionViewDataSource
 
@@ -124,7 +151,9 @@ extension ProductInfoCategoryTableViewCell: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoCategoryCollectionViewCell.identifier, for: indexPath) as! ProductInfoCategoryCollectionViewCell
+    
     cell.menuName.text = categoryMenuArr[indexPath.item]
+    
     return cell
   }
 }
@@ -132,23 +161,21 @@ extension ProductInfoCategoryTableViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension ProductInfoCategoryTableViewCell: UICollectionViewDelegate {
+  
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if let didSelectCheckIndex = collectionView.cellForItem(at: indexPath) as? ProductInfoCategoryCollectionViewCell {
-      UIView.animate(withDuration: 0.5) {
-        didSelectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-        didSelectCheckIndex.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-        didSelectCheckIndex.nameSubLine.isHidden = false
-      }
+      didSelectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
+      didSelectCheckIndex.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+      didSelectCheckIndex.nameSubLine.isHidden = false
+      categoryClick = didSelectCheckIndex.menuName.text!
     }
   }
   
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     if let didDeslectCheckIndex = collectionView.cellForItem(at: indexPath) as? ProductInfoCategoryCollectionViewCell {
-      UIView.animate(withDuration: 0.5) {
-        didDeslectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-        didDeslectCheckIndex.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        didDeslectCheckIndex.nameSubLine.isHidden = true
-      }
+      didDeslectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
+      didDeslectCheckIndex.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+      didDeslectCheckIndex.nameSubLine.isHidden = true
     }
   }
 }
@@ -156,15 +183,32 @@ extension ProductInfoCategoryTableViewCell: UICollectionViewDelegate {
 // MARK: - UITableViewDataSource
 
 extension ProductInfoCategoryTableViewCell: UITableViewDataSource {
-
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 1
   }
-
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(
-      withIdentifier: ReViewTableViewCell.identifier,
-      for: indexPath)
-    return cell
+    switch categoryClick {
+    case "", "상품정보":
+      let cell = tableView.dequeueReusableCell(withIdentifier: ProductDetailInfoTableViewCell.identifier,
+                                               for: indexPath)
+      return cell
+    case "리뷰":
+      let cell = tableView.dequeueReusableCell(withIdentifier: ReViewTableViewCell.identifier,
+                                               for: indexPath)
+      return cell
+    case "Q&A":
+      let cell = tableView.dequeueReusableCell(withIdentifier: QATableViewCell.identifier,
+                                               for: indexPath)
+      return cell
+    case "주문정보":
+      let cell = tableView.dequeueReusableCell(withIdentifier: OrderInfoTableViewCell.identifier,
+                                               for: indexPath)
+      return cell
+    default:
+      break
+    }
+    return UITableViewCell()
   }
 }
