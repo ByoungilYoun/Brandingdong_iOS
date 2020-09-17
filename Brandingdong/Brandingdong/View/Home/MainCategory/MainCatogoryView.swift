@@ -114,7 +114,6 @@ extension MainCategoryView: UICollectionViewDataSource {
 
 extension MainCategoryView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let firstIndex = collectionView.visibleCells.first
     
     if let didSelectCheckIndex = collectionView.cellForItem(at: indexPath) as? MainCategoryCollectionViewCell {
       UIView.animate(withDuration: 0.5) {

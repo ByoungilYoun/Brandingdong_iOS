@@ -11,7 +11,7 @@ import SnapKit
 
 class HomeViewController: UIViewController {
   // MARK: - Property
-    
+  
   private let searchBasketView = SearchBasketView()
   private let mainCategoryView = MainCategoryView()
   private let shoppingMallVC = ShoppingMallViewController()
@@ -29,12 +29,30 @@ class HomeViewController: UIViewController {
     return bt
   }()
   
+  struct ProductList: Codable {
+    var next: String
+    var results: [Results]
+    
+    struct Results: Codable {
+      var name: String
+      var price: Int
+      var discount_rate: String
+      var sales_count: Int
+    }
+  }
+  
+  struct Events: Codable {
+    var images: String
+  }
+  
   // MARK: - LifeCycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setUI()
     setConstraints()
+    getImages()
+//    getProductList()
     mainCategoryView.delegate = self
   }
   
@@ -94,13 +112,13 @@ class HomeViewController: UIViewController {
       $0.leading.trailing.bottom.equalToSuperview()
     }
     brandVC.view.snp.makeConstraints {
-        $0.top.equalTo(mainCategoryView.snp.bottom)
-        $0.leading.trailing.bottom.equalToSuperview()
-      }
+      $0.top.equalTo(mainCategoryView.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
+    }
     beautyVC.view.snp.makeConstraints {
-        $0.top.equalTo(mainCategoryView.snp.bottom)
-        $0.leading.trailing.bottom.equalToSuperview()
-      }
+      $0.top.equalTo(mainCategoryView.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
+    }
     
     moveToTopButton.snp.makeConstraints {
       $0.trailing.equalToSuperview().offset(-16)
@@ -113,6 +131,69 @@ class HomeViewController: UIViewController {
     moveToTopButton.layer.cornerRadius = moveToTopButton.frame.width / 2
     moveToTopButton.clipsToBounds = true
   }
+  
+  private func getProductList() {
+    print ("서비스")
+    let productUrl = "http://52.78.75.94/products/detail"
+    guard let url = URL(string: productUrl) else { return }
+    print ("서비스1")
+    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+      guard error == nil else { return print ("error : ", error!.localizedDescription)}
+      print ("서비스2")
+      let responsea = response as? HTTPURLResponse
+      print (responsea!.statusCode)
+      guard let response = response as? HTTPURLResponse,
+        (200..<406).contains(response.statusCode) else { return }
+      print ("서비스3")
+      guard let data = data else { return }
+      print ("서비스4")
+      print (data)
+      do {
+        let userResult = try JSONDecoder().decode(ProductList.self, from: data)
+        for index in 0..<userResult.results.count {
+//          print (userResult.next)
+//          print (userResult.results[index].name)
+//          print (userResult.results[index].price)
+//          print (userResult.results[index].discount_rate)
+//          print (userResult.results[index].sales_count)
+        }
+        print ("서비스4")
+      } catch {
+        print ("failed to convert error : ", error.localizedDescription)
+      }
+    }
+    task.resume()
+  }
+  
+  private func getImages() {
+    print ("서비스")
+    let productUrl = "http://52.78.75.94/events/"
+    guard let url = URL(string: productUrl) else { return }
+    print ("서비스1")
+    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+      guard error == nil else { return print ("error : ", error!.localizedDescription)}
+      print ("서비스2")
+      let responsea = response as? HTTPURLResponse
+      print (responsea!.statusCode)
+      guard let response = response as? HTTPURLResponse,
+        (200..<406).contains(response.statusCode) else { return }
+      print ("서비스3")
+      guard let data = data else { return }
+      print ("서비스4")
+      print (data)
+      do {
+        let bannerImages = try JSONDecoder().decode([Events].self, from: data)
+        for index in 0..<bannerImages.count {
+          print (bannerImages[index])
+        }
+        print ("서비스4")
+      } catch {
+        print ("failed to convert error : ", error.localizedDescription)
+      }
+    }
+    task.resume()
+  }
+  
   
   // MARK: - Navigation Hidden
   
@@ -141,6 +222,4 @@ extension HomeViewController : ChangeViewDelegate {
       brandVC.view.isHidden = true 
     }
   }
-  
-  
 }

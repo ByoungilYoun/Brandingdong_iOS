@@ -34,7 +34,5 @@ struct LoginViewModel : AuthenticationProtocol {
   var xmarkOnPassword : Bool {
     return password?.isEmpty == false 
   }
-  
-  
 }
 
