@@ -37,7 +37,7 @@ class UserInfoEntryView: UIView {
   }()
   
   private let recPersonLabel: UserInfoLabel = {
-    let lb = UserInfoLabel(title: "추천인 코드 (선택사항)")
+    let lb = UserInfoLabel(title: "전화번호")
     return lb
   }()
   
@@ -62,7 +62,7 @@ class UserInfoEntryView: UIView {
   }()
   
   private let recPersonTextfield: UserInfoTextfield = {
-    let tf = UserInfoTextfield(placeholder: "추천인 코드를 입력하시면 1,000 포인트가 입력됩니다.")
+    let tf = UserInfoTextfield(placeholder: "전화번호를 입력하세요")
     return tf
   }()
   

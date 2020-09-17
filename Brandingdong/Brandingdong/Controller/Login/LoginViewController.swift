@@ -205,9 +205,15 @@ class LoginViewController : UIViewController {
     let id = idTextField.text!
     let pw = passwordTextField.text!
     
-    Service.signInUser(username: id, password: pw)
     
-    print ("클릭")
+    DispatchQueue.main.async {
+      Service.signInUser(username: id, password: pw)
+    }
+   
+    let controller = HomeLaunchScreenViewController()
+    navigationController?.pushViewController(controller, animated: true)
+    
+    
   }
   
   @objc func idTextRemove() {
