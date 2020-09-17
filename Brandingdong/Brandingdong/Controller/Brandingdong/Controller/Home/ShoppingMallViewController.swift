@@ -18,6 +18,8 @@ class ShoppingMallView : UIView {
    var tableView = UITableView()
   
   var delegate : ShoppingMallViewDelegate?
+ 
+  
   //MARK: - LifeCycle
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -88,8 +90,9 @@ extension ShoppingMallView : UITableViewDelegate {
 
   //MARK: - SecondTableViewCellDelegate
 extension ShoppingMallView : SecondTableViewCellDelegate {
+  
   func handlePresent(cell: SecondTableViewCell) {
-//    guard let index = tableView.indexPath(for: cell) else {return}
     delegate?.moveToProductInfo()
   }
 }
+

@@ -25,14 +25,10 @@ class FirstTableViewCell : UITableViewCell {
   private var bannerImage: [UIImage] = [] {
     didSet {
       collectionView.reloadData()
+      pageControl.numberOfPages = bannerImage.count
     }
   }
   
-
-  
-  struct Events: Codable {
-    var images: String
-  }
   //MARK: - init
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -86,7 +82,6 @@ class FirstTableViewCell : UITableViewCell {
   //MARK: - setPageControl()
   
   private func setPageControl() {
-    pageControl.numberOfPages = bannerImage.count
     pageControl.pageIndicatorTintColor = .lightGray
     pageControl.currentPageIndicatorTintColor = .white
     pageControl.addTarget(self, action: #selector(pageControlDidChange), for: .valueChanged)

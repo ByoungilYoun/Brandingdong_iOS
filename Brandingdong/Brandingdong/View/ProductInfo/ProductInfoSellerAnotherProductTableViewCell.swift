@@ -45,6 +45,15 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
     static let inset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
   }
   
+  private var sellerAnotherProductImageArr: [UIImage] = [] {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
+  private var sellerAnotherBrandNameArr: [String] = []
+  private var sellerAnotherNameArr: [String] = []
+  private var sellerAnotherPriceArr: [String] = []
+  
   // MARK: - Cell init
   
   override func awakeFromNib() {
@@ -57,6 +66,7 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
     setConstraints()
     setLayout()
     setCollectionView()
+    setSellerProductItems()
   }
   
   // MARK: - Setup Layout
@@ -150,6 +160,19 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
     sellerImageView.clipsToBounds = true
     sellerImageView.layer.cornerRadius = sellerImageViewSize/2
   }
+  
+  // MARK: - Set Value Image
+  
+  private func setSellerProductItems() {
+    for index in 0..<4 {
+      let url = URL(string: HomeInfoDatas.images[index + 10])
+      let data = try! Data(contentsOf: url!)
+      sellerAnotherProductImageArr.append(UIImage(data: data)!)
+      sellerAnotherNameArr.append(HomeInfoDatas.names[index + 10])
+      sellerAnotherPriceArr.append(String(HomeInfoDatas.price[index + 10]))
+      sellerAnotherBrandNameArr.append(HomeInfoDatas.brandNames[index + 10])
+    }
+  }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -162,10 +185,10 @@ extension ProductInfoSellerAnotherProductTableViewCell: UICollectionViewDataSour
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
-//    cell.configure(image: "brandi",
-//                   company: "온더리버",
-//                   description: "[자체제작] 웰메이드 레이온 원피스",
-//                   price: "21,000")
+    cell.configure(image: sellerAnotherProductImageArr[indexPath.item],
+                   company: sellerAnotherBrandNameArr[indexPath.item],
+                   description: sellerAnotherNameArr[indexPath.item],
+                   price: sellerAnotherPriceArr[indexPath.item])
     return cell
   }
 }

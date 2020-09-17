@@ -14,7 +14,7 @@ class AnotherLikeProductTableViewCell: UITableViewCell {
   
   static let identifier = "AnotherLikeProductTableViewCell"
   private let deviceWidth = UIScreen.main.bounds.width
-
+  
   
   let titleLabel: UILabel = {
     let lb = UILabel()
@@ -32,6 +32,15 @@ class AnotherLikeProductTableViewCell: UITableViewCell {
     static let inset = UIEdgeInsets(top: 0, left: 5, bottom: 8, right: 5)
   }
   
+  private var sellerAnotherProductImageArr: [UIImage] = [] {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
+  private var sellerAnotherBrandNameArr: [String] = []
+  private var sellerAnotherNameArr: [String] = []
+  private var sellerAnotherPriceArr: [String] = []
+  
   // MARK: - Cell Init
   
   override func awakeFromNib() {
@@ -45,6 +54,7 @@ class AnotherLikeProductTableViewCell: UITableViewCell {
     setConstraints()
     setLayout()
     setCollectionView()
+    setSellerProductItems()
   }
   
   
@@ -96,6 +106,19 @@ class AnotherLikeProductTableViewCell: UITableViewCell {
     collectionView.register(CommonProductCollectionViewCell.self ,
                             forCellWithReuseIdentifier: CommonProductCollectionViewCell.identifer)
   }
+  
+  // MARK: - Set Value Image
+  
+  private func setSellerProductItems() {
+    for index in 0..<4 {
+      let url = URL(string: HomeInfoDatas.images[index + 20])
+      let data = try! Data(contentsOf: url!)
+      sellerAnotherProductImageArr.append(UIImage(data: data)!)
+      sellerAnotherNameArr.append(HomeInfoDatas.names[index + 20])
+      sellerAnotherPriceArr.append(String(HomeInfoDatas.price[index + 20]))
+      sellerAnotherBrandNameArr.append(HomeInfoDatas.brandNames[index + 20])
+    }
+  }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -109,10 +132,10 @@ extension AnotherLikeProductTableViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
-//    cell.configure(image: "brandi",
-//                   company: "온더리버",
-//                   description: "[자체제작] 웰메이드 레이온 원피스",
-//                   price: "21,000")
+    cell.configure(image: sellerAnotherProductImageArr[indexPath.item],
+                   company: sellerAnotherBrandNameArr[indexPath.item],
+                   description: sellerAnotherNameArr[indexPath.item],
+                   price: sellerAnotherPriceArr[indexPath.item])
     return cell
   }
 }

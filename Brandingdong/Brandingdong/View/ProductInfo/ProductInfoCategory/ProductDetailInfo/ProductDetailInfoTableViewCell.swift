@@ -36,7 +36,7 @@ class ProductDetailInfoTableViewCell: UITableViewCell {
   
   private func setConstraints() {
     detailInfoView.snp.makeConstraints {
-      $0.top.leading.bottom.trailing.equalToSuperview()
+      $0.top.leading.bottom.trailing.equalTo(contentView)
     }
   }
 
