@@ -67,7 +67,11 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
   
   //MARK: - setUI()
   private func setUI() {
-    [imageView, companyLabel, descriptionLabel, priceLabel, heartButton].forEach {
+    [imageView,
+     companyLabel,
+     descriptionLabel,
+     priceLabel,
+     heartButton].forEach {
       contentView.addSubview($0)
     }
   }
@@ -106,6 +110,7 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
   private func didTabHeartButton() {
     heartButton.addTarget(self, action: #selector(clickedBtn), for: .touchUpInside)
   }
+
   @objc func clickedBtn(_ sender : UIButton) {
     if !buttonToggle {
      heartButton.tintColor = .systemRed
