@@ -41,10 +41,6 @@ class HomeViewController: UIViewController {
     }
   }
   
-  struct Events: Codable {
-    var images: String
-  }
-  
   // MARK: - LifeCycle
   
   override func viewDidLoad() {
@@ -164,36 +160,7 @@ class HomeViewController: UIViewController {
     }
     task.resume()
   }
-  
-  private func getImages() {
-    print ("서비스")
-    let productUrl = "http://52.78.75.94/events/"
-    guard let url = URL(string: productUrl) else { return }
-    print ("서비스1")
-    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-      guard error == nil else { return print ("error : ", error!.localizedDescription)}
-      print ("서비스2")
-      let responsea = response as? HTTPURLResponse
-      print (responsea!.statusCode)
-      guard let response = response as? HTTPURLResponse,
-        (200..<406).contains(response.statusCode) else { return }
-      print ("서비스3")
-      guard let data = data else { return }
-      print ("서비스4")
-      print (data)
-      do {
-        let bannerImages = try JSONDecoder().decode([Events].self, from: data)
-        for index in 0..<bannerImages.count {
-          print (bannerImages[index])
-        }
-        print ("서비스4")
-      } catch {
-        print ("failed to convert error : ", error.localizedDescription)
-      }
-    }
-    task.resume()
-  }
-  
+    
   
   // MARK: - Navigation Hidden
   

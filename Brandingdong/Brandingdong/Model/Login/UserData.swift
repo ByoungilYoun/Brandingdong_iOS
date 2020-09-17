@@ -28,4 +28,8 @@ struct SignUpData: Codable {
 struct SignInData: Codable {
   let username: String
   let password: String
+  
+  struct Events: Codable {
+    var images: String
+  }
 }

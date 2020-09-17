@@ -69,10 +69,9 @@ struct Service {
     task.resume()
   }
   
-  
-  static func getProductList() {
+  private func getImages() {
     print ("서비스")
-    let productUrl = "http://52.78.75.94/products/detail"
+    let productUrl = "http://52.78.75.94/events/"
     guard let url = URL(string: productUrl) else { return }
     print ("서비스1")
     let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -86,16 +85,15 @@ struct Service {
       guard let data = data else { return }
       print ("서비스4")
       print (data)
-//      var userResult: SignInData?
-//
-//      do {
-//        userResult = try JSONDecoder().decode(SignInData.self, from: data)
-//        print("userResult?.username : ", userResult?.username)
-//        print("userResult?.password : ", userResult?.password)
-//        print ("서비스4")
-//      } catch {
-//        print ("failed to convert error : ", error.localizedDescription)
-//      }
+      do {
+        let bannerImages = try JSONDecoder().decode([SignUpData.Events].self, from: data)
+        for index in 0..<bannerImages.count {
+          print (bannerImages[index])
+        }
+        print ("서비스4")
+      } catch {
+        print ("failed to convert error : ", error.localizedDescription)
+      }
     }
     task.resume()
   }
