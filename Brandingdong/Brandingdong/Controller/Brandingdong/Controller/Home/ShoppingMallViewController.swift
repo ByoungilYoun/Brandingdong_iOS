@@ -8,21 +8,29 @@
 
 import UIKit
 
-class ShoppingMallViewController : UIViewController {
+protocol ShoppingMallViewDelegate : class {
+  func moveToProductInfo()
+}
+
+class ShoppingMallView : UIView {
   
   //MARK: - Properties
    var tableView = UITableView()
   
+  var delegate : ShoppingMallViewDelegate?
   //MARK: - LifeCycle
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     setUI()
     setConstraints()
   }
   
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   //MARK: - setUI()
   private func setUI() {
-    view.backgroundColor = .systemBackground
+    self.backgroundColor = .systemBackground
     
     tableView.dataSource = self
     tableView.delegate = self
@@ -30,7 +38,7 @@ class ShoppingMallViewController : UIViewController {
     tableView.register(SecondTableViewCell.self, forCellReuseIdentifier: SecondTableViewCell.identifier)
     tableView.register(ThirdTableViewCell.self, forCellReuseIdentifier: ThirdTableViewCell.identifier)
     tableView.allowsSelection = false
-    view.addSubview(tableView)
+    addSubview(tableView)
   }
   
   //MARK: - setConstraints()
@@ -41,7 +49,7 @@ class ShoppingMallViewController : UIViewController {
   }
 }
   //MARK: - UITableViewDataSource
-extension ShoppingMallViewController : UITableViewDataSource {
+extension ShoppingMallView : UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
     return 3
   }
@@ -56,6 +64,7 @@ extension ShoppingMallViewController : UITableViewDataSource {
       return cell
     } else if indexPath.section == 1 {
       let cell = tableView.dequeueReusableCell(withIdentifier: SecondTableViewCell.identifier, for: indexPath) as! SecondTableViewCell
+      cell.delegate = self
       return cell
     } else {
       let cell = tableView.dequeueReusableCell(withIdentifier: ThirdTableViewCell.identifier, for: indexPath) as! ThirdTableViewCell
@@ -65,14 +74,22 @@ extension ShoppingMallViewController : UITableViewDataSource {
 }
 
   //MARK: - UITableViewDelegate
-extension ShoppingMallViewController : UITableViewDelegate {
+extension ShoppingMallView : UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == 0 {
-      return view.frame.size.height / 1.5
+      return self.frame.size.height / 1.5
     } else if indexPath.section == 1 {
       return 5920
     } else {
       return 600
     }
+  }
+}
+
+  //MARK: - SecondTableViewCellDelegate
+extension ShoppingMallView : SecondTableViewCellDelegate {
+  func handlePresent(cell: SecondTableViewCell) {
+//    guard let index = tableView.indexPath(for: cell) else {return}
+    delegate?.moveToProductInfo()
   }
 }

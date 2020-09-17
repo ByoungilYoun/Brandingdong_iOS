@@ -14,9 +14,9 @@ class HomeViewController: UIViewController {
   
   private let searchBasketView = SearchBasketView()
   private let mainCategoryView = MainCategoryView()
-  private let shoppingMallVC = ShoppingMallViewController()
-  private let brandVC = BrandViewController()
-  private let beautyVC = BeautyViewController()
+  private let shoppingMallVC = ShoppingMallView()
+  private let brandVC = BrandView()
+  private let beautyVC = BeautyView()
   
   private let moveToTopButton : UIButton = {
     let bt = UIButton()
@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     bt.addTarget(self, action: #selector(moveToTop(view:)), for: .touchUpInside)
     return bt
   }()
-  
+
   // MARK: - LifeCycle
   
   override func viewDidLoad() {
@@ -36,12 +36,13 @@ class HomeViewController: UIViewController {
     setUI()
     setConstraints()
     mainCategoryView.delegate = self
+    shoppingMallVC.delegate = self
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     hiddenNavi()
-    shoppingMallVC.view.isHidden = false
+    shoppingMallVC.isHidden = false
     
   }
   
@@ -54,18 +55,13 @@ class HomeViewController: UIViewController {
   
   private func setUI() {
     
-    [searchBasketView, mainCategoryView, shoppingMallVC.view, brandVC.view, beautyVC.view, moveToTopButton].forEach {
+    [searchBasketView, mainCategoryView, shoppingMallVC, brandVC, beautyVC, moveToTopButton].forEach {
       view.addSubview($0)
     }
     
-    shoppingMallVC.view.isHidden = false
-    shoppingMallVC.didMove(toParent: self)
-    
-    brandVC.view.isHidden = true
-    brandVC.didMove(toParent: self)
-    
-    beautyVC.view.isHidden = true
-    beautyVC.didMove(toParent: self)
+    shoppingMallVC.isHidden = false
+    brandVC.isHidden = true
+    beautyVC.isHidden = true
   }
   
   private func setConstraints() {
@@ -89,15 +85,15 @@ class HomeViewController: UIViewController {
       $0.top.equalTo(searchBasketView.snp.bottom).offset(margin)
       $0.trailing.equalToSuperview()
     }
-    shoppingMallVC.view.snp.makeConstraints {
+    shoppingMallVC.snp.makeConstraints {
       $0.top.equalTo(mainCategoryView.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
     }
-    brandVC.view.snp.makeConstraints {
+    brandVC.snp.makeConstraints {
       $0.top.equalTo(mainCategoryView.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
     }
-    beautyVC.view.snp.makeConstraints {
+    beautyVC.snp.makeConstraints {
       $0.top.equalTo(mainCategoryView.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
     }
@@ -114,6 +110,7 @@ class HomeViewController: UIViewController {
     moveToTopButton.clipsToBounds = true
   }
   
+
   // MARK: - Navigation Hidden
   
   private func hiddenNavi() {
@@ -128,17 +125,25 @@ class HomeViewController: UIViewController {
 extension HomeViewController : ChangeViewDelegate {
   func changeView(index: Int) {
     if index == 0 {
-      shoppingMallVC.view.isHidden = false
-      brandVC.view.isHidden = true
-      beautyVC.view.isHidden = true
+      shoppingMallVC.isHidden = false
+      brandVC.isHidden = true
+      beautyVC.isHidden = true
     } else if index == 1 {
-      brandVC.view.isHidden = false
-      shoppingMallVC.view.isHidden = true
-      beautyVC.view.isHidden = true
+      brandVC.isHidden = false
+      shoppingMallVC.isHidden = true
+      beautyVC.isHidden = true
     } else {
-      beautyVC.view.isHidden = false
-      shoppingMallVC.view.isHidden = true
-      brandVC.view.isHidden = true
+      beautyVC.isHidden = false
+      shoppingMallVC.isHidden = true
+      brandVC.isHidden = true 
     }
   }
 }
+
+extension HomeViewController : ShoppingMallViewDelegate {
+  func moveToProductInfo() {
+    let productInfoVC = ProductInfoViewController()
+    navigationController?.pushViewController(productInfoVC, animated: true)
+  }
+}
+

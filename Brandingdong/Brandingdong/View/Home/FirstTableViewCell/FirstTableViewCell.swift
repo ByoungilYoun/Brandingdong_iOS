@@ -21,12 +21,18 @@ class FirstTableViewCell : UITableViewCell {
   }()
   
   private let pageControl = UIPageControl()
+  
   private var bannerImage: [UIImage] = [] {
     didSet {
       collectionView.reloadData()
     }
   }
   
+
+  
+  struct Events: Codable {
+    var images: String
+  }
   //MARK: - init
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
