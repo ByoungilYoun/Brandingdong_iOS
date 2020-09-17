@@ -160,6 +160,8 @@ class ProductInfoViewController: UIViewController {
   
   private func setNavi() {
     
+    navigationController?.navigationBar.isHidden = false
+    
     navigationItem.title = "상품정보"
     
     let leftDismissButton = UIBarButtonItem(

@@ -21,12 +21,13 @@ class FirstTableViewCell : UITableViewCell {
   }()
   
   private let pageControl = UIPageControl()
-  private let myColor = [UIColor.red,
-                         UIColor.black,
-                         UIColor.blue,
-                         UIColor.brown,
-                         UIColor.yellow]
+  lazy var myColor: [String] = []
   
+
+  
+  struct Events: Codable {
+    var images: String
+  }
   //MARK: - init
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -101,7 +102,9 @@ extension FirstTableViewCell : UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FirstCollectionViewCell.identifier, for: indexPath) as! FirstCollectionViewCell
-    cell.configure(color: myColor[indexPath.row])
+    print("myColor [indexPath.row] :" ,myColor[indexPath.row])
+//    cell.configure(name: )
+//    cell.configure(name: myColor[indexPath.row])
     return cell
   }
 }

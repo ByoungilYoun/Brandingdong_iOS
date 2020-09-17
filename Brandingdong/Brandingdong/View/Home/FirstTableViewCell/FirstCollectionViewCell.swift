@@ -38,7 +38,7 @@ class FirstCollectionViewCell : UICollectionViewCell {
     }
   }
   
-  func configure(color : UIColor) {
-    imageView.backgroundColor = color
+  func configure(name : String) {
+    imageView.image = UIImage(named: name)
   }
 }

@@ -8,28 +8,32 @@
 
 import UIKit
 
-class BrandViewController : UIViewController {
+class BrandView: UIView {
   
   //MARK: - Properties
   private let tableView = UITableView()
   
   //MARK: - LifeCycle
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     setUI()
     setConstraints()
   }
   
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   //MARK: - setUI()
   private func setUI() {
-    view.backgroundColor = .systemBackground
+    self.backgroundColor = .systemBackground
     tableView.dataSource = self
     tableView.delegate = self
     tableView.allowsSelection = false
     tableView.register(FirstTableViewCell.self, forCellReuseIdentifier: FirstTableViewCell.identifier)
     tableView.register(SecondTableViewCell.self, forCellReuseIdentifier: SecondTableViewCell.identifier)
     tableView.register(ThirdTableViewCell.self, forCellReuseIdentifier: ThirdTableViewCell.identifier)
-    view.addSubview(tableView)
+    addSubview(tableView)
   }
   
   //MARK: - setConstraints()
@@ -41,7 +45,7 @@ class BrandViewController : UIViewController {
 }
 
   //MARK: - UITableViewDataSource
-extension BrandViewController : UITableViewDataSource {
+extension BrandView : UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
     return 3
   }
@@ -65,10 +69,10 @@ extension BrandViewController : UITableViewDataSource {
 }
 
   //MARK: - UITableViewDelegate
-extension BrandViewController : UITableViewDelegate {
+extension BrandView : UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == 0 {
-      return view.frame.size.height / 1.5
+      return self.frame.size.height / 1.5
     } else if indexPath.section == 1 {
       return 5920
     } else {

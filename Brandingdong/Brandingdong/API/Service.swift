@@ -8,10 +8,9 @@
 
 import UIKit
 
-struct Image : Codable {
-  var images : String
+struct Events: Codable {
+  var images: String
 }
-
 
 struct Service {
   
@@ -73,4 +72,5 @@ struct Service {
     }
     task.resume()
   }
+  
 }

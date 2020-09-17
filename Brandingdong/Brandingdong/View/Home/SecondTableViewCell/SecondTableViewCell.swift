@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SecondTableViewCellDelegate : class {
+  func handlePresent(cell : SecondTableViewCell)
+}
+
 class SecondTableViewCell : UITableViewCell {
   
   //MARK: - Properties
@@ -19,7 +23,7 @@ class SecondTableViewCell : UITableViewCell {
     return UICollectionView(frame: .zero, collectionViewLayout: layout)
   }()
   
-  
+  var delegate : SecondTableViewCellDelegate?
   //MARK: - init
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -71,7 +75,9 @@ extension SecondTableViewCell : UICollectionViewDataSource {
 
   //MARK: - UICollectionViewDelegate
 extension SecondTableViewCell : UICollectionViewDelegate {
-  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    delegate?.handlePresent(cell: self)
+  }
 }
 
   //MARK: - UICollectionViewDelegateFlowLayout
