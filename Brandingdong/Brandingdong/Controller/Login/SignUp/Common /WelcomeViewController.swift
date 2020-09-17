@@ -62,8 +62,10 @@ class WelcomeViewController: UIViewController {
 
 extension WelcomeViewController: WelcomeViewDelegate {
   func pushNextView() {
-    let homeVC = HomeViewController()
-    homeVC.view.backgroundColor = .systemBackground
-    navigationController?.pushViewController(homeVC, animated: true)
+//    let homeVC = HomeViewController()
+//    homeVC.view.backgroundColor = .systemBackground
+//    navigationController?.pushViewController(homeVC, animated: true)
+    let loginVC = LoginViewController()
+    navigationController?.pushViewController(loginVC, animated: true)
   }
 }
