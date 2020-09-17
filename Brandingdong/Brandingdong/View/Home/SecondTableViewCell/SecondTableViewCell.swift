@@ -43,7 +43,7 @@ class SecondTableViewCell : UITableViewCell {
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.layer.cornerRadius = 10
-    collectionView.register(SecondCollectionViewCell.self , forCellWithReuseIdentifier: SecondCollectionViewCell.identifer)
+    collectionView.register(CommonProductCollectionViewCell.self , forCellWithReuseIdentifier: CommonProductCollectionViewCell.identifer)
     contentView.addSubview(collectionView)
   }
   
@@ -60,7 +60,7 @@ extension SecondTableViewCell : UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SecondCollectionViewCell.identifer, for: indexPath) as! SecondCollectionViewCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
     cell.configure(image: "brandi", company: "온더리버", description: "[자체제작] 웰메이드 레이온 원피스", price: "21,000")
     return cell
   }

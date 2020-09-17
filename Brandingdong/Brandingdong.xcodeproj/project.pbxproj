@@ -14,7 +14,6 @@
 		0F0A400E24EEEF970037B7A1 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0A400D24EEEF970037B7A1 /* DividerView.swift */; };
 		0F0A401024EF089D0037B7A1 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0A400F24EF089D0037B7A1 /* InformationView.swift */; };
 		0F3EA9AA2511FE3700561887 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3EA9A92511FE3700561887 /* SecondTableViewCell.swift */; };
-		0F3EA9AC2512063500561887 /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3EA9AB2512063500561887 /* SecondCollectionViewCell.swift */; };
 		0F3EA9AF25121A7300561887 /* ThirdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3EA9AE25121A7300561887 /* ThirdTableViewCell.swift */; };
 		0F3EA9B125121C3C00561887 /* customerCenter.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0F3EA9B025121C3C00561887 /* customerCenter.jpeg */; };
 		0F661B7E24EE90AD0060FDF7 /* brandi login image in Resources */ = {isa = PBXBuildFile; fileRef = 0F661B7D24EE90AD0060FDF7 /* brandi login image */; };
@@ -103,7 +102,6 @@
 		0F0A400D24EEEF970037B7A1 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DividerView.swift; path = Brandingdong/View/Login/Main/DividerView.swift; sourceTree = SOURCE_ROOT; };
 		0F0A400F24EF089D0037B7A1 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InformationView.swift; path = Brandingdong/View/Login/Main/InformationView.swift; sourceTree = SOURCE_ROOT; };
 		0F3EA9A92511FE3700561887 /* SecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
-		0F3EA9AB2512063500561887 /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
 		0F3EA9AE25121A7300561887 /* ThirdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTableViewCell.swift; sourceTree = "<group>"; };
 		0F3EA9B025121C3C00561887 /* customerCenter.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = customerCenter.jpeg; sourceTree = "<group>"; };
 		0F661B7D24EE90AD0060FDF7 /* brandi login image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "brandi login image"; sourceTree = "<group>"; };
@@ -278,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				0F3EA9A92511FE3700561887 /* SecondTableViewCell.swift */,
-				0F3EA9AB2512063500561887 /* SecondCollectionViewCell.swift */,
 			);
 			path = SecondTableViewCell;
 			sourceTree = "<group>";
@@ -917,8 +914,6 @@
 				49AC2CF92508D5AA00B465A6 /* UserData.swift in Sources */,
 				492747BA24F27BFB00D259BE /* SearchTextfieldImageView.swift in Sources */,
 				4959A5B924F2C4500022B7AC /* SearchBasketView.swift in Sources */,
-				0F3EA9AC2512063500561887 /* SecondCollectionViewCell.swift in Sources */,
-				498A905E25024347003C18C6 /* ProductInfoTableViewCell.swift in Sources */,
 				49CEB39024EE4FB60026201B /* AppDelegate.swift in Sources */,
 				0F92B2C5250FCFDE00FFF474 /* FirstTableViewCell.swift in Sources */,
 			);
