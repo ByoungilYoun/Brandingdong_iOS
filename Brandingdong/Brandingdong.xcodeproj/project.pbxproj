@@ -50,6 +50,7 @@
 		4908EA2524F6D660008C05D9 /* UserInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA2424F6D660008C05D9 /* UserInfoButton.swift */; };
 		4908EA2724F79389008C05D9 /* UserinfoEntryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA2624F79389008C05D9 /* UserinfoEntryTableView.swift */; };
 		4908EA2924F793D3008C05D9 /* UserInfoEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908EA2824F793D3008C05D9 /* UserInfoEntryTableViewCell.swift */; };
+		490C4862251395AE00741323 /* HomeLaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C4861251395AE00741323 /* HomeLaunchScreenViewController.swift */; };
 		492747BA24F27BFB00D259BE /* SearchTextfieldImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492747B924F27BFB00D259BE /* SearchTextfieldImageView.swift */; };
 		492747BD24F2836300D259BE /* MainCatogoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492747BC24F2836300D259BE /* MainCatogoryView.swift */; };
 		492747BF24F2861900D259BE /* MainCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492747BE24F2861900D259BE /* MainCategoryCollectionViewCell.swift */; };
@@ -139,6 +140,7 @@
 		4908EA2424F6D660008C05D9 /* UserInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoButton.swift; sourceTree = "<group>"; };
 		4908EA2624F79389008C05D9 /* UserinfoEntryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserinfoEntryTableView.swift; sourceTree = "<group>"; };
 		4908EA2824F793D3008C05D9 /* UserInfoEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEntryTableViewCell.swift; sourceTree = "<group>"; };
+		490C4861251395AE00741323 /* HomeLaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLaunchScreenViewController.swift; sourceTree = "<group>"; };
 		492747B924F27BFB00D259BE /* SearchTextfieldImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextfieldImageView.swift; sourceTree = "<group>"; };
 		492747BC24F2836300D259BE /* MainCatogoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCatogoryView.swift; sourceTree = "<group>"; };
 		492747BE24F2861900D259BE /* MainCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 		4900C18224EE7D26009D2F17 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				490C4861251395AE00741323 /* HomeLaunchScreenViewController.swift */,
 				49AABDE924EE81F400DE0088 /* HomeViewController.swift */,
 				0F843B98250B895D00C3F2B7 /* ShoppingMallViewController.swift */,
 				0F843B9A250D201700C3F2B7 /* BrandViewController.swift */,
@@ -872,6 +875,7 @@
 				0F0A400E24EEEF970037B7A1 /* DividerView.swift in Sources */,
 				0F0A400624EED9430037B7A1 /* SocialCustomButtonViewModel.swift in Sources */,
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
+				490C4862251395AE00741323 /* HomeLaunchScreenViewController.swift in Sources */,
 				0FED02B424EE7EB0003D03B4 /* MainLoginViewController.swift in Sources */,
 				493AACFE250391FA00AF3156 /* ProductInfoTitleTableViewCell.swift in Sources */,
 				49E472A7250F8CAE00C34CCE /* CommonProductCollectionViewCell.swift in Sources */,

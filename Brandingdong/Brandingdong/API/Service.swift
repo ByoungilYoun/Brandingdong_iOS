@@ -8,10 +8,6 @@
 
 import UIKit
 
-struct Events: Codable {
-  var images: String
-}
-
 struct Service {
   
   static func signUpUser(username: String, email: String, password1: String, password2: String, phonenumber: String) {

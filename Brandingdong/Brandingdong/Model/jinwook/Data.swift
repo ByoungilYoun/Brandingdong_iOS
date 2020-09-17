@@ -9,8 +9,17 @@
 import Foundation
 
 struct CategoryData {
-    static let categoryMenuName = [
+  static let categoryMenuName = [
     "쇼핑몰*마켓",
     "브랜드",
     "뷰티"]
+}
+
+struct HomeInfoDatas {
+  
+  static var names: [String] = []
+  static var price: [Int]  = []
+  static var images: [String]  = []
+  static var brandNames: [String]  = []
+  static var bannerImages: [String]  = []
 }

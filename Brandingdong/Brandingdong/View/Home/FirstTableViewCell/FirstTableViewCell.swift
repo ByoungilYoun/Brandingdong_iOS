@@ -21,7 +21,12 @@ class FirstTableViewCell : UITableViewCell {
   }()
   
   private let pageControl = UIPageControl()
-  lazy var myColor: [String] = []
+  
+  private var bannerImage: [UIImage] = [] {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
   
 
   
@@ -36,6 +41,7 @@ class FirstTableViewCell : UITableViewCell {
     setConstraints()
     setCollectionView()
     setPageControl()
+    setBannerImages()
   }
   
   required init?(coder: NSCoder) {
@@ -80,10 +86,18 @@ class FirstTableViewCell : UITableViewCell {
   //MARK: - setPageControl()
   
   private func setPageControl() {
-    pageControl.numberOfPages = myColor.count
+    pageControl.numberOfPages = bannerImage.count
     pageControl.pageIndicatorTintColor = .lightGray
     pageControl.currentPageIndicatorTintColor = .white
     pageControl.addTarget(self, action: #selector(pageControlDidChange), for: .valueChanged)
+  }
+  
+  private func setBannerImages() {
+    for index in 0..<HomeInfoDatas.bannerImages.count {
+      let url = URL(string: HomeInfoDatas.bannerImages[index])
+      let data = try! Data(contentsOf: url!)
+      bannerImage.append(UIImage(data: data)!)
+    }
   }
   
   //MARK: - @objc func
@@ -97,14 +111,12 @@ class FirstTableViewCell : UITableViewCell {
 extension FirstTableViewCell : UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return myColor.count
+    return bannerImage.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FirstCollectionViewCell.identifier, for: indexPath) as! FirstCollectionViewCell
-    print("myColor [indexPath.row] :" ,myColor[indexPath.row])
-//    cell.configure(name: )
-//    cell.configure(name: myColor[indexPath.row])
+    cell.configure(bannerImage: bannerImage[indexPath.item])
     return cell
   }
 }

@@ -38,7 +38,7 @@ class FirstCollectionViewCell : UICollectionViewCell {
     }
   }
   
-  func configure(name : String) {
-    imageView.image = UIImage(named: name)
+  func configure(bannerImage : UIImage) {
+    imageView.image = bannerImage
   }
 }
