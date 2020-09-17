@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct Image : Codable {
+  var images : String
+}
+
+
 struct Service {
   
   static func signUpUser(username: String, email: String, password1: String, password2: String, phonenumber: String) {
@@ -65,37 +70,6 @@ struct Service {
       
       print (loginUser)
       print (response.statusCode)
-    }
-    task.resume()
-  }
-  
-  
-  static func getProductList() {
-    print ("서비스")
-    let productUrl = "http://52.78.75.94/products/detail"
-    guard let url = URL(string: productUrl) else { return }
-    print ("서비스1")
-    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-      guard error == nil else { return print ("error : ", error!.localizedDescription)}
-      print ("서비스2")
-      let responsea = response as? HTTPURLResponse
-      print (responsea!.statusCode)
-      guard let response = response as? HTTPURLResponse,
-        (200..<406).contains(response.statusCode) else { return }
-      print ("서비스3")
-      guard let data = data else { return }
-      print ("서비스4")
-      print (data)
-//      var userResult: SignInData?
-//
-//      do {
-//        userResult = try JSONDecoder().decode(SignInData.self, from: data)
-//        print("userResult?.username : ", userResult?.username)
-//        print("userResult?.password : ", userResult?.password)
-//        print ("서비스4")
-//      } catch {
-//        print ("failed to convert error : ", error.localizedDescription)
-//      }
     }
     task.resume()
   }
