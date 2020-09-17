@@ -24,6 +24,7 @@ class MainCategoryView: UIView {
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
   
   var delegate : ChangeViewDelegate?
+  var previouslySelectedIndexPath : NSIndexPath?
   // MARK: - Init View
   
   override init(frame: CGRect) {
@@ -97,6 +98,18 @@ extension MainCategoryView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCategoryCollectionViewCell.identifier, for: indexPath) as! MainCategoryCollectionViewCell
     cell.menuName.text = categoryNameGet(indexPath: indexPath.item)
+    
+//    if indexPath.row == 0 {
+//      cell.isSelected = true
+//
+//    }
+//
+//    if cell.isSelected == true {
+//      cell.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+//    } else {
+//      cell.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//    }
+//    return cell
     if indexPath.row == 0 {
       cell.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
       cell.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
@@ -113,8 +126,7 @@ extension MainCategoryView: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension MainCategoryView: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {    
     if let didSelectCheckIndex = collectionView.cellForItem(at: indexPath) as? MainCategoryCollectionViewCell {
       UIView.animate(withDuration: 0.5) {
         didSelectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)

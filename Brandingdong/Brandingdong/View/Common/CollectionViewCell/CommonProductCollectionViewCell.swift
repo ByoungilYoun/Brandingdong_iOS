@@ -110,7 +110,7 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
   private func didTabHeartButton() {
     heartButton.addTarget(self, action: #selector(clickedBtn), for: .touchUpInside)
   }
-  
+
   @objc func clickedBtn(_ sender : UIButton) {
     if !buttonToggle {
      heartButton.tintColor = .systemRed
@@ -122,7 +122,6 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
   }
   
   //MARK: - configure()
-  
   func configure(image : String, company : String, description : String, price : String ) {
     imageView.image = UIImage(named: image)
     companyLabel.text = company

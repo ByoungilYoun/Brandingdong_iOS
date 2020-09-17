@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct Image : Codable {
+  var images : String
+}
+
+
 struct Service {
   
   static func signUpUser(username: String, email: String, password1: String, password2: String, phonenumber: String) {
@@ -68,6 +73,7 @@ struct Service {
     }
     task.resume()
   }
+<<<<<<< HEAD
   
   private func getImages() {
     print ("서비스")
@@ -97,4 +103,6 @@ struct Service {
     }
     task.resume()
   }
+=======
+>>>>>>> ec30faa67faed756ba3e97aff9e69ae5875f5434
 }
