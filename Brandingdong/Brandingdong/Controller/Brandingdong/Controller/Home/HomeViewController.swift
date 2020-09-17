@@ -9,6 +9,10 @@
 import UIKit
 import SnapKit
 
+protocol HomeViewControllerDelegate : class {
+  func sendProductDescription(name : String)
+}
+
 class HomeViewController: UIViewController {
   // MARK: - Property
   
@@ -28,6 +32,8 @@ class HomeViewController: UIViewController {
     bt.addTarget(self, action: #selector(moveToTop(view:)), for: .touchUpInside)
     return bt
   }()
+  
+  var delegate : HomeViewControllerDelegate?
 
   // MARK: - LifeCycle
   
@@ -37,6 +43,7 @@ class HomeViewController: UIViewController {
     setConstraints()
     mainCategoryView.delegate = self
     shoppingMallVC.delegate = self
+
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -109,7 +116,6 @@ class HomeViewController: UIViewController {
     moveToTopButton.layer.cornerRadius = moveToTopButton.frame.width / 2
     moveToTopButton.clipsToBounds = true
   }
-  
 
   // MARK: - Navigation Hidden
   
@@ -141,6 +147,11 @@ extension HomeViewController : ChangeViewDelegate {
 }
 
 extension HomeViewController : ShoppingMallViewDelegate {
+  func saveProductDescription(name: String) {
+    print("HomeViewController  : ", name)
+    delegate?.sendProductDescription(name: name)
+  }
+  
   func moveToProductInfo() {
     let productInfoVC = ProductInfoViewController()
     navigationController?.pushViewController(productInfoVC, animated: true)

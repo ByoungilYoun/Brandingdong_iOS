@@ -20,12 +20,11 @@ class ProductImagesTableViewCell: UITableViewCell {
   private let layout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
   
-  var productImageArr = ["테스트1", "테스트2", "테스트3"].compactMap {
-    UIImage.init(named: $0)
-  }
+  var productImageArr: [UIImage] = ProductInfo.checkProductNameImageArr
+
   
   // MARK: - Cell Init
-    
+  
   override func awakeFromNib() {
     super.awakeFromNib()
   }
@@ -38,7 +37,7 @@ class ProductImagesTableViewCell: UITableViewCell {
     setUI()
     setConstraints()
   }
-
+  
   
   // MARK: - Set Property
   
@@ -65,6 +64,8 @@ class ProductImagesTableViewCell: UITableViewCell {
     
     collectionView.register(ProductInfoImageCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoImageCollectionViewCell.identifier)
   }
+  
+  // MARK: - setPageControl
   
   private func setPageControl() {
     pageControl.numberOfPages = productImageArr.count
@@ -96,15 +97,18 @@ class ProductImagesTableViewCell: UITableViewCell {
   }
 }
 
+
 // MARK: - UICollectionViewDataSource
 extension ProductImagesTableViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return productImageArr.count
+    productImageArr.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoImageCollectionViewCell.identifier, for: indexPath) as! ProductInfoImageCollectionViewCell
-    cell.imageView.image = productImageArr[indexPath.item]
+    
+    cell.imageView.image = self.productImageArr[indexPath.item]
+    
     return cell
   }
 }
@@ -118,3 +122,7 @@ extension ProductImagesTableViewCell: UICollectionViewDelegate {
     pageControl.currentPage = page
   }
 }
+
+
+
+

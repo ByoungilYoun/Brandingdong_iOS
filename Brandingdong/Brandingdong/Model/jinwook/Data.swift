@@ -6,7 +6,7 @@
 //  Copyright © 2020 jwlee. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct CategoryData {
   static let categoryMenuName = [
@@ -22,4 +22,9 @@ struct HomeInfoDatas {
   static var images: [String]  = []
   static var brandNames: [String]  = []
   static var bannerImages: [String]  = []
+  static var idAndImages: [String:[Int:String]] = [:]
+}
+
+struct ProductInfo {
+  static var checkProductNameImageArr: [UIImage] = []
 }

@@ -32,6 +32,7 @@ class HomeLaunchScreenViewController: UIViewController {
     var results: [Results]
     
     struct Results: Codable {
+      var id: Int
       var name: String
       var price: Int
       var main_img: [Images]
@@ -50,7 +51,7 @@ class HomeLaunchScreenViewController: UIViewController {
   struct Events : Codable {
     var images : String
   }
-
+  
   
   // MARK: - LifeCycle
   
@@ -113,11 +114,20 @@ class HomeLaunchScreenViewController: UIViewController {
       guard let data = data else { return }
       do {
         let userResult = try JSONDecoder().decode(ProductList.self, from: data)
+        
         for index in 0..<userResult.results.count {
           HomeInfoDatas.names.append(userResult.results[index].name)
           HomeInfoDatas.price.append(userResult.results[index].price)
           HomeInfoDatas.images.append(userResult.results[index].main_img[0].image)
           HomeInfoDatas.brandNames.append(userResult.results[index].brand.name)
+          
+          for imageIndex in 0..<userResult.results[index].main_img.count {
+            if !(HomeInfoDatas.idAndImages.keys.contains(userResult.results[index].name)) {
+              HomeInfoDatas.idAndImages[userResult.results[index].name] = [imageIndex : userResult.results[index].main_img[imageIndex].image]
+            } else {
+              HomeInfoDatas.idAndImages[userResult.results[index].name]?.updateValue(userResult.results[index].main_img[imageIndex].image, forKey: imageIndex)
+            }
+          }
           self.firstToggle = true
         }
       } catch {
@@ -154,9 +164,9 @@ class HomeLaunchScreenViewController: UIViewController {
     guard firstToggle else { return }
     guard secondToggle else { return }
     DispatchQueue.main.sync {
-      let homeVC = HomeViewController()
-      homeVC.view.backgroundColor = .white
-      navigationController?.pushViewController(homeVC, animated: true)
+      let tabBarVC = TabBarViewController()
+      tabBarVC.view.backgroundColor = .white
+      navigationController?.pushViewController(tabBarVC, animated: true)
     }
     self.firstToggle = false
     self.secondToggle = false

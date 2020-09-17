@@ -98,27 +98,6 @@ extension MainCategoryView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCategoryCollectionViewCell.identifier, for: indexPath) as! MainCategoryCollectionViewCell
     cell.menuName.text = categoryNameGet(indexPath: indexPath.item)
-    
-//    if indexPath.row == 0 {
-//      cell.isSelected = true
-//
-//    }
-//
-//    if cell.isSelected == true {
-//      cell.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-//    } else {
-//      cell.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//    }
-//    return cell
-    if indexPath.row == 0 {
-      cell.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-      cell.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-      cell.nameSubLine.isHidden = false
-    } else if indexPath.row == 1 {
-      cell.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    } else {
-      cell.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    }
     return cell
   }
 }
