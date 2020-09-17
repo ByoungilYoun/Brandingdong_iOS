@@ -73,5 +73,4 @@ struct Service {
     }
     task.resume()
   }
-  
 }

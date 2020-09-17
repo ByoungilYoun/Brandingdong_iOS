@@ -41,9 +41,18 @@ class ProductInfoViewController: UIViewController {
     return btn
   }()
   
-  let qATableViewCell = QATableViewCell()
-  
   var toggle = false
+  
+  private let productInfoCategoryTableViewCell = ProductInfoCategoryTableViewCell()
+  
+  var resultCategoryClick = "" {
+    didSet {
+      print ("resultCategoryClick : ", resultCategoryClick)
+      productInfoTableView.beginUpdates()
+      productInfoTableView.endUpdates()
+//      productInfoTableView.reloadData()
+    }
+  }
   
   // MARK: - LifeCycle
   
@@ -141,6 +150,10 @@ class ProductInfoViewController: UIViewController {
     productInfoTableView.register(
       ProductInfoSellerAnotherProductTableViewCell.self,
       forCellReuseIdentifier: ProductInfoSellerAnotherProductTableViewCell.identifier)
+    
+    productInfoTableView.register(
+      AnotherLikeProductTableViewCell.self,
+      forCellReuseIdentifier: AnotherLikeProductTableViewCell.identifier)
   }
   
   // MARK: - NavigationBar
@@ -176,7 +189,7 @@ class ProductInfoViewController: UIViewController {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
     self.view.endEditing(true)
   }
-
+  
   // MARK: - Create Alert
   
   private func createAlert(title: String?, message: String?, actions: [UIAlertAction]) {
@@ -187,13 +200,7 @@ class ProductInfoViewController: UIViewController {
     present(alert, animated: true)
   }
   
-  // MARK: - Set Protocol
-//  
-//  private func setProtocolDelegate() {
-//    qATableViewCell.delegate = self
-//  }
 
-  
   // MARK: - objc
   
   @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
@@ -222,7 +229,7 @@ class ProductInfoViewController: UIViewController {
 extension ProductInfoViewController: UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 3
+    return 4
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -232,6 +239,8 @@ extension ProductInfoViewController: UITableViewDataSource {
     case 1:
       return 1
     case 2:
+      return 1
+    case 3:
       return 1
     default:
       break
@@ -245,8 +254,26 @@ extension ProductInfoViewController: UITableViewDataSource {
     let titleCellHeight: CGFloat = 172
     let pointCellHeight: CGFloat = 86
     let discountCouponHeight: CGFloat = 86
-    let categoryHeight: CGFloat = 324
-    let sellerAnotherProductHeight: CGFloat = 242
+    var categoryHeight: CGFloat = 212
+    let sellerAnotherProductHeight: CGFloat = 642
+    let anotherLikeHeight: CGFloat = 222
+    
+    print ("first categoryHeight : ", categoryHeight)
+    
+    switch resultCategoryClick {
+    case "상품정보":
+      categoryHeight = 712
+    case "리뷰":
+      categoryHeight = 212
+    case "Q&A":
+      categoryHeight = 324
+    case "주문정보":
+      categoryHeight = 424
+    default:
+      break
+    }
+    
+    print ("second categoryHeight : ", categoryHeight)
     
     switch indexPath.section {
     case 0:
@@ -285,6 +312,7 @@ extension ProductInfoViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(
           withIdentifier: ProductInfoCategoryTableViewCell.identifier,
           for: indexPath) as! ProductInfoCategoryTableViewCell
+        cell.delegate = self
         return cell
       default:
         break
@@ -296,6 +324,17 @@ extension ProductInfoViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(
           withIdentifier: ProductInfoSellerAnotherProductTableViewCell.identifier,
           for: indexPath) as! ProductInfoSellerAnotherProductTableViewCell
+        return cell
+      default:
+        break
+      }
+    case 3:
+      switch indexPath.row {
+      case 0:
+        tableView.rowHeight = anotherLikeHeight
+        let cell = tableView.dequeueReusableCell(
+          withIdentifier: AnotherLikeProductTableViewCell.identifier,
+          for: indexPath) as! AnotherLikeProductTableViewCell
         return cell
       default:
         break
@@ -315,7 +354,17 @@ extension ProductInfoViewController: UITableViewDelegate {
     return tableView.tableFooterView
   }
   
-  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+  func tableView(_ tableView: UITableView, heightForFooteInSection section: Int) -> CGFloat {
     return 10
+  }
+}
+
+// MARK: - ProductInfoCategoryTableViewCellDelegate
+
+extension ProductInfoViewController: ProductInfoCategoryTableViewCellDelegate {
+
+  func changeCategory(categoryName: String) {
+    print ("categoryName : ", categoryName)
+    resultCategoryClick = categoryName
   }
 }

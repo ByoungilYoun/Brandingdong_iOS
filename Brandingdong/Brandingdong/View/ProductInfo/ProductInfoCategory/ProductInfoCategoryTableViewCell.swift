@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol ProductInfoCategoryTableViewCellDelegate{
-  func changeCategory(indexPath: Int) -> Int
+protocol ProductInfoCategoryTableViewCellDelegate {
+  func changeCategory(categoryName: String)
 }
 
 class ProductInfoCategoryTableViewCell: UITableViewCell {
@@ -18,6 +18,7 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   static let identifier = "ProductInfoCategoryTableViewCell"
   
   private let categoryMenuArr = ["상품정보", "리뷰", "Q&A", "주문정보"]
+  
   private let layout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
   private let categoryMenuSubView: UIView = {
@@ -27,11 +28,13 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   }()
   
   private let tableView = UITableView()
+  var delegate: ProductInfoCategoryTableViewCellDelegate?
   
-  var categoryClick = "" {
+  var categoryClick: String = "" {
     didSet {
+      print ("categoryClick : ", categoryClick)
+      delegate?.changeCategory(categoryName: categoryClick)
       tableView.reloadData()
-      collectionView.reloadData()
     }
   }
   
@@ -135,13 +138,8 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
       $0.bottom.equalToSuperview()
     }
   }
-  
-  // MARK: - Category Tap Check
-  
-  private func CategoryCheck(indexPathText: String) -> String {
-    return indexPathText
-  }
 }
+
 // MARK: - UICollectionViewDataSource
 
 extension ProductInfoCategoryTableViewCell: UICollectionViewDataSource {
@@ -153,7 +151,6 @@ extension ProductInfoCategoryTableViewCell: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoCategoryCollectionViewCell.identifier, for: indexPath) as! ProductInfoCategoryCollectionViewCell
     
     cell.menuName.text = categoryMenuArr[indexPath.item]
-    
     return cell
   }
 }

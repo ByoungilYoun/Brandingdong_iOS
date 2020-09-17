@@ -126,45 +126,7 @@ extension MainCategoryView: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension MainCategoryView: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    if previouslySelectedIndexPath != nil {
-//      let previousCell = collectionView.cellForItem(at: previouslySelectedIndexPath! as IndexPath) as! MainCategoryCollectionViewCell
-//      previousCell.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//    }
-    
-//    let currentCell = collectionView.cellForItem(at: indexPath) as! MainCategoryCollectionViewCell
-//    currentCell.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-//
-
-    
-//    if let didSelectedCheckIndex = collectionView.cellForItem(at: indexPath) as? MainCategoryCollectionViewCell {
-//    didSelectedCheckIndex.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-//    }
-  
-    
-//    if indexPath.row == 0  {
-//      didSelectedCheckIndex?.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-//      didSelectedCheckIndex?.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-//    } else {
-//      didSelectedCheckIndex?.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//    }
-//
-//    if indexPath.row == 1 {
-//      didSelectedCheckIndex?.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-//           didSelectedCheckIndex?.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-//    } else {
-//      didSelectedCheckIndex?.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//    }
-//
-//    if indexPath.row == 2 {
-//      didSelectedCheckIndex?.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-//                didSelectedCheckIndex?.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-//    } else {
-//      didSelectedCheckIndex?.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//    }
-//    collectionView.reloadData()
-    
-    
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {    
     if let didSelectCheckIndex = collectionView.cellForItem(at: indexPath) as? MainCategoryCollectionViewCell {
       UIView.animate(withDuration: 0.5) {
         didSelectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
