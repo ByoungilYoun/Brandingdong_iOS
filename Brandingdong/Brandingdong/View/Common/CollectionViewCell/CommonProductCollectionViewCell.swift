@@ -122,8 +122,8 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
   }
   
   //MARK: - configure()
-  func configure(image : String, company : String, description : String, price : String ) {
-    imageView.image = UIImage(named: image)
+  func configure(image : UIImage, company : String, description : String, price : String ) {
+    imageView.image = image
     companyLabel.text = company
     descriptionLabel.text = description
     priceLabel.text = price
