@@ -109,10 +109,10 @@ extension AnotherLikeProductTableViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
-    cell.configure(image: "brandi",
-                   company: "온더리버",
-                   description: "[자체제작] 웰메이드 레이온 원피스",
-                   price: "21,000")
+//    cell.configure(image: "brandi",
+//                   company: "온더리버",
+//                   description: "[자체제작] 웰메이드 레이온 원피스",
+//                   price: "21,000")
     return cell
   }
 }

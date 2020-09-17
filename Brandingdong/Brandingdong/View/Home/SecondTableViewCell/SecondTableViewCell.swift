@@ -19,6 +19,11 @@ class SecondTableViewCell : UITableViewCell {
     return UICollectionView(frame: .zero, collectionViewLayout: layout)
   }()
   
+  var productImageArr: [UIImage] = [] {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
   
   //MARK: - init
   
@@ -26,6 +31,7 @@ class SecondTableViewCell : UITableViewCell {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setUI()
     setConstraints()
+    setProductImages()
   }
   
   required init?(coder: NSCoder) {
@@ -52,29 +58,39 @@ class SecondTableViewCell : UITableViewCell {
       $0.top.leading.trailing.bottom.equalTo(contentView)
     }
   }
+  // MARK: - setProductImages
+
+  private func setProductImages() {
+    for index in 0..<HomeInfoDatas.images.count {
+      let url = URL(string: HomeInfoDatas.images[index])
+      let data = try! Data(contentsOf: url!)
+      productImageArr.append(UIImage(data: data)!)
+    }
+  }
 }
-  //MARK: - UICollectionViewDataSource
+
+//MARK: - UICollectionViewDataSource
 extension SecondTableViewCell : UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 50
+    return 30
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
-    cell.configure(image: "brandi",
-                   company: "온더리버",
-                   description: "[자체제작] 웰메이드 레이온 원피스",
-                   price: "21,000")
+    cell.configure(image: productImageArr[indexPath.item],
+                   company: HomeInfoDatas.brandNames[indexPath.item],
+                   description: HomeInfoDatas.names[indexPath.item],
+                   price: String(HomeInfoDatas.price[indexPath.item]))
     return cell
   }
 }
 
-  //MARK: - UICollectionViewDelegate
+//MARK: - UICollectionViewDelegate
 extension SecondTableViewCell : UICollectionViewDelegate {
   
 }
 
-  //MARK: - UICollectionViewDelegateFlowLayout
+//MARK: - UICollectionViewDelegateFlowLayout
 extension SecondTableViewCell : UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return Standard.standard

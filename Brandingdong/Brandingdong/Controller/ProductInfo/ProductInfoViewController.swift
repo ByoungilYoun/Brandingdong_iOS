@@ -8,8 +8,14 @@
 
 import UIKit
 
+
 class ProductInfoViewController: UIViewController {
   // MARK: - Property
+  
+  struct Image : Codable {
+    var pk: Int
+    var image : String
+  }
   
   private let productInfoTableView = UITableView()
   private let deviceHeight = UIScreen.main.bounds.height
@@ -61,6 +67,7 @@ class ProductInfoViewController: UIViewController {
     setUI()
     setConstraints()
     setTableView()
+    getProductDetailImage()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -199,6 +206,37 @@ class ProductInfoViewController: UIViewController {
     }
     present(alert, animated: true)
   }
+  
+  private func getProductDetailImage() {
+    print ("서비스")
+    let productUrl = "http://52.78.75.94/products/images"
+    guard let url = URL(string: productUrl) else { return }
+    print ("서비스1")
+    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+      guard error == nil else { return print ("error : ", error!.localizedDescription)}
+      print ("서비스2")
+      let responsea = response as? HTTPURLResponse
+      print (responsea!.statusCode)
+      guard let response = response as? HTTPURLResponse,
+        (200..<406).contains(response.statusCode) else { return }
+      print ("서비스3")
+      guard let data = data else { return }
+      print ("서비스4")
+      print (data)
+      do {
+        let detailImages = try JSONDecoder().decode([Image].self, from: data)
+        for index in 0..<detailImages.count {
+          print (detailImages[index].image)
+          print (detailImages[index].pk)
+        }
+        print ("서비스4")
+      } catch {
+        print ("failed to convert error : ", error.localizedDescription)
+      }
+    }
+    task.resume()
+  }
+
   
 
   // MARK: - objc
