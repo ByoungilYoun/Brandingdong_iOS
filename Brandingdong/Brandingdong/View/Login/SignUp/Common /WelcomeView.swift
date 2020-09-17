@@ -54,7 +54,7 @@ class WelcomeView: UIView {
     self.couponBtn.titleLabel?.font = UIFont.init(name: "AppleSDGothicNeo-Medium", size: 12)
     self.couponBtn.addTarget(self, action: #selector(couponDidTapBtn), for: .touchUpInside)
     
-    self.nowShoppingBtn.setTitle("바로 쇼핑하기", for: .normal)
+    self.nowShoppingBtn.setTitle("로그인 하기", for: .normal)
     self.nowShoppingBtn.setTitleColor(.white, for: .normal)
     self.nowShoppingBtn.backgroundColor = UIColor(red: 0.267, green: 0.248, blue: 0.248, alpha: 1)
     self.nowShoppingBtn.titleLabel?.font = UIFont.init(name: "AppleSDGothicNeo-Medium", size: 12)

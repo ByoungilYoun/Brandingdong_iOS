@@ -199,6 +199,20 @@ class LoginViewController : UIViewController {
   }
   
   @objc func loginBtnTap() {
+    guard !(idTextField.text!.isEmpty) else { return }
+    guard !(passwordTextField.text!.isEmpty) else { return }
+    
+    let id = idTextField.text!
+    let pw = passwordTextField.text!
+    
+    
+    DispatchQueue.main.async {
+      Service.signInUser(username: id, password: pw)
+    }
+   
+    let controller = HomeLaunchScreenViewController()
+    navigationController?.pushViewController(controller, animated: true)
+    
     
   }
   

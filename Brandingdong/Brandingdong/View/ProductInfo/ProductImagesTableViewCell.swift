@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ProductImagesView: UIView {
+class ProductImagesTableViewCell: UITableViewCell {
   // MARK: - Property
+  
+  static let identifier = "ProductImagesTableViewCell"
   
   private let deviceWidth = UIScreen.main.bounds.width
   private let deviceHeight = UIScreen.main.bounds.height
@@ -18,14 +20,17 @@ class ProductImagesView: UIView {
   private let layout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
   
-  var productImageArr = ["테스트1", "테스트2", "테스트3"].compactMap {
-    UIImage.init(named: $0)
+  var productImageArr: [UIImage] = ProductInfo.checkProductNameImageArr
+
+  
+  // MARK: - Cell Init
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
   }
   
-  // MARK: - init View
-  
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     setLayout()
     setCollectionView()
     setPageControl()
@@ -33,9 +38,6 @@ class ProductImagesView: UIView {
     setConstraints()
   }
   
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
   
   // MARK: - Set Property
   
@@ -59,8 +61,11 @@ class ProductImagesView: UIView {
     
     collectionView.dataSource = self
     collectionView.delegate = self
+    
     collectionView.register(ProductInfoImageCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoImageCollectionViewCell.identifier)
   }
+  
+  // MARK: - setPageControl
   
   private func setPageControl() {
     pageControl.numberOfPages = productImageArr.count
@@ -73,7 +78,7 @@ class ProductImagesView: UIView {
   
   private func setUI() {
     [collectionView, pageControl].forEach {
-      self.addSubview($0)
+      contentView.addSubview($0)
     }
   }
   
@@ -92,25 +97,32 @@ class ProductImagesView: UIView {
   }
 }
 
+
 // MARK: - UICollectionViewDataSource
-extension ProductImagesView: UICollectionViewDataSource {
+extension ProductImagesTableViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return productImageArr.count
+    productImageArr.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoImageCollectionViewCell.identifier, for: indexPath) as! ProductInfoImageCollectionViewCell
-    cell.imageView.image = productImageArr[indexPath.item]
+    
+    cell.imageView.image = self.productImageArr[indexPath.item]
+    
     return cell
   }
 }
 
 // MARK: - UICollectionViewDelegate
 
-extension ProductImagesView: UICollectionViewDelegate {
+extension ProductImagesTableViewCell: UICollectionViewDelegate {
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
     
     let page = Int(targetContentOffset.pointee.x / self.frame.width)
     pageControl.currentPage = page
   }
 }
+
+
+
+

@@ -14,7 +14,6 @@ class MainLoginViewController : UIViewController {
   
   //MARK: - Properties
   private let backgroundImage = UIImageView(image: UIImage(named: "brandi"))
-  
   private let titleLabel : UILabel = {
     let lb = UILabel()
     lb.text = "B R A N D I"
@@ -161,7 +160,7 @@ class MainLoginViewController : UIViewController {
   //MARK: - setConstraint()
   private func setConstraints() {
     backgroundImage.snp.makeConstraints {
-      $0.top.equalTo(view.safeAreaLayoutGuide)
+      $0.top.equalToSuperview()
       $0.leading.trailing.bottom.equalToSuperview()
     }
     

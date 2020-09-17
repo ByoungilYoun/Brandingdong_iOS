@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol ChangeViewDelegate {
+  func changeView(index : Int)
+}
 
 class MainCategoryView: UIView {
   // MARK: - Property
@@ -20,6 +23,8 @@ class MainCategoryView: UIView {
   private let collectionLayout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
   
+  var delegate : ChangeViewDelegate?
+  var previouslySelectedIndexPath : NSIndexPath?
   // MARK: - Init View
   
   override init(frame: CGRect) {
@@ -55,12 +60,13 @@ class MainCategoryView: UIView {
   
   private func setCollectionView() {
     
-    let itemWidth: CGFloat = 60
-    let itemHeight: CGFloat = 50
+    
     let itemCellSpasing: CGFloat = 10
     let itemLineSpasing: CGFloat = 5
     let inset: CGFloat = 0
     let sectionInset = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    let itemWidth: CGFloat = (UIScreen.main.bounds.width - (2 * itemCellSpasing)) / 3
+    let itemHeight: CGFloat = 50
     
     collectionLayout.sectionInset = sectionInset
     collectionLayout.minimumInteritemSpacing = itemCellSpasing
@@ -99,13 +105,14 @@ extension MainCategoryView: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension MainCategoryView: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {    
     if let didSelectCheckIndex = collectionView.cellForItem(at: indexPath) as? MainCategoryCollectionViewCell {
       UIView.animate(withDuration: 0.5) {
         didSelectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
         didSelectCheckIndex.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         didSelectCheckIndex.nameSubLine.isHidden = false
       }
+      delegate?.changeView(index: indexPath.row)
     }
   }
   

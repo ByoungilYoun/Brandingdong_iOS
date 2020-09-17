@@ -19,12 +19,6 @@ class MainCategoryCollectionViewCell: UICollectionViewCell {
     return lb
   }()
   
-  let categorySubLine: UIView = {
-    let view = UIView()
-    view.backgroundColor = .lightGray
-    return view
-  }()
-  
   let nameSubLine: UIView = {
     let view = UIView()
     view.isHidden = true

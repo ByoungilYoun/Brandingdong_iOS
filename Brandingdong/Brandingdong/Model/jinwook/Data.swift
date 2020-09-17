@@ -6,16 +6,25 @@
 //  Copyright © 2020 jwlee. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct CategoryData {
-    static let categoryMenuName = [
-    "투데이",
-    "랭킹",
-    "쇼핑몰",
+  static let categoryMenuName = [
+    "쇼핑몰*마켓",
     "브랜드",
-    "뷰티",
-    "특가",
-    "이벤트",
-    "스토어"]
+    "뷰티"]
+}
+
+struct HomeInfoDatas {
+  
+  static var names: [String] = []
+  static var price: [Int]  = []
+  static var images: [String]  = []
+  static var brandNames: [String]  = []
+  static var bannerImages: [String]  = []
+  static var idAndImages: [String:[Int:String]] = [:]
+}
+
+struct ProductInfo {
+  static var checkProductNameImageArr: [UIImage] = []
 }

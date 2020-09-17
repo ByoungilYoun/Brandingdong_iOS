@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ProductInfoTitleView: UIView {
+class ProductInfoTitleTableViewCell: UITableViewCell {
   // MARK: - Property
+  
+  static let identifier = "ProductInfoTitleTableViewCell"
   
   private let sellerImageView = UIImageView()
   
@@ -45,17 +47,18 @@ class ProductInfoTitleView: UIView {
     return lb
   }()
   
-  // MARK: - Init View
+  // MARK: - Cell init
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     setUI()
     setConstraints()
   }
   
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
   // MARK: - Setup Layout
   
   private func setUI() {
@@ -64,7 +67,7 @@ class ProductInfoTitleView: UIView {
      productTitle,
      productPrice,
      buyCountTitle].forEach {
-      self.addSubview($0)
+      contentView.addSubview($0)
     }
     sellerImageView.image = UIImage(named: "테스트4")
   }
