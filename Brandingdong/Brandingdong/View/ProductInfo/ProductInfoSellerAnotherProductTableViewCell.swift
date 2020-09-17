@@ -9,6 +9,7 @@
 import UIKit
 
 class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
+  
   // MARK: - Property
   
   static let identifier = "ProductInfoSellerAnotherProductTableViewCell"
@@ -39,7 +40,10 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
   private let layout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
   
-  
+  struct Standard {
+    static let standard : CGFloat = 5
+    static let inset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
+  }
   
   // MARK: - Cell init
   
@@ -90,14 +94,17 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
   private func setCollectionView() {
     collectionView.backgroundColor = .systemBackground
     collectionView.showsHorizontalScrollIndicator = false
-//    collectionView.dataSource = self
+    collectionView.dataSource = self
+    collectionView.layer.cornerRadius = 10
+    
+    collectionView.register(CommonProductCollectionViewCell.self , forCellWithReuseIdentifier: CommonProductCollectionViewCell.identifer)
   }
   
   
   private func setConstraints() {
     
     let padding: CGFloat = 8
-    let sellerInfoViewHeight: CGFloat = 212
+    let sellerInfoViewHeight: CGFloat = 154
     
     
     [sellerInfoView,
@@ -109,6 +116,7 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
     }
     
     sellerInfoView.snp.makeConstraints {
+      $0.top.equalToSuperview().offset(padding)
       $0.height.equalTo(sellerInfoViewHeight)
     }
     
@@ -135,7 +143,7 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
     }
     
     collectionView.snp.makeConstraints {
-      $0.top.equalTo(sellerInfoView.snp.bottom).offset(padding)
+      $0.top.equalTo(sellerInfoView.snp.bottom)
       $0.bottom.equalTo(contentView.snp.bottom)
     }
     
@@ -145,12 +153,43 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
 }
 
 // MARK: - UICollectionViewDataSource
-//extension ProductInfoSellerAnotherProductTableViewCell: UICollectionViewDataSource {
-//  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//    return 4
-//  }
-//
-//  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//    <#code#>
-//  }
-//}
+
+extension ProductInfoSellerAnotherProductTableViewCell: UICollectionViewDataSource {
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 4
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
+    cell.configure(image: "brandi",
+                   company: "온더리버",
+                   description: "[자체제작] 웰메이드 레이온 원피스",
+                   price: "21,000")
+    return cell
+  }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension ProductInfoSellerAnotherProductTableViewCell : UICollectionViewDelegateFlowLayout {
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return Standard.standard
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return Standard.standard
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return Standard.inset
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let width = self.frame.size.width - Standard.standard - (Standard.inset.left + Standard.inset.right)
+    let realWidth = width / 2
+    let height : CGFloat = 230
+    return CGSize(width: realWidth, height: height)
+  }
+}
