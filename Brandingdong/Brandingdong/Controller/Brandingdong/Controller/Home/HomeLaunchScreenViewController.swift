@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeLaunchScreenViewController: UIViewController {
   
@@ -45,6 +46,7 @@ class HomeLaunchScreenViewController: UIViewController {
     
     struct Brand: Codable {
       var name: String
+      var brand_img: String
     }
   }
   
@@ -61,7 +63,7 @@ class HomeLaunchScreenViewController: UIViewController {
     setConstraints()
     setIndicatorView()
     getProductList()
-    getProductDetailImage()
+    getBannerImages()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +78,7 @@ class HomeLaunchScreenViewController: UIViewController {
     [imageView,
      indicatorView].forEach {
       view.addSubview($0)
-    }
+     }
   }
   
   private func setConstraints() {
@@ -101,74 +103,144 @@ class HomeLaunchScreenViewController: UIViewController {
     indicatorView.startAnimating()
   }
   
-  private func getProductList() {
-    
+  func getProductList() {
     let productUrl = "http://52.78.75.94/products/detail"
-    guard let url = URL(string: productUrl) else { return }
-    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-      guard error == nil else { return print ("error : ", error!.localizedDescription)}
-      let responsea = response as? HTTPURLResponse
-      print (responsea!.statusCode)
-      guard let response = response as? HTTPURLResponse,
-        (200..<406).contains(response.statusCode) else { return }
-      guard let data = data else { return }
+    
+    AF.request(productUrl, method: .get).responseJSON { response in
+      guard let jsonData = response.data else { return }
       do {
-        let userResult = try JSONDecoder().decode(ProductList.self, from: data)
+        let productDatas = try JSONDecoder().decode(ProductList.self, from: jsonData)
         
-        for index in 0..<userResult.results.count {
-          HomeInfoDatas.names.append(userResult.results[index].name)
-          HomeInfoDatas.price.append(userResult.results[index].price)
-          HomeInfoDatas.images.append(userResult.results[index].main_img[0].image)
-          HomeInfoDatas.brandNames.append(userResult.results[index].brand.name)
+        for index in 0..<productDatas.results.count {
           
-          for imageIndex in 0..<userResult.results[index].main_img.count {
-            if !(HomeInfoDatas.idAndImages.keys.contains(userResult.results[index].name)) {
-              HomeInfoDatas.idAndImages[userResult.results[index].name] = [imageIndex : userResult.results[index].main_img[imageIndex].image]
+          let name = productDatas.results[index].name
+          let price = productDatas.results[index].price
+          let mainImages = productDatas.results[index].main_img[0].image
+          let brandName = productDatas.results[index].brand.name
+          let brandImages = productDatas.results[index].brand.brand_img
+          
+          HomeInfoDatas.names.append(name)
+          HomeInfoDatas.price.append(price)
+          HomeInfoDatas.images.append(mainImages)
+          HomeInfoDatas.brandNames.append(brandName)
+          
+          if !(HomeInfoDatas.productNameAndBrandNamePrice.keys.contains(name)) {
+            HomeInfoDatas.productNameAndBrandImage[name] = brandImages
+          } else {
+            HomeInfoDatas.productNameAndBrandImage.updateValue(brandImages, forKey: name)
+          }
+          
+          if !(HomeInfoDatas.productNameAndBrandNamePrice.keys.contains(name)) {
+            HomeInfoDatas.productNameAndBrandNamePrice[name] = [brandName : price]
+          } else {
+            HomeInfoDatas.productNameAndBrandNamePrice[name]?.updateValue(price, forKey: brandName)
+          }
+          
+          for imageIndex in 0..<productDatas.results[index].main_img.count {
+            if !(HomeInfoDatas.productNameAndImages.keys.contains(name)) {
+              HomeInfoDatas.productNameAndImages[name] = [imageIndex : productDatas.results[index].main_img[imageIndex].image]
             } else {
-              HomeInfoDatas.idAndImages[userResult.results[index].name]?.updateValue(userResult.results[index].main_img[imageIndex].image, forKey: imageIndex)
+              HomeInfoDatas.productNameAndImages[name]?.updateValue(productDatas.results[index].main_img[imageIndex].image, forKey: imageIndex)
             }
           }
           self.firstToggle = true
+          
         }
       } catch {
         print ("failed to convert error : ", error.localizedDescription)
       }
     }
-    task.resume()
   }
   
-  private func getProductDetailImage() {
-    let productUrl = "http://52.78.75.94/events/"
-    guard let url = URL(string: productUrl) else { return }
-    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-      guard error == nil else { return print ("error : ", error!.localizedDescription)}
-      let responsea = response as? HTTPURLResponse
-      print (responsea!.statusCode)
-      guard let response = response as? HTTPURLResponse,
-        (200..<406).contains(response.statusCode) else { return }
-      guard let data = data else { return }
+  private func getBannerImages() {
+    let bannerUrl = "http://52.78.75.94/events/"
+    AF.request(bannerUrl, method: .get).responseJSON { response in
+      guard let jsonData = response.data else { return }
       do {
-        let detailImages = try JSONDecoder().decode([Events].self, from: data)
-        for index in 0..<detailImages.count {
-          HomeInfoDatas.bannerImages.append(detailImages[index].images)
+        let bannerImages = try JSONDecoder().decode([Events].self, from: jsonData)
+        for index in 0..<bannerImages.count {
+          HomeInfoDatas.bannerImages.append(bannerImages[index].images)
           self.secondToggle = true
         }
       } catch {
-        print ("failed to convert error : ", error.localizedDescription)
+        print ("error : ", error.localizedDescription)
       }
     }
-    task.resume()
   }
   
   private func networkCheck(firstToggle: Bool, secondToggle: Bool) {
     guard firstToggle else { return }
     guard secondToggle else { return }
-    DispatchQueue.main.sync {
+    DispatchQueue.main.async {
       let tabBarVC = TabBarViewController()
       tabBarVC.view.backgroundColor = .white
-      navigationController?.pushViewController(tabBarVC, animated: true)
+      self.navigationController?.pushViewController(tabBarVC, animated: true)
     }
     self.firstToggle = false
     self.secondToggle = false
   }
 }
+
+// MARK: - Test Code
+
+/*
+ private func getProductListUrlSession() {
+ 
+ let productUrl = "http://52.78.75.94/products/detail"
+ guard let url = URL(string: productUrl) else { return }
+ let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+ guard error == nil else { return print ("error : ", error!.localizedDescription)}
+ let responsea = response as? HTTPURLResponse
+ print (responsea!.statusCode)
+ guard let response = response as? HTTPURLResponse,
+ (200..<406).contains(response.statusCode) else { return }
+ guard let data = data else { return }
+ do {
+ let userResult = try JSONDecoder().decode(ProductList.self, from: data)
+ 
+ for index in 0..<userResult.results.count {
+ HomeInfoDatas.names.append(userResult.results[index].name)
+ HomeInfoDatas.price.append(userResult.results[index].price)
+ HomeInfoDatas.images.append(userResult.results[index].main_img[0].image)
+ HomeInfoDatas.brandNames.append(userResult.results[index].brand.name)
+ 
+ for imageIndex in 0..<userResult.results[index].main_img.count {
+ if !(HomeInfoDatas.idAndImages.keys.contains(userResult.results[index].name)) {
+ HomeInfoDatas.idAndImages[userResult.results[index].name] = [imageIndex : userResult.results[index].main_img[imageIndex].image]
+ } else {
+ HomeInfoDatas.idAndImages[userResult.results[index].name]?.updateValue(userResult.results[index].main_img[imageIndex].image, forKey: imageIndex)
+ }
+ }
+ self.firstToggle = true
+ }
+ } catch {
+ print ("failed to convert error : ", error.localizedDescription)
+ }
+ }
+ task.resume()
+ }
+ 
+ private func getProductDetailImage() {
+ let productUrl = "http://52.78.75.94/events/"
+ guard let url = URL(string: productUrl) else { return }
+ let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+ guard error == nil else { return print ("error : ", error!.localizedDescription)}
+ let responsea = response as? HTTPURLResponse
+ print (responsea!.statusCode)
+ guard let response = response as? HTTPURLResponse,
+ (200..<406).contains(response.statusCode) else { return }
+ guard let data = data else { return }
+ do {
+ let detailImages = try JSONDecoder().decode([Events].self, from: data)
+ for index in 0..<detailImages.count {
+ HomeInfoDatas.bannerImages.append(detailImages[index].images)
+ self.secondToggle = true
+ }
+ } catch {
+ print ("failed to convert error : ", error.localizedDescription)
+ }
+ }
+ task.resume()
+ }
+ 
+ */

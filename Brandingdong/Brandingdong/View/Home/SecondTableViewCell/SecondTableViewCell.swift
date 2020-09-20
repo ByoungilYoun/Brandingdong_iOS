@@ -74,6 +74,22 @@ class SecondTableViewCell : UITableViewCell {
       productImageArr.append(UIImage(data: data)!)
     }
   }
+  
+  // MARK: - CheckProduct Data
+  
+  private func checkProductPushData(productName: String) {
+    for (_, value) in HomeInfoDatas.productNameAndImages[productName]! {
+      let url = URL(string: value)
+      let data = try! Data(contentsOf: url!)
+      ProductInfo.checkProductNameImageArr.append(UIImage(data: data)!)
+    }
+    for (key, value) in HomeInfoDatas.productNameAndBrandNamePrice[productName]! {
+      ProductInfo.checkProductName = productName
+      ProductInfo.checkProductBrandName = key
+      ProductInfo.checkProductPrice = String(value)
+    }
+    ProductInfo.checkProductBrandImage = HomeInfoDatas.productNameAndBrandImage[productName]!
+  }
 }
 
 //MARK: - UICollectionViewDataSource
@@ -97,11 +113,7 @@ extension SecondTableViewCell : UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if let didTapIndex = collectionView.cellForItem(at: indexPath) as? CommonProductCollectionViewCell {
       let checkProductName = didTapIndex.descriptionLabel.text!
-      for (_, value) in HomeInfoDatas.idAndImages[checkProductName]! {
-        let url = URL(string: value)
-        let data = try! Data(contentsOf: url!)
-        ProductInfo.checkProductNameImageArr.append(UIImage(data: data)!)
-      }
+      checkProductPushData(productName: checkProductName)
     }
     delegate?.handlePresent(cell: self)
   }
