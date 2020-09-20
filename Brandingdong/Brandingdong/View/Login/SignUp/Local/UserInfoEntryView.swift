@@ -37,7 +37,7 @@ class UserInfoEntryView: UIView {
   }()
   
   private let recPersonLabel: UserInfoLabel = {
-    let lb = UserInfoLabel(title: "전화번호")
+    let lb = UserInfoLabel(title: "휴대폰 번호")
     return lb
   }()
   
@@ -62,7 +62,7 @@ class UserInfoEntryView: UIView {
   }()
   
   private let recPersonTextfield: UserInfoTextfield = {
-    let tf = UserInfoTextfield(placeholder: "전화번호를 입력하세요")
+    let tf = UserInfoTextfield(placeholder: "휴대폰 번호를 입력하세요")
     return tf
   }()
   
@@ -268,7 +268,7 @@ class UserInfoEntryView: UIView {
     case recPersonTextfield:
       guard !(textfield.text!.isEmpty)
         else { return errTextfield(textfield: textfield,
-                                   message: "추천인 코드가 유효하지 않습니다.")}
+                                   message: "휴대폰 번호가 유효하지 않습니다.")}
       okTextfield(textfield: textfield)
     default:
       break

@@ -22,9 +22,15 @@ struct HomeInfoDatas {
   static var images: [String]  = []
   static var brandNames: [String]  = []
   static var bannerImages: [String]  = []
-  static var idAndImages: [String:[Int:String]] = [:]
+  static var productNameAndBrandImage: [String:String] = [:]
+  static var productNameAndImages: [String:[Int:String]] = [:]
+  static var productNameAndBrandNamePrice: [String:[String:Int]] = [:]
 }
 
 struct ProductInfo {
   static var checkProductNameImageArr: [UIImage] = []
+  static var checkProductBrandName: String = ""
+  static var checkProductName: String = ""
+  static var checkProductPrice: String = ""
+  static var checkProductBrandImage: String = ""
 }

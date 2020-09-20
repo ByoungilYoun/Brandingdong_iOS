@@ -59,6 +59,7 @@ class ProductInfoPointTableViewCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
+    labelTextInit()
     setUI()
     setConstraints()
   }
@@ -107,5 +108,10 @@ class ProductInfoPointTableViewCell: UITableViewCell {
     saveMoneySubTitle.snp.makeConstraints {
       $0.top.equalTo(saveMoneyTitle.snp.bottom).offset(margin)
     }
+  }
+  
+  private func labelTextInit() {
+    saveMoneyPrice.text = String(Int(ProductInfo.checkProductPrice)! / 100) + " 원"
+    saveMoneyMaxPriceTitle.text = "최대 " + String(Int(ProductInfo.checkProductPrice)! / 70) + " 원 추가 적립"
   }
 }
