@@ -15,6 +15,35 @@ struct CategoryData {
     "뷰티"]
 }
 
+struct HomeInfoCodAble {
+  
+  struct Events : Codable {
+    var images : String
+  }
+  
+  struct ProductList: Codable {
+    var results: [Results]
+    
+    struct Results: Codable {
+      var id: Int
+      var name: String
+      var price: Int
+      var main_img: [Images]
+      var brand: Brand
+    }
+    
+    struct Images : Codable {
+      var image : String
+    }
+    
+    struct Brand: Codable {
+      var name: String
+      var brand_img: String
+      var intro: String
+    }
+  }
+}
+
 struct HomeInfoDatas {
   
   static var names: [String] = []
@@ -22,7 +51,7 @@ struct HomeInfoDatas {
   static var images: [String]  = []
   static var brandNames: [String]  = []
   static var bannerImages: [String]  = []
-  static var productNameAndBrandImage: [String:String] = [:]
+  static var productNameAndBrandImageIntro: [String:[String:String]] = [:]
   static var productNameAndImages: [String:[Int:String]] = [:]
   static var productNameAndBrandNamePrice: [String:[String:Int]] = [:]
 }
@@ -33,4 +62,5 @@ struct ProductInfo {
   static var checkProductName: String = ""
   static var checkProductPrice: String = ""
   static var checkProductBrandImage: String = ""
+  static var checkProductBrandIntro: String = ""
 }

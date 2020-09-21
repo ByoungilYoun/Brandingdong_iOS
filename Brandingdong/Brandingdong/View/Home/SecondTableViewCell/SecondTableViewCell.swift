@@ -88,7 +88,10 @@ class SecondTableViewCell : UITableViewCell {
       ProductInfo.checkProductBrandName = key
       ProductInfo.checkProductPrice = String(value)
     }
-    ProductInfo.checkProductBrandImage = HomeInfoDatas.productNameAndBrandImage[productName]!
+    for (key, value) in HomeInfoDatas.productNameAndBrandImageIntro[productName]! {
+      ProductInfo.checkProductBrandIntro = key
+      ProductInfo.checkProductBrandImage = value
+    }
   }
 }
 
