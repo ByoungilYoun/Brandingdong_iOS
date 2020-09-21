@@ -85,6 +85,10 @@ class HomeLaunchScreenViewController: UIViewController {
       guard isSuccess else { return }
       self.secondToggle = true
     }
+    
+    Service.getProductInfoDetail { (isSucess) in
+      guard isSucess else { return }
+    }
   }
   
   private func networkCheck(firstToggle: Bool, secondToggle: Bool) {

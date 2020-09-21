@@ -44,6 +44,18 @@ struct HomeInfoCodAble {
   }
 }
 
+struct ProductInfoCodAble: Codable {
+  
+  struct ProductDetail: Codable {
+    var id: Int
+    var info_img: [Images]
+  }
+  
+  struct Images: Codable {
+    var image: String
+  }
+}
+
 struct HomeInfoDatas {
   
   static var names: [String] = []
@@ -51,13 +63,20 @@ struct HomeInfoDatas {
   static var images: [String]  = []
   static var brandNames: [String]  = []
   static var bannerImages: [String]  = []
+  static var productIdAndName: [Int:String] = [:]
   static var productNameAndBrandImageIntro: [String:[String:String]] = [:]
   static var productNameAndImages: [String:[Int:String]] = [:]
   static var productNameAndBrandNamePrice: [String:[String:Int]] = [:]
 }
 
+struct ProductInfoCategoryDatas {
+  static var idAndInfoImages: [Int:[Int:String]] = [:]
+}
+
 struct ProductInfo {
   static var checkProductNameImageArr: [UIImage] = []
+  static var checkProductDetailImageArr: [UIImage] = []
+  static var checkProductId: Int = 0
   static var checkProductBrandName: String = ""
   static var checkProductName: String = ""
   static var checkProductPrice: String = ""

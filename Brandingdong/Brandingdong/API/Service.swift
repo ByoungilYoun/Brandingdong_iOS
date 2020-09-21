@@ -11,6 +11,34 @@ import Alamofire
 
 struct Service {
   
+  static func getProductInfoDetail(completion: @escaping (Bool) -> Void) {
+    let productDetailUrl = "http://52.78.75.94/products/info"
+    
+    AF.request(productDetailUrl, method: .get).responseJSON { response in
+      guard let jsonData = response.data else { return }
+      do {
+        let productDetailDatas = try JSONDecoder().decode([ProductInfoCodAble.ProductDetail].self, from: jsonData)
+        
+        for index in 0..<productDetailDatas.count {
+          let id = productDetailDatas[index].id
+          
+          for indexImage in 0..<productDetailDatas[index].info_img.count {
+            let image = productDetailDatas[index].info_img[indexImage].image
+            
+            if !(ProductInfoCategoryDatas.idAndInfoImages.keys.contains(id)) {
+              ProductInfoCategoryDatas.idAndInfoImages[id] = [indexImage:image]
+            } else {
+              ProductInfoCategoryDatas.idAndInfoImages[id]?.updateValue(image, forKey: indexImage)
+            }
+          }
+        }
+        completion(true)
+      } catch {
+        print ("error : ", error.localizedDescription)
+      }
+    }
+  }
+  
   static func getBannerImages(completion: @escaping (Bool) -> Void ) {
     
     let bannerUrl = "http://52.78.75.94/events/"
@@ -40,6 +68,7 @@ struct Service {
         
         for index in 0..<productDatas.results.count {
           
+          let id = productDatas.results[index].id
           let name = productDatas.results[index].name
           let price = productDatas.results[index].price
           let mainImages = productDatas.results[index].main_img[0].image
@@ -51,6 +80,8 @@ struct Service {
           HomeInfoDatas.price.append(price)
           HomeInfoDatas.images.append(mainImages)
           HomeInfoDatas.brandNames.append(brandName)
+          
+          HomeInfoDatas.productIdAndName[id] = name
           
           if !(HomeInfoDatas.productNameAndBrandImageIntro.keys.contains(name)) {
             HomeInfoDatas.productNameAndBrandImageIntro[name] = [brandIntro : brandImages]
@@ -80,7 +111,7 @@ struct Service {
       }
     }
   }
-
+  
   static func signUpUser(username: String, email: String, password1: String, password2: String, phonenumber: String) {
     let signUpUrl = "http://52.78.75.94/auth/signup/"
     guard let url = URL(string: signUpUrl) else  { return print ("can't not create url")}
@@ -104,7 +135,7 @@ struct Service {
       guard let response = response as? HTTPURLResponse else { return print("response error")}
       
       guard let data = data,
-        let signedUpUser = try? JSONSerialization.jsonObject(with: data) as? [String : Any] else { return }
+            let signedUpUser = try? JSONSerialization.jsonObject(with: data) as? [String : Any] else { return }
       
       print (signedUpUser)
       print (response.statusCode)
@@ -132,7 +163,7 @@ struct Service {
       guard let response = response as? HTTPURLResponse else { return print("response error")}
       
       guard let data = data,
-        let loginUser = try? JSONSerialization.jsonObject(with: data) as? [String : Any] else { return }
+            let loginUser = try? JSONSerialization.jsonObject(with: data) as? [String : Any] else { return }
       
       print (loginUser)
       print (response.statusCode)

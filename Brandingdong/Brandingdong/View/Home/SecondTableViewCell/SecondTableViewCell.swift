@@ -75,6 +75,29 @@ class SecondTableViewCell : UITableViewCell {
     }
   }
   
+  private func pushDetailImages(key: Int) {
+    if !(key == 2) {
+      ProductInfo.checkProductId = key
+      if key == 1 {
+        for (_, ImagesValue) in ProductInfoCategoryDatas.idAndInfoImages[key]! {
+          print ("ImagesValue : ", ImagesValue)
+          let url = URL(string: ImagesValue)
+          let data = try! Data(contentsOf: url!)
+          ProductInfo.checkProductDetailImageArr.append(UIImage(data: data)!)
+        }
+      } else {
+        for (_, ImagesValue) in ProductInfoCategoryDatas.idAndInfoImages[key + 1]! {
+          print ("ImagesValue : ", ImagesValue)
+          let url = URL(string: ImagesValue)
+          let data = try! Data(contentsOf: url!)
+          ProductInfo.checkProductDetailImageArr.append(UIImage(data: data)!)
+        }
+      }
+    } else {
+      ProductInfo.checkProductDetailImageArr.append(UIImage(systemName: "xmark")!)
+    }
+  }
+  
   // MARK: - CheckProduct Data
   
   private func checkProductPushData(productName: String) {
@@ -91,6 +114,12 @@ class SecondTableViewCell : UITableViewCell {
     for (key, value) in HomeInfoDatas.productNameAndBrandImageIntro[productName]! {
       ProductInfo.checkProductBrandIntro = key
       ProductInfo.checkProductBrandImage = value
+    }
+    
+    for (key, value) in HomeInfoDatas.productIdAndName {
+      if value == productName {
+        pushDetailImages(key: key)
+      }
     }
   }
 }
