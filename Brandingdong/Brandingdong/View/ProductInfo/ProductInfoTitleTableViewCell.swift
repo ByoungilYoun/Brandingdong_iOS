@@ -108,10 +108,6 @@ class ProductInfoTitleTableViewCell: UITableViewCell {
       $0.top.equalTo(productTitle.snp.bottom).offset(margin)
     }
     
-//    buyCountTitle.snp.makeConstraints {
-//      $0.top.equalTo(productPrice.snp.bottom).offset(margin)
-//    }
-    
     sellerImageView.clipsToBounds = true
     sellerImageView.layer.cornerRadius = imageSize / 2
   }
@@ -126,31 +122,3 @@ class ProductInfoTitleTableViewCell: UITableViewCell {
     sellerImageView.image = UIImage(data: data)
   }
 }
-
-/*
- private let productTitle: UILabel = {
-   let lb = UILabel()
-   lb.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 24)
-   lb.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-   lb.text = "상품명"
-   return lb
- }()
-
- 
- private let productPrice: UILabel = {
-   let lb = UILabel()
-   lb.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
-   lb.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-   lb.text = "xx,xxx"
-   return lb
- }()
- 
- private let buyCountTitle: UILabel = {
-   let lb = UILabel()
-   lb.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 16)
-   lb.textColor = .lightGray
-   lb.text = "xx개 구매중"
-   return lb
- }()
-
- */
