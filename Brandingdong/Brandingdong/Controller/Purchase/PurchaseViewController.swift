@@ -15,6 +15,17 @@ class PurchaseViewController : UIViewController {
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .red
+    view.backgroundColor = .systemBackground
+   
+  }
+  
+  //MARK: - setUI()
+  private func setUI() {
+    
+  }
+  
+  //MARK: - setConstraints()
+  private func setConstraints() {
+ 
   }
 }
