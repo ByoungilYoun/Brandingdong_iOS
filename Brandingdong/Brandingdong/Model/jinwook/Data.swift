@@ -47,7 +47,7 @@ struct HomeInfoCodAble {
 struct ProductInfoCodAble: Codable {
   
   struct ProductDetail: Codable {
-    var id: Int
+    var product: Int
     var info_img: [Images]
   }
   

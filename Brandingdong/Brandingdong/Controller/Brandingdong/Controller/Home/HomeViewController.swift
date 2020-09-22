@@ -49,8 +49,8 @@ class HomeViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     hiddenNavi()
+    tabBarHidden()
     shoppingMallVC.isHidden = false
-    
   }
   
   override func viewWillLayoutSubviews() {
@@ -115,6 +115,10 @@ class HomeViewController: UIViewController {
   private func resizeButton() {
     moveToTopButton.layer.cornerRadius = moveToTopButton.frame.width / 2
     moveToTopButton.clipsToBounds = true
+  }
+  
+  private func tabBarHidden() {
+    tabBarController?.tabBar.isHidden = false
   }
 
   // MARK: - Navigation Hidden
