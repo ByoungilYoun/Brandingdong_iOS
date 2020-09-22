@@ -34,6 +34,7 @@
 		0F9BB7932503B63E006E0232 /* market.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F9BB7902503B63E006E0232 /* market.png */; };
 		0F9BB7942503B63E006E0232 /* beauty.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F9BB7912503B63E006E0232 /* beauty.png */; };
 		0F9BB7962503D6E2006E0232 /* SelectAllCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9BB7952503D6E2006E0232 /* SelectAllCustomButton.swift */; };
+		0FDB80F02518B3B8000C4353 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB80EF2518B3B8000C4353 /* PurchaseViewController.swift */; };
 		0FED02B424EE7EB0003D03B4 /* MainLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */; };
 		0FED02B624EE820A003D03B4 /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */; };
 		0FFF716724F3891700D469D7 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFF716624F3891700D469D7 /* facebook.png */; };
@@ -126,6 +127,7 @@
 		0F9BB7902503B63E006E0232 /* market.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = market.png; sourceTree = "<group>"; };
 		0F9BB7912503B63E006E0232 /* beauty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beauty.png; sourceTree = "<group>"; };
 		0F9BB7952503D6E2006E0232 /* SelectAllCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAllCustomButton.swift; sourceTree = "<group>"; };
+		0FDB80EF2518B3B8000C4353 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainLoginViewController.swift; path = Brandingdong/Controller/Login/MainLoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialLoginButton.swift; path = Brandingdong/View/Login/Main/SocialLoginButton.swift; sourceTree = SOURCE_ROOT; };
 		0FFF716624F3891700D469D7 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
@@ -306,6 +308,14 @@
 				0F8935BB24F51E89006E1944 /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		0FE68B4C2518AE05004A3286 /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				0FDB80EF2518B3B8000C4353 /* PurchaseViewController.swift */,
+			);
+			path = Purchase;
 			sourceTree = "<group>";
 		};
 		13596CAFC138D7A2968A6E4D /* Pods */ = {
@@ -665,6 +675,7 @@
 		49CEB3A424EE540B0026201B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0FE68B4C2518AE05004A3286 /* Purchase */,
 				498A905625023DC9003C18C6 /* ProductInfo */,
 				49AABDDA24EE7E7A00DE0088 /* TabBar */,
 				49AABDDF24EE7F3000DE0088 /* MYPage */,
@@ -870,6 +881,7 @@
 				493AACF625037D8A00AF3156 /* ProductInfoImageCollectionViewCell.swift in Sources */,
 				4908EA1624F6998C008C05D9 /* UserInfoEntryViewController.swift in Sources */,
 				0FFF716D24F3C8CF00D469D7 /* LoginViewController.swift in Sources */,
+				0FDB80F02518B3B8000C4353 /* PurchaseViewController.swift in Sources */,
 				0FED02B624EE820A003D03B4 /* SocialLoginButton.swift in Sources */,
 				0F843B99250B895D00C3F2B7 /* ShoppingMallViewController.swift in Sources */,
 				0F3EA9AA2511FE3700561887 /* SecondTableViewCell.swift in Sources */,
