@@ -75,29 +75,6 @@ class SecondTableViewCell : UITableViewCell {
     }
   }
   
-  private func pushDetailImages(key: Int) {
-    if !(key == 2) {
-      ProductInfo.checkProductId = key
-      if key == 1 {
-        for (_, ImagesValue) in ProductInfoCategoryDatas.idAndInfoImages[key]! {
-          print ("ImagesValue : ", ImagesValue)
-          let url = URL(string: ImagesValue)
-          let data = try! Data(contentsOf: url!)
-          ProductInfo.checkProductDetailImageArr.append(UIImage(data: data)!)
-        }
-      } else {
-        for (_, ImagesValue) in ProductInfoCategoryDatas.idAndInfoImages[key + 1]! {
-          print ("ImagesValue : ", ImagesValue)
-          let url = URL(string: ImagesValue)
-          let data = try! Data(contentsOf: url!)
-          ProductInfo.checkProductDetailImageArr.append(UIImage(data: data)!)
-        }
-      }
-    } else {
-      ProductInfo.checkProductDetailImageArr.append(UIImage(systemName: "xmark")!)
-    }
-  }
-  
   // MARK: - CheckProduct Data
   
   private func checkProductPushData(productName: String) {
@@ -118,57 +95,62 @@ class SecondTableViewCell : UITableViewCell {
     
     for (key, value) in HomeInfoDatas.productIdAndName {
       if value == productName {
-        pushDetailImages(key: key)
+        for (_, ImagesValue) in ProductInfoCategoryDatas.idAndInfoImages[key]! {
+          print ("ImagesValue : ", ImagesValue)
+          let url = URL(string: ImagesValue)
+          let data = try! Data(contentsOf: url!)
+          ProductInfo.checkProductDetailImageArr.append(UIImage(data: data)!)
+        }
       }
     }
   }
 }
-
-//MARK: - UICollectionViewDataSource
-extension SecondTableViewCell : UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 30
-  }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
-    cell.configure(image: productImageArr[indexPath.item],
-                   company: HomeInfoDatas.brandNames[indexPath.item],
-                   description: HomeInfoDatas.names[indexPath.item],
-                   price: String(HomeInfoDatas.price[indexPath.item]))
-    return cell
-  }
-}
-
-//MARK: - UICollectionViewDelegate
-extension SecondTableViewCell : UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if let didTapIndex = collectionView.cellForItem(at: indexPath) as? CommonProductCollectionViewCell {
-      let checkProductName = didTapIndex.descriptionLabel.text!
-      checkProductPushData(productName: checkProductName)
+  //MARK: - UICollectionViewDataSource
+  extension SecondTableViewCell : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      return 30
     }
-    delegate?.handlePresent(cell: self)
-  }
-}
-
-//MARK: - UICollectionViewDelegateFlowLayout
-extension SecondTableViewCell : UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return Standard.standard
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return Standard.standard
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
+      cell.configure(image: productImageArr[indexPath.item],
+                     company: HomeInfoDatas.brandNames[indexPath.item],
+                     description: HomeInfoDatas.names[indexPath.item],
+                     price: String(HomeInfoDatas.price[indexPath.item]))
+      return cell
+    }
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return Standard.inset
+  //MARK: - UICollectionViewDelegate
+  extension SecondTableViewCell : UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      if let didTapIndex = collectionView.cellForItem(at: indexPath) as? CommonProductCollectionViewCell {
+        let checkProductName = didTapIndex.descriptionLabel.text!
+        checkProductPushData(productName: checkProductName)
+      }
+      delegate?.handlePresent(cell: self)
+    }
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let width = self.frame.size.width - Standard.standard - (Standard.inset.left + Standard.inset.right)
-    let realWidth = width / 2
-    let height : CGFloat = 230
-    return CGSize(width: realWidth, height: height)
+  //MARK: - UICollectionViewDelegateFlowLayout
+  extension SecondTableViewCell : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+      return Standard.standard
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+      return Standard.standard
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+      return Standard.inset
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      let width = self.frame.size.width - Standard.standard - (Standard.inset.left + Standard.inset.right)
+      let realWidth = width / 2
+      let height : CGFloat = 230
+      return CGSize(width: realWidth, height: height)
+    }
   }
-}

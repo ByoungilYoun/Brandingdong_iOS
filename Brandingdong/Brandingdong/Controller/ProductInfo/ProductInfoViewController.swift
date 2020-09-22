@@ -287,7 +287,6 @@ extension ProductInfoViewController: UITableViewDataSource {
     let pointCellHeight: CGFloat = 86
     let discountCouponHeight: CGFloat = 86
     var categoryHeight: CGFloat = 100 + (412 * CGFloat(ProductInfo.checkProductDetailImageArr.count))
-    print ("1 categoryHeight : ", categoryHeight)
     let sellerAnotherProductHeight: CGFloat = 642
     let anotherLikeHeight: CGFloat = 222
 
