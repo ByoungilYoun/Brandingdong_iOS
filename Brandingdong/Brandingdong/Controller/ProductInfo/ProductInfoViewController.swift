@@ -14,6 +14,8 @@ class ProductInfoViewController: UIViewController {
   
   private let productInfoTableView = UITableView()
   private let deviceHeight = UIScreen.main.bounds.height
+  private let purchaseVC = PurchaseViewController()
+  private var purchaseButtonClicked = false
   
   private let buyButton: UIButton = {
     let btn = UIButton()
@@ -60,6 +62,7 @@ class ProductInfoViewController: UIViewController {
     setUI()
     setConstraints()
     setTableView()
+    addPurchaseView()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +83,20 @@ class ProductInfoViewController: UIViewController {
      moveTopButton,
      favoriteButton].forEach {
       view.addSubview($0)
+    }
+  }
+  
+  private func addPurchaseView() {
+    addChild(purchaseVC)
+    view.addSubview(purchaseVC.view)
+    purchaseVC.view.alpha = 0
+    purchaseVC.view.backgroundColor = .systemBlue
+    purchaseVC.didMove(toParent: self)
+    
+    purchaseVC.view.snp.makeConstraints {
+      $0.leading.trailing.equalToSuperview()
+      $0.bottom.equalToSuperview()
+      $0.height.equalTo(500)
     }
   }
   
@@ -232,9 +249,8 @@ class ProductInfoViewController: UIViewController {
   }
   
   @objc private func buyButtonClicked() {
-    let controller = PurchaseViewController()
-//    controller.modalPresentationStyle = .automatic
-    present(controller, animated: true, completion: nil)
+    purchaseVC.view.alpha = 1
+    tableView(<#T##tableView: UITableView##UITableView#>, cellForRowAt: <#T##IndexPath#>)
   }
 }
 
