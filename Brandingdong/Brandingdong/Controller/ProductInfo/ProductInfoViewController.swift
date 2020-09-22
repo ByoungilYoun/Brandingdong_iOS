@@ -20,6 +20,7 @@ class ProductInfoViewController: UIViewController {
     btn.setTitle("구매하기", for: .normal)
     btn.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     btn.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    btn.addTarget(self, action: #selector(buyButtonClicked), for: .touchUpInside)
     return btn
   }()
   
@@ -64,6 +65,7 @@ class ProductInfoViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setNavi()
+    hideTabbar()
   }
   
   
@@ -95,7 +97,7 @@ class ProductInfoViewController: UIViewController {
     }
     
     buyButton.snp.makeConstraints {
-      $0.bottom.equalToSuperview()
+      $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
       $0.height.equalTo(buttonHeight)
     }
     
@@ -185,6 +187,10 @@ class ProductInfoViewController: UIViewController {
     navigationController?.navigationBar.layoutIfNeeded()
   }
   
+  //MARK: - HiddenTabar
+  private func hideTabbar() {
+    tabBarController?.tabBar.isHidden = true
+  }
   // MARK: - keyboard Hidden
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -223,6 +229,12 @@ class ProductInfoViewController: UIViewController {
       favoriteButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
       toggle = !toggle
     }
+  }
+  
+  @objc private func buyButtonClicked() {
+    let controller = PurchaseViewController()
+//    controller.modalPresentationStyle = .automatic
+    present(controller, animated: true, completion: nil)
   }
 }
 
