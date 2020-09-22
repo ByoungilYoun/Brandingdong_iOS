@@ -5,7 +5,6 @@
 
 ## 팀원.
 
-- 성단빈 [[gitHub]](https://github.com/danbin920404)
 - 이진욱 [[gitHub]](https://github.com/jwlee07)
 - 윤병일 [[gitHub]](https://github.com/ByoungilYoun)
 
@@ -14,4 +13,5 @@
 ```
 - SnapKit
 - SwiftLint
+- Alamofire
 ```

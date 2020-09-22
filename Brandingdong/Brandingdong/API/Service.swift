@@ -20,7 +20,7 @@ struct Service {
         let productDetailDatas = try JSONDecoder().decode([ProductInfoCodAble.ProductDetail].self, from: jsonData)
         
         for index in 0..<productDetailDatas.count {
-          let id = productDetailDatas[index].id
+          let id = productDetailDatas[index].product
           
           for indexImage in 0..<productDetailDatas[index].info_img.count {
             let image = productDetailDatas[index].info_img[indexImage].image
