@@ -17,7 +17,7 @@ class ProductInfoTitleTableViewCell: UITableViewCell {
   
   private let sellerNickName: UILabel = {
     let lb = UILabel()
-    lb.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 16)
+    lb.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
     lb.textColor = .lightGray
     lb.text = "사용자 닉네임"
     return lb
@@ -30,6 +30,7 @@ class ProductInfoTitleTableViewCell: UITableViewCell {
     lb.text = "상품명"
     return lb
   }()
+
   
   private let productPrice: UILabel = {
     let lb = UILabel()
@@ -55,6 +56,7 @@ class ProductInfoTitleTableViewCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
+    productTitleInit()
     setUI()
     setConstraints()
   }
@@ -66,22 +68,23 @@ class ProductInfoTitleTableViewCell: UITableViewCell {
      sellerNickName,
      productTitle,
      productPrice,
-     buyCountTitle].forEach {
+//     buyCountTitle
+    ].forEach {
       contentView.addSubview($0)
     }
-    sellerImageView.image = UIImage(named: "테스트4")
   }
   
   private func setConstraints() {
     
-    let imageSize: CGFloat = 32
+    let imageSize: CGFloat = 52
     let sellerMargin: CGFloat = 16
     let margin: CGFloat = 8
     
     [sellerImageView,
      productTitle,
      productPrice,
-     buyCountTitle].forEach {
+//     buyCountTitle
+    ].forEach {
       $0.snp.makeConstraints {
         $0.leading.equalToSuperview().offset(margin)
       }
@@ -105,11 +108,17 @@ class ProductInfoTitleTableViewCell: UITableViewCell {
       $0.top.equalTo(productTitle.snp.bottom).offset(margin)
     }
     
-    buyCountTitle.snp.makeConstraints {
-      $0.top.equalTo(productPrice.snp.bottom).offset(margin)
-    }
-    
     sellerImageView.clipsToBounds = true
     sellerImageView.layer.cornerRadius = imageSize / 2
+  }
+  
+  private func productTitleInit() {
+    sellerNickName.text = ProductInfo.checkProductBrandName
+    productTitle.text = ProductInfo.checkProductName
+    productPrice.text = ProductInfo.checkProductPrice
+    
+    let url = URL(string: ProductInfo.checkProductBrandImage)
+    let data = try! Data(contentsOf: url!)
+    sellerImageView.image = UIImage(data: data)
   }
 }

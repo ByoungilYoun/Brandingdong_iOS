@@ -212,6 +212,7 @@ class ProductInfoViewController: UIViewController {
   @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
     navigationController?.popViewController(animated: true)
     ProductInfo.checkProductNameImageArr.removeAll()
+    ProductInfo.checkProductDetailImageArr.removeAll()
   }
   
   @objc private func didTapBasketButton(_ sender: UIBarButtonItem) {
@@ -263,18 +264,21 @@ extension ProductInfoViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
+    print ("ProductInfo.checkProductDetailImageArr.count : ", ProductInfo.checkProductDetailImageArr.count)
+    
     let imageCellHeight: CGFloat = 532
     let titleCellHeight: CGFloat = 172
     let pointCellHeight: CGFloat = 86
     let discountCouponHeight: CGFloat = 86
-    var categoryHeight: CGFloat = 324
+    var categoryHeight: CGFloat = 100 + (412 * CGFloat(ProductInfo.checkProductDetailImageArr.count))
+    print ("1 categoryHeight : ", categoryHeight)
     let sellerAnotherProductHeight: CGFloat = 642
     let anotherLikeHeight: CGFloat = 222
 
     
     switch resultCategoryClick {
     case "상품정보":
-      categoryHeight = 312
+      categoryHeight = 100 + (412 * CGFloat(ProductInfo.checkProductDetailImageArr.count))
     case "리뷰":
       categoryHeight = 212
     case "Q&A":
@@ -284,6 +288,8 @@ extension ProductInfoViewController: UITableViewDataSource {
     default:
       break
     }
+    
+    print ("2 categoryHeight : ", categoryHeight)
     
     
     switch indexPath.section {

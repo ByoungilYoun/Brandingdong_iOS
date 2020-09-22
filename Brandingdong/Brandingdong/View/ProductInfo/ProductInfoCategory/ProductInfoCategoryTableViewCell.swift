@@ -80,6 +80,7 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   }
   
   private func setTableView() {
+    tableView.isScrollEnabled = false
     tableView.allowsSelection = false
     tableView.dataSource = self
     tableView.rowHeight = 272
@@ -190,6 +191,7 @@ extension ProductInfoCategoryTableViewCell: UITableViewDataSource {
     case "", "상품정보":
       let cell = tableView.dequeueReusableCell(withIdentifier: ProductDetailInfoTableViewCell.identifier,
                                                for: indexPath)
+      tableView.rowHeight = 100 + (412 * CGFloat(ProductInfo.checkProductDetailImageArr.count))
       return cell
     case "리뷰":
       let cell = tableView.dequeueReusableCell(withIdentifier: ReViewTableViewCell.identifier,

@@ -74,6 +74,54 @@ class SecondTableViewCell : UITableViewCell {
       productImageArr.append(UIImage(data: data)!)
     }
   }
+  
+  private func pushDetailImages(key: Int) {
+    if !(key == 2) {
+      ProductInfo.checkProductId = key
+      if key == 1 {
+        for (_, ImagesValue) in ProductInfoCategoryDatas.idAndInfoImages[key]! {
+          print ("ImagesValue : ", ImagesValue)
+          let url = URL(string: ImagesValue)
+          let data = try! Data(contentsOf: url!)
+          ProductInfo.checkProductDetailImageArr.append(UIImage(data: data)!)
+        }
+      } else {
+        for (_, ImagesValue) in ProductInfoCategoryDatas.idAndInfoImages[key + 1]! {
+          print ("ImagesValue : ", ImagesValue)
+          let url = URL(string: ImagesValue)
+          let data = try! Data(contentsOf: url!)
+          ProductInfo.checkProductDetailImageArr.append(UIImage(data: data)!)
+        }
+      }
+    } else {
+      ProductInfo.checkProductDetailImageArr.append(UIImage(systemName: "xmark")!)
+    }
+  }
+  
+  // MARK: - CheckProduct Data
+  
+  private func checkProductPushData(productName: String) {
+    for (_, value) in HomeInfoDatas.productNameAndImages[productName]! {
+      let url = URL(string: value)
+      let data = try! Data(contentsOf: url!)
+      ProductInfo.checkProductNameImageArr.append(UIImage(data: data)!)
+    }
+    for (key, value) in HomeInfoDatas.productNameAndBrandNamePrice[productName]! {
+      ProductInfo.checkProductName = productName
+      ProductInfo.checkProductBrandName = key
+      ProductInfo.checkProductPrice = String(value)
+    }
+    for (key, value) in HomeInfoDatas.productNameAndBrandImageIntro[productName]! {
+      ProductInfo.checkProductBrandIntro = key
+      ProductInfo.checkProductBrandImage = value
+    }
+    
+    for (key, value) in HomeInfoDatas.productIdAndName {
+      if value == productName {
+        pushDetailImages(key: key)
+      }
+    }
+  }
 }
 
 //MARK: - UICollectionViewDataSource
@@ -97,11 +145,7 @@ extension SecondTableViewCell : UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if let didTapIndex = collectionView.cellForItem(at: indexPath) as? CommonProductCollectionViewCell {
       let checkProductName = didTapIndex.descriptionLabel.text!
-      for (_, value) in HomeInfoDatas.idAndImages[checkProductName]! {
-        let url = URL(string: value)
-        let data = try! Data(contentsOf: url!)
-        ProductInfo.checkProductNameImageArr.append(UIImage(data: data)!)
-      }
+      checkProductPushData(productName: checkProductName)
     }
     delegate?.handlePresent(cell: self)
   }

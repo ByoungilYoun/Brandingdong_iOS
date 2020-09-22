@@ -6,6 +6,7 @@ target 'Brandingdong' do
   use_frameworks!
   pod 'SwiftLint'
   pod 'SnapKit'
+  pod 'Alamofire'
   # Pods for Brandingdong
 
 end
