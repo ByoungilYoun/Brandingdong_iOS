@@ -250,7 +250,7 @@ class ProductInfoViewController: UIViewController {
   
   @objc private func buyButtonClicked() {
     purchaseVC.view.alpha = 1
-    tableView(<#T##tableView: UITableView##UITableView#>, cellForRowAt: <#T##IndexPath#>)
+//    tableView(<#T##tableView: UITableView##UITableView#>, cellForRowAt: <#T##IndexPath#>)
   }
 }
 
