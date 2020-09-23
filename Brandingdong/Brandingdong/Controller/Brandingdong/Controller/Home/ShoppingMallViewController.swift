@@ -18,7 +18,6 @@ class ShoppingMallView : UIView {
    var tableView = UITableView()
   
   var delegate : ShoppingMallViewDelegate?
- 
   
   //MARK: - LifeCycle
   override init(frame: CGRect) {

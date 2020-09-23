@@ -109,7 +109,7 @@ class SecondTableViewCell : UITableViewCell {
   //MARK: - UICollectionViewDataSource
   extension SecondTableViewCell : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return 30
+      return HomeInfoDatas.names.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -128,6 +128,8 @@ class SecondTableViewCell : UITableViewCell {
       if let didTapIndex = collectionView.cellForItem(at: indexPath) as? CommonProductCollectionViewCell {
         let checkProductName = didTapIndex.descriptionLabel.text!
         checkProductPushData(productName: checkProductName)
+        Favorite.checkRecentProductList.append(checkProductName)
+        print ("Favorite.checkRecentProductList : ", Favorite.checkRecentProductList)
       }
       delegate?.handlePresent(cell: self)
     }

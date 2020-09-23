@@ -83,3 +83,8 @@ struct ProductInfo {
   static var checkProductBrandImage: String = ""
   static var checkProductBrandIntro: String = ""
 }
+
+struct Favorite {
+  static var checkFavoriteProductList: [String] = []
+  static var checkRecentProductList: [String] = []
+}

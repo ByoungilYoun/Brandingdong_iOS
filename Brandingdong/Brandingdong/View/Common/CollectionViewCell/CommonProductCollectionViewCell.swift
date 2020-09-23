@@ -114,6 +114,7 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
   @objc func clickedBtn(_ sender : UIButton) {
     if !buttonToggle {
      heartButton.tintColor = .systemRed
+      print ()
       buttonToggle = !buttonToggle
     } else {
       heartButton.tintColor = UIColor.white.withAlphaComponent(0.8)
