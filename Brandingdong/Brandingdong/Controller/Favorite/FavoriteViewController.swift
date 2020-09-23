@@ -102,8 +102,7 @@ class FavoriteViewController: UIViewController {
     
     collectionView.snp.makeConstraints {
       $0.top.equalTo(buttonView.snp.bottom)
-      $0.leading.trailing.equalToSuperview()
-      $0.bottom.equalTo(view.safeAreaLayoutGuide)
+      $0.leading.trailing.bottom.equalToSuperview()
     }
   }
   
@@ -111,7 +110,7 @@ class FavoriteViewController: UIViewController {
   
   private func setLayout() {
     
-    let itemHeight: CGFloat = 532
+    let itemHeight: CGFloat = 632
     let itemSpasing: CGFloat = 0
     let lineSpasing: CGFloat = 0
     let sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -124,11 +123,12 @@ class FavoriteViewController: UIViewController {
   }
   
   private func setCollectionView() {
-    collectionView.backgroundColor = .systemIndigo
+    collectionView.backgroundColor = .systemBackground
     collectionView.isPagingEnabled = true
     collectionView.showsHorizontalScrollIndicator = false
+    collectionView.dataSource = self
     
-    collectionView.register(ProductInfoImageCollectionViewCell.self, forCellWithReuseIdentifier: ProductInfoImageCollectionViewCell.identifier)
+    collectionView.register(RecentProductViewCell.self, forCellWithReuseIdentifier: RecentProductViewCell.identifer)
   }
   
   // MARK: - NavigationBar
@@ -171,9 +171,20 @@ class FavoriteViewController: UIViewController {
       
       favoriteProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
       favoriteProductButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-      
     default:
       break
     }
+  }
+}
+
+// MARK: - UICollectionViewDataSource
+extension FavoriteViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 1
+  }
+
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentProductViewCell.identifer, for: indexPath) as! RecentProductViewCell
+    return cell
   }
 }

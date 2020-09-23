@@ -93,6 +93,8 @@
 		49CEB39424EE4FB60026201B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEB39324EE4FB60026201B /* ViewController.swift */; };
 		49CEB39924EE4FB70026201B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CEB39824EE4FB70026201B /* Assets.xcassets */; };
 		49CEB39C24EE4FB70026201B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CEB39A24EE4FB70026201B /* LaunchScreen.storyboard */; };
+		49D8BA9E251B13DE0006F1AE /* FavoriteProductEmptyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8BA9D251B13DE0006F1AE /* FavoriteProductEmptyViewCell.swift */; };
+		49D8BAA1251B17030006F1AE /* RecentProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8BAA0251B17030006F1AE /* RecentProductViewCell.swift */; };
 		49E472A7250F8CAE00C34CCE /* CommonProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E472A6250F8CAE00C34CCE /* CommonProductCollectionViewCell.swift */; };
 		8DE428A571219C12BA611090 /* Pods_Brandingdong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A300E69C8DC3501D16CE4F /* Pods_Brandingdong.framework */; };
 		CE596BB924F77B9D00DDE2EB /* UserAgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE596BB824F77B9D00DDE2EB /* UserAgreeViewController.swift */; };
@@ -191,6 +193,8 @@
 		49CEB39824EE4FB70026201B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49CEB39B24EE4FB70026201B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49CEB39D24EE4FB70026201B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49D8BA9D251B13DE0006F1AE /* FavoriteProductEmptyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductEmptyViewCell.swift; sourceTree = "<group>"; };
+		49D8BAA0251B17030006F1AE /* RecentProductViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductViewCell.swift; sourceTree = "<group>"; };
 		49E472A6250F8CAE00C34CCE /* CommonProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		98A300E69C8DC3501D16CE4F /* Pods_Brandingdong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brandingdong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE596BB824F77B9D00DDE2EB /* UserAgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreeViewController.swift; sourceTree = "<group>"; };
@@ -407,23 +411,10 @@
 		491CEB3F2519DC4200FE08FD /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				491CEB4B2519FC4200FE08FD /* CustomCell */,
+				49D8BA9D251B13DE0006F1AE /* FavoriteProductEmptyViewCell.swift */,
+				49D8BAA0251B17030006F1AE /* RecentProductViewCell.swift */,
 			);
 			path = Favorite;
-			sourceTree = "<group>";
-		};
-		491CEB4B2519FC4200FE08FD /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomCell;
-			sourceTree = "<group>";
-		};
-		491CEB4D2519FDA300FE08FD /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		492747BB24F2833700D259BE /* MainCategory */ = {
@@ -607,7 +598,6 @@
 			isa = PBXGroup;
 			children = (
 				49AABDE224EE7F7800DE0088 /* FavoriteViewController.swift */,
-				491CEB4D2519FDA300FE08FD /* CustomCell */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -942,6 +932,7 @@
 				0F0A400624EED9430037B7A1 /* SocialCustomButtonViewModel.swift in Sources */,
 				49CEB39424EE4FB60026201B /* ViewController.swift in Sources */,
 				490C4862251395AE00741323 /* HomeLaunchScreenViewController.swift in Sources */,
+				49D8BAA1251B17030006F1AE /* RecentProductViewCell.swift in Sources */,
 				0FED02B424EE7EB0003D03B4 /* MainLoginViewController.swift in Sources */,
 				493AACFE250391FA00AF3156 /* ProductInfoTitleTableViewCell.swift in Sources */,
 				49E472A7250F8CAE00C34CCE /* CommonProductCollectionViewCell.swift in Sources */,
@@ -986,6 +977,7 @@
 				49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */,
 				4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */,
 				49AABDEA24EE81F400DE0088 /* HomeViewController.swift in Sources */,
+				49D8BA9E251B13DE0006F1AE /* FavoriteProductEmptyViewCell.swift in Sources */,
 				0F9BB7962503D6E2006E0232 /* SelectAllCustomButton.swift in Sources */,
 				49AC2CF92508D5AA00B465A6 /* UserData.swift in Sources */,
 				492747BA24F27BFB00D259BE /* SearchTextfieldImageView.swift in Sources */,
