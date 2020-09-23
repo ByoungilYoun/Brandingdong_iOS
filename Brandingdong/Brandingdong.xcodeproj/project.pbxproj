@@ -17,6 +17,8 @@
 		0F3EA9AF25121A7300561887 /* ThirdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3EA9AE25121A7300561887 /* ThirdTableViewCell.swift */; };
 		0F3EA9B125121C3C00561887 /* customerCenter.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0F3EA9B025121C3C00561887 /* customerCenter.jpeg */; };
 		0F661B7E24EE90AD0060FDF7 /* brandi login image in Resources */ = {isa = PBXBuildFile; fileRef = 0F661B7D24EE90AD0060FDF7 /* brandi login image */; };
+		0F7933C7251B3BB70088ADA7 /* PurchaseTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7933C6251B3BB70088ADA7 /* PurchaseTableHeaderView.swift */; };
+		0F7933CA251B466C0088ADA7 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7933C9251B466C0088ADA7 /* PurchaseTableViewCell.swift */; };
 		0F843B052504DAC500C3F2B7 /* FooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B042504DAC500C3F2B7 /* FooterCollectionReusableView.swift */; };
 		0F843B4D2505FE0B00C3F2B7 /* OuterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B4C2505FE0B00C3F2B7 /* OuterViewController.swift */; };
 		0F843B5125061D3200C3F2B7 /* FirstCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B5025061D3200C3F2B7 /* FirstCategoryView.swift */; };
@@ -112,6 +114,8 @@
 		0F3EA9AE25121A7300561887 /* ThirdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTableViewCell.swift; sourceTree = "<group>"; };
 		0F3EA9B025121C3C00561887 /* customerCenter.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = customerCenter.jpeg; sourceTree = "<group>"; };
 		0F661B7D24EE90AD0060FDF7 /* brandi login image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "brandi login image"; sourceTree = "<group>"; };
+		0F7933C6251B3BB70088ADA7 /* PurchaseTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableHeaderView.swift; sourceTree = "<group>"; };
+		0F7933C9251B466C0088ADA7 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		0F843B042504DAC500C3F2B7 /* FooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		0F843B4C2505FE0B00C3F2B7 /* OuterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterViewController.swift; sourceTree = "<group>"; };
 		0F843B5025061D3200C3F2B7 /* FirstCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCategoryView.swift; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 		0F2504FD2519C412006F69C3 /* Purchase  */ = {
 			isa = PBXGroup;
 			children = (
+				0F7933C6251B3BB70088ADA7 /* PurchaseTableHeaderView.swift */,
+				0F7933C9251B466C0088ADA7 /* PurchaseTableViewCell.swift */,
 			);
 			path = "Purchase ";
 			sourceTree = "<group>";
@@ -407,16 +413,8 @@
 		491CEB3F2519DC4200FE08FD /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				491CEB4B2519FC4200FE08FD /* CustomCell */,
 			);
 			path = Favorite;
-			sourceTree = "<group>";
-		};
-		491CEB4B2519FC4200FE08FD /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		491CEB4D2519FDA300FE08FD /* CustomCell */ = {
@@ -966,6 +964,7 @@
 				CE79A97C24F7B8E6008D4237 /* UserAgreeView.swift in Sources */,
 				0F843B532506212D00C3F2B7 /* FirstCategoryCell.swift in Sources */,
 				498CA4F224F9140C0056AB72 /* SNSUserInfoEntryViewController.swift in Sources */,
+				0F7933C7251B3BB70088ADA7 /* PurchaseTableHeaderView.swift in Sources */,
 				0F843B9D250D20B500C3F2B7 /* BeautyViewController.swift in Sources */,
 				0F843B052504DAC500C3F2B7 /* FooterCollectionReusableView.swift in Sources */,
 				0F3EA9AF25121A7300561887 /* ThirdTableViewCell.swift in Sources */,
@@ -973,6 +972,7 @@
 				492776F12513B81B00AFC390 /* BrandFirstTableViewCell.swift in Sources */,
 				49B99F6225109E450066F0BF /* QATableViewCell.swift in Sources */,
 				49AABDE524EE7F9000DE0088 /* CategoryViewController.swift in Sources */,
+				0F7933CA251B466C0088ADA7 /* PurchaseTableViewCell.swift in Sources */,
 				0F843B5125061D3200C3F2B7 /* FirstCategoryView.swift in Sources */,
 				49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */,
 				4901C44F25061E4F00390B6F /* ProductInfoDiscountCouponTableViewCell.swift in Sources */,

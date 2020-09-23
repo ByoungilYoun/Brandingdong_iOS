@@ -15,7 +15,9 @@ class ProductInfoViewController: UIViewController {
   private let productInfoTableView = UITableView()
   private let deviceHeight = UIScreen.main.bounds.height
   private let purchaseVC = PurchaseViewController()
-  private var purchaseButtonClicked = false
+  private let blurView = UIView()
+  
+  var gesture : UITapGestureRecognizer?
   
   private let buyButton: UIButton = {
     let btn = UIButton()
@@ -63,6 +65,8 @@ class ProductInfoViewController: UIViewController {
     setConstraints()
     setTableView()
     addPurchaseView()
+    addBlurView()
+    addNotificationCenter()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -90,13 +94,27 @@ class ProductInfoViewController: UIViewController {
     addChild(purchaseVC)
     view.addSubview(purchaseVC.view)
     purchaseVC.view.alpha = 0
-    purchaseVC.view.backgroundColor = .systemBlue
+    purchaseVC.view.isHidden = true
+    purchaseVC.view.backgroundColor = .systemBackground
     purchaseVC.didMove(toParent: self)
     
     purchaseVC.view.snp.makeConstraints {
       $0.leading.trailing.equalToSuperview()
       $0.bottom.equalToSuperview()
       $0.height.equalTo(500)
+    }
+  }
+  
+  private func addBlurView() {
+    blurView.alpha = 0
+    blurView.isHidden = true
+    blurView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+    view.addSubview(blurView)
+    
+    blurView.snp.makeConstraints {
+      $0.leading.trailing.equalToSuperview()
+      $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      $0.bottom.equalTo(purchaseVC.view.snp.top)
     }
   }
   
@@ -136,6 +154,13 @@ class ProductInfoViewController: UIViewController {
     }
     moveTopButton.clipsToBounds = true
     moveTopButton.layer.cornerRadius = buttonSize / 2
+  }
+  
+  private func addNotificationCenter() {
+    NotificationCenter.default.addObserver(self, selector: #selector(closeView(_:)), name: NSNotification.Name("CloseView"), object: nil)
+    let gesture = UITapGestureRecognizer(target: self, action: #selector(closeView(_:)))
+    view.addGestureRecognizer(gesture)
+    self.gesture = gesture
   }
   
   // MARK: - Set TableView
@@ -250,7 +275,20 @@ class ProductInfoViewController: UIViewController {
   
   @objc private func buyButtonClicked() {
     purchaseVC.view.alpha = 1
-    tableView(<#T##tableView: UITableView##UITableView#>, cellForRowAt: <#T##IndexPath#>)
+    purchaseVC.view.isHidden = false
+    blurView.alpha = 1
+    blurView.isHidden = false
+  }
+  
+  @objc private func closeView(_ tapGestureRecognizer : UITapGestureRecognizer) {
+    let location = tapGestureRecognizer.location(in: blurView)
+    guard blurView.isHidden == false, blurView.bounds.contains(location) else {
+      return
+    }
+    blurView.alpha = 0
+    blurView.isHidden = true
+    purchaseVC.view.alpha = 0
+    purchaseVC.view.isHidden = true
   }
 }
 
