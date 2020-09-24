@@ -21,8 +21,8 @@ class FavoriteViewController: UIViewController {
   private let favoriteProductButton: UIButton = {
     let btn = UIButton()
     btn.setTitle("찜한 상품", for: .normal)
-    btn.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-    btn.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+    btn.setTitleColor(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .normal)
+    btn.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
     btn.addTarget(self, action: #selector(didTapCategoryButton), for: .touchUpInside)
     return btn
   }()
@@ -36,11 +36,29 @@ class FavoriteViewController: UIViewController {
     return btn
   }()
   
+  private let buttonSubLineView: UIView = {
+    let view = UIView()
+    view.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+    return view
+  }()
+  
   private let deviceWidth = UIScreen.main.bounds.width
   
   private let layout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
   
+  private let favoriteProductCollectionViewCell = FavoriteProductCollectionViewCell()
+  private let recentProductCollectionViewCell = RecentProductCollectionViewCell()
+  
+  lazy var collectionViewCellArr = [favoriteProductCollectionViewCell,
+                                    recentProductCollectionViewCell]
+  
+  private let pageControl = UIPageControl()
+  private var collectionPage = 0 {
+    didSet {
+      buttonStateChange(button: nil, page: collectionPage)
+    }
+  }
   
   // MARK: - LifeCycle
   
@@ -66,10 +84,10 @@ class FavoriteViewController: UIViewController {
      }
     
     [favoriteProductButton,
-     recentProductButton].forEach {
+     recentProductButton,
+     buttonSubLineView].forEach {
       buttonView.addSubview($0)
      }
-    
   }
   
   private func setConstraints() {
@@ -100,6 +118,13 @@ class FavoriteViewController: UIViewController {
       $0.width.equalToSuperview().multipliedBy(0.5)
     }
     
+    buttonSubLineView.snp.makeConstraints {
+      $0.leading.equalTo(0)
+      $0.width.equalTo(favoriteProductButton.snp.width)
+      $0.bottom.equalTo(buttonView.snp.bottom)
+      $0.height.equalTo(5)
+    }
+    
     collectionView.snp.makeConstraints {
       $0.top.equalTo(buttonView.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
@@ -127,8 +152,13 @@ class FavoriteViewController: UIViewController {
     collectionView.isPagingEnabled = true
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.dataSource = self
+    collectionView.delegate = self
     
-    collectionView.register(RecentProductViewCell.self, forCellWithReuseIdentifier: RecentProductViewCell.identifer)
+    collectionView.register(FavoriteProductCollectionViewCell.self,
+                            forCellWithReuseIdentifier: FavoriteProductCollectionViewCell.identifer)
+    
+    collectionView.register(RecentProductCollectionViewCell.self,
+                            forCellWithReuseIdentifier: RecentProductCollectionViewCell.identifer)
   }
   
   // MARK: - NavigationBar
@@ -152,39 +182,78 @@ class FavoriteViewController: UIViewController {
     navigationController?.navigationBar.layoutIfNeeded()
   }
   
+  // MARK: - Button State Change
+  
+  private func buttonStateChange(button: UIButton?, page: Int?) {
+    if button == favoriteProductButton || page == 0 {
+      UIView.animate(withDuration: 0.2) { [self] in
+        favoriteProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
+        favoriteProductButton.setTitleColor(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .normal)
+        recentProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        recentProductButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        buttonSubLineView.snp.updateConstraints {
+          $0.leading.equalTo(0)
+        }
+        view.layoutIfNeeded()
+      }
+      collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+      
+    } else if button == recentProductButton || page == 1 {
+      UIView.animate(withDuration: 0.2) { [self] in
+        recentProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
+        recentProductButton.setTitleColor(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .normal)
+        favoriteProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        favoriteProductButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        buttonSubLineView.snp.updateConstraints {
+          $0.leading.equalToSuperview().offset(self.deviceWidth / 2)
+        }
+        view.layoutIfNeeded()
+      }
+      collectionView.setContentOffset(CGPoint(x: deviceWidth, y: 0), animated: true)
+    }
+  }
+  
   @objc private func didTapBasketButton(_ sender: UIBarButtonItem) {
     
   }
   
   @objc private func didTapCategoryButton(_ sender: UIButton) {
-    switch sender {
-    case favoriteProductButton:
-      favoriteProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
-      favoriteProductButton.setTitleColor(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .normal)
-      
-      recentProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
-      recentProductButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-      
-    case recentProductButton:
-      recentProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
-      recentProductButton.setTitleColor(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .normal)
-      
-      favoriteProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
-      favoriteProductButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-    default:
-      break
-    }
+    buttonStateChange(button: sender, page: nil)
   }
 }
 
 // MARK: - UICollectionViewDataSource
 extension FavoriteViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 1
+    return collectionViewCellArr.count
   }
-
+  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentProductViewCell.identifer, for: indexPath) as! RecentProductViewCell
-    return cell
+    
+    switch indexPath.item {
+    case 0:
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: FavoriteProductCollectionViewCell.identifer,
+        for: indexPath) as! FavoriteProductCollectionViewCell
+      return cell
+    case 1:
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: RecentProductCollectionViewCell.identifer,
+        for: indexPath) as! RecentProductCollectionViewCell
+      return cell
+    default:
+      break
+    }
+    return UICollectionViewCell()
+  }
+}
+
+// MARK: - UICollectionViewDelegate
+extension FavoriteViewController: UICollectionViewDelegate {
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    
+    let page = Int(targetContentOffset.pointee.x / deviceWidth)
+    pageControl.currentPage = page
+    collectionPage = page
   }
 }

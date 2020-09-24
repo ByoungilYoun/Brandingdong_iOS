@@ -8,14 +8,21 @@
 
 import UIKit
 
-class RecentProductViewCell: UICollectionViewCell {
+class RecentProductCollectionViewCell: UICollectionViewCell {
   // MARK: - Property
   
   static let identifer = "RecentProductViewCell"
-  private let favoriteViewController = FavoriteViewController()
   
   private let layout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+  
+  private let allDeleteButton: UIButton = {
+    let btn = UIButton()
+    btn.setTitle("전체삭제", for: .normal)
+    btn.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+    btn.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-regular", size: 16)
+    return btn
+  }()
   
   private let deviceWidth = UIScreen.main.bounds.width
   private let deviceHeight = UIScreen.main.bounds.height
@@ -25,7 +32,9 @@ class RecentProductViewCell: UICollectionViewCell {
   private var recentProductImageArr: [UIImage] = []
   private var recentProductBrandNameArr: [String] = []
   private var recentProductNameArr: [String] = []
-  private var recentProductPriceArr: [String] = []
+  private var recentProductPriceArr: [Int] = []
+  
+  let fomatter = NumberFormatter()
   
   // MARK: - Init View
   
@@ -35,7 +44,9 @@ class RecentProductViewCell: UICollectionViewCell {
     setConstraints()
     setLayout()
     setCollectionView()
+    buttonAddTarget()
     recentProductAdd()
+    priceFommater()
   }
   
   required init?(coder: NSCoder) {
@@ -48,7 +59,7 @@ class RecentProductViewCell: UICollectionViewCell {
     
     let itemSpacing: CGFloat = 0
     let lineSpacing: CGFloat = 32
-    let sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
+    let sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
     let itemWidth: CGFloat = (deviceWidth / 3) - (itemSpacing + sectionInset.left + sectionInset.right)
     let itemHeight: CGFloat = deviceHeight / 5
     
@@ -69,22 +80,39 @@ class RecentProductViewCell: UICollectionViewCell {
                             forCellWithReuseIdentifier: CommonProductCollectionViewCell.identifer)
   }
   
+  private func priceFommater() {
+    fomatter.numberStyle = .decimal
+    fomatter.minimumFractionDigits = 0
+    fomatter.maximumFractionDigits = 3
+  }
+  
   
   // MARK: - Setup Layout
   
   private func setUI() {
-    contentView.addSubview(collectionView)
+    [allDeleteButton,
+     collectionView].forEach {
+      contentView.addSubview($0)
+     }
   }
   
   private func setConstraints() {
+    let padding: CGFloat = 16
+    
+    allDeleteButton.snp.makeConstraints {
+      $0.trailing.equalToSuperview().offset(-padding)
+      $0.top.equalToSuperview()
+    }
     collectionView.snp.makeConstraints {
-      $0.top.leading.bottom.trailing.equalToSuperview()
+      $0.top.equalTo(allDeleteButton.snp.bottom).offset(padding)
+      $0.leading.bottom.trailing.equalToSuperview()
     }
   }
   
   // MARK: - recentProduct Info Add
   
   private func recentProductAdd() {
+    print ("recentProductAdd")
     for name in recentProductArr {
       for index in 0..<HomeInfoDatas.names.count {
         if HomeInfoDatas.names[index] == name {
@@ -93,27 +121,43 @@ class RecentProductViewCell: UICollectionViewCell {
           recentProductImageArr.append(UIImage(data: data)!)
           recentProductNameArr.append(HomeInfoDatas.names[index])
           recentProductBrandNameArr.append(HomeInfoDatas.brandNames[index])
-          recentProductPriceArr.append(String(HomeInfoDatas.price[index]))
+          recentProductPriceArr.append(HomeInfoDatas.price[index])
         }
       }
     }
   }
+  
+  // MARK: - DidTap AllDeleteButton
+  
+  private func buttonAddTarget() {
+    allDeleteButton.addTarget(self, action: #selector(didTapDeleteButton), for: .touchUpInside)
+  }
+  
+  @objc func didTapDeleteButton() {
+    print ("didTapDeleteButton")
+    Favorite.checkRecentProductList.removeAll()
+    print ("Favorite.checkRecentProductList : ", Favorite.checkRecentProductList)
+    recentProductAdd()
+    collectionView.reloadData()
+  }
 }
 
-extension RecentProductViewCell: UICollectionViewDataSource {
+extension RecentProductCollectionViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    print ("numberOfItemsInSection")
     return recentProductArr.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    print ("cellForItemAt")
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
     
     cell.configure(
       image: recentProductImageArr[indexPath.item],
       company: recentProductBrandNameArr[indexPath.item],
       description: recentProductNameArr[indexPath.item],
-      price: recentProductPriceArr[indexPath.item])
-    
+      price: fomatter.string(from: recentProductPriceArr[indexPath.item] as NSNumber)!)
     return cell
   }
 }
+

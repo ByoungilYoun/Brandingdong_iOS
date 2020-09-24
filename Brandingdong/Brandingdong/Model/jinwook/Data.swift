@@ -79,7 +79,7 @@ struct ProductInfo {
   static var checkProductId: Int = 0
   static var checkProductBrandName: String = ""
   static var checkProductName: String = ""
-  static var checkProductPrice: String = ""
+  static var checkProductPrice: Int = 0
   static var checkProductBrandImage: String = ""
   static var checkProductBrandIntro: String = ""
 }

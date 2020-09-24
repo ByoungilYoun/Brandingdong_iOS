@@ -15,6 +15,8 @@ class ProductInfoTitleTableViewCell: UITableViewCell {
   
   private let sellerImageView = UIImageView()
   
+  let fomatter = NumberFormatter()
+  
   private let sellerNickName: UILabel = {
     let lb = UILabel()
     lb.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
@@ -59,6 +61,7 @@ class ProductInfoTitleTableViewCell: UITableViewCell {
     productTitleInit()
     setUI()
     setConstraints()
+    priceFommater()
   }
   
   // MARK: - Setup Layout
@@ -115,10 +118,16 @@ class ProductInfoTitleTableViewCell: UITableViewCell {
   private func productTitleInit() {
     sellerNickName.text = ProductInfo.checkProductBrandName
     productTitle.text = ProductInfo.checkProductName
-    productPrice.text = ProductInfo.checkProductPrice
+    productPrice.text = fomatter.string(from: ProductInfo.checkProductPrice as NSNumber)!
     
     let url = URL(string: ProductInfo.checkProductBrandImage)
     let data = try! Data(contentsOf: url!)
     sellerImageView.image = UIImage(data: data)
+  }
+  
+  private func priceFommater() {
+    fomatter.numberStyle = .decimal
+    fomatter.minimumFractionDigits = 0
+    fomatter.maximumFractionDigits = 3
   }
 }
