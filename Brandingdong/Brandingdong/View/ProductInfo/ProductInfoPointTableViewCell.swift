@@ -111,7 +111,7 @@ class ProductInfoPointTableViewCell: UITableViewCell {
   }
   
   private func labelTextInit() {
-    saveMoneyPrice.text = String(Int(ProductInfo.checkProductPrice)! / 100) + " 원"
-    saveMoneyMaxPriceTitle.text = "최대 " + String(Int(ProductInfo.checkProductPrice)! / 70) + " 원 추가 적립"
+    saveMoneyPrice.text = String(ProductInfo.checkProductPrice / 100) + " 원"
+    saveMoneyMaxPriceTitle.text = "최대 " + String(ProductInfo.checkProductPrice / 70) + " 원 추가 적립"
   }
 }

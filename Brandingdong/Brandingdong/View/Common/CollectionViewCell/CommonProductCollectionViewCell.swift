@@ -24,7 +24,7 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
     let lb = UILabel()
     lb.textColor = .black
     lb.textAlignment = .left
-    lb.font = UIFont.systemFont(ofSize: 13)
+    lb.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
     return lb
   }()
   
@@ -32,7 +32,7 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
     let lb = UILabel()
     lb.textColor = .lightGray
     lb.textAlignment = .left
-    lb.font = UIFont.systemFont(ofSize: 13)
+    lb.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 12)
     return lb
   }()
   
@@ -40,7 +40,7 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
     let lb = UILabel()
     lb.textColor = .black
     lb.textAlignment = .left
-    lb.font =  UIFont.boldSystemFont(ofSize: 18)
+    lb.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 14)
     return lb
   }()
   
