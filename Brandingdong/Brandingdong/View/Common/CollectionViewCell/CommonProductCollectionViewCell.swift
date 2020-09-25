@@ -114,10 +114,15 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
   @objc func clickedBtn(_ sender : UIButton) {
     if !buttonToggle {
      heartButton.tintColor = .systemRed
-      print ()
+      Favorite.checkFavoriteProductList.append(sender.tag)
       buttonToggle = !buttonToggle
     } else {
       heartButton.tintColor = UIColor.white.withAlphaComponent(0.8)
+      for index in 0..<Favorite.checkFavoriteProductList.count {
+        if Favorite.checkFavoriteProductList[index] == sender.tag {
+          Favorite.checkFavoriteProductList.remove(at: index)
+        }
+      }
        buttonToggle = !buttonToggle
     }
   }

@@ -16,17 +16,23 @@ class FavoriteProductCollectionViewCell: UICollectionViewCell {
   private let layout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
   
+  private let allDeleteButton: UIButton = {
+    let btn = UIButton()
+    btn.setTitle("전체삭제", for: .normal)
+    btn.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+    btn.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-regular", size: 16)
+    return btn
+  }()
+  
   private let deviceWidth = UIScreen.main.bounds.width
   private let deviceHeight = UIScreen.main.bounds.height
   
-  var recentProductArr: [String] = Favorite.checkRecentProductList
+  private var favoriteProductImageArr: [UIImage] = []
+  private var favoriteProductBrandNameArr: [String] = []
+  private var favoriteProductNameArr: [String] = []
+  private var favoriteProductPriceArr: [Int] = []
   
-//  private var recentProductImageArr: [UIImage] = []
-//  private var recentProductBrandNameArr: [String] = []
-//  private var recentProductNameArr: [String] = []
-//  private var recentProductPriceArr: [String] = []
-  
-  
+  let fomatter = NumberFormatter()
   
   // MARK: - Init View
   
@@ -36,8 +42,9 @@ class FavoriteProductCollectionViewCell: UICollectionViewCell {
     setConstraints()
     setLayout()
     setCollectionView()
-//    recentProductAdd()
-    print ("RecentProductViewCell")
+    buttonAddTarget()
+    favoriteProductAdd()
+    priceFommater()
   }
   
   required init?(coder: NSCoder) {
@@ -50,7 +57,7 @@ class FavoriteProductCollectionViewCell: UICollectionViewCell {
     
     let itemSpacing: CGFloat = 0
     let lineSpacing: CGFloat = 32
-    let sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
+    let sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
     let itemWidth: CGFloat = (deviceWidth / 3) - (itemSpacing + sectionInset.left + sectionInset.right)
     let itemHeight: CGFloat = deviceHeight / 5
     
@@ -71,52 +78,86 @@ class FavoriteProductCollectionViewCell: UICollectionViewCell {
                             forCellWithReuseIdentifier: CommonProductCollectionViewCell.identifer)
   }
   
+  private func priceFommater() {
+    fomatter.numberStyle = .decimal
+    fomatter.minimumFractionDigits = 0
+    fomatter.maximumFractionDigits = 3
+  }
   
   // MARK: - Setup Layout
   
   private func setUI() {
-    contentView.addSubview(collectionView)
+    [allDeleteButton,
+     collectionView].forEach {
+      contentView.addSubview($0)
+     }
   }
   
   private func setConstraints() {
+    let padding: CGFloat = 16
+    
+    allDeleteButton.snp.makeConstraints {
+      $0.trailing.equalToSuperview().offset(-padding)
+      $0.top.equalToSuperview()
+    }
     collectionView.snp.makeConstraints {
-      $0.top.leading.bottom.trailing.equalToSuperview()
+      $0.top.equalTo(allDeleteButton.snp.bottom).offset(padding)
+      $0.leading.bottom.trailing.equalToSuperview()
     }
   }
   
-  // MARK: - recentProduct Info Add
+  // MARK: - favoriteProduct Info Add
   
-//  private func recentProductAdd() {
-//    for name in recentProductArr {
-//      for index in 0..<HomeInfoDatas.names.count {
-//        if HomeInfoDatas.names[index] == name {
-//          let url = URL(string: HomeInfoDatas.images[index])
-//          let data = try! Data(contentsOf: url!)
-//          recentProductImageArr.append(UIImage(data: data)!)
-//          recentProductNameArr.append(HomeInfoDatas.names[index])
-//          recentProductBrandNameArr.append(HomeInfoDatas.brandNames[index])
-//          recentProductPriceArr.append(String(HomeInfoDatas.price[index]))
-//        }
-//      }
-//    }
-//  }
+  func favoriteProductAdd() {
+    favoriteProductImageArr.removeAll()
+    favoriteProductNameArr.removeAll()
+    favoriteProductBrandNameArr.removeAll()
+    favoriteProductPriceArr.removeAll()
+    
+    for (key, _) in HomeInfoDatas.productIdAndName {
+      let id = key
+      for index in Favorite.checkFavoriteProductList {
+        if id == index {
+          let url = URL(string: HomeInfoDatas.images[id])
+          let data = try! Data(contentsOf: url!)
+          favoriteProductImageArr.append(UIImage(data: data)!)
+          favoriteProductNameArr.append(HomeInfoDatas.names[id])
+          favoriteProductBrandNameArr.append(HomeInfoDatas.brandNames[id])
+          favoriteProductPriceArr.append(HomeInfoDatas.price[id])
+        }
+      }
+    }
+  }
+  
+  // MARK: - DidTap AllDeleteButton
+  
+  private func buttonAddTarget() {
+    allDeleteButton.addTarget(self, action: #selector(didTapDeleteButton), for: .touchUpInside)
+  }
+  
+  @objc func didTapDeleteButton() {
+    Favorite.checkFavoriteProductList.removeAll()
+    favoriteProductAdd()
+    collectionView.reloadData()
+  }
 }
 
 extension FavoriteProductCollectionViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return recentProductArr.count
+    
+    return Favorite.checkFavoriteProductList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
     
-//    cell.configure(
-//      image: recentProductImageArr[indexPath.item],
-//      company: recentProductBrandNameArr[indexPath.item],
-//      description: recentProductNameArr[indexPath.item],
-//      price: recentProductPriceArr[indexPath.item])
+    cell.configure(
+      image: favoriteProductImageArr[indexPath.item],
+      company: favoriteProductBrandNameArr[indexPath.item],
+      description: favoriteProductNameArr[indexPath.item],
+      price: fomatter.string(from: favoriteProductPriceArr[indexPath.item] as NSNumber)!)
     
+    cell.heartButton.tintColor = .systemRed
     return cell
   }
-  
 }

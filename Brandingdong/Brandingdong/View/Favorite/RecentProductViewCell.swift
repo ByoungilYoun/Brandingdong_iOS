@@ -11,7 +11,7 @@ import UIKit
 class RecentProductCollectionViewCell: UICollectionViewCell {
   // MARK: - Property
   
-  static let identifer = "RecentProductViewCell"
+  static let identifer = "RecentProductCollectionViewCell"
   
   private let layout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -26,8 +26,6 @@ class RecentProductCollectionViewCell: UICollectionViewCell {
   
   private let deviceWidth = UIScreen.main.bounds.width
   private let deviceHeight = UIScreen.main.bounds.height
-  
-  var recentProductArr: [String] = Favorite.checkRecentProductList
   
   private var recentProductImageArr: [UIImage] = []
   private var recentProductBrandNameArr: [String] = []
@@ -86,7 +84,6 @@ class RecentProductCollectionViewCell: UICollectionViewCell {
     fomatter.maximumFractionDigits = 3
   }
   
-  
   // MARK: - Setup Layout
   
   private func setUI() {
@@ -111,9 +108,13 @@ class RecentProductCollectionViewCell: UICollectionViewCell {
   
   // MARK: - recentProduct Info Add
   
-  private func recentProductAdd() {
-    print ("recentProductAdd")
-    for name in recentProductArr {
+  func recentProductAdd() {
+    recentProductImageArr.removeAll()
+    recentProductNameArr.removeAll()
+    recentProductBrandNameArr.removeAll()
+    recentProductPriceArr.removeAll()
+    
+    for name in Favorite.checkRecentProductList {
       for index in 0..<HomeInfoDatas.names.count {
         if HomeInfoDatas.names[index] == name {
           let url = URL(string: HomeInfoDatas.images[index])
@@ -134,9 +135,7 @@ class RecentProductCollectionViewCell: UICollectionViewCell {
   }
   
   @objc func didTapDeleteButton() {
-    print ("didTapDeleteButton")
     Favorite.checkRecentProductList.removeAll()
-    print ("Favorite.checkRecentProductList : ", Favorite.checkRecentProductList)
     recentProductAdd()
     collectionView.reloadData()
   }
@@ -144,12 +143,11 @@ class RecentProductCollectionViewCell: UICollectionViewCell {
 
 extension RecentProductCollectionViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    print ("numberOfItemsInSection")
-    return recentProductArr.count
+    
+    return Favorite.checkRecentProductList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    print ("cellForItemAt")
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonProductCollectionViewCell.identifer, for: indexPath) as! CommonProductCollectionViewCell
     
     cell.configure(

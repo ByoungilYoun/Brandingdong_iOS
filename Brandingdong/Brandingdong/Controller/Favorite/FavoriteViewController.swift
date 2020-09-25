@@ -50,6 +50,9 @@ class FavoriteViewController: UIViewController {
   private let favoriteProductCollectionViewCell = FavoriteProductCollectionViewCell()
   private let recentProductCollectionViewCell = RecentProductCollectionViewCell()
   
+  private var recentProductCell = RecentProductCollectionViewCell()
+  private var favoriteProductCell = FavoriteProductCollectionViewCell()
+  
   lazy var collectionViewCellArr = [favoriteProductCollectionViewCell,
                                     recentProductCollectionViewCell]
   
@@ -73,6 +76,8 @@ class FavoriteViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setNavi()
+    reloadRecentViewCell()
+    reloadFavoriteViewCell()
   }
   
   // MARK: - Setup Layout
@@ -134,7 +139,6 @@ class FavoriteViewController: UIViewController {
   // MARK: - Set Property
   
   private func setLayout() {
-    
     let itemHeight: CGFloat = 632
     let itemSpasing: CGFloat = 0
     let lineSpasing: CGFloat = 0
@@ -213,16 +217,25 @@ class FavoriteViewController: UIViewController {
     }
   }
   
+  private func reloadRecentViewCell() {
+    recentProductCell.recentProductAdd()
+    recentProductCell.collectionView.reloadData()
+  }
+  
+  private func reloadFavoriteViewCell() {
+    favoriteProductCell.favoriteProductAdd()
+    favoriteProductCell.collectionView.reloadData()
+  }
   @objc private func didTapBasketButton(_ sender: UIBarButtonItem) {
     
   }
-  
   @objc private func didTapCategoryButton(_ sender: UIButton) {
     buttonStateChange(button: sender, page: nil)
   }
 }
 
 // MARK: - UICollectionViewDataSource
+
 extension FavoriteViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return collectionViewCellArr.count
@@ -235,11 +248,13 @@ extension FavoriteViewController: UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCell(
         withReuseIdentifier: FavoriteProductCollectionViewCell.identifer,
         for: indexPath) as! FavoriteProductCollectionViewCell
+      favoriteProductCell = cell
       return cell
     case 1:
       let cell = collectionView.dequeueReusableCell(
         withReuseIdentifier: RecentProductCollectionViewCell.identifer,
         for: indexPath) as! RecentProductCollectionViewCell
+      recentProductCell = cell
       return cell
     default:
       break
@@ -249,9 +264,9 @@ extension FavoriteViewController: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegate
+
 extension FavoriteViewController: UICollectionViewDelegate {
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-    
     let page = Int(targetContentOffset.pointee.x / deviceWidth)
     pageControl.currentPage = page
     collectionPage = page
