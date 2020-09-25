@@ -129,7 +129,6 @@ struct Service {
     urlRequest.httpBody = userJsonData
     urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
     
-    
     let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
       guard error == nil else { return print("error : ", error!.localizedDescription)}
       guard let response = response as? HTTPURLResponse else { return print("response error")}
@@ -156,7 +155,6 @@ struct Service {
     urlRequest.httpMethod = "POST"
     urlRequest.httpBody = loginJsonData
     urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    
     
     let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
       guard error == nil else { return print("error : ", error!.localizedDescription)}

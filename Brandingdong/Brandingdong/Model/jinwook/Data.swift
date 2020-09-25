@@ -85,6 +85,6 @@ struct ProductInfo {
 }
 
 struct Favorite {
-  static var checkFavoriteProductList: [String] = []
+  static var checkFavoriteProductList: [Int] = []
   static var checkRecentProductList: [String] = []
 }

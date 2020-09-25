@@ -15,6 +15,7 @@ protocol SecondTableViewCellDelegate : class {
 class SecondTableViewCell : UITableViewCell {
   
   //MARK: - Properties
+  
   static let identifier = "SecondTableViewCell"
   
   private let collectionView : UICollectionView = {
@@ -126,6 +127,7 @@ extension SecondTableViewCell : UICollectionViewDataSource {
                    company: HomeInfoDatas.brandNames[indexPath.item],
                    description: HomeInfoDatas.names[indexPath.item],
                    price: fomatter.string(from: HomeInfoDatas.price[indexPath.item] as NSNumber)!)
+    cell.heartButton.tag = indexPath.item
     return cell
   }
 }
@@ -137,7 +139,6 @@ extension SecondTableViewCell : UICollectionViewDelegate {
       let checkProductName = didTapIndex.descriptionLabel.text!
       checkProductPushData(productName: checkProductName)
       Favorite.checkRecentProductList.append(checkProductName)
-      print ("Favorite.checkRecentProductList : ", Favorite.checkRecentProductList)
     }
     delegate?.handlePresent(cell: self)
   }

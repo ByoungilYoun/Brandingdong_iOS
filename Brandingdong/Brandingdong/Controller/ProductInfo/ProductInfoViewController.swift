@@ -318,8 +318,6 @@ extension ProductInfoViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    print ("ProductInfo.checkProductDetailImageArr.count : ", ProductInfo.checkProductDetailImageArr.count)
-    
     let imageCellHeight: CGFloat = 532
     let titleCellHeight: CGFloat = 172
     let pointCellHeight: CGFloat = 86
@@ -341,9 +339,6 @@ extension ProductInfoViewController: UITableViewDataSource {
     default:
       break
     }
-    
-    print ("2 categoryHeight : ", categoryHeight)
-    
     
     switch indexPath.section {
     case 0:
