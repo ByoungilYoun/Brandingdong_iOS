@@ -36,6 +36,7 @@
 		0F9BB7932503B63E006E0232 /* market.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F9BB7902503B63E006E0232 /* market.png */; };
 		0F9BB7942503B63E006E0232 /* beauty.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F9BB7912503B63E006E0232 /* beauty.png */; };
 		0F9BB7962503D6E2006E0232 /* SelectAllCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9BB7952503D6E2006E0232 /* SelectAllCustomButton.swift */; };
+		0FA5C34D251DF2BF007EF9FC /* PurchaseSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5C34C251DF2BF007EF9FC /* PurchaseSectionView.swift */; };
 		0FDB80F02518B3B8000C4353 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB80EF2518B3B8000C4353 /* PurchaseViewController.swift */; };
 		0FED02B424EE7EB0003D03B4 /* MainLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */; };
 		0FED02B624EE820A003D03B4 /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */; };
@@ -136,6 +137,7 @@
 		0F9BB7902503B63E006E0232 /* market.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = market.png; sourceTree = "<group>"; };
 		0F9BB7912503B63E006E0232 /* beauty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beauty.png; sourceTree = "<group>"; };
 		0F9BB7952503D6E2006E0232 /* SelectAllCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAllCustomButton.swift; sourceTree = "<group>"; };
+		0FA5C34C251DF2BF007EF9FC /* PurchaseSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseSectionView.swift; sourceTree = "<group>"; };
 		0FDB80EF2518B3B8000C4353 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainLoginViewController.swift; path = Brandingdong/Controller/Login/MainLoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialLoginButton.swift; path = Brandingdong/View/Login/Main/SocialLoginButton.swift; sourceTree = SOURCE_ROOT; };
@@ -236,6 +238,7 @@
 			children = (
 				0F7933C6251B3BB70088ADA7 /* PurchaseTableHeaderView.swift */,
 				0F7933C9251B466C0088ADA7 /* PurchaseTableViewCell.swift */,
+				0FA5C34C251DF2BF007EF9FC /* PurchaseSectionView.swift */,
 			);
 			path = "Purchase ";
 			sourceTree = "<group>";
@@ -966,6 +969,7 @@
 				492747BD24F2836300D259BE /* MainCatogoryView.swift in Sources */,
 				CE79A97C24F7B8E6008D4237 /* UserAgreeView.swift in Sources */,
 				0F843B532506212D00C3F2B7 /* FirstCategoryCell.swift in Sources */,
+				0FA5C34D251DF2BF007EF9FC /* PurchaseSectionView.swift in Sources */,
 				498CA4F224F9140C0056AB72 /* SNSUserInfoEntryViewController.swift in Sources */,
 				0F7933C7251B3BB70088ADA7 /* PurchaseTableHeaderView.swift in Sources */,
 				0F843B9D250D20B500C3F2B7 /* BeautyViewController.swift in Sources */,
