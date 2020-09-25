@@ -57,7 +57,7 @@ class FavoriteProductCollectionViewCell: UICollectionViewCell {
     
     let itemSpacing: CGFloat = 0
     let lineSpacing: CGFloat = 32
-    let sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+    let sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     let itemWidth: CGFloat = (deviceWidth / 3) - (itemSpacing + sectionInset.left + sectionInset.right)
     let itemHeight: CGFloat = deviceHeight / 5
     
