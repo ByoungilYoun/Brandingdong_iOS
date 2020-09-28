@@ -18,9 +18,13 @@ class PurchaseViewController : UIViewController {
     var choices : [String]
   }
   
+  func someThingIWanttoCall() {
+    print("Inside of PurchaseViewController")
+  }
+  
   var twoChoicesArray = [
-    ExpandableChoices(isExpanded: false, choices: ["빨강", "노랑", "검정", "파랑"]),
-    ExpandableChoices(isExpanded: false, choices: ["S", "M", "L"])
+    ExpandableChoices(isExpanded: true, choices: ["빨강", "노랑", "검정", "파랑"]),
+    ExpandableChoices(isExpanded: true, choices: ["S", "M", "L"])
   ]
   
   //MARK: - LifeCycle
@@ -29,12 +33,11 @@ class PurchaseViewController : UIViewController {
     setUI()
     setConstraints()
   }
-  
   //MARK: - setUI()
   private func setUI() {
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    tableView.register(PurchaseTableViewCell.self, forCellReuseIdentifier: PurchaseTableViewCell.identifier)
     tableView.tableHeaderView = self.headerView()
     tableView.tableFooterView = UIView()
     view.addSubview(tableView)
@@ -74,6 +77,8 @@ class PurchaseViewController : UIViewController {
       tableView.insertRows(at: indexPaths, with: .fade)
     }
   }
+  
+
 }
 
   //MARK: - UITableViewDataSource
@@ -108,7 +113,7 @@ extension PurchaseViewController : UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: PurchaseTableViewCell.identifier, for: indexPath) as! PurchaseTableViewCell
     let name = twoChoicesArray[indexPath.section].choices[indexPath.row]
     cell.textLabel?.text = name
     return cell
@@ -117,6 +122,12 @@ extension PurchaseViewController : UITableViewDataSource {
   //MARK: - UITableViewDelegate
 extension PurchaseViewController : UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+    if twoChoicesArray[indexPath.section].isExpanded {
+      print("indexPath.section: \(indexPath.section), indexPath.row : \(indexPath.row)")
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    print("123")
   }
 }
