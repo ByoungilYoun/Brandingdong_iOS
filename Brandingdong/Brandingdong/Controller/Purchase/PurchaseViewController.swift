@@ -75,7 +75,7 @@ class PurchaseViewController : UIViewController {
       tableView.deleteRows(at: indexPaths, with: .fade)
     } else {
       tableView.insertRows(at: indexPaths, with: .fade)
-    }
+          }
   }
   
 
@@ -122,12 +122,6 @@ extension PurchaseViewController : UITableViewDataSource {
   //MARK: - UITableViewDelegate
 extension PurchaseViewController : UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if twoChoicesArray[indexPath.section].isExpanded {
-      print("indexPath.section: \(indexPath.section), indexPath.row : \(indexPath.row)")
-    }
-  }
   
-  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    print("123")
   }
 }
