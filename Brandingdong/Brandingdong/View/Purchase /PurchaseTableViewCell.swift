@@ -21,6 +21,8 @@ class PurchaseTableViewCell : UITableViewCell {
     return bt
   }()
   
+  var link : PurchaseViewController?
+  
   //MARK: - init
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,7 +36,7 @@ class PurchaseTableViewCell : UITableViewCell {
   
   //MARK: - @objc func
   @objc private func checkButtonTapped() {
-    print("checkbutton clicked")
+    link?.someThingIWantToCall(cell: self)
   }
 }
   

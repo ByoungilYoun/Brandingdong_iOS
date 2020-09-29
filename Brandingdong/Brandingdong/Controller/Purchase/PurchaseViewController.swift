@@ -15,16 +15,17 @@ class PurchaseViewController : UIViewController {
   
   struct ExpandableChoices {
     var isExpanded : Bool
-    var choices : [String]
+    var choices : [Choices]
   }
   
-  func someThingIWanttoCall() {
-    print("Inside of PurchaseViewController")
+  struct Choices {
+    let name : String
+    var hasChecked : Bool
   }
   
   var twoChoicesArray = [
-    ExpandableChoices(isExpanded: true, choices: ["빨강", "노랑", "검정", "파랑"]),
-    ExpandableChoices(isExpanded: true, choices: ["S", "M", "L"])
+    ExpandableChoices(isExpanded: true, choices: ["빨강", "노랑", "검정", "파랑"].map { Choices(name: $0, hasChecked: false)}),
+    ExpandableChoices(isExpanded: true, choices: ["S", "M", "L"].map {Choices(name: $0, hasChecked: false)})
   ]
   
   //MARK: - LifeCycle
@@ -33,6 +34,7 @@ class PurchaseViewController : UIViewController {
     setUI()
     setConstraints()
   }
+  
   //MARK: - setUI()
   private func setUI() {
     tableView.dataSource = self
@@ -48,6 +50,23 @@ class PurchaseViewController : UIViewController {
     tableView.snp.makeConstraints {
       $0.top.leading.trailing.bottom.equalToSuperview()
     }
+  }
+  
+  func someThingIWantToCall(cell : UITableViewCell) {
+    guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
+    let sectionView = PurchaseSectionView()
+    
+    let choice = twoChoicesArray[indexPathTapped.section].choices[indexPathTapped.row]
+  
+    print(choice.name)
+    
+//    sectionView.configureSelectedLabel(text: choice.name)
+    
+    let hasChecked = choice.hasChecked
+    twoChoicesArray[indexPathTapped.section].choices[indexPathTapped.row].hasChecked = !hasChecked
+    
+    tableView.reloadRows(at: [indexPathTapped], with: .fade)
+
   }
   
   //MARK: - headerView()
@@ -75,10 +94,8 @@ class PurchaseViewController : UIViewController {
       tableView.deleteRows(at: indexPaths, with: .fade)
     } else {
       tableView.insertRows(at: indexPaths, with: .fade)
-          }
+    }
   }
-  
-
 }
 
   //MARK: - UITableViewDataSource
@@ -114,14 +131,21 @@ extension PurchaseViewController : UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: PurchaseTableViewCell.identifier, for: indexPath) as! PurchaseTableViewCell
-    let name = twoChoicesArray[indexPath.section].choices[indexPath.row]
-    cell.textLabel?.text = name
+    let choice = twoChoicesArray[indexPath.section].choices[indexPath.row]
+    cell.link = self
+    cell.textLabel?.text = choice.name
+
+    cell.checkButton.setImage(choice.hasChecked ? UIImage(systemName: "circle.fill") : UIImage(systemName: "circle"), for: .normal)
+    cell.checkButton.tintColor = choice.hasChecked ? UIColor.red : UIColor.lightGray
+    cell.checkButton.tag = indexPath.row
+    print ("cell.checkButton.tag : ", cell.checkButton.tag)
     return cell
   }
 }
   //MARK: - UITableViewDelegate
 extension PurchaseViewController : UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  
+    print ("indexPath : ", indexPath)
+    
   }
 }

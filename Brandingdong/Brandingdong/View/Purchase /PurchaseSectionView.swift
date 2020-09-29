@@ -32,6 +32,14 @@ class PurchaseSectionView : UIView {
     return line
   }()
   
+   var selectedLabel : UILabel = {
+    var lb = UILabel()
+    lb.font = UIFont.boldSystemFont(ofSize: 20)
+    lb.textColor = .black
+    lb.text = ""
+    lb.textAlignment = .left
+    return lb
+  }()
   //MARK: - init
   override init(frame: CGRect) {
     super.init(frame: .zero)
@@ -44,13 +52,18 @@ class PurchaseSectionView : UIView {
   
   //MARK: - configureUI()
   private func configureUI() {
-    [titleLabel, clickButton, lineView].forEach {
+    [titleLabel, selectedLabel, clickButton, lineView].forEach {
       self.addSubview($0)
     }
     
     titleLabel.snp.makeConstraints {
       $0.centerY.equalTo(self)
       $0.leading.equalTo(self).offset(15)
+    }
+    
+    selectedLabel.snp.makeConstraints {
+      $0.centerY.equalTo(self)
+      $0.leading.equalTo(titleLabel.snp.trailing).offset(5)
     }
     
     clickButton.snp.makeConstraints {
@@ -68,5 +81,9 @@ class PurchaseSectionView : UIView {
   //MARK: - configure
   func configure(text : String) {
     titleLabel.text = text
+  }
+  
+  func configureSelectedLabel(text : String) {
+    selectedLabel.text = text
   }
 }
