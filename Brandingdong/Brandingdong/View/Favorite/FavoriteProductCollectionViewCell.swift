@@ -57,7 +57,7 @@ class FavoriteProductCollectionViewCell: UICollectionViewCell {
     
     let itemSpacing: CGFloat = 0
     let lineSpacing: CGFloat = 32
-    let sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+    let sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     let itemWidth: CGFloat = (deviceWidth / 3) - (itemSpacing + sectionInset.left + sectionInset.right)
     let itemHeight: CGFloat = deviceHeight / 5
     
@@ -118,12 +118,12 @@ class FavoriteProductCollectionViewCell: UICollectionViewCell {
       let id = key
       for index in Favorite.checkFavoriteProductList {
         if id == index {
-          let url = URL(string: HomeInfoDatas.images[id])
+          let url = URL(string: HomeInfoDatas.images[id - 1])
           let data = try! Data(contentsOf: url!)
           favoriteProductImageArr.append(UIImage(data: data)!)
-          favoriteProductNameArr.append(HomeInfoDatas.names[id])
-          favoriteProductBrandNameArr.append(HomeInfoDatas.brandNames[id])
-          favoriteProductPriceArr.append(HomeInfoDatas.price[id])
+          favoriteProductNameArr.append(HomeInfoDatas.names[id - 1])
+          favoriteProductBrandNameArr.append(HomeInfoDatas.brandNames[id - 1])
+          favoriteProductPriceArr.append(HomeInfoDatas.price[id - 1])
         }
       }
     }

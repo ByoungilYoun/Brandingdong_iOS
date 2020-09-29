@@ -88,3 +88,8 @@ struct Favorite {
   static var checkFavoriteProductList: [Int] = []
   static var checkRecentProductList: [String] = []
 }
+
+struct Mypage {
+  static let myPageTopViewImageArr = ["포인트", "쿠폰", "주문_배송조회"]
+    .map {UIImage.init(named: $0)}
+}
