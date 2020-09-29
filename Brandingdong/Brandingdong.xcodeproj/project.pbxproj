@@ -73,6 +73,11 @@
 		4959A5B724F28F540022B7AC /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5B624F28F540022B7AC /* Data.swift */; };
 		4959A5B924F2C4500022B7AC /* SearchBasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5B824F2C4500022B7AC /* SearchBasketView.swift */; };
 		4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */; };
+		4980DFDD2523407300CB3F10 /* MypageTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980DFDC2523407300CB3F10 /* MypageTopView.swift */; };
+		4980DFE22523423C00CB3F10 /* 포인트.png in Resources */ = {isa = PBXBuildFile; fileRef = 4980DFDF2523423B00CB3F10 /* 포인트.png */; };
+		4980DFE42523423C00CB3F10 /* 쿠폰.png in Resources */ = {isa = PBXBuildFile; fileRef = 4980DFE12523423C00CB3F10 /* 쿠폰.png */; };
+		4980DFE82523425200CB3F10 /* 주문_배송조회.png in Resources */ = {isa = PBXBuildFile; fileRef = 4980DFE72523425200CB3F10 /* 주문_배송조회.png */; };
+		4980DFED2523518A00CB3F10 /* MypageTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980DFEC2523518A00CB3F10 /* MypageTopTableViewCell.swift */; };
 		498A905825023DFC003C18C6 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A905725023DFC003C18C6 /* ProductInfoViewController.swift */; };
 		498A905B25023FA5003C18C6 /* ProductImagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A905A25023FA5003C18C6 /* ProductImagesTableViewCell.swift */; };
 		498B7BBA250B79960000CD2F /* ProductInfoSellerAnotherProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498B7BB9250B79960000CD2F /* ProductInfoSellerAnotherProductTableViewCell.swift */; };
@@ -174,6 +179,11 @@
 		4959A5B624F28F540022B7AC /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		4959A5B824F2C4500022B7AC /* SearchBasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBasketView.swift; sourceTree = "<group>"; };
 		4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		4980DFDC2523407300CB3F10 /* MypageTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTopView.swift; sourceTree = "<group>"; };
+		4980DFDF2523423B00CB3F10 /* 포인트.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "포인트.png"; sourceTree = "<group>"; };
+		4980DFE12523423C00CB3F10 /* 쿠폰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "쿠폰.png"; sourceTree = "<group>"; };
+		4980DFE72523425200CB3F10 /* 주문_배송조회.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "주문_배송조회.png"; sourceTree = "<group>"; };
+		4980DFEC2523518A00CB3F10 /* MypageTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTopTableViewCell.swift; sourceTree = "<group>"; };
 		498A905725023DFC003C18C6 /* ProductInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController.swift; sourceTree = "<group>"; };
 		498A905A25023FA5003C18C6 /* ProductImagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImagesTableViewCell.swift; sourceTree = "<group>"; };
 		498B7BB9250B79960000CD2F /* ProductInfoSellerAnotherProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoSellerAnotherProductTableViewCell.swift; sourceTree = "<group>"; };
@@ -494,6 +504,9 @@
 				49A6E89A25121A79001FB954 /* 주문정보.jpeg */,
 				491CEB462519DD6900FE08FD /* 찜.png */,
 				491CEB452519DD6900FE08FD /* 최근본상품.png */,
+				4980DFE12523423C00CB3F10 /* 쿠폰.png */,
+				4980DFDF2523423B00CB3F10 /* 포인트.png */,
+				4980DFE72523425200CB3F10 /* 주문_배송조회.png */,
 				4959A5B624F28F540022B7AC /* Data.swift */,
 			);
 			path = jinwook;
@@ -505,6 +518,23 @@
 				4959A5BD24F2C7C00022B7AC /* SearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		4980DFEA2523516A00CB3F10 /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				4980DFEC2523518A00CB3F10 /* MypageTopTableViewCell.swift */,
+				4980DFEB2523517000CB3F10 /* Custom */,
+			);
+			path = Mypage;
+			sourceTree = "<group>";
+		};
+		4980DFEB2523517000CB3F10 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				4980DFDC2523407300CB3F10 /* MypageTopView.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		498A905625023DC9003C18C6 /* ProductInfo */ = {
@@ -728,6 +758,7 @@
 		49CEB3A524EE54210026201B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4980DFEA2523516A00CB3F10 /* Mypage */,
 				0F2504FD2519C412006F69C3 /* Purchase  */,
 				49E472A4250F8C8000C34CCE /* Common */,
 				491CEB3F2519DC4200FE08FD /* Favorite */,
@@ -857,16 +888,19 @@
 				0F9BB7932503B63E006E0232 /* market.png in Resources */,
 				491CEB482519DD6900FE08FD /* 찜.png in Resources */,
 				491CEB472519DD6900FE08FD /* 최근본상품.png in Resources */,
+				4980DFE42523423C00CB3F10 /* 쿠폰.png in Resources */,
 				0F9BB7922503B63E006E0232 /* brand.png in Resources */,
 				0F9BB7942503B63E006E0232 /* beauty.png in Resources */,
 				0FFF716724F3891700D469D7 /* facebook.png in Resources */,
 				493AACFA250381CF00AF3156 /* 테스트3.jpeg in Resources */,
 				493AAD0625039CED00AF3156 /* 테스트4.jpeg in Resources */,
+				4980DFE82523425200CB3F10 /* 주문_배송조회.png in Resources */,
 				493AACFC250381CF00AF3156 /* 테스트2.jpeg in Resources */,
 				0F0A400A24EEEA100037B7A1 /* appleLogo.imageset in Resources */,
 				49CEB39924EE4FB70026201B /* Assets.xcassets in Resources */,
 				0F0A400324EED2240037B7A1 /* google.png in Resources */,
 				493AACFB250381CF00AF3156 /* 테스트1.jpeg in Resources */,
+				4980DFE22523423C00CB3F10 /* 포인트.png in Resources */,
 				0F661B7E24EE90AD0060FDF7 /* brandi login image in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -989,6 +1023,7 @@
 				4901C44D25061DAE00390B6F /* ProductInfoCategoryCollectionViewCell.swift in Sources */,
 				0F843B9B250D201700C3F2B7 /* BrandViewController.swift in Sources */,
 				CE79A97E24F91185008D4237 /* WelcomeViewController.swift in Sources */,
+				4980DFED2523518A00CB3F10 /* MypageTopTableViewCell.swift in Sources */,
 				4908EA2524F6D660008C05D9 /* UserInfoButton.swift in Sources */,
 				49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */,
 				4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */,
@@ -1000,6 +1035,7 @@
 				4959A5B924F2C4500022B7AC /* SearchBasketView.swift in Sources */,
 				49CEB39024EE4FB60026201B /* AppDelegate.swift in Sources */,
 				0F92B2C5250FCFDE00FFF474 /* FirstTableViewCell.swift in Sources */,
+				4980DFDD2523407300CB3F10 /* MypageTopView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

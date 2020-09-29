@@ -127,7 +127,7 @@ extension SecondTableViewCell : UICollectionViewDataSource {
                    company: HomeInfoDatas.brandNames[indexPath.item],
                    description: HomeInfoDatas.names[indexPath.item],
                    price: fomatter.string(from: HomeInfoDatas.price[indexPath.item] as NSNumber)!)
-    cell.heartButton.tag = indexPath.item
+    cell.heartButton.tag = (indexPath.item + 1)
     return cell
   }
 }
