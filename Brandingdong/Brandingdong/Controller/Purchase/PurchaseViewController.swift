@@ -28,6 +28,8 @@ class PurchaseViewController : UIViewController {
     ExpandableChoices(isExpanded: true, choices: ["S", "M", "L"].map {Choices(name: $0, hasChecked: false)})
   ]
   
+  var selectedChoice = [String]()
+  
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -54,19 +56,25 @@ class PurchaseViewController : UIViewController {
   
   func someThingIWantToCall(cell : UITableViewCell) {
     guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
-    let sectionView = PurchaseSectionView()
     
     let choice = twoChoicesArray[indexPathTapped.section].choices[indexPathTapped.row]
-  
-    print(choice.name)
-    
-//    sectionView.configureSelectedLabel(text: choice.name)
     
     let hasChecked = choice.hasChecked
     twoChoicesArray[indexPathTapped.section].choices[indexPathTapped.row].hasChecked = !hasChecked
     
     tableView.reloadRows(at: [indexPathTapped], with: .fade)
-
+    
+     if hasChecked == false {
+      selectedChoice.append(choice.name)
+     } else {
+      selectedChoice.removeLast()
+     }
+    
+    if selectedChoice.count == 2 {
+      let controller = PurchaseCollectionViewController()
+      controller.modalPresentationStyle = .automatic
+      present(controller, animated: true, completion: nil)
+    }
   }
   
   //MARK: - headerView()
@@ -138,14 +146,12 @@ extension PurchaseViewController : UITableViewDataSource {
     cell.checkButton.setImage(choice.hasChecked ? UIImage(systemName: "circle.fill") : UIImage(systemName: "circle"), for: .normal)
     cell.checkButton.tintColor = choice.hasChecked ? UIColor.red : UIColor.lightGray
     cell.checkButton.tag = indexPath.row
-    print ("cell.checkButton.tag : ", cell.checkButton.tag)
     return cell
   }
 }
   //MARK: - UITableViewDelegate
 extension PurchaseViewController : UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print ("indexPath : ", indexPath)
-    
+
   }
 }

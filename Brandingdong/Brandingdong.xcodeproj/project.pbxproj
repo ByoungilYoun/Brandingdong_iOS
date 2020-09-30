@@ -40,6 +40,7 @@
 		0FDB80F02518B3B8000C4353 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDB80EF2518B3B8000C4353 /* PurchaseViewController.swift */; };
 		0FED02B424EE7EB0003D03B4 /* MainLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */; };
 		0FED02B624EE820A003D03B4 /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */; };
+		0FF77E0225247DAE007454A9 /* PurchaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF77E0125247DAE007454A9 /* PurchaseCollectionViewController.swift */; };
 		0FFF716724F3891700D469D7 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 0FFF716624F3891700D469D7 /* facebook.png */; };
 		0FFF716D24F3C8CF00D469D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */; };
 		0FFF716F24F40F7F00D469D7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */; };
@@ -146,6 +147,7 @@
 		0FDB80EF2518B3B8000C4353 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		0FED02B324EE7EB0003D03B4 /* MainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainLoginViewController.swift; path = Brandingdong/Controller/Login/MainLoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		0FED02B524EE820A003D03B4 /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocialLoginButton.swift; path = Brandingdong/View/Login/Main/SocialLoginButton.swift; sourceTree = SOURCE_ROOT; };
+		0FF77E0125247DAE007454A9 /* PurchaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCollectionViewController.swift; sourceTree = "<group>"; };
 		0FFF716624F3891700D469D7 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		0FFF716C24F3C8CF00D469D7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Brandingdong/Controller/Login/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		0FFF716E24F40F7F00D469D7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextField.swift; path = Brandingdong/View/Login/Main/CustomTextField.swift; sourceTree = SOURCE_ROOT; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				0FDB80EF2518B3B8000C4353 /* PurchaseViewController.swift */,
+				0FF77E0125247DAE007454A9 /* PurchaseCollectionViewController.swift */,
 			);
 			path = Purchase;
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 				0F843B4D2505FE0B00C3F2B7 /* OuterViewController.swift in Sources */,
 				498A905B25023FA5003C18C6 /* ProductImagesTableViewCell.swift in Sources */,
 				493AAD082503A0C100AF3156 /* ProductInfoPointTableViewCell.swift in Sources */,
+				0FF77E0225247DAE007454A9 /* PurchaseCollectionViewController.swift in Sources */,
 				49B81EE4251C731400E6B26B /* FavoriteProductCollectionViewCell.swift in Sources */,
 				49AC2CFF2508D68F00B465A6 /* Service.swift in Sources */,
 				49AABDDC24EE7E9C00DE0088 /* TabBarViewController.swift in Sources */,

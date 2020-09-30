@@ -18,12 +18,12 @@ class MypageTopView: UIView {
   
   // MARK: - Init View
   
-  init(image: UIImage, title: String, count: Int?) {
+  init(image: UIImage, title: String, count: Int) {
     super.init(frame: .zero)
     
     imageView.image = image
     titleLabel.text = title
-    countLabel.text = String(count ?? nil)
+    countLabel.text = String(count)
     
     setUI()
     setConstraints()
