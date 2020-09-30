@@ -37,6 +37,8 @@ class TabBarViewController: UITabBarController {
     naviMyPageVC.tabBarItem = UITabBarItem(title: "MY", image: UIImage(systemName: "person"), tag: 3)
 
     viewControllers = [naviHomeVC, naviCategoryVC, naviFavoriteVC, naviMyPageVC]
+    
+    UITabBar.appearance().tintColor = .black
   }
   private func setNavi() {
     navigationController?.navigationBar.isHidden = true
