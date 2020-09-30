@@ -1,7 +1,6 @@
 {
   "images" : [
     {
-      "filename" : "최근본상품.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -10,7 +9,7 @@
       "scale" : "2x"
     },
     {
-      "filename" : "최근본상품.png",
+      "filename" : "최근본상품-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

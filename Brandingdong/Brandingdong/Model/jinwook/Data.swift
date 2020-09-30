@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - Json Codable
+
 struct CategoryData {
   static let categoryMenuName = [
     "쇼핑몰*마켓",
@@ -56,6 +58,13 @@ struct ProductInfoCodAble: Codable {
   }
 }
 
+// MARK: - Struct
+
+struct Device {
+  static let width = UIScreen.main.bounds.width
+  static let height = UIScreen.main.bounds.height
+}
+
 struct HomeInfoDatas {
   
   static var names: [String] = []
@@ -92,4 +101,10 @@ struct Favorite {
 struct Mypage {
   static let myPageTopViewImageArr = ["포인트", "쿠폰", "주문_배송조회"]
     .map {UIImage.init(named: $0)}
+}
+
+struct Imsi {
+  static let contentsArr = ["상품 배송, 포인트 지급, Q&A 등 중요한 알림을 받아 볼 수 있습니다.\n 자세한 정보는 상단 MY 쇼핑에서 확인할 수 있습니다.",
+                             "브랜디에 회원가입을 해주셔서 감사합니다.\n프로필을 설정하고 맞춤 정보를 받아보세요."]
+  
 }
