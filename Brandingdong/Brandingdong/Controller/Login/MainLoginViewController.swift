@@ -16,7 +16,8 @@ class MainLoginViewController : UIViewController {
   private let backgroundImage = UIImageView(image: UIImage(named: "brandi"))
   private let titleLabel : UILabel = {
     let lb = UILabel()
-    lb.text = "B R A N D I"
+//    lb.text = "B R A N D I"
+    lb.text = "W O O K I"
     lb.textAlignment = .center
     lb.font = UIFont.boldSystemFont(ofSize: 20)
     lb.textColor = .white

@@ -138,7 +138,6 @@ extension PurchaseViewController : UITableViewDataSource {
     cell.checkButton.setImage(choice.hasChecked ? UIImage(systemName: "circle.fill") : UIImage(systemName: "circle"), for: .normal)
     cell.checkButton.tintColor = choice.hasChecked ? UIColor.red : UIColor.lightGray
     cell.checkButton.tag = indexPath.row
-    print ("cell.checkButton.tag : ", cell.checkButton.tag)
     return cell
   }
 }
