@@ -13,6 +13,8 @@ class PurchaseViewController : UIViewController {
   //MARK: - Properties
   private let tableView = UITableView()
   
+  private let purchaseCollectionVC = PurchaseCollectionViewController()
+  
   struct ExpandableChoices {
     var isExpanded : Bool
     var choices : [Choices]
@@ -35,6 +37,7 @@ class PurchaseViewController : UIViewController {
     super.viewDidLoad()
     setUI()
     setConstraints()
+    addPurchaseCollectionView()
   }
   
   //MARK: - setUI()
@@ -54,6 +57,21 @@ class PurchaseViewController : UIViewController {
     }
   }
   
+  //MARK: - addPurchaseCollectionView()
+  private func addPurchaseCollectionView() {
+    addChild(purchaseCollectionVC)
+    view.addSubview(purchaseCollectionVC.view)
+    purchaseCollectionVC.view.alpha = 0
+    purchaseCollectionVC.view.isHidden = true
+    purchaseCollectionVC.view.backgroundColor = .systemBackground
+    purchaseCollectionVC.didMove(toParent: self)
+
+    purchaseCollectionVC.view.snp.makeConstraints {
+      $0.top.leading.trailing.bottom.equalTo(tableView)
+    }
+  }
+  
+  //MARK: - customDelegate method
   func someThingIWantToCall(cell : UITableViewCell) {
     guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
     
@@ -71,9 +89,8 @@ class PurchaseViewController : UIViewController {
      }
     
     if selectedChoice.count == 2 {
-      let controller = PurchaseCollectionViewController()
-      controller.modalPresentationStyle = .automatic
-      present(controller, animated: true, completion: nil)
+      purchaseCollectionVC.view.alpha = 1
+      purchaseCollectionVC.view.isHidden = false
     }
   }
   

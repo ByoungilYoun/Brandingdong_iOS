@@ -13,6 +13,7 @@
 		0F0A400A24EEEA100037B7A1 /* appleLogo.imageset in Resources */ = {isa = PBXBuildFile; fileRef = 0F0A400924EEEA100037B7A1 /* appleLogo.imageset */; };
 		0F0A400E24EEEF970037B7A1 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0A400D24EEEF970037B7A1 /* DividerView.swift */; };
 		0F0A401024EF089D0037B7A1 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0A400F24EF089D0037B7A1 /* InformationView.swift */; };
+		0F3E08262524B98A00D0BC09 /* PurchaseOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3E08252524B98A00D0BC09 /* PurchaseOptionView.swift */; };
 		0F3EA9AA2511FE3700561887 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3EA9A92511FE3700561887 /* SecondTableViewCell.swift */; };
 		0F3EA9AF25121A7300561887 /* ThirdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3EA9AE25121A7300561887 /* ThirdTableViewCell.swift */; };
 		0F3EA9B125121C3C00561887 /* customerCenter.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0F3EA9B025121C3C00561887 /* customerCenter.jpeg */; };
@@ -120,6 +121,7 @@
 		0F0A400924EEEA100037B7A1 /* appleLogo.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = appleLogo.imageset; sourceTree = "<group>"; };
 		0F0A400D24EEEF970037B7A1 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DividerView.swift; path = Brandingdong/View/Login/Main/DividerView.swift; sourceTree = SOURCE_ROOT; };
 		0F0A400F24EF089D0037B7A1 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InformationView.swift; path = Brandingdong/View/Login/Main/InformationView.swift; sourceTree = SOURCE_ROOT; };
+		0F3E08252524B98A00D0BC09 /* PurchaseOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOptionView.swift; sourceTree = "<group>"; };
 		0F3EA9A92511FE3700561887 /* SecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
 		0F3EA9AE25121A7300561887 /* ThirdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTableViewCell.swift; sourceTree = "<group>"; };
 		0F3EA9B025121C3C00561887 /* customerCenter.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = customerCenter.jpeg; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				0F7933C6251B3BB70088ADA7 /* PurchaseTableHeaderView.swift */,
 				0F7933C9251B466C0088ADA7 /* PurchaseTableViewCell.swift */,
 				0FA5C34C251DF2BF007EF9FC /* PurchaseSectionView.swift */,
+				0F3E08252524B98A00D0BC09 /* PurchaseOptionView.swift */,
 			);
 			path = "Purchase ";
 			sourceTree = "<group>";
@@ -1031,6 +1034,7 @@
 				4908EA2524F6D660008C05D9 /* UserInfoButton.swift in Sources */,
 				49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */,
 				4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */,
+				0F3E08262524B98A00D0BC09 /* PurchaseOptionView.swift in Sources */,
 				49AABDEA24EE81F400DE0088 /* HomeViewController.swift in Sources */,
 				49D8BA9E251B13DE0006F1AE /* FavoriteProductEmptyViewCell.swift in Sources */,
 				0F9BB7962503D6E2006E0232 /* SelectAllCustomButton.swift in Sources */,
