@@ -18,21 +18,21 @@ class MypageTopTableViewCell: UITableViewCell {
   let pointView: MypageTopView = {
     let point = MypageTopView(image: Mypage.myPageTopViewImageArr[0]!,
                               title: "포인트",
-                              count: 0)
+                              count: String(0))
     return point
   }()
   
   let couponView: MypageTopView = {
     let coupon = MypageTopView(image: Mypage.myPageTopViewImageArr[1]!,
                                title: "쿠폰",
-                               count: 0)
+                               count: String(0))
     return coupon
   }()
   
   let orderCheckView: MypageTopView = {
     let order = MypageTopView(image: Mypage.myPageTopViewImageArr[2]!,
-                              title: "주문/배송조회",
-                              count: 0)
+                              title: "배송조회",
+                              count: nil)
     return order
   }()
 
@@ -63,7 +63,6 @@ class MypageTopTableViewCell: UITableViewCell {
   private func setConstraints() {
     let topViewHeight: CGFloat = 102
     let topViewWidth: CGFloat = (deviceWidrth / 3)
-    let padding: CGFloat = 8
     
     [pointView,
      couponView,

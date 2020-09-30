@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
     bt.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
     bt.layer.borderWidth = 1
     bt.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.6).cgColor
-    bt.addTarget(self, action: #selector(moveToTop(view:)), for: .touchUpInside)
+    bt.addTarget(self, action: #selector(moveToTop), for: .touchUpInside)
     return bt
   }()
   
