@@ -13,6 +13,8 @@ class PurchaseViewController : UIViewController {
   //MARK: - Properties
   private let tableView = UITableView()
   
+  private let purchaseCollectionVC = PurchaseCollectionViewController()
+  
   struct ExpandableChoices {
     var isExpanded : Bool
     var choices : [Choices]
@@ -28,11 +30,14 @@ class PurchaseViewController : UIViewController {
     ExpandableChoices(isExpanded: true, choices: ["S", "M", "L"].map {Choices(name: $0, hasChecked: false)})
   ]
   
+  var selectedChoice = [String]()
+  
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setUI()
     setConstraints()
+    addPurchaseCollectionView()
   }
   
   //MARK: - setUI()
@@ -52,21 +57,41 @@ class PurchaseViewController : UIViewController {
     }
   }
   
+  //MARK: - addPurchaseCollectionView()
+  private func addPurchaseCollectionView() {
+    addChild(purchaseCollectionVC)
+    view.addSubview(purchaseCollectionVC.view)
+    purchaseCollectionVC.view.alpha = 0
+    purchaseCollectionVC.view.isHidden = true
+    purchaseCollectionVC.view.backgroundColor = .systemBackground
+    purchaseCollectionVC.didMove(toParent: self)
+
+    purchaseCollectionVC.view.snp.makeConstraints {
+      $0.top.leading.trailing.bottom.equalTo(tableView)
+    }
+  }
+  
+  //MARK: - customDelegate method
   func someThingIWantToCall(cell : UITableViewCell) {
     guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
-    let sectionView = PurchaseSectionView()
     
     let choice = twoChoicesArray[indexPathTapped.section].choices[indexPathTapped.row]
-  
-    print(choice.name)
-    
-//    sectionView.configureSelectedLabel(text: choice.name)
     
     let hasChecked = choice.hasChecked
     twoChoicesArray[indexPathTapped.section].choices[indexPathTapped.row].hasChecked = !hasChecked
     
     tableView.reloadRows(at: [indexPathTapped], with: .fade)
-
+    
+     if hasChecked == false {
+      selectedChoice.append(choice.name)
+     } else {
+      selectedChoice.removeLast()
+     }
+    
+    if selectedChoice.count == 2 {
+      purchaseCollectionVC.view.alpha = 1
+      purchaseCollectionVC.view.isHidden = false
+    }
   }
   
   //MARK: - headerView()
@@ -144,7 +169,6 @@ extension PurchaseViewController : UITableViewDataSource {
   //MARK: - UITableViewDelegate
 extension PurchaseViewController : UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print ("indexPath : ", indexPath)
-    
+
   }
 }
