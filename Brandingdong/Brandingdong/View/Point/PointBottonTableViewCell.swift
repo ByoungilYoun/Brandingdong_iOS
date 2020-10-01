@@ -1,5 +1,5 @@
 //
-//  PointTopTableViewCell.swift
+//  PointBottonTableViewCell.swift
 //  Brandingdong
 //
 //  Created by 이진욱 on 2020/10/01.
@@ -8,20 +8,25 @@
 
 import UIKit
 
-class PointTopTableViewCell: UITableViewCell {
+class PointBottonTableViewCell: UITableViewCell {
   // MARK: - Property
   
-  static let identifier = "PointTopTableViewCell"
+  static let identifier = "PointBottonTableViewCell"
   
   private let titleLabel: PointTopLabel = {
-    let lb = PointTopLabel(title: "포인트")
+    let lb = PointTopLabel(title: "포인트 내역")
     return lb
   }()
   
-  var priceLabel: PointTopLabel = {
-    let lb = PointTopLabel(title: "0 원")
+  private let subTitleLabel: UILabel = {
+    let lb = UILabel()
+    lb.text = "* 최신 3개월 정보만 노출됩니다."
+    lb.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+    lb.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
     return lb
   }()
+  
+  private let tableView = UITableView()
   
   // MARK: - Cell Init
   
@@ -40,19 +45,20 @@ class PointTopTableViewCell: UITableViewCell {
   
   private func setUI() {
     [titleLabel,
-     priceLabel].forEach {
+     subTitleLabel,
+     tableView].forEach {
       contentView.addSubview($0)
      }
+    
   }
   
   private func setConstraints() {
-    
     let padding: CGFloat = 16
     
     [titleLabel,
-     priceLabel].forEach {
+     subTitleLabel].forEach {
       $0.snp.makeConstraints {
-        $0.centerY.equalTo(contentView.snp.centerY)
+        $0.top.equalToSuperview().offset(padding)
       }
      }
     
@@ -60,8 +66,13 @@ class PointTopTableViewCell: UITableViewCell {
       $0.leading.equalToSuperview().offset(padding)
     }
     
-    priceLabel.snp.makeConstraints {
+    subTitleLabel.snp.makeConstraints {
       $0.trailing.equalToSuperview().offset(-padding)
+    }
+    
+    tableView.snp.makeConstraints {
+      $0.top.equalTo(titleLabel.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
     }
   }
 }

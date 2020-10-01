@@ -9,8 +9,10 @@
 import UIKit
 
 class PointViewController: UIViewController {
+  
   // MARK: - Property
   
+  private let deviceHeight = UIScreen.main.bounds.height
   private let tableView = UITableView()
   
   // MARK: - LifeCycle
@@ -45,9 +47,16 @@ class PointViewController: UIViewController {
   
   private func setTableView() {
     tableView.dataSource = self
+    tableView.delegate = self
     
     tableView.register(PointTopTableViewCell.self,
                        forCellReuseIdentifier: PointTopTableViewCell.identifier)
+    
+    tableView.register(PointMiddleTableViewCell.self,
+                       forCellReuseIdentifier: PointMiddleTableViewCell.identifier)
+    
+    tableView.register(PointBottonTableViewCell.self,
+                       forCellReuseIdentifier: PointBottonTableViewCell.identifier)
   }
   
   // MARK: - NavigationBar
@@ -77,21 +86,61 @@ class PointViewController: UIViewController {
   }
 }
 
+// MARK: - UITableViewDataSource
+
 extension PointViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
     return 3
   }
   
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    switch section {
+    case 0:
+      return 1
+    case 1:
+      return 1
+    case 2:
+      return 1
+    default:
+      break
+    }
+    return Int()
+  }
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    switch indexPath.row {
+    switch indexPath.section {
     case 0:
       let cell = tableView.dequeueReusableCell(withIdentifier: PointTopTableViewCell.identifier,
-                                               for: indexPath)
+                                               for: indexPath) as! PointTopTableViewCell
       tableView.rowHeight = 72
+      return cell
+    case 1:
+      let cell = tableView.dequeueReusableCell(withIdentifier: PointMiddleTableViewCell.identifier,
+                                               for: indexPath) as! PointMiddleTableViewCell
+      tableView.rowHeight = 112
+      return cell
+    case 2:
+      let cell = tableView.dequeueReusableCell(withIdentifier: PointBottonTableViewCell.identifier,
+                                               for: indexPath) as! PointBottonTableViewCell
+      tableView.rowHeight = deviceHeight - (72 + 102)
       return cell
     default:
       break
     }
     return UITableViewCell()
+  }
+}
+
+// MARK: -
+
+extension PointViewController: UITableViewDelegate {
+  
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return tableView.tableFooterView
+  }
+  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 10
   }
 }

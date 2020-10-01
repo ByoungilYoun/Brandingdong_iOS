@@ -124,6 +124,9 @@
 		49FE7F1A2525D82F0066712C /* PointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE7F192525D82F0066712C /* PointViewController.swift */; };
 		49FE7F1F2525DDBF0066712C /* PointTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE7F1E2525DDBF0066712C /* PointTopTableViewCell.swift */; };
 		49FE7F232525DE360066712C /* PointTopLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE7F222525DE360066712C /* PointTopLabel.swift */; };
+		49FE7F2A252604470066712C /* PointMiddleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE7F29252604470066712C /* PointMiddleTableViewCell.swift */; };
+		49FE7F2E252604B60066712C /* PointTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE7F2D252604B60066712C /* PointTextfield.swift */; };
+		49FE7F31252607C20066712C /* PointBottonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE7F30252607C20066712C /* PointBottonTableViewCell.swift */; };
 		8DE428A571219C12BA611090 /* Pods_Brandingdong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A300E69C8DC3501D16CE4F /* Pods_Brandingdong.framework */; };
 		CE596BB924F77B9D00DDE2EB /* UserAgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE596BB824F77B9D00DDE2EB /* UserAgreeViewController.swift */; };
 		CE79A97C24F7B8E6008D4237 /* UserAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79A97B24F7B8E6008D4237 /* UserAgreeView.swift */; };
@@ -252,6 +255,9 @@
 		49FE7F192525D82F0066712C /* PointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewController.swift; sourceTree = "<group>"; };
 		49FE7F1E2525DDBF0066712C /* PointTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointTopTableViewCell.swift; sourceTree = "<group>"; };
 		49FE7F222525DE360066712C /* PointTopLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointTopLabel.swift; sourceTree = "<group>"; };
+		49FE7F29252604470066712C /* PointMiddleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointMiddleTableViewCell.swift; sourceTree = "<group>"; };
+		49FE7F2D252604B60066712C /* PointTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointTextfield.swift; sourceTree = "<group>"; };
+		49FE7F30252607C20066712C /* PointBottonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointBottonTableViewCell.swift; sourceTree = "<group>"; };
 		98A300E69C8DC3501D16CE4F /* Pods_Brandingdong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brandingdong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE596BB824F77B9D00DDE2EB /* UserAgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreeViewController.swift; sourceTree = "<group>"; };
 		CE79A97B24F7B8E6008D4237 /* UserAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreeView.swift; sourceTree = "<group>"; };
@@ -882,6 +888,8 @@
 			isa = PBXGroup;
 			children = (
 				49FE7F1E2525DDBF0066712C /* PointTopTableViewCell.swift */,
+				49FE7F29252604470066712C /* PointMiddleTableViewCell.swift */,
+				49FE7F30252607C20066712C /* PointBottonTableViewCell.swift */,
 				49FE7F212525DE210066712C /* Custom */,
 			);
 			path = Point;
@@ -891,6 +899,7 @@
 			isa = PBXGroup;
 			children = (
 				49FE7F222525DE360066712C /* PointTopLabel.swift */,
+				49FE7F2D252604B60066712C /* PointTextfield.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1052,6 +1061,7 @@
 				0F843B99250B895D00C3F2B7 /* ShoppingMallViewController.swift in Sources */,
 				49FE7EF2252468A80066712C /* MypageMyShoppingTableViewCell.swift in Sources */,
 				0F3EA9AA2511FE3700561887 /* SecondTableViewCell.swift in Sources */,
+				49FE7F2E252604B60066712C /* PointTextfield.swift in Sources */,
 				0F8935BC24F51E89006E1944 /* LoginViewModel.swift in Sources */,
 				49FE7EEE2524673B0066712C /* MypageBannerTableViewCell.swift in Sources */,
 				0F0A401024EF089D0037B7A1 /* InformationView.swift in Sources */,
@@ -1077,6 +1087,7 @@
 				49E472A7250F8CAE00C34CCE /* CommonProductCollectionViewCell.swift in Sources */,
 				4901C447250601D500390B6F /* ProductInfoCategoryTableViewCell.swift in Sources */,
 				492747BF24F2861900D259BE /* MainCategoryCollectionViewCell.swift in Sources */,
+				49FE7F2A252604470066712C /* PointMiddleTableViewCell.swift in Sources */,
 				49A6E89E25121B1B001FB954 /* ProductDetailInfoTableViewCell.swift in Sources */,
 				49FE7F1F2525DDBF0066712C /* PointTopTableViewCell.swift in Sources */,
 				4908EA2724F79389008C05D9 /* UserinfoEntryTableView.swift in Sources */,
@@ -1114,6 +1125,7 @@
 				0F7933CA251B466C0088ADA7 /* PurchaseTableViewCell.swift in Sources */,
 				0F843B5125061D3200C3F2B7 /* FirstCategoryView.swift in Sources */,
 				49AABDE124EE7F6B00DE0088 /* MYPageViewController.swift in Sources */,
+				49FE7F31252607C20066712C /* PointBottonTableViewCell.swift in Sources */,
 				4901C44F25061E4F00390B6F /* ProductInfoDiscountCouponTableViewCell.swift in Sources */,
 				49A6E8992512184F001FB954 /* OrderInfoTableViewCell.swift in Sources */,
 				CE596BB924F77B9D00DDE2EB /* UserAgreeViewController.swift in Sources */,
