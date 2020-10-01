@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MypageTopTableViewCellDelegate {
+  func tapPointView()
+}
+
 class MypageTopTableViewCell: UITableViewCell {
   // MARK: - Property
   
@@ -35,18 +39,21 @@ class MypageTopTableViewCell: UITableViewCell {
                               count: nil)
     return order
   }()
-
-   // MARK: - Cell init
-   
-   override func awakeFromNib() {
-     super.awakeFromNib()
-   }
-   
-   override func setSelected(_ selected: Bool, animated: Bool) {
-     super.setSelected(selected, animated: animated)
-     setUI()
-     setConstraints()
-   }
+  
+  var delegate: MypageTopTableViewCellDelegate?
+  
+  // MARK: - Cell init
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+    setUI()
+    setConstraints()
+    setPointViewTap()
+  }
   
   // MARK: - Setup Layout
   
@@ -85,5 +92,16 @@ class MypageTopTableViewCell: UITableViewCell {
     orderCheckView.snp.makeConstraints {
       $0.leading.equalTo(couponView.snp.trailing)
     }
+  }
+  
+  // MARK: - Set PointView
+  
+  private func setPointViewTap() {
+    let tapGeture = UITapGestureRecognizer(target: self, action: #selector(TapPointView(sender:)))
+    pointView.addGestureRecognizer(tapGeture)
+  }
+  
+  @objc func TapPointView(sender: UITapGestureRecognizer) {
+    delegate?.tapPointView()
   }
 }
