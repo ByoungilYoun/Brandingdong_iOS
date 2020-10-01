@@ -76,6 +76,7 @@ class MYPageViewController: UIViewController {
   // MARK: - Set TableView
   
   private func setTableView() {
+    tableView.allowsSelection = false
     tableView.dataSource = self
     
     tableView.register(MypageTopTableViewCell.self,
@@ -136,27 +137,35 @@ extension MYPageViewController: UITableViewDataSource {
     switch indexPath.row {
     case 0:
       let cell = tableView.dequeueReusableCell(withIdentifier: MypageTopTableViewCell.identifier,
-                                               for: indexPath)
+                                               for: indexPath) as! MypageTopTableViewCell
+      cell.delegate = self
       tableView.rowHeight = 102
       return cell
     case 1:
       let cell = tableView.dequeueReusableCell(withIdentifier: MypageBannerTableViewCell.identifier,
-                                               for: indexPath)
+                                               for: indexPath) as! MypageBannerTableViewCell
       tableView.rowHeight = 72
       return cell
     case 2:
       let cell = tableView.dequeueReusableCell(withIdentifier: MypageMyShoppingTableViewCell.identifier,
-                                               for: indexPath)
+                                               for: indexPath) as! MypageMyShoppingTableViewCell
       tableView.rowHeight = Device.height / 3
       return cell
     case 3:
       let cell = tableView.dequeueReusableCell(withIdentifier: MypageMyInfoTableViewCell.identifier,
-                                               for: indexPath)
+                                               for: indexPath) as! MypageMyInfoTableViewCell
       tableView.rowHeight = Device.height / 2.5
       return cell
     default:
       break
     }
     return UITableViewCell()
+  }
+}
+
+extension MYPageViewController: MypageTopTableViewCellDelegate {
+  func tapPointView() {
+    let pointVC = PointViewController()
+    navigationController?.pushViewController(pointVC, animated: true)
   }
 }
