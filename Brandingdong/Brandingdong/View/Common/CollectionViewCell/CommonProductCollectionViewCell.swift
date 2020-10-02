@@ -24,7 +24,7 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
     let lb = UILabel()
     lb.textColor = .black
     lb.textAlignment = .left
-    lb.font = UIFont.systemFont(ofSize: 13)
+    lb.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
     return lb
   }()
   
@@ -32,7 +32,7 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
     let lb = UILabel()
     lb.textColor = .lightGray
     lb.textAlignment = .left
-    lb.font = UIFont.systemFont(ofSize: 13)
+    lb.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 12)
     return lb
   }()
   
@@ -40,7 +40,7 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
     let lb = UILabel()
     lb.textColor = .black
     lb.textAlignment = .left
-    lb.font =  UIFont.boldSystemFont(ofSize: 18)
+    lb.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 14)
     return lb
   }()
   
@@ -73,7 +73,7 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
      priceLabel,
      heartButton].forEach {
       contentView.addSubview($0)
-    }
+     }
   }
   
   //MARK: - setConstraints()
@@ -110,14 +110,15 @@ class CommonProductCollectionViewCell: UICollectionViewCell {
   private func didTabHeartButton() {
     heartButton.addTarget(self, action: #selector(clickedBtn), for: .touchUpInside)
   }
-
+  
   @objc func clickedBtn(_ sender : UIButton) {
     if !buttonToggle {
-     heartButton.tintColor = .systemRed
+      heartButton.tintColor = .systemRed
+      Favorite.checkFavoriteProductList.append(sender.tag)
       buttonToggle = !buttonToggle
     } else {
       heartButton.tintColor = UIColor.white.withAlphaComponent(0.8)
-       buttonToggle = !buttonToggle
+      buttonToggle = !buttonToggle
     }
   }
   

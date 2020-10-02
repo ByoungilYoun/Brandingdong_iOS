@@ -18,7 +18,6 @@ class ShoppingMallView : UIView {
    var tableView = UITableView()
   
   var delegate : ShoppingMallViewDelegate?
- 
   
   //MARK: - LifeCycle
   override init(frame: CGRect) {
@@ -81,7 +80,7 @@ extension ShoppingMallView : UITableViewDelegate {
     if indexPath.section == 0 {
       return self.frame.size.height / 1.5
     } else if indexPath.section == 1 {
-      return 5920
+      return 3562
     } else {
       return 600
     }

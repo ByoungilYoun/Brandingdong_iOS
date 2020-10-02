@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeLaunchScreenViewController: UIViewController {
   
@@ -26,33 +27,6 @@ class HomeLaunchScreenViewController: UIViewController {
     }
   }
   
-  // MARK: - Json Codable
-  
-  struct ProductList: Codable {
-    var results: [Results]
-    
-    struct Results: Codable {
-      var id: Int
-      var name: String
-      var price: Int
-      var main_img: [Images]
-      var brand: Brand
-    }
-    
-    struct Images : Codable {
-      var image : String
-    }
-    
-    struct Brand: Codable {
-      var name: String
-    }
-  }
-  
-  struct Events : Codable {
-    var images : String
-  }
-  
-  
   // MARK: - LifeCycle
   
   override func viewDidLoad() {
@@ -60,8 +34,7 @@ class HomeLaunchScreenViewController: UIViewController {
     setUI()
     setConstraints()
     setIndicatorView()
-    getProductList()
-    getProductDetailImage()
+    HomeInfoGetData()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +49,7 @@ class HomeLaunchScreenViewController: UIViewController {
     [imageView,
      indicatorView].forEach {
       view.addSubview($0)
-    }
+     }
   }
   
   private func setConstraints() {
@@ -101,74 +74,33 @@ class HomeLaunchScreenViewController: UIViewController {
     indicatorView.startAnimating()
   }
   
-  private func getProductList() {
+  private func HomeInfoGetData() {
     
-    let productUrl = "http://52.78.75.94/products/detail"
-    guard let url = URL(string: productUrl) else { return }
-    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-      guard error == nil else { return print ("error : ", error!.localizedDescription)}
-      let responsea = response as? HTTPURLResponse
-      print (responsea!.statusCode)
-      guard let response = response as? HTTPURLResponse,
-        (200..<406).contains(response.statusCode) else { return }
-      guard let data = data else { return }
-      do {
-        let userResult = try JSONDecoder().decode(ProductList.self, from: data)
-        
-        for index in 0..<userResult.results.count {
-          HomeInfoDatas.names.append(userResult.results[index].name)
-          HomeInfoDatas.price.append(userResult.results[index].price)
-          HomeInfoDatas.images.append(userResult.results[index].main_img[0].image)
-          HomeInfoDatas.brandNames.append(userResult.results[index].brand.name)
-          
-          for imageIndex in 0..<userResult.results[index].main_img.count {
-            if !(HomeInfoDatas.idAndImages.keys.contains(userResult.results[index].name)) {
-              HomeInfoDatas.idAndImages[userResult.results[index].name] = [imageIndex : userResult.results[index].main_img[imageIndex].image]
-            } else {
-              HomeInfoDatas.idAndImages[userResult.results[index].name]?.updateValue(userResult.results[index].main_img[imageIndex].image, forKey: imageIndex)
-            }
-          }
-          self.firstToggle = true
-        }
-      } catch {
-        print ("failed to convert error : ", error.localizedDescription)
-      }
+    Service.getProductList { (isSuccess) in
+      guard isSuccess else { return }
+      self.firstToggle = true
     }
-    task.resume()
-  }
-  
-  private func getProductDetailImage() {
-    let productUrl = "http://52.78.75.94/events/"
-    guard let url = URL(string: productUrl) else { return }
-    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-      guard error == nil else { return print ("error : ", error!.localizedDescription)}
-      let responsea = response as? HTTPURLResponse
-      print (responsea!.statusCode)
-      guard let response = response as? HTTPURLResponse,
-        (200..<406).contains(response.statusCode) else { return }
-      guard let data = data else { return }
-      do {
-        let detailImages = try JSONDecoder().decode([Events].self, from: data)
-        for index in 0..<detailImages.count {
-          HomeInfoDatas.bannerImages.append(detailImages[index].images)
-          self.secondToggle = true
-        }
-      } catch {
-        print ("failed to convert error : ", error.localizedDescription)
-      }
+    
+    Service.getBannerImages { (isSuccess) in
+      guard isSuccess else { return }
+      self.secondToggle = true
     }
-    task.resume()
+    
+    Service.getProductInfoDetail { (isSucess) in
+      guard isSucess else { return }
+    }
   }
   
   private func networkCheck(firstToggle: Bool, secondToggle: Bool) {
     guard firstToggle else { return }
     guard secondToggle else { return }
-    DispatchQueue.main.sync {
+    DispatchQueue.main.async {
       let tabBarVC = TabBarViewController()
       tabBarVC.view.backgroundColor = .white
-      navigationController?.pushViewController(tabBarVC, animated: true)
+      self.navigationController?.pushViewController(tabBarVC, animated: true)
     }
     self.firstToggle = false
     self.secondToggle = false
   }
 }
+

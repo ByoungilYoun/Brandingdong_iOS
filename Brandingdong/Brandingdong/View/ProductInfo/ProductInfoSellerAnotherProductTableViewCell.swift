@@ -15,10 +15,7 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
   static let identifier = "ProductInfoSellerAnotherProductTableViewCell"
   
   private let sellerInfoView = UIView()
-  private let sellerImageView: UIImageView = {
-    let igv = UIImageView()
-    return igv
-  }()
+  private let sellerImageView = UIImageView()
   
   private let sellerNickName: UILabel = {
     let lb = UILabel()
@@ -62,6 +59,7 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
+    productTitleInit()
     setUI()
     setConstraints()
     setLayout()
@@ -82,7 +80,6 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
      sellerSubNickName].forEach {
       sellerInfoView.addSubview($0)
     }
-    sellerImageView.image = UIImage(named: "테스트4")
   }
   
   // MARK: - Set Property
@@ -159,6 +156,8 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
     
     sellerImageView.clipsToBounds = true
     sellerImageView.layer.cornerRadius = sellerImageViewSize/2
+    sellerImageView.layer.borderWidth = 1
+    sellerImageView.layer.borderColor = UIColor.lightGray.cgColor
   }
   
   // MARK: - Set Value Image
@@ -172,6 +171,15 @@ class ProductInfoSellerAnotherProductTableViewCell: UITableViewCell {
       sellerAnotherPriceArr.append(String(HomeInfoDatas.price[index + 10]))
       sellerAnotherBrandNameArr.append(HomeInfoDatas.brandNames[index + 10])
     }
+  }
+  
+  private func productTitleInit() {
+    sellerNickName.text = ProductInfo.checkProductBrandName
+    sellerSubNickName.text = ProductInfo.checkProductBrandIntro
+    
+    let url = URL(string: ProductInfo.checkProductBrandImage)
+    let data = try! Data(contentsOf: url!)
+    sellerImageView.image = UIImage(data: data)
   }
 }
 

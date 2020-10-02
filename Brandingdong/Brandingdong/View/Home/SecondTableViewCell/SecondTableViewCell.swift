@@ -15,6 +15,7 @@ protocol SecondTableViewCellDelegate : class {
 class SecondTableViewCell : UITableViewCell {
   
   //MARK: - Properties
+  
   static let identifier = "SecondTableViewCell"
   
   private let collectionView : UICollectionView = {
@@ -22,7 +23,6 @@ class SecondTableViewCell : UITableViewCell {
     layout.scrollDirection = .vertical
     return UICollectionView(frame: .zero, collectionViewLayout: layout)
   }()
-  
   
   var delegate : SecondTableViewCellDelegate?
   
@@ -32,6 +32,8 @@ class SecondTableViewCell : UITableViewCell {
     }
   }
   
+  let fomatter = NumberFormatter()
+  
   //MARK: - init
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -39,6 +41,7 @@ class SecondTableViewCell : UITableViewCell {
     setUI()
     setConstraints()
     setProductImages()
+    priceFommater()
   }
   
   required init?(coder: NSCoder) {
@@ -74,12 +77,48 @@ class SecondTableViewCell : UITableViewCell {
       productImageArr.append(UIImage(data: data)!)
     }
   }
+  
+  private func priceFommater() {
+    fomatter.numberStyle = .decimal
+    fomatter.minimumFractionDigits = 0
+    fomatter.maximumFractionDigits = 3
+  }
+  
+  // MARK: - CheckProduct Data
+  
+  private func checkProductPushData(productName: String) {
+    for (_, value) in HomeInfoDatas.productNameAndImages[productName]! {
+      let url = URL(string: value)
+      let data = try! Data(contentsOf: url!)
+      ProductInfo.checkProductNameImageArr.append(UIImage(data: data)!)
+    }
+    for (key, value) in HomeInfoDatas.productNameAndBrandNamePrice[productName]! {
+      ProductInfo.checkProductName = productName
+      ProductInfo.checkProductBrandName = key
+      ProductInfo.checkProductPrice = value
+    }
+    for (key, value) in HomeInfoDatas.productNameAndBrandImageIntro[productName]! {
+      ProductInfo.checkProductBrandIntro = key
+      ProductInfo.checkProductBrandImage = value
+    }
+    
+    for (key, value) in HomeInfoDatas.productIdAndName {
+      if value == productName {
+        for (_, ImagesValue) in ProductInfoCategoryDatas.idAndInfoImages[key]! {
+          print ("ImagesValue : ", ImagesValue)
+          let url = URL(string: ImagesValue)
+          let data = try! Data(contentsOf: url!)
+          ProductInfo.checkProductDetailImageArr.append(UIImage(data: data)!)
+        }
+      }
+    }
+  }
 }
 
 //MARK: - UICollectionViewDataSource
 extension SecondTableViewCell : UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 30
+    return HomeInfoDatas.names.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -87,7 +126,8 @@ extension SecondTableViewCell : UICollectionViewDataSource {
     cell.configure(image: productImageArr[indexPath.item],
                    company: HomeInfoDatas.brandNames[indexPath.item],
                    description: HomeInfoDatas.names[indexPath.item],
-                   price: String(HomeInfoDatas.price[indexPath.item]))
+                   price: fomatter.string(from: HomeInfoDatas.price[indexPath.item] as NSNumber)!)
+    cell.heartButton.tag = (indexPath.item + 1)
     return cell
   }
 }
@@ -97,11 +137,8 @@ extension SecondTableViewCell : UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if let didTapIndex = collectionView.cellForItem(at: indexPath) as? CommonProductCollectionViewCell {
       let checkProductName = didTapIndex.descriptionLabel.text!
-      for (_, value) in HomeInfoDatas.idAndImages[checkProductName]! {
-        let url = URL(string: value)
-        let data = try! Data(contentsOf: url!)
-        ProductInfo.checkProductNameImageArr.append(UIImage(data: data)!)
-      }
+      checkProductPushData(productName: checkProductName)
+      Favorite.checkRecentProductList.append(checkProductName)
     }
     delegate?.handlePresent(cell: self)
   }

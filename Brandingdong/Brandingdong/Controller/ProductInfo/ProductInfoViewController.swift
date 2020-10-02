@@ -14,12 +14,17 @@ class ProductInfoViewController: UIViewController {
   
   private let productInfoTableView = UITableView()
   private let deviceHeight = UIScreen.main.bounds.height
+  private let purchaseVC = PurchaseViewController()
+  private let blurView = UIView()
+  
+  var gesture : UITapGestureRecognizer?
   
   private let buyButton: UIButton = {
     let btn = UIButton()
     btn.setTitle("구매하기", for: .normal)
     btn.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     btn.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    btn.addTarget(self, action: #selector(buyButtonClicked), for: .touchUpInside)
     return btn
   }()
   
@@ -59,11 +64,15 @@ class ProductInfoViewController: UIViewController {
     setUI()
     setConstraints()
     setTableView()
+    addPurchaseView()
+    addBlurView()
+    addNotificationCenter()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     setNavi()
+    hideTabbar()
   }
   
   
@@ -81,6 +90,34 @@ class ProductInfoViewController: UIViewController {
     }
   }
   
+  private func addPurchaseView() {
+    addChild(purchaseVC)
+    view.addSubview(purchaseVC.view)
+    purchaseVC.view.alpha = 0
+    purchaseVC.view.isHidden = true
+    purchaseVC.view.backgroundColor = .systemBackground
+    purchaseVC.didMove(toParent: self)
+    
+    purchaseVC.view.snp.makeConstraints {
+      $0.leading.trailing.equalToSuperview()
+      $0.bottom.equalToSuperview()
+      $0.height.equalTo(500)
+    }
+  }
+  
+  private func addBlurView() {
+    blurView.alpha = 0
+    blurView.isHidden = true
+    blurView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+    view.addSubview(blurView)
+    
+    blurView.snp.makeConstraints {
+      $0.leading.trailing.equalToSuperview()
+      $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      $0.bottom.equalTo(purchaseVC.view.snp.top)
+    }
+  }
+  
   private func setConstraints() {
     
     let buttonHeight: CGFloat = 72
@@ -95,7 +132,7 @@ class ProductInfoViewController: UIViewController {
     }
     
     buyButton.snp.makeConstraints {
-      $0.bottom.equalToSuperview()
+      $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
       $0.height.equalTo(buttonHeight)
     }
     
@@ -117,6 +154,13 @@ class ProductInfoViewController: UIViewController {
     }
     moveTopButton.clipsToBounds = true
     moveTopButton.layer.cornerRadius = buttonSize / 2
+  }
+  
+  private func addNotificationCenter() {
+    NotificationCenter.default.addObserver(self, selector: #selector(closeView(_:)), name: NSNotification.Name("CloseView"), object: nil)
+    let gesture = UITapGestureRecognizer(target: self, action: #selector(closeView(_:)))
+    view.addGestureRecognizer(gesture)
+    self.gesture = gesture
   }
   
   // MARK: - Set TableView
@@ -185,6 +229,10 @@ class ProductInfoViewController: UIViewController {
     navigationController?.navigationBar.layoutIfNeeded()
   }
   
+  //MARK: - HiddenTabar
+  private func hideTabbar() {
+    tabBarController?.tabBar.isHidden = true
+  }
   // MARK: - keyboard Hidden
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -206,10 +254,13 @@ class ProductInfoViewController: UIViewController {
   @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
     navigationController?.popViewController(animated: true)
     ProductInfo.checkProductNameImageArr.removeAll()
+    ProductInfo.checkProductDetailImageArr.removeAll()
   }
   
   @objc private func didTapBasketButton(_ sender: UIBarButtonItem) {
-    navigationController?.popViewController(animated: true)
+    let shoppingBasketVC = ShoppingBasketViewController()
+    shoppingBasketVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(shoppingBasketVC, animated: true)
   }
   
   @objc private func didTapFavoriteButton(_ sender: UIButton) {
@@ -222,6 +273,24 @@ class ProductInfoViewController: UIViewController {
       favoriteButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
       toggle = !toggle
     }
+  }
+  
+  @objc private func buyButtonClicked() {
+    purchaseVC.view.alpha = 1
+    purchaseVC.view.isHidden = false
+    blurView.alpha = 1
+    blurView.isHidden = false
+  }
+  
+  @objc private func closeView(_ tapGestureRecognizer : UITapGestureRecognizer) {
+    let location = tapGestureRecognizer.location(in: blurView)
+    guard blurView.isHidden == false, blurView.bounds.contains(location) else {
+      return
+    }
+    blurView.alpha = 0
+    blurView.isHidden = true
+    purchaseVC.view.alpha = 0
+    purchaseVC.view.isHidden = true
   }
 }
 
@@ -255,14 +324,14 @@ extension ProductInfoViewController: UITableViewDataSource {
     let titleCellHeight: CGFloat = 172
     let pointCellHeight: CGFloat = 86
     let discountCouponHeight: CGFloat = 86
-    var categoryHeight: CGFloat = 324
+    var categoryHeight: CGFloat = 100 + (412 * CGFloat(ProductInfo.checkProductDetailImageArr.count))
     let sellerAnotherProductHeight: CGFloat = 642
     let anotherLikeHeight: CGFloat = 222
 
     
     switch resultCategoryClick {
     case "상품정보":
-      categoryHeight = 312
+      categoryHeight = 100 + (412 * CGFloat(ProductInfo.checkProductDetailImageArr.count))
     case "리뷰":
       categoryHeight = 212
     case "Q&A":
@@ -272,7 +341,6 @@ extension ProductInfoViewController: UITableViewDataSource {
     default:
       break
     }
-    
     
     switch indexPath.section {
     case 0:

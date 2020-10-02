@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
     bt.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
     bt.layer.borderWidth = 1
     bt.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.6).cgColor
-    bt.addTarget(self, action: #selector(moveToTop(view:)), for: .touchUpInside)
+    bt.addTarget(self, action: #selector(moveToTop), for: .touchUpInside)
     return bt
   }()
   
@@ -41,16 +41,15 @@ class HomeViewController: UIViewController {
     super.viewDidLoad()
     setUI()
     setConstraints()
-    mainCategoryView.delegate = self
-    shoppingMallVC.delegate = self
+    setProtocol()
 
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     hiddenNavi()
+    tabBarHidden()
     shoppingMallVC.isHidden = false
-    
   }
   
   override func viewWillLayoutSubviews() {
@@ -116,6 +115,10 @@ class HomeViewController: UIViewController {
     moveToTopButton.layer.cornerRadius = moveToTopButton.frame.width / 2
     moveToTopButton.clipsToBounds = true
   }
+  
+  private func tabBarHidden() {
+    tabBarController?.tabBar.isHidden = false
+  }
 
   // MARK: - Navigation Hidden
   
@@ -126,7 +129,25 @@ class HomeViewController: UIViewController {
   @objc func moveToTop(view : UIViewController ){
     
   }
+  
+  // MARK: - Set Protocol
+  
+  private func setProtocol() {
+    searchBasketView.delegate = self
+    mainCategoryView.delegate = self
+    shoppingMallVC.delegate = self
+  }
 }
+
+extension HomeViewController: SearchBasketViewDelegate {
+  func pushShoppingBasket() {
+    let shoppingBasketVC = ShoppingBasketViewController()
+    shoppingBasketVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(shoppingBasketVC, animated: true)
+  }
+}
+
+// MARK: - ChangeViewDelegate
 
 extension HomeViewController : ChangeViewDelegate {
   func changeView(index: Int) {
@@ -145,6 +166,8 @@ extension HomeViewController : ChangeViewDelegate {
     }
   }
 }
+
+// MARK: - ShoppingMallViewDelegate
 
 extension HomeViewController : ShoppingMallViewDelegate {
   func saveProductDescription(name: String) {
