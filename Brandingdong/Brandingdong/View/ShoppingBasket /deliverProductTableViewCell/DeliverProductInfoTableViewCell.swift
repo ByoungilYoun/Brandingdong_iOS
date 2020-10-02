@@ -30,6 +30,8 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
     return btn
   }()
   
+  var toggle = false
+  
   private let checkBoxTitle: UILabel = {
     let lb = UILabel()
     lb.text = "상품선택"
@@ -45,8 +47,6 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
     btn.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
     return btn
   }()
-  
-  var toggle = false
   
   let productImageView: UIImageView = {
     let imageView = UIImageView()
@@ -105,16 +105,16 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
   
   private func setUI() {
     [title,
-    checkBoxButton,
-    checkBoxTitle,
-    deleteButton,
-    productImageView,
-    productTitle,
-    optionTitle,
-    priceTitle,
-    fastBuyButton].forEach {
+     checkBoxButton,
+     checkBoxTitle,
+     deleteButton,
+     productImageView,
+     productTitle,
+     optionTitle,
+     priceTitle,
+     fastBuyButton].forEach {
       contentView.addSubview($0)
-    }
+     }
   }
   
   private func setConstraints() {
@@ -125,13 +125,13 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
     
     
     [title,
-    checkBoxButton,
-    productImageView,
-    fastBuyButton].forEach {
+     checkBoxButton,
+     productImageView,
+     fastBuyButton].forEach {
       $0.snp.makeConstraints {
         $0.leading.equalToSuperview().offset(padding)
       }
-    }
+     }
     
     title.snp.makeConstraints {
       $0.top.equalToSuperview().offset(padding)
@@ -157,12 +157,12 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
     }
     
     [productTitle,
-    optionTitle,
-    priceTitle].forEach {
+     optionTitle,
+     priceTitle].forEach {
       $0.snp.makeConstraints {
         $0.leading.equalTo(productImageView.snp.trailing).offset(padding)
       }
-    }
+     }
     
     productTitle.snp.makeConstraints {
       $0.top.equalTo(productImageView.snp.top)
@@ -187,5 +187,21 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
     fastBuyButton.layer.borderColor = UIColor.black.cgColor
     fastBuyButton.layer.cornerRadius = 10
     fastBuyButton.clipsToBounds = true
+  }
+  
+  // MARK: - Action Button
+  
+  private func setAddTargetButton() {
+    checkBoxButton.addTarget(self, action: #selector(didTapCheckBoxButton), for: .touchUpInside)
+  }
+  
+  @objc func didTapCheckBoxButton(_ sender: UIButton) {
+    if !toggle {
+      checkBoxButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+      toggle = !toggle
+    } else {
+      checkBoxButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+      toggle = !toggle
+    }
   }
 }
