@@ -76,6 +76,7 @@ class PurchaseCollectionViewController : UIViewController {
     bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
     bt.backgroundColor = .black
     bt.layer.cornerRadius = 5
+    bt.addTarget(self, action: #selector(buyNowBtnClicked), for: .touchUpInside)
     return bt
   }()
   //MARK: - LifeCycle
@@ -90,8 +91,8 @@ class PurchaseCollectionViewController : UIViewController {
   private func setUI() {
     collectionView.dataSource = self
     collectionView.delegate = self
-    collectionView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
-    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+    collectionView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+    collectionView.register(PurchaseSelectedCell.self, forCellWithReuseIdentifier: PurchaseSelectedCell.identifier)
     
     [optionLabel, optionView, collectionView, totalProductCountLabel, totalPriceLabel, lineView, cartButton, buyNowButton].forEach {
       view.addSubview($0)
@@ -165,18 +166,22 @@ class PurchaseCollectionViewController : UIViewController {
     self.view.alpha = 0
     self.view.isHidden = true
   }
+  
+  @objc private func buyNowBtnClicked() {
+    print("124")
+  }
 }
 
   //MARK: - UICollectionViewDataSource
 extension PurchaseCollectionViewController : UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 3
+    return 1
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    cell.backgroundColor = .red
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PurchaseSelectedCell.identifier, for: indexPath) as! PurchaseSelectedCell
     cell.layer.cornerRadius = 5
+    cell.backgroundColor = .systemBackground
     return cell
   }
 }
