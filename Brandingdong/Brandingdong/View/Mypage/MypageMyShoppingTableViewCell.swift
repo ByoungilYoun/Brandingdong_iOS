@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MypageMyShoppingTableViewCellDelegate {
+  func naviPushVC()
+}
+
 class MypageMyShoppingTableViewCell: UITableViewCell {
   // MARK: - Property
   
@@ -41,6 +45,8 @@ class MypageMyShoppingTableViewCell: UITableViewCell {
   
   private let layout = UICollectionViewFlowLayout()
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+  
+  var delegate: MypageMyShoppingTableViewCellDelegate?
   
   // MARK: - Cell Init
   
@@ -104,11 +110,14 @@ class MypageMyShoppingTableViewCell: UITableViewCell {
     collectionView.backgroundColor = .systemBackground
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.dataSource = self
+    collectionView.delegate = self
     
     collectionView.register(MypageMyShoppingCollectionViewCell.self,
                             forCellWithReuseIdentifier: MypageMyShoppingCollectionViewCell.identifier)
   }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension MypageMyShoppingTableViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -124,5 +133,20 @@ extension MypageMyShoppingTableViewCell: UICollectionViewDataSource {
     cell.configure(image: categoryImageArr[indexPath.item],
                    title: categoryTitleArr[indexPath.item])
     return cell
+  }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension MypageMyShoppingTableViewCell: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if let didTapIndexPath = collectionView.cellForItem(at: indexPath) as? MypageMyShoppingCollectionViewCell {
+      switch didTapIndexPath.titleLabel.text {
+      case "장바구니":
+        delegate?.naviPushVC()
+      default:
+        break
+      }
+    }
   }
 }

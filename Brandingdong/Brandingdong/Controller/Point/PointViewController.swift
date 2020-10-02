@@ -48,6 +48,7 @@ class PointViewController: UIViewController {
   private func setTableView() {
     tableView.dataSource = self
     tableView.delegate = self
+    tableView.allowsSelection = false
     
     tableView.register(PointTopTableViewCell.self,
                        forCellReuseIdentifier: PointTopTableViewCell.identifier)

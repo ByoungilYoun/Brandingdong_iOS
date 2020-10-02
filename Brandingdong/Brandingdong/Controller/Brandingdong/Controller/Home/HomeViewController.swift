@@ -41,8 +41,7 @@ class HomeViewController: UIViewController {
     super.viewDidLoad()
     setUI()
     setConstraints()
-    mainCategoryView.delegate = self
-    shoppingMallVC.delegate = self
+    setProtocol()
 
   }
   
@@ -130,7 +129,25 @@ class HomeViewController: UIViewController {
   @objc func moveToTop(view : UIViewController ){
     
   }
+  
+  // MARK: - Set Protocol
+  
+  private func setProtocol() {
+    searchBasketView.delegate = self
+    mainCategoryView.delegate = self
+    shoppingMallVC.delegate = self
+  }
 }
+
+extension HomeViewController: SearchBasketViewDelegate {
+  func pushShoppingBasket() {
+    let shoppingBasketVC = ShoppingBasketViewController()
+    shoppingBasketVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(shoppingBasketVC, animated: true)
+  }
+}
+
+// MARK: - ChangeViewDelegate
 
 extension HomeViewController : ChangeViewDelegate {
   func changeView(index: Int) {
@@ -149,6 +166,8 @@ extension HomeViewController : ChangeViewDelegate {
     }
   }
 }
+
+// MARK: - ShoppingMallViewDelegate
 
 extension HomeViewController : ShoppingMallViewDelegate {
   func saveProductDescription(name: String) {

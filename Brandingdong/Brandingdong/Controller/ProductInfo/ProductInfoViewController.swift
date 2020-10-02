@@ -258,7 +258,9 @@ class ProductInfoViewController: UIViewController {
   }
   
   @objc private func didTapBasketButton(_ sender: UIBarButtonItem) {
-    navigationController?.popViewController(animated: true)
+    let shoppingBasketVC = ShoppingBasketViewController()
+    shoppingBasketVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(shoppingBasketVC, animated: true)
   }
   
   @objc private func didTapFavoriteButton(_ sender: UIButton) {
