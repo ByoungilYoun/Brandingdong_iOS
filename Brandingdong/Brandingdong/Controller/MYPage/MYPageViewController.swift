@@ -149,6 +149,7 @@ extension MYPageViewController: UITableViewDataSource {
     case 2:
       let cell = tableView.dequeueReusableCell(withIdentifier: MypageMyShoppingTableViewCell.identifier,
                                                for: indexPath) as! MypageMyShoppingTableViewCell
+      cell.delegate = self
       tableView.rowHeight = Device.height / 3
       return cell
     case 3:
@@ -163,9 +164,20 @@ extension MYPageViewController: UITableViewDataSource {
   }
 }
 
+// MARK: - MypageTopTableViewCellDelegate
+
 extension MYPageViewController: MypageTopTableViewCellDelegate {
   func tapPointView() {
     let pointVC = PointViewController()
     navigationController?.pushViewController(pointVC, animated: true)
+  }
+}
+
+// MARK: - MypageMyShoppingTableViewCellDelegate
+extension MYPageViewController: MypageMyShoppingTableViewCellDelegate {
+  func naviPushVC() {
+    let shoppingBasketVC = ShoppingBasketViewController()
+    shoppingBasketVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(shoppingBasketVC, animated: true)
   }
 }
