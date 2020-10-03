@@ -24,6 +24,5 @@ class UserInfoErrLabel: UILabel {
   }
   
   private func setUI() {
-    
   }
 }
