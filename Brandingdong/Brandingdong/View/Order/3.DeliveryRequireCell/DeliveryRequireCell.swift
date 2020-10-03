@@ -56,7 +56,7 @@ class DeliveryRequireCell : UITableViewCell {
   //MARK: - configureUI()
   private func configureUI() {
     [mainTitle, inputButton, lineView, subExplainationLabel].forEach {
-      self.addSubview($0)
+      contentView.addSubview($0)
     }
     
     mainTitle.snp.makeConstraints {

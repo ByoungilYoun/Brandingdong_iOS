@@ -93,7 +93,7 @@ class CustomerInfoCell : UITableViewCell {
   //MARK: - setUI()
   private func setUI() {
     [mainTitle, subTitle, lineView ,nameLabel, nameTextField, phoneLabel, phoneTextField, emailLabel, emailTextField].forEach {
-      self.addSubview($0)
+      contentView.addSubview($0)
     }
   }
   

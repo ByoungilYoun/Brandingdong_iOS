@@ -64,7 +64,7 @@ class LocationInfoCell : UITableViewCell {
   //MARK: - configureUI()
   private func configureUI() {
     [mainTitle, inputButton, lineView, explainationLabel, subExplainationLabel].forEach {
-      self.addSubview($0)
+      contentView.addSubview($0)
     }
     
     mainTitle.snp.makeConstraints {
