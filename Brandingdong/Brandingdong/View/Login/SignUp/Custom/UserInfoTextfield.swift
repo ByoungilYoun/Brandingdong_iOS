@@ -50,6 +50,8 @@ class UserInfoTextfield: UITextField {
     layer.borderColor = UIColor.lightGray.cgColor
     layer.cornerRadius = 10
     clipsToBounds = true
-  } 
+    
+    autocapitalizationType = .none
+  }
 }
 

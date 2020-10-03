@@ -28,6 +28,8 @@ class CustomTextField : UITextField {
     self.snp.makeConstraints {
       $0.height.equalTo(40)
     }
+    
+    autocapitalizationType = .none
   }
   
   required init?(coder: NSCoder) {

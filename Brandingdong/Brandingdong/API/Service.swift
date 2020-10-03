@@ -142,7 +142,8 @@ struct Service {
     task.resume()
   }
   
-  static func signInUser(username: String, password: String) {
+  static func signInUser(username: String, password: String, completion: @escaping (Bool) -> Void) {
+    
     let loginUrl = "http://52.78.75.94/auth/login/"
     guard let url = URL(string: loginUrl) else { return print ("can't not create url")}
     
@@ -159,12 +160,13 @@ struct Service {
     let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
       guard error == nil else { return print("error : ", error!.localizedDescription)}
       guard let response = response as? HTTPURLResponse else { return print("response error")}
-      
       guard let data = data,
             let loginUser = try? JSONSerialization.jsonObject(with: data) as? [String : Any] else { return }
       
-      print (loginUser)
-      print (response.statusCode)
+      print ("loginUser : ", loginUser)
+      
+      guard response.statusCode == 200 else { return print ("response StatusCode Error")}
+      completion(true)
     }
     task.resume()
   }
