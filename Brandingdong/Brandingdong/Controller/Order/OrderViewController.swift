@@ -41,6 +41,7 @@ class OrderViewController : UIViewController {
     tableView.register(DeliveryRequireCell.self, forCellReuseIdentifier: DeliveryRequireCell.identifier)
     tableView.register(DeliveryProductCell.self, forCellReuseIdentifier: DeliveryProductCell.identifier)
     tableView.register(PointCell.self, forCellReuseIdentifier: PointCell.identifier)
+    tableView.register(HowToPayCell.self, forCellReuseIdentifier: HowToPayCell.identifier)
     tableView.allowsSelection = false
     tableView.tableFooterView = UIView()
     view.addSubview(tableView)
@@ -64,13 +65,22 @@ class OrderViewController : UIViewController {
   //MARK: - UITableViewDataSource
 extension OrderViewController : UITableViewDataSource {
   
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    let view = UIView()
+    view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+    return view
+  }
+  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 8
+  }
   func numberOfSections(in tableView: UITableView) -> Int {
     return 7
   }
   
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    1
+    return 1
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,6 +105,11 @@ extension OrderViewController : UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: PointCell.identifier, for: indexPath) as! PointCell
       tableView.rowHeight = 230
       cell.configure(havingPoint: "2000원", usingPoint: "0원", havingPoint2: "2000원")
+      return cell
+    } else if indexPath.section == 5 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: HowToPayCell.identifier, for: indexPath) as! HowToPayCell
+      tableView.rowHeight = 350
+      cell.configure(howToPay: "네이버페이로 결제")
       return cell
     } else {
       return UITableViewCell()
