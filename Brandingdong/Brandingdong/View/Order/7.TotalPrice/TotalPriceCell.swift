@@ -27,6 +27,14 @@ class TotalPriceCell : UITableViewCell {
     lb.textColor = .systemPink
     return lb
   }()
+  
+  var buyNowButton : UIButton = {
+    var bt = UIButton()
+    bt.backgroundColor = .black
+    bt.setTitleColor(.white, for: .normal)
+    bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+    return bt
+  }()
   //MARK: - Init
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -39,22 +47,30 @@ class TotalPriceCell : UITableViewCell {
   
   //MARK: - configureUI()
   private func configureUI() {
-    [totalPriceLabel, totalPrice].forEach {
+    [totalPriceLabel, totalPrice, buyNowButton].forEach {
       contentView.addSubview($0)
     }
     
     totalPriceLabel.snp.makeConstraints {
-      $0.centerY.equalTo(self)
+      $0.top.equalTo(self).offset(15)
       $0.leading.equalTo(self).offset(10)
     }
     
     totalPrice.snp.makeConstraints {
-      $0.centerY.equalTo(self)
+      $0.top.equalTo(self).offset(25)
       $0.leading.equalTo(totalPriceLabel.snp.trailing).offset(10)
+    }
+    
+    buyNowButton.snp.makeConstraints {
+      $0.top.equalTo(totalPriceLabel.snp.bottom).offset(20)
+      $0.leading.trailing.equalTo(self)
+      $0.height.equalTo(50)
+      $0.bottom.equalTo(self)
     }
   }
   
   func configure(price : String) {
     totalPrice.text = price
+    buyNowButton.setTitle("\(price)원 결제하기", for: .normal)
   }
 }

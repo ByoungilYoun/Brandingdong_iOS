@@ -114,7 +114,7 @@ extension OrderViewController : UITableViewDataSource {
       return cell
     } else if indexPath.section == 6 {
       let cell = tableView.dequeueReusableCell(withIdentifier: TotalPriceCell.identifer, for: indexPath) as! TotalPriceCell
-      tableView.rowHeight = 70
+      tableView.rowHeight = 130
       cell.configure(price: "26,800원")
       return cell
     } else {
