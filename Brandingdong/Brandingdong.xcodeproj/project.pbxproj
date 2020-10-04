@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F058A4A2528D5EC00FC2F63 /* DeliveryProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F058A492528D5EC00FC2F63 /* DeliveryProductCell.swift */; };
 		0F0A400324EED2240037B7A1 /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0A400224EED2240037B7A1 /* google.png */; };
 		0F0A400624EED9430037B7A1 /* SocialCustomButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0A400524EED9430037B7A1 /* SocialCustomButtonViewModel.swift */; };
 		0F0A400824EEDFA90037B7A1 /* LocalLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */; };
@@ -149,6 +150,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F058A492528D5EC00FC2F63 /* DeliveryProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryProductCell.swift; sourceTree = "<group>"; };
 		0F0A400224EED2240037B7A1 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
 		0F0A400524EED9430037B7A1 /* SocialCustomButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCustomButtonViewModel.swift; sourceTree = "<group>"; };
 		0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalLoginButton.swift; path = Brandingdong/View/Login/Main/LocalLoginButton.swift; sourceTree = SOURCE_ROOT; };
@@ -307,6 +309,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F058A482528D5C200FC2F63 /* 4.DeliveryProduct */ = {
+			isa = PBXGroup;
+			children = (
+				0F058A492528D5EC00FC2F63 /* DeliveryProductCell.swift */,
+			);
+			path = 4.DeliveryProduct;
+			sourceTree = "<group>";
+		};
 		0F0A400424EED91F0037B7A1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +452,7 @@
 				0FDE068325287B70004737FC /* 1.CustomerInfoCell */,
 				0FDE068425287B86004737FC /* 2.LocationInfoCell */,
 				0FA9263A2528AA4E00342848 /* 3.DeliveryRequireCell */,
+				0F058A482528D5C200FC2F63 /* 4.DeliveryProduct */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1185,6 +1196,7 @@
 				0FFF716F24F40F7F00D469D7 /* CustomTextField.swift in Sources */,
 				0F9BB78C2502CB4A006E0232 /* CategoryViewCustomCell.swift in Sources */,
 				49FE7F07252482360066712C /* MypageMyInfoTableViewCell.swift in Sources */,
+				0F058A4A2528D5EC00FC2F63 /* DeliveryProductCell.swift in Sources */,
 				0F92B2E72510C04F00FFF474 /* FirstCollectionViewCell.swift in Sources */,
 				4908EA2924F793D3008C05D9 /* UserInfoEntryTableViewCell.swift in Sources */,
 				0F0A400E24EEEF970037B7A1 /* DividerView.swift in Sources */,

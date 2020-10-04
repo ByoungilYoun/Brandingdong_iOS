@@ -39,6 +39,7 @@ class OrderViewController : UIViewController {
     tableView.register(CustomerInfoCell.self, forCellReuseIdentifier: CustomerInfoCell.identifier)
     tableView.register(LocationInfoCell.self, forCellReuseIdentifier: LocationInfoCell.identifier)
     tableView.register(DeliveryRequireCell.self, forCellReuseIdentifier: DeliveryRequireCell.identifier)
+    tableView.register(DeliveryProductCell.self, forCellReuseIdentifier: DeliveryProductCell.identifier)
     tableView.allowsSelection = false
     tableView.tableFooterView = UIView()
     view.addSubview(tableView)
@@ -83,6 +84,11 @@ extension OrderViewController : UITableViewDataSource {
     } else if indexPath.section == 2 {
       let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryRequireCell.identifier, for: indexPath) as! DeliveryRequireCell
       tableView.rowHeight = 120
+      return cell
+    } else if indexPath.section == 3 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryProductCell.identifier, for: indexPath) as! DeliveryProductCell
+      tableView.rowHeight = 200
+      cell.configure(company: "일랑", productTitle: "꽈배기 오버 오예라인니트", productSubDetail: "Ivory / Free / 수량 1개", price: "26,800원")
       return cell
     } else {
       return UITableViewCell()
