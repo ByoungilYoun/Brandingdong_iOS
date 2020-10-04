@@ -40,6 +40,7 @@ class OrderViewController : UIViewController {
     tableView.register(LocationInfoCell.self, forCellReuseIdentifier: LocationInfoCell.identifier)
     tableView.register(DeliveryRequireCell.self, forCellReuseIdentifier: DeliveryRequireCell.identifier)
     tableView.register(DeliveryProductCell.self, forCellReuseIdentifier: DeliveryProductCell.identifier)
+    tableView.register(PointCell.self, forCellReuseIdentifier: PointCell.identifier)
     tableView.allowsSelection = false
     tableView.tableFooterView = UIView()
     view.addSubview(tableView)
@@ -64,7 +65,7 @@ class OrderViewController : UIViewController {
 extension OrderViewController : UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 5
+    return 7
   }
   
   
@@ -89,6 +90,11 @@ extension OrderViewController : UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryProductCell.identifier, for: indexPath) as! DeliveryProductCell
       tableView.rowHeight = 200
       cell.configure(company: "일랑", productTitle: "꽈배기 오버 오예라인니트", productSubDetail: "Ivory / Free / 수량 1개", price: "26,800원")
+      return cell
+    } else if indexPath.section == 4 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: PointCell.identifier, for: indexPath) as! PointCell
+      tableView.rowHeight = 230
+      cell.configure(havingPoint: "2000원", usingPoint: "0원", havingPoint2: "2000원")
       return cell
     } else {
       return UITableViewCell()
