@@ -33,6 +33,7 @@
 		0F88C3F6252964360023915B /* PointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88C3F5252964360023915B /* PointCell.swift */; };
 		0F88C3FC2529C7E70023915B /* HowToPayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88C3FB2529C7E70023915B /* HowToPayCell.swift */; };
 		0F88C4032529F1A90023915B /* MethodToPayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88C4022529F1A90023915B /* MethodToPayCell.swift */; };
+		0F88C4072529F98A0023915B /* TotalPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88C4062529F98A0023915B /* TotalPriceCell.swift */; };
 		0F8935BC24F51E89006E1944 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8935BB24F51E89006E1944 /* LoginViewModel.swift */; };
 		0F92B2C5250FCFDE00FFF474 /* FirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92B2C4250FCFDE00FFF474 /* FirstTableViewCell.swift */; };
 		0F92B2E72510C04F00FFF474 /* FirstCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92B2E62510C04F00FFF474 /* FirstCollectionViewCell.swift */; };
@@ -179,6 +180,7 @@
 		0F88C3F5252964360023915B /* PointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCell.swift; sourceTree = "<group>"; };
 		0F88C3FB2529C7E70023915B /* HowToPayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPayCell.swift; sourceTree = "<group>"; };
 		0F88C4022529F1A90023915B /* MethodToPayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodToPayCell.swift; sourceTree = "<group>"; };
+		0F88C4062529F98A0023915B /* TotalPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPriceCell.swift; sourceTree = "<group>"; };
 		0F8935BB24F51E89006E1944 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0F92B2C4250FCFDE00FFF474 /* FirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableViewCell.swift; sourceTree = "<group>"; };
 		0F92B2E62510C04F00FFF474 /* FirstCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -416,6 +418,14 @@
 			path = 6.HowToPay;
 			sourceTree = "<group>";
 		};
+		0F88C4052529F95E0023915B /* 7.TotalPrice */ = {
+			isa = PBXGroup;
+			children = (
+				0F88C4062529F98A0023915B /* TotalPriceCell.swift */,
+			);
+			path = 7.TotalPrice;
+			sourceTree = "<group>";
+		};
 		0F92B2C3250FCF9B00FFF474 /* FirstTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +488,7 @@
 				0F058A482528D5C200FC2F63 /* 4.DeliveryProduct */,
 				0F88C3F42529640C0023915B /* 5.PointCell */,
 				0F88C3FA2529C7930023915B /* 6.HowToPay */,
+				0F88C4052529F95E0023915B /* 7.TotalPrice */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1196,6 +1207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F88C4072529F98A0023915B /* TotalPriceCell.swift in Sources */,
 				493AACF625037D8A00AF3156 /* ProductInfoImageCollectionViewCell.swift in Sources */,
 				4908EA1624F6998C008C05D9 /* UserInfoEntryViewController.swift in Sources */,
 				0FFF716D24F3C8CF00D469D7 /* LoginViewController.swift in Sources */,

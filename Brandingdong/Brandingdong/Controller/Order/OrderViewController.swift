@@ -42,6 +42,7 @@ class OrderViewController : UIViewController {
     tableView.register(DeliveryProductCell.self, forCellReuseIdentifier: DeliveryProductCell.identifier)
     tableView.register(PointCell.self, forCellReuseIdentifier: PointCell.identifier)
     tableView.register(HowToPayCell.self, forCellReuseIdentifier: HowToPayCell.identifier)
+    tableView.register(TotalPriceCell.self, forCellReuseIdentifier: TotalPriceCell.identifer)
     tableView.allowsSelection = false
     tableView.tableFooterView = UIView()
     view.addSubview(tableView)
@@ -72,7 +73,7 @@ extension OrderViewController : UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 8
+    return 7
   }
   func numberOfSections(in tableView: UITableView) -> Int {
     return 7
@@ -110,6 +111,11 @@ extension OrderViewController : UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: HowToPayCell.identifier, for: indexPath) as! HowToPayCell
       tableView.rowHeight = 350
       cell.configure(howToPay: "네이버페이로 결제")
+      return cell
+    } else if indexPath.section == 6 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: TotalPriceCell.identifer, for: indexPath) as! TotalPriceCell
+      tableView.rowHeight = 70
+      cell.configure(price: "26,800원")
       return cell
     } else {
       return UITableViewCell()
