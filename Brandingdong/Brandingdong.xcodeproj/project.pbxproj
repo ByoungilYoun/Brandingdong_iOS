@@ -105,6 +105,7 @@
 		49AC2CFF2508D68F00B465A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC2CFE2508D68F00B465A6 /* Service.swift */; };
 		49B81EE4251C731400E6B26B /* FavoriteProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B81EE3251C731400E6B26B /* FavoriteProductCollectionViewCell.swift */; };
 		49B99F6225109E450066F0BF /* QATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B99F6125109E450066F0BF /* QATableViewCell.swift */; };
+		49B9C195252B12A10086ECF9 /* CategoryMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9C194252B12A10086ECF9 /* CategoryMenuButton.swift */; };
 		49CEB39024EE4FB60026201B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEB38F24EE4FB60026201B /* AppDelegate.swift */; };
 		49CEB39424EE4FB60026201B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CEB39324EE4FB60026201B /* ViewController.swift */; };
 		49CEB39924EE4FB70026201B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CEB39824EE4FB70026201B /* Assets.xcassets */; };
@@ -248,6 +249,7 @@
 		49B2A2252500E49D00F4081E /* Brandingdong.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Brandingdong.entitlements; sourceTree = "<group>"; };
 		49B81EE3251C731400E6B26B /* FavoriteProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		49B99F6125109E450066F0BF /* QATableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QATableViewCell.swift; sourceTree = "<group>"; };
+		49B9C194252B12A10086ECF9 /* CategoryMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMenuButton.swift; sourceTree = "<group>"; };
 		49CEB38C24EE4FB60026201B /* Brandingdong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandingdong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CEB38F24EE4FB60026201B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49CEB39324EE4FB60026201B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 			children = (
 				493AACF525037D8A00AF3156 /* ProductInfoImageCollectionViewCell.swift */,
 				4901C44C25061DAE00390B6F /* ProductInfoCategoryCollectionViewCell.swift */,
+				49B9C194252B12A10086ECF9 /* CategoryMenuButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -992,22 +995,22 @@
 			isa = PBXGroup;
 			children = (
 				49FE7F3D252701ED0066712C /* AllProductControlButtonTableViewCell.swift */,
-				49FE7F41252708860066712C /* DeliverProductTableViewCell.swift */,
-				49FE7F4425270A760066712C /* deliverProductTableViewCell */,
+				49FE7F4425270A760066712C /* DeliverProductTableViewCell */,
 			);
 			path = "ShoppingBasket ";
 			sourceTree = "<group>";
 		};
-		49FE7F4425270A760066712C /* deliverProductTableViewCell */ = {
+		49FE7F4425270A760066712C /* DeliverProductTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				49FE7F41252708860066712C /* DeliverProductTableViewCell.swift */,
 				49FE7F4525270A9E0066712C /* DeliverProductTitleTableViewCell.swift */,
 				49FE7F4925270FFA0066712C /* DeliverProductInfoTableViewCell.swift */,
 				49FE7F4F2527185C0066712C /* DeliverProductBannerTableViewCell.swift */,
 				49FE7F552527199C0066712C /* DeliverProductPaymentTitleTableViewCell.swift */,
 				49FE7F5825271ADD0066712C /* DeliverProductPayMentInfoTableViewCell.swift */,
 			);
-			path = deliverProductTableViewCell;
+			path = DeliverProductTableViewCell;
 			sourceTree = "<group>";
 		};
 		CEFCADB19403A8FA5F6AF759 /* Frameworks */ = {
@@ -1250,6 +1253,7 @@
 				0F843B9B250D201700C3F2B7 /* BrandViewController.swift in Sources */,
 				CE79A97E24F91185008D4237 /* WelcomeViewController.swift in Sources */,
 				4980DFED2523518A00CB3F10 /* MypageTopTableViewCell.swift in Sources */,
+				49B9C195252B12A10086ECF9 /* CategoryMenuButton.swift in Sources */,
 				4908EA2524F6D660008C05D9 /* UserInfoButton.swift in Sources */,
 				49AABDE324EE7F7800DE0088 /* FavoriteViewController.swift in Sources */,
 				4959A5BE24F2C7C00022B7AC /* SearchViewController.swift in Sources */,

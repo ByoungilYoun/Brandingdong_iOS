@@ -71,8 +71,12 @@ class ProductInfoViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    setNavi()
     hideTabbar()
+  }
+  
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    setNavi()
   }
   
   
@@ -379,7 +383,7 @@ extension ProductInfoViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(
           withIdentifier: ProductInfoCategoryTableViewCell.identifier,
           for: indexPath) as! ProductInfoCategoryTableViewCell
-        cell.delegate = self
+        cell.infoDelegate = self
         return cell
       default:
         break

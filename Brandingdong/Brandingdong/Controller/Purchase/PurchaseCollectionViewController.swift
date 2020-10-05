@@ -66,6 +66,7 @@ class PurchaseCollectionViewController : UIViewController {
     bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
     bt.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
     bt.layer.cornerRadius = 5
+    bt.addTarget(self, action: #selector(shoppingBasketClicked), for: .touchUpInside)
     return bt
   }()
   
@@ -174,9 +175,14 @@ class PurchaseCollectionViewController : UIViewController {
   @objc private func buyNowBtnClicked() {
     let controller = OrderViewController()
     controller.modalPresentationStyle = .fullScreen
+    controller.view.backgroundColor = .systemBackground
 //    present(controller, animated: true , completion: nil)
     navigationController?.pushViewController(controller, animated: true)
-    
+  }
+  @objc private func shoppingBasketClicked() {
+    let shoppingBasketVC = ShoppingBasketViewController()
+    shoppingBasketVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(shoppingBasketVC, animated: true)
   }
 }
 
