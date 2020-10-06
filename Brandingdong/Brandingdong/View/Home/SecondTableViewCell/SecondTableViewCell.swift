@@ -104,8 +104,10 @@ class SecondTableViewCell : UITableViewCell {
     
     for (key, value) in HomeInfoDatas.productIdAndName {
       if value == productName {
+        Service.getProductOption(productId: key) { (isSucess) in
+          guard isSucess else { return }
+        }
         for (_, ImagesValue) in ProductInfoCategoryDatas.idAndInfoImages[key]! {
-          print ("ImagesValue : ", ImagesValue)
           let url = URL(string: ImagesValue)
           let data = try! Data(contentsOf: url!)
           ProductInfo.checkProductDetailImageArr.append(UIImage(data: data)!)

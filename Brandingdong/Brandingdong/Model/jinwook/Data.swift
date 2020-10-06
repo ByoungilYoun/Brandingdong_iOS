@@ -58,6 +58,19 @@ struct ProductInfoCodAble: Codable {
   }
 }
 
+struct ProductOptinCodAble {
+  
+  struct ProductOption: Codable {
+    let option: Option
+    
+    struct Option: Codable {
+      let product: Int
+      let color: String
+      let size: String
+    }
+  }
+}
+
 // MARK: - Struct
 
 struct Device {

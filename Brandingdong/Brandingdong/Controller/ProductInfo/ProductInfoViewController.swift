@@ -51,11 +51,7 @@ class ProductInfoViewController: UIViewController {
   
   private let productInfoCategoryTableViewCell = ProductInfoCategoryTableViewCell()
   
-  var resultCategoryClick = "" {
-    didSet {
-      print ("resultCategoryClick : ", resultCategoryClick)
-    }
-  }
+  var resultCategoryClick = ""
   
   // MARK: - LifeCycle
   
@@ -435,7 +431,6 @@ extension ProductInfoViewController: UITableViewDelegate {
 extension ProductInfoViewController: ProductInfoCategoryTableViewCellDelegate {
 
   func changeCategory(categoryName: String) {
-    print ("categoryName : ", categoryName)
     resultCategoryClick = categoryName
   }
 }
