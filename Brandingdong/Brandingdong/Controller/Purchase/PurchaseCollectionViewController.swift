@@ -87,6 +87,10 @@ class PurchaseCollectionViewController : UIViewController {
     addNotificationCenter()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.navigationBar.isHidden = true
+  }
   //MARK: - setUI()
   private func setUI() {
     collectionView.dataSource = self
@@ -168,7 +172,11 @@ class PurchaseCollectionViewController : UIViewController {
   }
   
   @objc private func buyNowBtnClicked() {
-    print("124")
+    let controller = OrderViewController()
+    controller.modalPresentationStyle = .fullScreen
+//    present(controller, animated: true , completion: nil)
+    navigationController?.pushViewController(controller, animated: true)
+    
   }
 }
 

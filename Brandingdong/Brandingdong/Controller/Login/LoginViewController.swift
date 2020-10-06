@@ -179,13 +179,13 @@ class LoginViewController : UIViewController {
       $0.leading.equalTo(view.safeAreaLayoutGuide).offset(15)
       $0.height.equalTo(20)
     }
-  
+    
     xmarkButton1.snp.makeConstraints {
       $0.top.equalTo(idTextField).offset(5)
       $0.trailing.equalTo(idTextField).offset(-10)
       $0.bottom.equalTo(idTextField).offset(-5)
     }
-
+    
     xmarkButton2.snp.makeConstraints {
       $0.top.equalTo(passwordTextField).offset(5)
       $0.trailing.equalTo(passwordTextField).offset(-10)
@@ -205,15 +205,13 @@ class LoginViewController : UIViewController {
     let id = idTextField.text!
     let pw = passwordTextField.text!
     
-    
-    DispatchQueue.main.async {
-      Service.signInUser(username: id, password: pw)
+    Service.signInUser(username: id, password: pw) { (isSuccess) in
+      guard isSuccess else { return }
+      DispatchQueue.main.sync {
+        let controller = HomeLaunchScreenViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+      }
     }
-   
-    let controller = HomeLaunchScreenViewController()
-    navigationController?.pushViewController(controller, animated: true)
-    
-    
   }
   
   @objc func idTextRemove() {
