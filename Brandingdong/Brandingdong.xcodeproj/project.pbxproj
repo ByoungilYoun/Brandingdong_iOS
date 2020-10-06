@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F058A4A2528D5EC00FC2F63 /* DeliveryProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F058A492528D5EC00FC2F63 /* DeliveryProductCell.swift */; };
 		0F0A400324EED2240037B7A1 /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F0A400224EED2240037B7A1 /* google.png */; };
 		0F0A400624EED9430037B7A1 /* SocialCustomButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0A400524EED9430037B7A1 /* SocialCustomButtonViewModel.swift */; };
 		0F0A400824EEDFA90037B7A1 /* LocalLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */; };
@@ -29,6 +30,10 @@
 		0F843B99250B895D00C3F2B7 /* ShoppingMallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B98250B895D00C3F2B7 /* ShoppingMallViewController.swift */; };
 		0F843B9B250D201700C3F2B7 /* BrandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B9A250D201700C3F2B7 /* BrandViewController.swift */; };
 		0F843B9D250D20B500C3F2B7 /* BeautyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F843B9C250D20B500C3F2B7 /* BeautyViewController.swift */; };
+		0F88C3F6252964360023915B /* PointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88C3F5252964360023915B /* PointCell.swift */; };
+		0F88C3FC2529C7E70023915B /* HowToPayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88C3FB2529C7E70023915B /* HowToPayCell.swift */; };
+		0F88C4032529F1A90023915B /* MethodToPayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88C4022529F1A90023915B /* MethodToPayCell.swift */; };
+		0F88C4072529F98A0023915B /* TotalPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F88C4062529F98A0023915B /* TotalPriceCell.swift */; };
 		0F8935BC24F51E89006E1944 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8935BB24F51E89006E1944 /* LoginViewModel.swift */; };
 		0F92B2C5250FCFDE00FFF474 /* FirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92B2C4250FCFDE00FFF474 /* FirstTableViewCell.swift */; };
 		0F92B2E72510C04F00FFF474 /* FirstCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F92B2E62510C04F00FFF474 /* FirstCollectionViewCell.swift */; };
@@ -150,6 +155,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F058A492528D5EC00FC2F63 /* DeliveryProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryProductCell.swift; sourceTree = "<group>"; };
 		0F0A400224EED2240037B7A1 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
 		0F0A400524EED9430037B7A1 /* SocialCustomButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCustomButtonViewModel.swift; sourceTree = "<group>"; };
 		0F0A400724EEDFA90037B7A1 /* LocalLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalLoginButton.swift; path = Brandingdong/View/Login/Main/LocalLoginButton.swift; sourceTree = SOURCE_ROOT; };
@@ -172,6 +178,10 @@
 		0F843B98250B895D00C3F2B7 /* ShoppingMallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingMallViewController.swift; sourceTree = "<group>"; };
 		0F843B9A250D201700C3F2B7 /* BrandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandViewController.swift; sourceTree = "<group>"; };
 		0F843B9C250D20B500C3F2B7 /* BeautyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautyViewController.swift; sourceTree = "<group>"; };
+		0F88C3F5252964360023915B /* PointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCell.swift; sourceTree = "<group>"; };
+		0F88C3FB2529C7E70023915B /* HowToPayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPayCell.swift; sourceTree = "<group>"; };
+		0F88C4022529F1A90023915B /* MethodToPayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodToPayCell.swift; sourceTree = "<group>"; };
+		0F88C4062529F98A0023915B /* TotalPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPriceCell.swift; sourceTree = "<group>"; };
 		0F8935BB24F51E89006E1944 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0F92B2C4250FCFDE00FFF474 /* FirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableViewCell.swift; sourceTree = "<group>"; };
 		0F92B2E62510C04F00FFF474 /* FirstCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -309,6 +319,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F058A482528D5C200FC2F63 /* 4.DeliveryProduct */ = {
+			isa = PBXGroup;
+			children = (
+				0F058A492528D5EC00FC2F63 /* DeliveryProductCell.swift */,
+			);
+			path = 4.DeliveryProduct;
+			sourceTree = "<group>";
+		};
 		0F0A400424EED91F0037B7A1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +403,31 @@
 			path = FirstCategory;
 			sourceTree = "<group>";
 		};
+		0F88C3F42529640C0023915B /* 5.PointCell */ = {
+			isa = PBXGroup;
+			children = (
+				0F88C3F5252964360023915B /* PointCell.swift */,
+			);
+			path = 5.PointCell;
+			sourceTree = "<group>";
+		};
+		0F88C3FA2529C7930023915B /* 6.HowToPay */ = {
+			isa = PBXGroup;
+			children = (
+				0F88C3FB2529C7E70023915B /* HowToPayCell.swift */,
+				0F88C4022529F1A90023915B /* MethodToPayCell.swift */,
+			);
+			path = 6.HowToPay;
+			sourceTree = "<group>";
+		};
+		0F88C4052529F95E0023915B /* 7.TotalPrice */ = {
+			isa = PBXGroup;
+			children = (
+				0F88C4062529F98A0023915B /* TotalPriceCell.swift */,
+			);
+			path = 7.TotalPrice;
+			sourceTree = "<group>";
+		};
 		0F92B2C3250FCF9B00FFF474 /* FirstTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +487,10 @@
 				0FDE068325287B70004737FC /* 1.CustomerInfoCell */,
 				0FDE068425287B86004737FC /* 2.LocationInfoCell */,
 				0FA9263A2528AA4E00342848 /* 3.DeliveryRequireCell */,
+				0F058A482528D5C200FC2F63 /* 4.DeliveryProduct */,
+				0F88C3F42529640C0023915B /* 5.PointCell */,
+				0F88C3FA2529C7930023915B /* 6.HowToPay */,
+				0F88C4052529F95E0023915B /* 7.TotalPrice */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -1163,6 +1210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F88C4072529F98A0023915B /* TotalPriceCell.swift in Sources */,
 				493AACF625037D8A00AF3156 /* ProductInfoImageCollectionViewCell.swift in Sources */,
 				4908EA1624F6998C008C05D9 /* UserInfoEntryViewController.swift in Sources */,
 				0FFF716D24F3C8CF00D469D7 /* LoginViewController.swift in Sources */,
@@ -1188,6 +1236,7 @@
 				0FFF716F24F40F7F00D469D7 /* CustomTextField.swift in Sources */,
 				0F9BB78C2502CB4A006E0232 /* CategoryViewCustomCell.swift in Sources */,
 				49FE7F07252482360066712C /* MypageMyInfoTableViewCell.swift in Sources */,
+				0F058A4A2528D5EC00FC2F63 /* DeliveryProductCell.swift in Sources */,
 				0F92B2E72510C04F00FFF474 /* FirstCollectionViewCell.swift in Sources */,
 				4908EA2924F793D3008C05D9 /* UserInfoEntryTableViewCell.swift in Sources */,
 				0F0A400E24EEEF970037B7A1 /* DividerView.swift in Sources */,
@@ -1208,6 +1257,8 @@
 				498B7BBA250B79960000CD2F /* ProductInfoSellerAnotherProductTableViewCell.swift in Sources */,
 				0F9BB78E2503AE52006E0232 /* HeaderCollectionReusableView.swift in Sources */,
 				49FE7F3E252701ED0066712C /* AllProductControlButtonTableViewCell.swift in Sources */,
+				0F88C4032529F1A90023915B /* MethodToPayCell.swift in Sources */,
+				0F88C3FC2529C7E70023915B /* HowToPayCell.swift in Sources */,
 				492776F42513B91900AFC390 /* BrandSecondTableViewCell.swift in Sources */,
 				4908EA2324F6CF1D008C05D9 /* UserInfoLabel.swift in Sources */,
 				49598F44251238F9007E9373 /* AnotherLikeProductTableViewCell.swift in Sources */,
@@ -1250,6 +1301,7 @@
 				CE596BB924F77B9D00DDE2EB /* UserAgreeViewController.swift in Sources */,
 				4959A5B724F28F540022B7AC /* Data.swift in Sources */,
 				4901C44D25061DAE00390B6F /* ProductInfoCategoryCollectionViewCell.swift in Sources */,
+				0F88C3F6252964360023915B /* PointCell.swift in Sources */,
 				0F843B9B250D201700C3F2B7 /* BrandViewController.swift in Sources */,
 				CE79A97E24F91185008D4237 /* WelcomeViewController.swift in Sources */,
 				4980DFED2523518A00CB3F10 /* MypageTopTableViewCell.swift in Sources */,

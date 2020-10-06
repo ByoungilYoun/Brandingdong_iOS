@@ -39,6 +39,10 @@ class OrderViewController : UIViewController {
     tableView.register(CustomerInfoCell.self, forCellReuseIdentifier: CustomerInfoCell.identifier)
     tableView.register(LocationInfoCell.self, forCellReuseIdentifier: LocationInfoCell.identifier)
     tableView.register(DeliveryRequireCell.self, forCellReuseIdentifier: DeliveryRequireCell.identifier)
+    tableView.register(DeliveryProductCell.self, forCellReuseIdentifier: DeliveryProductCell.identifier)
+    tableView.register(PointCell.self, forCellReuseIdentifier: PointCell.identifier)
+    tableView.register(HowToPayCell.self, forCellReuseIdentifier: HowToPayCell.identifier)
+    tableView.register(TotalPriceCell.self, forCellReuseIdentifier: TotalPriceCell.identifer)
     tableView.allowsSelection = false
     tableView.tableFooterView = UIView()
     view.addSubview(tableView)
@@ -62,13 +66,22 @@ class OrderViewController : UIViewController {
   //MARK: - UITableViewDataSource
 extension OrderViewController : UITableViewDataSource {
   
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    let view = UIView()
+    view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+    return view
+  }
+  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 7
+  }
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 5
+    return 7
   }
   
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    1
+    return 1
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,6 +97,27 @@ extension OrderViewController : UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryRequireCell.identifier, for: indexPath) as! DeliveryRequireCell
       tableView.rowHeight = 120
       return cell
+    } else if indexPath.section == 3 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryProductCell.identifier, for: indexPath) as! DeliveryProductCell
+      tableView.rowHeight = 200
+      cell.configure(company: "일랑", productTitle: "꽈배기 오버 오예라인니트", productSubDetail: "Ivory / Free / 수량 1개", price: "26,800원")
+      return cell
+    } else if indexPath.section == 4 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: PointCell.identifier, for: indexPath) as! PointCell
+      tableView.rowHeight = 230
+      cell.configure(havingPoint: "2000원", usingPoint: "0원", havingPoint2: "2000원")
+      return cell
+    } else if indexPath.section == 5 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: HowToPayCell.identifier, for: indexPath) as! HowToPayCell
+      tableView.rowHeight = 350
+      cell.configure(howToPay: "네이버페이로 결제")
+      return cell
+    } else if indexPath.section == 6 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: TotalPriceCell.identifer, for: indexPath) as! TotalPriceCell
+      cell.delegate = self
+      tableView.rowHeight = 130
+      cell.configure(price: "26,800원")
+      return cell
     } else {
       return UITableViewCell()
     }
@@ -95,4 +129,13 @@ extension OrderViewController : UITableViewDataSource {
   //MARK: - UITableViewDelegate
 extension OrderViewController : UITableViewDelegate {
   
+}
+
+extension OrderViewController : TotalPriceCellDelegate {
+  func buyButtonClicked() {
+    let alert = UIAlertController(title: "결제완료", message: "결제가 완료되었습니다.", preferredStyle: .alert)
+    let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+    alert.addAction(alertAction)
+    present(alert, animated: true, completion: nil)
+  }
 }
