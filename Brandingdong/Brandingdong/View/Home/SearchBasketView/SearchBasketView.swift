@@ -17,8 +17,7 @@ class SearchBasketView: UIView {
   
   private let logoLabel: UILabel = {
     let lb = UILabel()
-//    lb.text = "B R A N D I"
-    lb.text = "W O O K I"
+    lb.text = "B R A N D I"
     lb.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
     return lb
   }()
