@@ -114,6 +114,7 @@ extension OrderViewController : UITableViewDataSource {
       return cell
     } else if indexPath.section == 6 {
       let cell = tableView.dequeueReusableCell(withIdentifier: TotalPriceCell.identifer, for: indexPath) as! TotalPriceCell
+      cell.delegate = self
       tableView.rowHeight = 130
       cell.configure(price: "26,800원")
       return cell
@@ -128,4 +129,13 @@ extension OrderViewController : UITableViewDataSource {
   //MARK: - UITableViewDelegate
 extension OrderViewController : UITableViewDelegate {
   
+}
+
+extension OrderViewController : TotalPriceCellDelegate {
+  func buyButtonClicked() {
+    let alert = UIAlertController(title: "결제완료", message: "결제가 완료되었습니다.", preferredStyle: .alert)
+    let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+    alert.addAction(alertAction)
+    present(alert, animated: true, completion: nil)
+  }
 }

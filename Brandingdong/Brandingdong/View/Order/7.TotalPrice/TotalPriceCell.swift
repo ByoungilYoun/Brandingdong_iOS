@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TotalPriceCellDelegate: class {
+  func buyButtonClicked()
+}
+
 class TotalPriceCell : UITableViewCell {
   
   //MARK: - Properties
@@ -28,13 +32,16 @@ class TotalPriceCell : UITableViewCell {
     return lb
   }()
   
-  var buyNowButton : UIButton = {
+  lazy var buyNowButton : UIButton = {
     var bt = UIButton()
     bt.backgroundColor = .black
     bt.setTitleColor(.white, for: .normal)
     bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+    bt.addTarget(self, action: #selector(buyButtonClicked), for: .touchUpInside)
     return bt
   }()
+  
+  var delegate : TotalPriceCellDelegate?
   //MARK: - Init
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -72,5 +79,9 @@ class TotalPriceCell : UITableViewCell {
   func configure(price : String) {
     totalPrice.text = price
     buyNowButton.setTitle("\(price)원 결제하기", for: .normal)
+  }
+  
+  @objc func buyButtonClicked() {
+    delegate?.buyButtonClicked()
   }
 }
