@@ -113,12 +113,12 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
      }
     
     [productInfoButton,
-    reviewButton,
-    qaButton,
-    deliverInfoButton,
-    categoryMoveView].forEach {
+     reviewButton,
+     qaButton,
+     deliverInfoButton,
+     categoryMoveView].forEach {
       categoryButtonView.addSubview($0)
-    }
+     }
   }
   
   private func setConstraints() {
@@ -139,14 +139,14 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
     }
     
     [productInfoButton,
-    reviewButton,
-    qaButton,
-    deliverInfoButton].forEach {
+     reviewButton,
+     qaButton,
+     deliverInfoButton].forEach {
       $0.snp.makeConstraints {
         $0.centerY.equalTo(categoryButtonView.snp.centerY)
         $0.width.equalToSuperview().multipliedBy(0.25)
       }
-    }
+     }
     
     productInfoButton.snp.makeConstraints {
       $0.leading.equalToSuperview()
@@ -167,7 +167,7 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
     categoryMoveView.snp.makeConstraints {
       $0.top.equalTo(productInfoButton.snp.bottom)
       $0.width.equalTo(productInfoButton)
-      $0.leading.equalToSuperview()
+      $0.leading.equalToSuperview().offset(0)
       $0.height.equalTo(2)
     }
     
@@ -185,10 +185,25 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   
   private func setTargetButton() {
     [productInfoButton,
-    reviewButton,
-    qaButton,
-    deliverInfoButton].forEach {
+     reviewButton,
+     qaButton,
+     deliverInfoButton].forEach {
       $0.addTarget(self, action: #selector(didTapButton(sender:)), for: .touchUpInside)
+     }
+  }
+  
+  private func getMoveButtonTarget(buttonName: UIButton) {
+    
+    categoryMoveView.snp.removeConstraints()
+    
+    UIView.animate(withDuration: 0.5) { [self] in
+      categoryMoveView.snp.makeConstraints {
+        $0.top.equalTo(buttonName.snp.bottom)
+        $0.width.equalTo(buttonName)
+        $0.leading.equalTo(buttonName.snp.leading)
+        $0.height.equalTo(2)
+      }
+      self.layoutIfNeeded()
     }
   }
   
@@ -196,20 +211,19 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
     switch sender {
     case productInfoButton:
       categoryClick = "상품정보"
+      getMoveButtonTarget(buttonName: productInfoButton)
       
     case reviewButton:
       categoryClick = "리뷰"
-      categoryMoveView.snp.updateConstraints {
-        $0.leading.equalToSuperview().offset(30)
-        self.layoutIfNeeded()
-      }
-      self.layoutIfNeeded()
-      
+      getMoveButtonTarget(buttonName: reviewButton)
+    
     case qaButton:
       categoryClick = "Q&A"
+      getMoveButtonTarget(buttonName: qaButton)
       
     case deliverInfoButton:
       categoryClick = "주문정보"
+      getMoveButtonTarget(buttonName: deliverInfoButton)
       
     default:
       break
