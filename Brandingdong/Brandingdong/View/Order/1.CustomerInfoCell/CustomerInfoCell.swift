@@ -77,8 +77,10 @@ class CustomerInfoCell : UITableViewCell {
     let tf = UITextField()
     tf.placeholder = "이메일 주소"
     tf.borderStyle = .roundedRect
+    tf.autocapitalizationType = .none
     return tf
   }()
+  
   //MARK: - LifeCycle
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
