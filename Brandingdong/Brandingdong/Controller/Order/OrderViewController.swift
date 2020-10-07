@@ -12,12 +12,14 @@ class OrderViewController : UIViewController {
   
   //MARK: - Properties
   private let tableView = UITableView()
+  let fomatter = NumberFormatter()
   
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setUI()
     setConstraints()
+    priceFommater()
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -57,13 +59,21 @@ class OrderViewController : UIViewController {
     }
   }
   
+  // MARK: - PriceFommater
+  
+  private func priceFommater() {
+    fomatter.numberStyle = .decimal
+    fomatter.minimumFractionDigits = 0
+    fomatter.maximumFractionDigits = 3
+  }
+  
   //MARK: - @objc func
   @objc private func moveBack() {
     navigationController?.popViewController(animated: true)
   }
 }
 
-  //MARK: - UITableViewDataSource
+//MARK: - UITableViewDataSource
 extension OrderViewController : UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -100,13 +110,19 @@ extension OrderViewController : UITableViewDataSource {
     } else if indexPath.section == 3 {
       let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryProductCell.identifier, for: indexPath) as! DeliveryProductCell
       tableView.rowHeight = 200
-      cell.configure(company: "미쏘", productTitle: "10부 코튼 턱와이드 팬츠", productSubDetail: "빨강 / S / 수량 1개", price: "39,900원")
+      cell.configure(image : ProductInfo.checkProductNameImageArr.first!,
+                     company: ProductInfo.checkProductBrandName,
+                     productTitle: ProductInfo.checkProductName,
+                     productSubDetail: ProductOption.selectedChoice.first! + " / " + ProductOption.selectedChoice.last! + " / " + "수량 1개",
+                     price: fomatter.string(from: ProductInfo.checkProductPrice as NSNumber)! + " 원")
       return cell
     } else if indexPath.section == 4 {
       let cell = tableView.dequeueReusableCell(withIdentifier: PointCell.identifier, for: indexPath) as! PointCell
       tableView.rowHeight = 230
-      cell.configure(havingPoint: "2000원", usingPoint: "0원", havingPoint2: "2000원")
       cell.delegate = self
+      cell.configure(havingPoint: "2000원",
+                     usingPoint: "0원",
+                     havingPoint2: "2000원")
       return cell
     } else if indexPath.section == 5 {
       let cell = tableView.dequeueReusableCell(withIdentifier: HowToPayCell.identifier, for: indexPath) as! HowToPayCell
@@ -117,7 +133,7 @@ extension OrderViewController : UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: TotalPriceCell.identifer, for: indexPath) as! TotalPriceCell
       cell.delegate = self
       tableView.rowHeight = 130
-      cell.configure(price: "39,900원")
+      cell.configure(price: fomatter.string(from: ProductInfo.checkProductPrice as NSNumber)! + " 원")
       return cell
     } else {
       return UITableViewCell()
@@ -127,7 +143,7 @@ extension OrderViewController : UITableViewDataSource {
   
 }
 
-  //MARK: - UITableViewDelegate
+//MARK: - UITableViewDelegate
 extension OrderViewController : UITableViewDelegate {
   
 }

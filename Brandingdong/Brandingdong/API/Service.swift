@@ -11,6 +11,35 @@ import Alamofire
 
 struct Service {
   
+  static func getProductOption(productId: Int, completion: @escaping (Bool) -> Void) {
+    
+    let productOptionUrl = "http://52.78.75.94/products/option/?product=" + "\(productId)"
+    
+    AF.request(productOptionUrl, method: .get).responseJSON { response in
+      guard let jsondata = response.data else { return }
+      do {
+        let productOptionDatas = try JSONDecoder().decode([ProductOptinCodAble.ProductOption].self,
+                                                          from: jsondata)
+        
+        for index in 0..<productOptionDatas.count {
+          
+          if !(ProductOption.size.contains(productOptionDatas[index].size)) {
+            ProductOption.size.append(productOptionDatas[index].size)
+          }
+          
+          if !(ProductOption.color.contains(productOptionDatas[index].color)) {
+            ProductOption.color.append(productOptionDatas[index].color)
+          }
+          
+        }
+        completion(true)
+        
+      } catch {
+        print ("ProductOption Json Error: ", error.localizedDescription)
+      }
+    }
+  }
+  
   static func getProductInfoDetail(completion: @escaping (Bool) -> Void) {
     let productDetailUrl = "http://52.78.75.94/products/info"
     

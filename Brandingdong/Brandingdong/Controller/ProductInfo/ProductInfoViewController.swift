@@ -51,11 +51,7 @@ class ProductInfoViewController: UIViewController {
   
   private let productInfoCategoryTableViewCell = ProductInfoCategoryTableViewCell()
   
-  var resultCategoryClick = "" {
-    didSet {
-      print ("resultCategoryClick : ", resultCategoryClick)
-    }
-  }
+  var resultCategoryClick = ""
   
   // MARK: - LifeCycle
   
@@ -291,6 +287,8 @@ class ProductInfoViewController: UIViewController {
     guard blurView.isHidden == false, blurView.bounds.contains(location) else {
       return
     }
+    ProductOption.color.removeAll()
+    ProductOption.size.removeAll()
     blurView.alpha = 0
     blurView.isHidden = true
     purchaseVC.view.alpha = 0
@@ -435,7 +433,6 @@ extension ProductInfoViewController: UITableViewDelegate {
 extension ProductInfoViewController: ProductInfoCategoryTableViewCellDelegate {
 
   func changeCategory(categoryName: String) {
-    print ("categoryName : ", categoryName)
     resultCategoryClick = categoryName
   }
 }

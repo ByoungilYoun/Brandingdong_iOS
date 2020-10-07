@@ -19,22 +19,22 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   
   private let categoryButtonView = UIView()
   
-  private let productInfoButton: UIButton = {
+  private let productInfoButton: CategoryMenuButton = {
     let btn = CategoryMenuButton(title: "상품정보")
     return btn
   }()
   
-  private let reviewButton: UIButton = {
+  private let reviewButton: CategoryMenuButton = {
     let btn = CategoryMenuButton(title: "리뷰")
     return btn
   }()
   
-  private let qaButton: UIButton = {
+  private let qaButton: CategoryMenuButton = {
     let btn = CategoryMenuButton(title: "Q&A")
     return btn
   }()
   
-  private let deliverInfoButton: UIButton = {
+  private let deliverInfoButton: CategoryMenuButton = {
     let btn = CategoryMenuButton(title: "주문정보")
     return btn
   }()
