@@ -30,7 +30,7 @@ class PurchaseCollectionViewController : UIViewController {
   
   var gesture : UITapGestureRecognizer?
   
-  private let collectionView : UICollectionView = {
+  let collectionView : UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
     return UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -38,18 +38,15 @@ class PurchaseCollectionViewController : UIViewController {
   
   private let totalProductCountLabel : UILabel = {
     let lb = UILabel()
-    lb.text = "총 2개의 상품"
+    lb.text = "총 1개의 상품"
     lb.textColor = UIColor.lightGray.withAlphaComponent(0.8)
     return lb
   }()
   
-  private let totalPriceLabel : UILabel = {
+  let totalPriceLabel : UILabel = {
     let lb = UILabel()
-    let attributes : [NSAttributedString.Key : Any] = [.foregroundColor : UIColor.black, .font : UIFont.systemFont(ofSize: 16)]
-    let attributedTitle = NSMutableAttributedString(string: "총 금액 ", attributes: attributes)
-    let priceAtts : [NSAttributedString.Key : Any] = [.foregroundColor : UIColor.systemPink, .font : UIFont.boldSystemFont(ofSize: 18)]
-    attributedTitle.append(NSAttributedString(string: "44,444원", attributes: priceAtts))
-    lb.attributedText = attributedTitle
+    lb.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
+    lb.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
     return lb
   }()
   
@@ -66,6 +63,7 @@ class PurchaseCollectionViewController : UIViewController {
     bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
     bt.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
     bt.layer.cornerRadius = 5
+    bt.addTarget(self, action: #selector(shoppingBasketClicked), for: .touchUpInside)
     return bt
   }()
   
@@ -79,17 +77,24 @@ class PurchaseCollectionViewController : UIViewController {
     bt.addTarget(self, action: #selector(buyNowBtnClicked), for: .touchUpInside)
     return bt
   }()
+  
+  let fomatter = NumberFormatter()
+  
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setUI()
     setConstraints()
     addNotificationCenter()
+    priceFommater()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isHidden = true
+    if !(ProductOption.selectedChoice.isEmpty) {
+      collectionView.reloadData()
+    }
   }
   //MARK: - setUI()
   private func setUI() {
@@ -155,6 +160,12 @@ class PurchaseCollectionViewController : UIViewController {
     }
   }
   
+  private func priceFommater() {
+    fomatter.numberStyle = .decimal
+    fomatter.minimumFractionDigits = 0
+    fomatter.maximumFractionDigits = 3
+  }
+  
   //MARK: - addNotificationCenter()
   private func addNotificationCenter() {
     NotificationCenter.default.addObserver(self, selector: #selector(dismissView), name: NSNotification.Name("DismissView"), object: nil)
@@ -174,9 +185,14 @@ class PurchaseCollectionViewController : UIViewController {
   @objc private func buyNowBtnClicked() {
     let controller = OrderViewController()
     controller.modalPresentationStyle = .fullScreen
-//    present(controller, animated: true , completion: nil)
+    controller.view.backgroundColor = .systemBackground
     navigationController?.pushViewController(controller, animated: true)
-    
+  }
+  
+  @objc private func shoppingBasketClicked() {
+    let shoppingBasketVC = ShoppingBasketViewController()
+    shoppingBasketVC.view.backgroundColor = .systemBackground
+    navigationController?.pushViewController(shoppingBasketVC, animated: true)
   }
 }
 
@@ -188,6 +204,11 @@ extension PurchaseCollectionViewController : UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PurchaseSelectedCell.identifier, for: indexPath) as! PurchaseSelectedCell
+    
+    cell.configure(color: ProductOption.selectedChoice.first ?? "",
+                   size: ProductOption.selectedChoice.last ?? "",
+                   price: fomatter.string(from: ProductInfo.checkProductPrice as NSNumber)! + " 원")
+    
     cell.layer.cornerRadius = 5
     cell.backgroundColor = .systemBackground
     return cell

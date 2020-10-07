@@ -17,10 +17,34 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   
   static let identifier = "ProductInfoCategoryTableViewCell"
   
-  private let categoryMenuArr = ["상품정보", "리뷰", "Q&A", "주문정보"]
+  private let categoryButtonView = UIView()
   
-  private let layout = UICollectionViewFlowLayout()
-  lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+  private let productInfoButton: CategoryMenuButton = {
+    let btn = CategoryMenuButton(title: "상품정보")
+    return btn
+  }()
+  
+  private let reviewButton: CategoryMenuButton = {
+    let btn = CategoryMenuButton(title: "리뷰")
+    return btn
+  }()
+  
+  private let qaButton: CategoryMenuButton = {
+    let btn = CategoryMenuButton(title: "Q&A")
+    return btn
+  }()
+  
+  private let deliverInfoButton: CategoryMenuButton = {
+    let btn = CategoryMenuButton(title: "주문정보")
+    return btn
+  }()
+  
+  private let categoryMoveView: UIView = {
+    let view = UIView()
+    view.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+    return view
+  }()
+  
   private let categoryMenuSubView: UIView = {
     let view = UIView()
     view.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -28,12 +52,11 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   }()
   
   private let tableView = UITableView()
-  var delegate: ProductInfoCategoryTableViewCellDelegate?
+  var infoDelegate: ProductInfoCategoryTableViewCellDelegate?
   
   var categoryClick: String = "" {
     didSet {
-      print ("categoryClick : ", categoryClick)
-      delegate?.changeCategory(categoryName: categoryClick)
+      infoDelegate?.changeCategory(categoryName: categoryClick)
       tableView.reloadData()
     }
   }
@@ -49,35 +72,11 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
     setUI()
     setConstraints()
-    setLayout()
-    setCollectionView()
     setTableView()
+    setTargetButton()
   }
   
   // MARK: - Set Property
-  
-  private func setLayout() {
-    
-    let itemSize: CGFloat = 50
-    let lineSpasing: CGFloat = 32
-    let sectionInset = UIEdgeInsets(top: 10, left: 32, bottom: 10, right: 32)
-    
-    layout.scrollDirection = .horizontal
-    layout.sectionInset = sectionInset
-    layout.minimumLineSpacing = lineSpasing
-    layout.itemSize = CGSize(width: itemSize, height: itemSize)
-  }
-  
-  private func setCollectionView() {
-    collectionView.backgroundColor = .systemBackground
-    collectionView.showsHorizontalScrollIndicator = false
-    collectionView.dataSource = self
-    collectionView.delegate = self
-    
-    collectionView.register(
-      ProductInfoCategoryCollectionViewCell.self,
-      forCellWithReuseIdentifier: ProductInfoCategoryCollectionViewCell.identifier)
-  }
   
   private func setTableView() {
     tableView.isScrollEnabled = false
@@ -107,31 +106,73 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
   // MARK: - Setup Layout
   
   private func setUI() {
-    [collectionView,
+    [categoryButtonView,
      categoryMenuSubView,
      tableView].forEach {
       contentView.addSubview($0)
-    }
+     }
+    
+    [productInfoButton,
+     reviewButton,
+     qaButton,
+     deliverInfoButton,
+     categoryMoveView].forEach {
+      categoryButtonView.addSubview($0)
+     }
   }
   
   private func setConstraints() {
     
-    let collectionViewHeight: CGFloat = 72
-    let subviewPadding: CGFloat = 10
+    let categoryButtonHeight: CGFloat = 72
+    let subviewPadding: CGFloat = 8
     
-    [collectionView,
+    [categoryButtonView,
      categoryMenuSubView,
      tableView].forEach {
       $0.snp.makeConstraints {
         $0.leading.trailing.equalToSuperview()
       }
-    }
-    collectionView.snp.makeConstraints {
+     }
+    categoryButtonView.snp.makeConstraints {
       $0.top.equalToSuperview()
-      $0.height.equalTo(collectionViewHeight)
+      $0.height.equalTo(categoryButtonHeight)
     }
+    
+    [productInfoButton,
+     reviewButton,
+     qaButton,
+     deliverInfoButton].forEach {
+      $0.snp.makeConstraints {
+        $0.centerY.equalTo(categoryButtonView.snp.centerY)
+        $0.width.equalToSuperview().multipliedBy(0.25)
+      }
+     }
+    
+    productInfoButton.snp.makeConstraints {
+      $0.leading.equalToSuperview()
+    }
+    
+    reviewButton.snp.makeConstraints {
+      $0.leading.equalTo(productInfoButton.snp.trailing)
+    }
+    
+    qaButton.snp.makeConstraints {
+      $0.leading.equalTo(reviewButton.snp.trailing)
+    }
+    
+    deliverInfoButton.snp.makeConstraints {
+      $0.leading.equalTo(qaButton.snp.trailing)
+    }
+    
+    categoryMoveView.snp.makeConstraints {
+      $0.top.equalTo(productInfoButton.snp.bottom)
+      $0.width.equalTo(productInfoButton)
+      $0.leading.equalToSuperview().offset(0)
+      $0.height.equalTo(2)
+    }
+    
     categoryMenuSubView.snp.makeConstraints {
-      $0.top.equalTo(collectionView.snp.bottom).offset(-subviewPadding)
+      $0.top.equalTo(categoryButtonView.snp.bottom).offset(-subviewPadding)
       $0.height.equalTo(0.5)
     }
     tableView.snp.makeConstraints {
@@ -139,43 +180,53 @@ class ProductInfoCategoryTableViewCell: UITableViewCell {
       $0.bottom.equalToSuperview()
     }
   }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension ProductInfoCategoryTableViewCell: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return categoryMenuArr.count
+  
+  // MARK: - Action Button
+  
+  private func setTargetButton() {
+    [productInfoButton,
+     reviewButton,
+     qaButton,
+     deliverInfoButton].forEach {
+      $0.addTarget(self, action: #selector(didTapButton(sender:)), for: .touchUpInside)
+     }
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductInfoCategoryCollectionViewCell.identifier, for: indexPath) as! ProductInfoCategoryCollectionViewCell
+  private func getMoveButtonTarget(buttonName: UIButton) {
     
-    cell.menuName.text = categoryMenuArr[indexPath.item]
-    cell.backgroundColor = .systemBlue
-    return cell
-  }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension ProductInfoCategoryTableViewCell: UICollectionViewDelegate {
-  
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if let didSelectCheckIndex = collectionView.cellForItem(at: indexPath) as? ProductInfoCategoryCollectionViewCell {
-      didSelectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-      didSelectCheckIndex.menuName.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-      didSelectCheckIndex.nameSubLine.isHidden = false
-      categoryClick = didSelectCheckIndex.menuName.text!
-      print ("categoryClick", categoryClick)
+    categoryMoveView.snp.removeConstraints()
+    
+    UIView.animate(withDuration: 0.5) { [self] in
+      categoryMoveView.snp.makeConstraints {
+        $0.top.equalTo(buttonName.snp.bottom)
+        $0.width.equalTo(buttonName)
+        $0.leading.equalTo(buttonName.snp.leading)
+        $0.height.equalTo(2)
+      }
+      self.layoutIfNeeded()
     }
   }
   
-  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-    if let didDeslectCheckIndex = collectionView.cellForItem(at: indexPath) as? ProductInfoCategoryCollectionViewCell {
-      didDeslectCheckIndex.menuName.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-      didDeslectCheckIndex.menuName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-      didDeslectCheckIndex.nameSubLine.isHidden = true
+  @objc func didTapButton(sender: UIButton) {
+    switch sender {
+    case productInfoButton:
+      categoryClick = "상품정보"
+      getMoveButtonTarget(buttonName: productInfoButton)
+      
+    case reviewButton:
+      categoryClick = "리뷰"
+      getMoveButtonTarget(buttonName: reviewButton)
+    
+    case qaButton:
+      categoryClick = "Q&A"
+      getMoveButtonTarget(buttonName: qaButton)
+      
+    case deliverInfoButton:
+      categoryClick = "주문정보"
+      getMoveButtonTarget(buttonName: deliverInfoButton)
+      
+    default:
+      break
     }
   }
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HowToPayCellDelegate {
+  func clickMethodButton (_ index : Int)
+}
+
 class HowToPayCell : UITableViewCell {
   
   //MARK: - Properties
@@ -38,6 +42,7 @@ class HowToPayCell : UITableViewCell {
   
   var methods = ["네이버페이", "카카오페이", "토스", "신용/체크카드", "무통장 입금", "휴대폰 결제"]
   
+  var delegate : HowToPayCellDelegate?
   //MARK: - Init
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -99,5 +104,7 @@ extension HowToPayCell : UITableViewDataSource {
 }
 
 extension HowToPayCell : UITableViewDelegate {
-  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   
+  }
 }

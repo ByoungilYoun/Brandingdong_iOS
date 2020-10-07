@@ -190,7 +190,7 @@ class FavoriteViewController: UIViewController {
   
   private func buttonStateChange(button: UIButton?, page: Int?) {
     if button == favoriteProductButton || page == 0 {
-      UIView.animate(withDuration: 0.2) { [self] in
+      UIView.animate(withDuration: 0.5) { [self] in
         favoriteProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         favoriteProductButton.setTitleColor(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .normal)
         recentProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
@@ -203,7 +203,7 @@ class FavoriteViewController: UIViewController {
       collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
       
     } else if button == recentProductButton || page == 1 {
-      UIView.animate(withDuration: 0.2) { [self] in
+      UIView.animate(withDuration: 0.5) { [self] in
         recentProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         recentProductButton.setTitleColor(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .normal)
         favoriteProductButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)

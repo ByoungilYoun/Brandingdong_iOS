@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PointCellDelegate {
+  func useAllPointButtonClick()
+}
+
 class PointCell : UITableViewCell {
   
   //MARK: - Properties
@@ -72,19 +76,24 @@ class PointCell : UITableViewCell {
     return lb
   }()
   
-  var showingPointTextField : UITextField = {
-    var tf = UITextField()
-    tf.borderStyle = .roundedRect
+  lazy var showingPointLabel : UILabel = {
+    var tf = UILabel()
+    tf.layer.borderColor = UIColor.lightGray.cgColor
+    tf.layer.borderWidth = 1
+    tf.text = ""
+    tf.textColor = .black
+    tf.textAlignment = .right
     tf.textColor = .lightGray
     return tf
   }()
   
-  private let usePointButton : UIButton = {
+  lazy var usePointButton : UIButton = {
     let bt = UIButton()
     bt.setTitle("전액사용", for: .normal)
     bt.setTitleColor(.white, for: .normal)
     bt.backgroundColor = .black
     bt.layer.cornerRadius = 5
+    bt.addTarget(self, action: #selector(useAllPointButtonTapped), for: .touchUpInside)
     return bt
   }()
   
@@ -95,6 +104,19 @@ class PointCell : UITableViewCell {
     lb.font = UIFont.systemFont(ofSize: 15)
     return lb
   }()
+  
+  var pointTextLabel : UILabel = {
+    var lb = UILabel()
+    lb.text = "2000"
+    lb.font = UIFont.systemFont(ofSize: 15)
+    lb.textColor = .black
+    lb.isHidden = true
+    lb.alpha = 0
+    return lb
+  }()
+  
+  
+  var delegate : PointCellDelegate?
   //MARK: - Init
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -107,7 +129,7 @@ class PointCell : UITableViewCell {
   
   //MARK: - configureUI()
   private func configureUI() {
-    [mainTitle, havingPointLabel, havingPoint, usingPointLabel, usingPoint, lineView, havingPointLabel2, havingPoint2, showingPointTextField, usePointButton, descriptionLabel].forEach {
+    [mainTitle, havingPointLabel, havingPoint, usingPointLabel, usingPoint, lineView, havingPointLabel2, havingPoint2, showingPointLabel, usePointButton, descriptionLabel, pointTextLabel].forEach {
       contentView.addSubview($0)
     }
     
@@ -152,7 +174,7 @@ class PointCell : UITableViewCell {
       $0.trailing.equalTo(self).offset(-10)
     }
     
-    showingPointTextField.snp.makeConstraints {
+    showingPointLabel.snp.makeConstraints {
       $0.top.equalTo(havingPointLabel2.snp.bottom).offset(15)
       $0.leading.equalTo(self).offset(10)
       $0.width.equalTo(250)
@@ -161,14 +183,19 @@ class PointCell : UITableViewCell {
     
     usePointButton.snp.makeConstraints {
       $0.top.equalTo(havingPoint2.snp.bottom).offset(15)
-      $0.leading.equalTo(showingPointTextField.snp.trailing).offset(5)
+      $0.leading.equalTo(showingPointLabel.snp.trailing).offset(5)
       $0.trailing.equalTo(self).offset(-10)
       $0.height.equalTo(40)
     }
     
     descriptionLabel.snp.makeConstraints {
-      $0.top.equalTo(showingPointTextField.snp.bottom).offset(5)
+      $0.top.equalTo(showingPointLabel.snp.bottom).offset(5)
       $0.leading.equalTo(self).offset(10)
+    }
+    
+    pointTextLabel.snp.makeConstraints {
+      $0.trailing.equalTo(showingPointLabel.snp.trailing).offset(-5)
+      $0.centerY.equalTo(showingPointLabel)
     }
   }
   
@@ -179,4 +206,9 @@ class PointCell : UITableViewCell {
     self.havingPoint2.text = havingPoint2
   }
   
+  @objc func useAllPointButtonTapped() {
+    delegate?.useAllPointButtonClick()
+    pointTextLabel.alpha = 1
+    pointTextLabel.isHidden = false
+  }
 }
