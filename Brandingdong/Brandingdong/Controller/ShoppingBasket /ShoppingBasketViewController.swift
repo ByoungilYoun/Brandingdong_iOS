@@ -86,6 +86,7 @@ class ShoppingBasketViewController: UIViewController {
   private func setTableView() {
     tableView.dataSource = self
     tableView.delegate = self
+    tableView.allowsSelection = false
     
     tableView.register(AllProductControlButtonTableViewCell.self,
                        forCellReuseIdentifier: AllProductControlButtonTableViewCell.identifier)
@@ -93,6 +94,7 @@ class ShoppingBasketViewController: UIViewController {
     tableView.register(DeliverProductTableViewCell.self,
                        forCellReuseIdentifier: DeliverProductTableViewCell.identifier)
   }
+  
   
   // MARK: - NavigationBar
   
@@ -128,6 +130,7 @@ class ShoppingBasketViewController: UIViewController {
       print ("moveTopButton")
     case buyButton:
       print ("buyButton")
+      
     default:
       break
     }

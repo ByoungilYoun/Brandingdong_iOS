@@ -287,6 +287,8 @@ class ProductInfoViewController: UIViewController {
     guard blurView.isHidden == false, blurView.bounds.contains(location) else {
       return
     }
+    ProductOption.color.removeAll()
+    ProductOption.size.removeAll()
     blurView.alpha = 0
     blurView.isHidden = true
     purchaseVC.view.alpha = 0

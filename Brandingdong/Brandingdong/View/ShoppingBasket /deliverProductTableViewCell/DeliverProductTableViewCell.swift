@@ -14,6 +14,7 @@ class DeliverProductTableViewCell: UITableViewCell {
   static let identifier = "DeliverProductTableViewCell"
   
   private let tableView = UITableView()
+  let fomatter = NumberFormatter()
   
   // MARK: - Cell Init
   
@@ -27,6 +28,7 @@ class DeliverProductTableViewCell: UITableViewCell {
     setUI()
     setConstraints()
     setTableView()
+    priceFommater()
   }
   
   // MARK: - Set LayOut
@@ -45,12 +47,13 @@ class DeliverProductTableViewCell: UITableViewCell {
   
   private func setTableView() {
     tableView.dataSource = self
+    tableView.allowsSelection = false
     
     tableView.register(DeliverProductTitleTableViewCell.self,
                        forCellReuseIdentifier: DeliverProductTitleTableViewCell.identifier)
     
-    tableView.register(DeliverProductInfoTableViewCell.self,
-                       forCellReuseIdentifier: DeliverProductInfoTableViewCell.identifier)
+    tableView.register(DeliverProductInfoListTableViewCell.self,
+                       forCellReuseIdentifier: DeliverProductInfoListTableViewCell.identifier)
     
     tableView.register(DeliverProductBannerTableViewCell.self,
                        forCellReuseIdentifier: DeliverProductBannerTableViewCell.identifier)
@@ -61,7 +64,18 @@ class DeliverProductTableViewCell: UITableViewCell {
     tableView.register(DeliverProductPayMentInfoTableViewCell.self,
                        forCellReuseIdentifier: DeliverProductPayMentInfoTableViewCell.identifier)
   }
+  
+  // MARK: - PriceFommater
+  
+  private func priceFommater() {
+    fomatter.numberStyle = .decimal
+    fomatter.minimumFractionDigits = 0
+    fomatter.maximumFractionDigits = 3
+  }
+  
 }
+
+// MARK: - UITableViewDataSource
 
 extension DeliverProductTableViewCell: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,8 +93,8 @@ extension DeliverProductTableViewCell: UITableViewDataSource {
       tableView.rowHeight = titleHeight
       return cell
     case 1:
-      let cell = tableView.dequeueReusableCell(withIdentifier: DeliverProductInfoTableViewCell.identifier,
-                                               for: indexPath) as! DeliverProductInfoTableViewCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: DeliverProductInfoListTableViewCell.identifier,
+                                               for: indexPath) as! DeliverProductInfoListTableViewCell
       tableView.rowHeight = 242
       return cell
     case 2:
@@ -96,6 +110,8 @@ extension DeliverProductTableViewCell: UITableViewDataSource {
     case 4:
       let cell = tableView.dequeueReusableCell(withIdentifier: DeliverProductPayMentInfoTableViewCell.identifier,
                                                for: indexPath) as! DeliverProductPayMentInfoTableViewCell
+      cell.configure(price: fomatter.string(from: ProductInfo.checkProductPrice as NSNumber)! + " 원",
+                     resultPrice: fomatter.string(from: ProductInfo.checkProductPrice as NSNumber)! + " 원")
       tableView.rowHeight = 172
       return cell
     default:

@@ -116,7 +116,13 @@ class DeliveryProductCell : UITableViewCell {
     }
   }
   
-  func configure(company : String, productTitle : String, productSubDetail : String, price : String) {
+  func configure(image: UIImage,
+                 company : String,
+                 productTitle : String,
+                 productSubDetail : String,
+                 price : String) {
+    
+    self.productImage.image = image
     self.companyLabel.text = company
     self.productTitle.text = productTitle
     self.productSubDetail.text = productSubDetail
