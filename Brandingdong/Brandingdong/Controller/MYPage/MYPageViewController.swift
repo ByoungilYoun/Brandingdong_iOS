@@ -98,7 +98,7 @@ class MYPageViewController: UIViewController {
     
     navigationController?.navigationBar.isHidden = false
     
-    navigationItem.title = "jwlee07"
+    navigationItem.title = "iostest3"
     
     let imageIcon = UIImage(named: "마이페이지설정")?.withRenderingMode(.alwaysOriginal)
     
