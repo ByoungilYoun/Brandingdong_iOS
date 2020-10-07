@@ -119,6 +119,7 @@ extension OrderViewController : UITableViewDataSource {
     } else if indexPath.section == 4 {
       let cell = tableView.dequeueReusableCell(withIdentifier: PointCell.identifier, for: indexPath) as! PointCell
       tableView.rowHeight = 230
+      cell.delegate = self
       cell.configure(havingPoint: "2000원",
                      usingPoint: "0원",
                      havingPoint2: "2000원")
@@ -153,5 +154,14 @@ extension OrderViewController : TotalPriceCellDelegate {
     let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
     alert.addAction(alertAction)
     present(alert, animated: true, completion: nil)
+  }
+}
+
+extension OrderViewController : PointCellDelegate {
+  func useAllPointButtonClick() {
+    let view = PointCell()
+    view.pointTextLabel.isHidden = false
+    view.pointTextLabel.text = "2000"
+    view.pointTextLabel.alpha = 1
   }
 }

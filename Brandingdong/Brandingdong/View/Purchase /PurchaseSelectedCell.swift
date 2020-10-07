@@ -77,7 +77,7 @@ class PurchaseSelectedCell : UICollectionViewCell {
   
   private let priceLabel : UILabel = {
     let lb = UILabel()
-    lb.text = "44,444 원"
+    lb.text = "39,900 원"
     lb.textColor = .black
     lb.font = UIFont.boldSystemFont(ofSize: 16)
     lb.textAlignment = .left
