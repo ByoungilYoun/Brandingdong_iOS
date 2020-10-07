@@ -38,7 +38,7 @@ class PurchaseCollectionViewController : UIViewController {
   
   private let totalProductCountLabel : UILabel = {
     let lb = UILabel()
-    lb.text = "총 2개의 상품"
+    lb.text = "총 1개의 상품"
     lb.textColor = UIColor.lightGray.withAlphaComponent(0.8)
     return lb
   }()
@@ -48,7 +48,7 @@ class PurchaseCollectionViewController : UIViewController {
     let attributes : [NSAttributedString.Key : Any] = [.foregroundColor : UIColor.black, .font : UIFont.systemFont(ofSize: 16)]
     let attributedTitle = NSMutableAttributedString(string: "총 금액 ", attributes: attributes)
     let priceAtts : [NSAttributedString.Key : Any] = [.foregroundColor : UIColor.systemPink, .font : UIFont.boldSystemFont(ofSize: 18)]
-    attributedTitle.append(NSAttributedString(string: "44,444원", attributes: priceAtts))
+    attributedTitle.append(NSAttributedString(string: "39,900원", attributes: priceAtts))
     lb.attributedText = attributedTitle
     return lb
   }()
@@ -176,7 +176,6 @@ class PurchaseCollectionViewController : UIViewController {
     let controller = OrderViewController()
     controller.modalPresentationStyle = .fullScreen
     controller.view.backgroundColor = .systemBackground
-//    present(controller, animated: true , completion: nil)
     navigationController?.pushViewController(controller, animated: true)
   }
   @objc private func shoppingBasketClicked() {

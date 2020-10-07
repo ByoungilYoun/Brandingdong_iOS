@@ -64,7 +64,7 @@ class TotalPriceCell : UITableViewCell {
     }
     
     totalPrice.snp.makeConstraints {
-      $0.top.equalTo(self).offset(2)
+      $0.top.equalTo(self).offset(25)
       $0.leading.equalTo(totalPriceLabel.snp.trailing).offset(10)
     }
     

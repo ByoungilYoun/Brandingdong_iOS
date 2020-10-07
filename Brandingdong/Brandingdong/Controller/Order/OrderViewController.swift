@@ -100,12 +100,13 @@ extension OrderViewController : UITableViewDataSource {
     } else if indexPath.section == 3 {
       let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryProductCell.identifier, for: indexPath) as! DeliveryProductCell
       tableView.rowHeight = 200
-      cell.configure(company: "일랑", productTitle: "꽈배기 오버 오예라인니트", productSubDetail: "Ivory / Free / 수량 1개", price: "26,800원")
+      cell.configure(company: "미쏘", productTitle: "10부 코튼 턱와이드 팬츠", productSubDetail: "빨강 / S / 수량 1개", price: "39,900원")
       return cell
     } else if indexPath.section == 4 {
       let cell = tableView.dequeueReusableCell(withIdentifier: PointCell.identifier, for: indexPath) as! PointCell
       tableView.rowHeight = 230
       cell.configure(havingPoint: "2000원", usingPoint: "0원", havingPoint2: "2000원")
+      cell.delegate = self
       return cell
     } else if indexPath.section == 5 {
       let cell = tableView.dequeueReusableCell(withIdentifier: HowToPayCell.identifier, for: indexPath) as! HowToPayCell
@@ -116,7 +117,7 @@ extension OrderViewController : UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: TotalPriceCell.identifer, for: indexPath) as! TotalPriceCell
       cell.delegate = self
       tableView.rowHeight = 130
-      cell.configure(price: "26,800원")
+      cell.configure(price: "39,900원")
       return cell
     } else {
       return UITableViewCell()
@@ -137,5 +138,13 @@ extension OrderViewController : TotalPriceCellDelegate {
     let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
     alert.addAction(alertAction)
     present(alert, animated: true, completion: nil)
+  }
+}
+
+extension OrderViewController : PointCellDelegate {
+  func useAllPointButtonClick() {
+    print("123")
+    let view = PointCell()
+    view.showingPointLabel.text = "2000"
   }
 }

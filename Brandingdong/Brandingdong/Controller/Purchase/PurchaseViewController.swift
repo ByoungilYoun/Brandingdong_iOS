@@ -26,8 +26,8 @@ class PurchaseViewController : UIViewController {
   }
   
   var twoChoicesArray = [
-    ExpandableChoices(isExpanded: true, choices: ["빨강", "노랑", "검정", "파랑"].map { Choices(name: $0, hasChecked: false)}),
-    ExpandableChoices(isExpanded: true, choices: ["S", "M", "L"].map {Choices(name: $0, hasChecked: false)})
+    ExpandableChoices(isExpanded: false, choices: ["빨강", "노랑", "검정", "파랑"].map { Choices(name: $0, hasChecked: false)}),
+    ExpandableChoices(isExpanded: false, choices: ["S", "M", "L"].map {Choices(name: $0, hasChecked: false)})
   ]
   
   var selectedChoice = [String]()
