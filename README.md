@@ -85,21 +85,16 @@
 ### 스프린트 1차
 
 - 로그인
-
-
-<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_Login.gif" width = "200" height = "400" />
-
-
 - 메인 홈 카테고리 (쇼핑몰마켓, 브랜드, 뷰티)
-
-
-<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_MainHome.gif" width = "200" height = "400" />
-
-
 - 상품상세정보
 
+```
+왼쪽부터 순서대로 로그인, 메인 홈 카테고리(쇼핑몰마켓, 브랜드, 뷰티), 상품상세정보 입니다.
+```
 
-<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_ProductInfo.gif" width = "200" height = "400" />
+
+
+<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_Login.gif" width = "200" height = "400" />     <img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_MainHome.gif" width = "200" height = "400" />     <img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_ProductInfo.gif" width = "200" height = "400" />
 
 
 
@@ -108,27 +103,18 @@
 ### 스프린트 2차
 
 - 상품구매
-
-
-<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_ProductBuy.gif" width = "200" height = "400" />
-
-
 - 장바구니
-
-
-<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_ShoppingBasket.gif" width = "200" height = "400" />
-
-
 - 찜
-
-
-<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_Favorite.gif" width = "200" height = "400" />
-
-
 - 마이페이지
 
+```
+왼쪽부터 순서대로 상품구매, 장바구니, 찜, 마이페이지 입니다.
+```
 
-<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_Mypage.gif" width = "200" height = "400" />
+
+
+<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_ProductBuy.gif" width = "200" height = "400" />     <img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_ShoppingBasket.gif" width = "200" height = "400" />     <img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_Favorite.gif" width = "200" height = "400" />     <img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/gifs/Brandingdong_Mypage.gif" width = "200" height = "400" />
+
 
 
 
