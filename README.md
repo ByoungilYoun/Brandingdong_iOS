@@ -77,12 +77,9 @@
 
 <img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/images/Brandingdong_7.png" width = "600" height = "400" />
 
-<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/images/Brandingdong_8.png" width = "600" height = "400" />
-
-<img src = "https://github.com/jwlee07/Brandingdong_iOS/blob/develop/Brandingdong/ReadMeImages/images/Brandingdong_9.png" width = "600" height = "400" />
 
 
-### 스프린트 1차
+## 스프린트 1차
 
 - 로그인
 - 메인 홈 카테고리 (쇼핑몰마켓, 브랜드, 뷰티)
@@ -100,7 +97,7 @@
 
 
 
-### 스프린트 2차
+## 스프린트 2차
 
 - 상품구매
 - 장바구니
