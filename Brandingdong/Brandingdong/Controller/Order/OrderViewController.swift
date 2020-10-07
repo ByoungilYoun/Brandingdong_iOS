@@ -143,8 +143,9 @@ extension OrderViewController : TotalPriceCellDelegate {
 
 extension OrderViewController : PointCellDelegate {
   func useAllPointButtonClick() {
-    print("123")
     let view = PointCell()
-    view.showingPointLabel.text = "2000"
+    view.pointTextLabel.isHidden = false
+    view.pointTextLabel.text = "2000"
+    view.pointTextLabel.alpha = 1
   }
 }

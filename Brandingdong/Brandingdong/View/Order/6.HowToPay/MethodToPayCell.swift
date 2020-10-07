@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MethodToPayCellDelegate : class {
+  func clickMethodButton (_ cell : MethodToPayCell)
+}
+
 class MethodToPayCell : UITableViewCell {
   
   //MARK: - Properties
@@ -17,6 +21,7 @@ class MethodToPayCell : UITableViewCell {
     let bt = UIButton()
     bt.setImage(UIImage(systemName: "smallcircle.fill.circle"), for: .normal)
     bt.tintColor = .lightGray
+    bt.addTarget(self, action: #selector(methodButtonClicked), for: .touchUpInside)
     return bt
   }()
   
@@ -27,6 +32,7 @@ class MethodToPayCell : UITableViewCell {
     return lb
   }()
   
+  var delegate : MethodToPayCellDelegate?
   //MARK: - init
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -57,4 +63,7 @@ class MethodToPayCell : UITableViewCell {
     methodLabel.text = method
   }
   
+  @objc func methodButtonClicked() {
+    delegate?.clickMethodButton(self)
+  }
 }

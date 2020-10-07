@@ -105,6 +105,16 @@ class PointCell : UITableViewCell {
     return lb
   }()
   
+  var pointTextLabel : UILabel = {
+    var lb = UILabel()
+    lb.text = "2000"
+    lb.font = UIFont.systemFont(ofSize: 15)
+    lb.textColor = .black
+    lb.isHidden = true
+    lb.alpha = 0
+    return lb
+  }()
+  
   
   var delegate : PointCellDelegate?
   //MARK: - Init
@@ -119,7 +129,7 @@ class PointCell : UITableViewCell {
   
   //MARK: - configureUI()
   private func configureUI() {
-    [mainTitle, havingPointLabel, havingPoint, usingPointLabel, usingPoint, lineView, havingPointLabel2, havingPoint2, showingPointLabel, usePointButton, descriptionLabel].forEach {
+    [mainTitle, havingPointLabel, havingPoint, usingPointLabel, usingPoint, lineView, havingPointLabel2, havingPoint2, showingPointLabel, usePointButton, descriptionLabel, pointTextLabel].forEach {
       contentView.addSubview($0)
     }
     
@@ -182,6 +192,11 @@ class PointCell : UITableViewCell {
       $0.top.equalTo(showingPointLabel.snp.bottom).offset(5)
       $0.leading.equalTo(self).offset(10)
     }
+    
+    pointTextLabel.snp.makeConstraints {
+      $0.trailing.equalTo(showingPointLabel.snp.trailing).offset(-5)
+      $0.centerY.equalTo(showingPointLabel)
+    }
   }
   
   //MARK: - configure
@@ -193,5 +208,7 @@ class PointCell : UITableViewCell {
   
   @objc func useAllPointButtonTapped() {
     delegate?.useAllPointButtonClick()
+    pointTextLabel.alpha = 1
+    pointTextLabel.isHidden = false
   }
 }
