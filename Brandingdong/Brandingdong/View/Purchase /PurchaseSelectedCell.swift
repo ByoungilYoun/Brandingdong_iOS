@@ -13,11 +13,27 @@ class PurchaseSelectedCell : UICollectionViewCell {
   //MARK: - Properties
   static let identifier = "PurchaseSelectedCell"
   
-  var productLabel : UILabel = {
+  var colorLabel : UILabel = {
     var lb = UILabel()
     lb.textColor = .black
     lb.font = UIFont.systemFont(ofSize: 16)
-    lb.text = "DDD/DDDD"
+    lb.text = "DDD"
+    return lb
+  }()
+  
+  let optionSubLine: UILabel = {
+    let lb = UILabel()
+    lb.textColor = .black
+    lb.font = UIFont.systemFont(ofSize: 16)
+    lb.text = "/"
+    return lb
+  }()
+  
+  var sizeLabel : UILabel = {
+    var lb = UILabel()
+    lb.textColor = .black
+    lb.font = UIFont.systemFont(ofSize: 16)
+    lb.text = "DDDD"
     return lb
   }()
   
@@ -79,13 +95,30 @@ class PurchaseSelectedCell : UICollectionViewCell {
   
   //MARK: - configureUI()
   private func configureUI() {
-    [productLabel, xmark, minusButton, countLabel, plusButton, priceLabel].forEach {
+    [colorLabel,
+     optionSubLine,
+     sizeLabel,
+     xmark,
+     minusButton,
+     countLabel,
+     plusButton,
+     priceLabel].forEach {
       contentView.addSubview($0)
     }
     
-    productLabel.snp.makeConstraints {
+    colorLabel.snp.makeConstraints {
       $0.top.equalToSuperview().offset(10)
       $0.leading.equalToSuperview().offset(10)
+    }
+    
+    optionSubLine.snp.makeConstraints {
+      $0.top.equalToSuperview().offset(10)
+      $0.leading.equalTo(colorLabel.snp.trailing).offset(10)
+    }
+    
+    sizeLabel.snp.makeConstraints {
+      $0.top.equalToSuperview().offset(10)
+      $0.leading.equalTo(optionSubLine.snp.trailing).offset(10)
     }
     
     xmark.snp.makeConstraints {
@@ -94,19 +127,19 @@ class PurchaseSelectedCell : UICollectionViewCell {
     }
     
     minusButton.snp.makeConstraints {
-      $0.top.equalTo(productLabel.snp.bottom).offset(20)
+      $0.top.equalTo(colorLabel.snp.bottom).offset(20)
       $0.leading.equalToSuperview().offset(10)
       $0.width.height.equalTo(25)
     }
     
     countLabel.snp.makeConstraints {
-      $0.top.equalTo(productLabel.snp.bottom).offset(20)
+      $0.top.equalTo(colorLabel.snp.bottom).offset(20)
       $0.leading.equalTo(minusButton.snp.trailing)
       $0.width.height.equalTo(25)
     }
     
     plusButton.snp.makeConstraints {
-      $0.top.equalTo(productLabel.snp.bottom).offset(20)
+      $0.top.equalTo(colorLabel.snp.bottom).offset(20)
       $0.leading.equalTo(countLabel.snp.trailing)
       $0.width.height.equalTo(25)
     }
@@ -115,5 +148,14 @@ class PurchaseSelectedCell : UICollectionViewCell {
       $0.top.equalTo(xmark.snp.bottom).offset(40)
       $0.trailing.equalToSuperview().offset(-10)
     }
+    
+  }
+  
+  // MARK: - Configure
+  
+  func configure(color: String, size: String, price: String) {
+    colorLabel.text = color
+    sizeLabel.text = size
+    priceLabel.text = price
   }
 }

@@ -143,4 +143,11 @@ class DeliverProductPayMentInfoTableViewCell: UITableViewCell {
       }
      }
   }
+  
+  // MARK: - Configure
+  
+  func configure(price: String, resultPrice: String) {
+    productPrice.text = price
+    allPrice.text = resultPrice
+  }
 }

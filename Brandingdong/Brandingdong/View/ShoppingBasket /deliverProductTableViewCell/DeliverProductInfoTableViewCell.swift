@@ -13,7 +13,7 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
   
   static let identifier = "DeliverProductInfoTableViewCell"
   
-  let title: UILabel = {
+  var title: UILabel = {
     let lb = UILabel()
     lb.text = "브랜드 이름"
     lb.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -56,7 +56,7 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
     return imageView
   }()
   
-  let productTitle: UILabel = {
+  private var productTitle: UILabel = {
     let lb = UILabel()
     lb.text = "상품이름"
     lb.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -64,15 +64,39 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
     return lb
   }()
   
-  let optionTitle: UILabel = {
+  private let optionTitle: UILabel = {
     let lb = UILabel()
-    lb.text = "옵션"
-    lb.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    lb.text = "옵션 : "
+    lb.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     lb.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
     return lb
   }()
   
-  let priceTitle: UILabel = {
+  private var colorTitle: UILabel = {
+    let lb = UILabel()
+    lb.text = "color"
+    lb.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    lb.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
+    return lb
+  }()
+  
+  private let optionSubLine: UILabel = {
+    let lb = UILabel()
+    lb.text = "/"
+    lb.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    lb.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
+    return lb
+  }()
+  
+  private var sizeTitle: UILabel = {
+    let lb = UILabel()
+    lb.text = "size"
+    lb.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    lb.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
+    return lb
+  }()
+  
+  private var priceTitle: UILabel = {
     let lb = UILabel()
     lb.text = "가격"
     lb.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -111,6 +135,9 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
      productImageView,
      productTitle,
      optionTitle,
+     colorTitle,
+     optionSubLine,
+     sizeTitle,
      priceTitle,
      fastBuyButton].forEach {
       contentView.addSubview($0)
@@ -119,6 +146,7 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
   
   private func setConstraints() {
     
+    let optionPadding: CGFloat = 4
     let padding: CGFloat = 16
     let imageSize: CGFloat = 72
     let buttonHeight: CGFloat = 48
@@ -168,9 +196,27 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
       $0.top.equalTo(productImageView.snp.top)
     }
     
-    optionTitle.snp.makeConstraints {
-      $0.centerY.equalTo(productImageView.snp.centerY)
+    [optionTitle,
+     colorTitle,
+     optionSubLine,
+     sizeTitle].forEach {
+      $0.snp.makeConstraints {
+        $0.centerY.equalTo(productImageView.snp.centerY)
+      }
+     }
+    
+    colorTitle.snp.makeConstraints {
+      $0.leading.equalTo(optionTitle.snp.trailing).offset(optionPadding)
     }
+    
+    optionSubLine.snp.makeConstraints {
+      $0.leading.equalTo(colorTitle.snp.trailing).offset(optionPadding)
+    }
+    
+    sizeTitle.snp.makeConstraints {
+      $0.leading.equalTo(optionSubLine.snp.trailing).offset(optionPadding)
+    }
+    
     
     priceTitle.snp.makeConstraints {
       $0.bottom.equalTo(productImageView.snp.bottom)
@@ -203,5 +249,22 @@ class DeliverProductInfoTableViewCell: UITableViewCell {
       checkBoxButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
       toggle = !toggle
     }
+  }
+  
+  // MARK: - Configure
+  
+  func configure(brandName: String,
+                 productImage: UIImage,
+                 productName: String,
+                 colorName: String,
+                 sizeName: String,
+                 price: String) {
+    
+    title.text = brandName
+    productImageView.image = productImage
+    productTitle.text = productName
+    colorTitle.text = colorName
+    sizeTitle.text = sizeName
+    priceTitle.text = price
   }
 }

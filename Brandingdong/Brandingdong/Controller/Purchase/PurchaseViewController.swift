@@ -26,11 +26,11 @@ class PurchaseViewController : UIViewController {
   }
   
   var twoChoicesArray = [
-    ExpandableChoices(isExpanded: true, choices: ["빨강", "노랑", "검정", "파랑"].map { Choices(name: $0, hasChecked: false)}),
-    ExpandableChoices(isExpanded: true, choices: ["S", "M", "L"].map {Choices(name: $0, hasChecked: false)})
+    ExpandableChoices(isExpanded: true, choices: ProductOption.color.map { Choices(name: $0, hasChecked: false)}),
+    ExpandableChoices(isExpanded: true, choices: ProductOption.size.map {Choices(name: $0, hasChecked: false)})
   ]
   
-  var selectedChoice = [String]()
+  let fomatter = NumberFormatter()
   
   //MARK: - LifeCycle
   override func viewDidLoad() {
@@ -38,6 +38,7 @@ class PurchaseViewController : UIViewController {
     setUI()
     setConstraints()
     addPurchaseCollectionView()
+    priceFommater()
   }
   
   //MARK: - setUI()
@@ -83,15 +84,26 @@ class PurchaseViewController : UIViewController {
     tableView.reloadRows(at: [indexPathTapped], with: .fade)
     
      if hasChecked == false {
-      selectedChoice.append(choice.name)
+      ProductOption.selectedChoice.append(choice.name)
      } else {
-      selectedChoice.removeLast()
+      ProductOption.selectedChoice.removeLast()
      }
     
-    if selectedChoice.count == 2 {
+    if ProductOption.selectedChoice.count == 2 {
+      purchaseCollectionVC.totalPriceLabel.text = fomatter.string(from: ProductInfo.checkProductPrice as NSNumber)! + " 원"
+      purchaseCollectionVC.collectionView.reloadData()
       purchaseCollectionVC.view.alpha = 1
       purchaseCollectionVC.view.isHidden = false
+      
     }
+  }
+  
+  // MARK: - priceFommater
+  
+  private func priceFommater() {
+    fomatter.numberStyle = .decimal
+    fomatter.minimumFractionDigits = 0
+    fomatter.maximumFractionDigits = 3
   }
   
   //MARK: - headerView()
@@ -169,6 +181,6 @@ extension PurchaseViewController : UITableViewDataSource {
   //MARK: - UITableViewDelegate
 extension PurchaseViewController : UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+    
   }
 }

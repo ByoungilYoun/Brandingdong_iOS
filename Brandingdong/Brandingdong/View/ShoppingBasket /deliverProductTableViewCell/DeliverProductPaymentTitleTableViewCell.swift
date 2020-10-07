@@ -49,4 +49,5 @@ class DeliverProductPaymentTitleTableViewCell: UITableViewCell {
       $0.leading.equalToSuperview().offset(padding)
     }
   }
+
 }

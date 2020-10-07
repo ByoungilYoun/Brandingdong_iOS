@@ -13,18 +13,25 @@ struct Service {
   
   static func getProductOption(productId: Int, completion: @escaping (Bool) -> Void) {
     
-    let productOptionUrl = "http://52.78.75.94/orders/items/" + "\(productId)"
+    let productOptionUrl = "http://52.78.75.94/products/option/?product=" + "\(productId)"
     
     AF.request(productOptionUrl, method: .get).responseJSON { response in
       guard let jsondata = response.data else { return }
       do {
-        let productOptionDatas = try JSONDecoder().decode(ProductOptinCodAble.ProductOption.self,
+        let productOptionDatas = try JSONDecoder().decode([ProductOptinCodAble.ProductOption].self,
                                                           from: jsondata)
         
-        print ("product : ", productOptionDatas.option.product)
-        print ("color : ", productOptionDatas.option.color)
-        print ("size : ", productOptionDatas.option.size)
-        
+        for index in 0..<productOptionDatas.count {
+          
+          if !(ProductOption.size.contains(productOptionDatas[index].size)) {
+            ProductOption.size.append(productOptionDatas[index].size)
+          }
+          
+          if !(ProductOption.color.contains(productOptionDatas[index].color)) {
+            ProductOption.color.append(productOptionDatas[index].color)
+          }
+          
+        }
         completion(true)
         
       } catch {
